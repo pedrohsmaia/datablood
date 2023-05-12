@@ -25,7 +25,7 @@ export const useUser = () => {
     logOut: async () => {
       if (session) {
         await supabase.auth.signOut()
-        await router.replace('/login')
+        await router.replace('/onboarding')
       }
     },
   }

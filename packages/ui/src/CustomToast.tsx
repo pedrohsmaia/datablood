@@ -18,7 +18,7 @@ export const CustomToast = () => {
       y={0}
       opacity={1}
       scale={1}
-      animation="quick"
+      animation="100ms"
     >
       <YStack>
         <Toast.Title>{currentToast.title}</Toast.Title>

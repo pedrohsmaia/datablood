@@ -6,14 +6,22 @@ import { AuthProviderProps } from 'app/provider/auth'
 import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import { Provider } from 'app/provider'
 import Head from 'next/head'
-import React from 'react'
+import React, { ReactElement, ReactNode } from 'react'
 import type { SolitoAppProps } from 'solito'
+import { NextPage } from 'next'
+
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
 
 function MyApp({
   Component,
   pageProps,
 }: SolitoAppProps<{ initialSession: AuthProviderProps['initialSession'] }>) {
   const [theme, setTheme] = useRootTheme()
+
+  // reference: https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts
+  const getLayout = Component.getLayout || ((page) => page)
 
   return (
     <>
@@ -32,7 +40,7 @@ function MyApp({
           defaultTheme={theme}
           initialSession={pageProps.initialSession}
         >
-          <Component {...pageProps} />
+          {getLayout(<Component {...pageProps} />)}
         </Provider>
       </NextThemeProvider>
     </>

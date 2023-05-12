@@ -3,5 +3,5 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export const ToastViewport = () => {
   const { top, right, left } = useSafeAreaInsets()
-  return <ToastViewportOg top={top + 5} left={left} right={right} />
+  return <ToastViewportOg top={top + 5} left={left + 5} right={right + 5} />
 }

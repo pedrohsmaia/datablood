@@ -22,7 +22,7 @@ export function userProtectedGetSSP<
     if (!session) {
       return {
         redirect: {
-          destination: '/login',
+          destination: '/sign-in',
           permanent: false,
         },
       }

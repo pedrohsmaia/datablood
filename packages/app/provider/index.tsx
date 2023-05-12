@@ -1,4 +1,4 @@
-import { CustomToast, TamaguiProvider, TamaguiProviderProps, ToastProvider } from '@my/ui'
+import { CustomToast, TamaguiProvider, TamaguiProviderProps, ToastProvider, isWeb } from '@my/ui'
 import { useColorScheme } from 'react-native'
 
 import { ToastViewport } from './toast/ToastViewport'
@@ -27,7 +27,8 @@ export function Provider({
         {...rest}
       >
         <ToastProvider
-          swipeDirection="horizontal"
+          swipeDirection="up"
+          swipeThreshold={25}
           duration={6000}
           native={
             [

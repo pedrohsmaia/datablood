@@ -20,7 +20,7 @@ export function useProtectedRoute() {
       !inAuthGroup
     ) {
       // Redirect to the login page.
-      router.replace('/login')
+      router.replace('/onboarding')
     } else if (user && inAuthGroup) {
       // Redirect away from the login page.
       router.replace('/')
