@@ -10,7 +10,14 @@ export const useUser = () => {
   const { data: profile, isLoading: isLoadingProfile } = useQuery(['profile'], {
     queryFn: async () => {
       const { data, error } = await supabase.from('profiles').select('*').single()
-      if (error) throw new Error(error.message)
+      if (error) {
+        if (error.code === 'PGRST116') {
+          await supabase.auth.signOut()
+          router.replace('/onboarding')
+          return null
+        }
+        throw new Error(error.message)
+      }
       return data
     },
   })

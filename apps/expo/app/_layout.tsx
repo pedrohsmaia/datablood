@@ -28,7 +28,7 @@ const InnerStack = () => {
 
   return (
     <ThemeProvider value={resolvedTheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }} />
     </ThemeProvider>
   )
 }
