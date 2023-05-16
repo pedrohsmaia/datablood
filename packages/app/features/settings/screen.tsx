@@ -18,7 +18,7 @@ export const SettingsScreen = () => {
     <YStack gap="$5" f={1} px="$5" py="$10">
       <SettingTitle backHref="/">Settings</SettingTitle>
 
-      <YStack gap="$4">
+      <YStack gap="$4" mx="$-5">
         <SettingGroup>
           <SettingItemDarkModeAction />
         </SettingGroup>
@@ -45,7 +45,6 @@ const SettingItemDarkModeAction = () => {
     <SettingItem
       icon={Moon}
       accentColor="$blue9"
-      cursor="default"
       onPress={toggle}
       rightSide={
         <SizableText color="$color11" textTransform='capitalize'>{current}</SizableText>

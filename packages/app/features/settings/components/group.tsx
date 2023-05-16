@@ -5,6 +5,7 @@ export const SettingGroup = ({ children }: SettingGroupProps) => {
   return (
     <YGroup
       borderRadius={14}
+      disablePassBorderRadius
       separator={
         <XStack backgroundColor="">
           <YStack width={20} backgroundColor="$color2" />

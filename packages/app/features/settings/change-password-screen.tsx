@@ -1,7 +1,18 @@
-import { Button, Fieldset, Form, Input, Label, YStack, isWeb, useToastController } from '@my/ui'
+import {
+  Button,
+  Fieldset,
+  Form,
+  Input,
+  Label,
+  Theme,
+  YStack,
+  isWeb,
+  useToastController,
+} from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useState } from 'react'
 import { SettingTitle } from './components/title'
+import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 
 export const ChangePasswordScreen = () => {
   const [password, setPassword] = useState('')
@@ -26,10 +37,20 @@ export const ChangePasswordScreen = () => {
     }
   }
 
+  const {resolvedTheme} = useThemeSetting()
   return (
-    <Form onSubmit={() => handleChangePassword()} px="$5" py="$10" gap="$10" f={1} jc="space-between">
+    <Form
+      onSubmit={() => handleChangePassword()}
+      px="$5"
+      py="$10"
+      gap="$10"
+      f={1}
+      jc="space-between"
+    >
       <YStack gap="$4">
-        <SettingTitle webOnly backHref="/settings">Change Password</SettingTitle>
+        <SettingTitle webOnly backHref="/settings">
+          Change Password
+        </SettingTitle>
         <Fieldset>
           <Label htmlFor="password">New Password</Label>
           <Input
@@ -59,9 +80,7 @@ export const ChangePasswordScreen = () => {
       </YStack>
 
       <Form.Trigger asChild>
-        <Button themeInverse color="$color1">
-          Update Password
-        </Button>
+        <Button themeInverse debug="verbose">Update Password</Button>
       </Form.Trigger>
     </Form>
   )
