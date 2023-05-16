@@ -1,31 +1,43 @@
-import { CustomToast, TamaguiProvider, TamaguiProviderProps, ToastProvider, isWeb } from '@my/ui'
-import { useColorScheme } from 'react-native'
+import { CustomToast, TamaguiProvider, TamaguiProviderProps, ToastProvider } from '@my/ui'
 
-import { ToastViewport } from './toast/ToastViewport'
-import config from '../tamagui.config'
-import { QueryClientProvider } from './react-query/QueryProvider'
-import { QueryClient } from '@tanstack/react-query'
 import { Session } from '@supabase/supabase-js'
+import { QueryClient } from '@tanstack/react-query'
+import config from '../tamagui.config'
 import { AuthProvider } from './auth'
+import { QueryClientProvider } from './react-query/QueryProvider'
+import {
+  UniversalThemeProvider,
+  useRootTheme,
+  useThemeSetting,
+} from './theme/UniversalThemeProvider'
+import { ToastViewport } from './toast/ToastViewport'
+import { SafeAreaProvider } from './safe-area/SafeAreaProvider'
 
 export function Provider({
-  children,
   initialSession,
   ...rest
-}: Omit<TamaguiProviderProps, 'config'> & { initialSession?: Session | null }) {
+}: InnerProviderProps & { initialSession?: Session | null }) {
+  return (
+    <AuthProvider initialSession={initialSession}>
+      <UniversalThemeProvider>
+        <InnerProvider {...rest} />
+      </UniversalThemeProvider>
+    </AuthProvider>
+  )
+}
+
+type InnerProviderProps = Omit<TamaguiProviderProps, 'config'>
+const InnerProvider = ({ children, ...rest }: InnerProviderProps) => {
   const queryClient = new QueryClient({
     // query config
   })
-  const scheme = useColorScheme()
+
+  const [rootTheme] = useRootTheme()
+  const { resolvedTheme, systemTheme } = useThemeSetting()
 
   return (
-    <AuthProvider initialSession={initialSession}>
-      <TamaguiProvider
-        config={config}
-        disableInjectCSS
-        defaultTheme={scheme === 'dark' ? 'dark' : 'light'}
-        {...rest}
-      >
+    <SafeAreaProvider>
+      <TamaguiProvider config={config} disableInjectCSS defaultTheme={rootTheme} {...rest}>
         <ToastProvider
           swipeDirection="up"
           swipeThreshold={25}
@@ -38,11 +50,10 @@ export function Provider({
           }
         >
           <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-
           <CustomToast />
           <ToastViewport />
         </ToastProvider>
       </TamaguiProvider>
-    </AuthProvider>
+    </SafeAreaProvider>
   )
 }

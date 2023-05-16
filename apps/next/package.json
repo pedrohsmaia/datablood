@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn with-env next dev",
+    "dev": "PORT=3001 yarn with-env next dev",
     "build": "cd ../.. && yarn build && cd apps/next && yarn with-env TAMAGUI_TARGET=web next build",
     "start": "yarn with-env next start",
     "serve": "NODE_ENV=production yarn with-env next start --port 8151",

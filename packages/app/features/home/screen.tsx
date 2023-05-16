@@ -5,9 +5,6 @@ import { useLink } from 'solito/link'
 
 export function HomeScreen() {
   const { profile, user, logOut } = useUser()
-  const linkProps = useLink({
-    href: '/sign-in',
-  })
 
   return (
     <YStack f={1} jc="center" ai="center" p="$4" space>
@@ -16,6 +13,7 @@ export function HomeScreen() {
           {profile?.first_name ? `Welcome, ${profile?.first_name}!` : 'Welcome!'}
         </Paragraph>
       </XStack>
+      <Button {...useLink({ href: '/settings' })}>Settings</Button>
       <Button onPress={() => logOut()}>Logout</Button>
     </YStack>
   )

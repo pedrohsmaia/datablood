@@ -1,49 +1,74 @@
-import { Avatar, Button, SizableText, Spinner, XStack, YStack } from '@my/ui'
-import { FullscreenSpinner } from '@my/ui/src'
-import { Upload } from '@tamagui/lucide-icons'
+import { SizableText, YStack } from '@my/ui'
+import { Lock, LogOut, Mail, Moon } from '@tamagui/lucide-icons'
+import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { useUser } from 'app/utils/useUser'
+import { SettingGroup } from './components/group'
+import { SettingItem } from './components/item'
+import { SettingTitle } from './components/title'
+// import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export const SettingsScreen = () => {
   const { user, profile } = useUser()
   if (!user || !profile) {
-    return <FullscreenSpinner />
+    return null
   }
 
+  // const insets = useSafeAreaInsets()
   return (
-    <YStack>
-      <Header />
-    </YStack>
-  )
-}
+    <YStack gap="$5" f={1} px="$5" py="$10">
+      <SettingTitle backHref="/">Settings</SettingTitle>
 
-const Header = () => {
-  const { user, profile } = useUser()
-  return (
-    <YStack>
-      <EditableAvatar />
-      <SizableText>{profile?.first_name ?? 'No Name'}</SizableText>
-    </YStack>
-  )
-}
+      <YStack gap="$4">
+        <SettingGroup>
+          <SettingItemDarkModeAction />
+        </SettingGroup>
+        <SettingGroup>
+          <SettingItem icon={Lock} href="/settings/change-password" accentColor="$green9">
+            Change Password
+          </SettingItem>
 
-const EditableAvatar = () => {
-  const { user, profile } = useUser()
+          <SettingItem icon={Mail} href="/settings/change-email" accentColor="$purple9">
+            Change Email
+          </SettingItem>
 
-  return (
-    <XStack justifyContent="flex-start" ai="flex-start">
-      <Avatar circular size="$10">
-        <Avatar.Image
-          source={{
-            uri:
-              user?.user_metadata.avatar_url ??
-              `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${profile?.first_name}`,
-          }}
-          alt="Your avatar"
-        />
-      </Avatar>
-      <YStack position="absolute" bottom={0} left={0} zIndex={2}>
-        <Button themeInverse size="$2" borderRadius={9999} icon={<Upload />}></Button>
+          <SettingLogoutAction />
+        </SettingGroup>
       </YStack>
-    </XStack>
+    </YStack>
+  )
+}
+
+const SettingItemDarkModeAction = () => {
+  const { toggle, resolvedTheme, current } = useThemeSetting()
+
+  return (
+    <SettingItem
+      icon={Moon}
+      accentColor="$blue9"
+      cursor="default"
+      onPress={toggle}
+      rightSide={
+        <SizableText color="$color11">{current}</SizableText>
+        // <Switch
+        //   size="$4"
+        //   checked={resolvedTheme === 'dark'}
+        //   onCheckedChange={() => set(resolvedTheme === 'dark' ? 'light' : 'dark')}
+        // >
+        //   <Switch.Thumb animation="100ms" />
+        // </Switch>
+      }
+    >
+      Theme
+    </SettingItem>
+  )
+}
+
+const SettingLogoutAction = () => {
+  const { logOut } = useUser()
+
+  return (
+    <SettingItem icon={LogOut} accentColor="$red9" onPress={() => logOut()}>
+      Log Out
+    </SettingItem>
   )
 }
