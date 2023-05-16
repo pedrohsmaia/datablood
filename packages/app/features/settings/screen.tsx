@@ -48,7 +48,7 @@ const SettingItemDarkModeAction = () => {
       cursor="default"
       onPress={toggle}
       rightSide={
-        <SizableText color="$color11">{current}</SizableText>
+        <SizableText color="$color11" textTransform='capitalize'>{current}</SizableText>
         // <Switch
         //   size="$4"
         //   checked={resolvedTheme === 'dark'}
