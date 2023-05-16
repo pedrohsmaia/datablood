@@ -1,6 +1,7 @@
 import '@tamagui/core/reset.css'
 import '@tamagui/font-inter/css/400.css'
 import '@tamagui/font-inter/css/700.css'
+import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import { Provider } from 'app/provider'
 import { AuthProviderProps } from 'app/provider/auth'
 import { NextPage } from 'next'
@@ -19,22 +20,28 @@ function MyApp({
 }: SolitoAppProps<{ initialSession: AuthProviderProps['initialSession'] }>) {
   // reference: https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts
   const getLayout = Component.getLayout || ((page) => page)
+  const [theme, setTheme] = useRootTheme()
 
   return (
     <>
       <Head>
-        <title>Tamagui Example App</title>
-        <meta name="description" content="Tamagui, Solito, Expo & Next.js" />
+        <title>Tamagui Universal App</title>
+        <meta name="description" content="Tamagui Universal Starter" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Provider
-        disableInjectCSS
-        disableRootThemeClass
-        initialSession={pageProps.initialSession}
+      <NextThemeProvider
+        onChangeTheme={(next) => {
+          setTheme(next as any)
+        }}
       >
-        {getLayout(<Component {...pageProps} />)}
-      </Provider>
+        <Provider
+          disableRootThemeClass
+          initialSession={pageProps.initialSession}
+          defaultTheme={theme}
+        >
+          {getLayout(<Component {...pageProps} />)}
+        </Provider>
+      </NextThemeProvider>
     </>
   )
 }

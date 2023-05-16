@@ -1,16 +1,8 @@
 import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 
+// is handled on _app.tsx
 export const UniversalThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useRootTheme()
-  return (
-    <NextThemeProvider
-      onChangeTheme={(next) => {
-        setTheme(next as any)
-      }}
-    >
-      {children}
-    </NextThemeProvider>
-  )
+  return <>{children}</>
 }
 
 export { useThemeSetting, useRootTheme } from '@tamagui/next-theme'
