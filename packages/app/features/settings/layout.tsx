@@ -19,7 +19,7 @@ export const SettingsLayout = ({
 
   return (
     <XStack separator={<Separator vertical />} f={1}>
-      <YStack f={1} minWidth={300} $sm={{ display: isSettingsHome ? 'flex' : 'none' }}>
+      <YStack f={1} $sm={{ display: isSettingsHome ? 'flex' : 'none' }}>
         <SettingsScreen />
       </YStack>
       <YStack f={4} ai="center" $sm={{ display: isSettingsHome ? 'none' : 'block' }}>

@@ -4,11 +4,11 @@ import { Stack } from 'expo-router'
 export default function Screen() {
   return (
     <>
-      <Stack.Screen
+      {/* <Stack.Screen
         options={{
           title: 'Change Password',
         }}
-      />
+      /> */}
       <ChangePasswordScreen />
     </>
   )

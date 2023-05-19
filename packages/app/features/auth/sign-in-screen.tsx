@@ -76,6 +76,7 @@ export const SignInScreen = () => {
             />
           </Fieldset>
           <Link
+            color="$color"
             href="/reset-password"
             theme="alt2"
             textDecorationLine="underline"
@@ -95,7 +96,14 @@ export const SignInScreen = () => {
               GitHub Login
             </Button>
           </YStack> */}
-          <Link replace disabled={loading} href="/sign-up" textAlign="center" theme="alt1">
+          <Link
+            color="$color"
+            replace
+            disabled={loading}
+            href="/sign-up"
+            textAlign="center"
+            theme="alt1"
+          >
             Don't have an account?{' '}
             <Text fontFamily="$body" textDecorationLine="underline">
               Sign up

@@ -71,6 +71,7 @@ module.exports = function () {
       'expo-linking',
       'expo-constants',
       'expo-modules-core',
+      'expo-image-picker',
     ],
     experimental: {
       /*

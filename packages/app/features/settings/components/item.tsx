@@ -30,13 +30,11 @@ export const SettingItem = ({
       <ListItem
         cursor="pointer"
         gap="$4"
-        hoverTheme
-        pressTheme
         {...(typeof href !== 'undefined' ? useLink({ ...linkProps, href }) : {})}
         {...props}
       >
-        <YStack backgroundColor={accentColor} padding="$2" borderRadius="$3">
-          <Icon color="white" size={18} />
+        <YStack  padding="$2" borderRadius="$3">
+          <Icon color="$color" size={18} />
         </YStack>
         <SizableText flex={1}>{children}</SizableText>
         {rightSide ?? <ChevronRight size={32} color="$color9" />}

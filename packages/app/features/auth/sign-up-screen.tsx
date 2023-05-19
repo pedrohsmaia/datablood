@@ -26,6 +26,13 @@ export const SignUpScreen = () => {
     const { error } = await supabase.auth.signUp({
       email: email,
       password: password,
+      options: {
+        // To take user's name other info
+        data: {
+          // first_name: firstName, // coming from state
+          // last_name: lastName,
+        },
+      },
     })
 
     if (error) toast.show(error.message)
@@ -71,7 +78,14 @@ export const SignUpScreen = () => {
               Sign up
             </Button>
           </Form.Trigger>
-          <Link replace disabled={loading} href="/sign-in" textAlign="center" theme="alt1">
+          <Link
+            color="$color"
+            replace
+            disabled={loading}
+            href="/sign-in"
+            textAlign="center"
+            theme="alt1"
+          >
             Already signed up?{' '}
             <Text fontFamily="$body" textDecorationLine="underline">
               Sign in

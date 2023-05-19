@@ -12,7 +12,6 @@ export function useProtectedRoute() {
 
   useEffect(() => {
     const inAuthGroup = segments[0] === '(auth)'
-
     if (
       // If the user is not logged in and the initial segment is not anything in the auth group.
       !isLoading &&

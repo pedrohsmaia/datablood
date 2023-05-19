@@ -6058,8 +6058,10 @@ __metadata:
     "@tanstack/react-query": ^4.29.5
     "@types/react": ^18.0.27
     "@types/react-native": ^0.71.3
+    base64-arraybuffer: ^1.0.2
     burnt: ^0.10.0
     expo-constants: ^14.2.1
+    expo-image-picker: ^14.1.1
     expo-linking: ^4.0.1
     expo-secure-store: ^12.1.1
     react-native-safe-area-context: ^4.5.2
@@ -6587,6 +6589,13 @@ __metadata:
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
   checksum: 9706c088a283058a8a99e0bf91b0a2f75497f185980d9ffa8b304de1d9e58ebda7c72c07ebf01dadedaac5b2907b2c6f566f660d62bd336c3468e960403b9d65
+  languageName: node
+  linkType: hard
+
+"base64-arraybuffer@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "base64-arraybuffer@npm:1.0.2"
+  checksum: 15e6400d2d028bf18be4ed97702b11418f8f8779fb8c743251c863b726638d52f69571d4cc1843224da7838abef0949c670bde46936663c45ad078e89fee5c62
   languageName: node
   linkType: hard
 
@@ -9714,6 +9723,7 @@ __metadata:
     expo-dev-client: ^2.1.5
     expo-font: ^11.1.1
     expo-image: ^1.0.0
+    expo-image-picker: ^14.1.1
     expo-linear-gradient: ^12.1.2
     expo-linking: ^4.0.1
     expo-router: ^1.4.3
@@ -9863,6 +9873,26 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 01648dad7384b04c8eaee22c4b86653cc31230e5f3523bf2082924ccc659f61b031900c55f1f08befaaf1bd1616eecb05ae9767eb111ed9151dd619374581930
+  languageName: node
+  linkType: hard
+
+"expo-image-loader@npm:~4.2.0":
+  version: 4.2.0
+  resolution: "expo-image-loader@npm:4.2.0"
+  peerDependencies:
+    expo: "*"
+  checksum: eb35c46bf8da9115fc233b2c028b57e845e6921ea35cca3c9a800efbb63f7b0970c44f987c3934fffbcc9ec3d37403983cf8def06b72ad581793488461ee7aff
+  languageName: node
+  linkType: hard
+
+"expo-image-picker@npm:^14.1.1":
+  version: 14.2.0
+  resolution: "expo-image-picker@npm:14.2.0"
+  dependencies:
+    expo-image-loader: ~4.2.0
+  peerDependencies:
+    expo: "*"
+  checksum: 6132c98eeae92f0c17ea230292cc8dc84300ff11366b1bc33ca5a0157cfb4463932526800a47c5f0827157160988616da97124dfc356dee071e9d913d60e5248
   languageName: node
   linkType: hard
 
