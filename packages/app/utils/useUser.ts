@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useSupabase } from './supabase/useSupabase'
 import { useSessionContext } from './supabase/useSessionContext'
 import { useRouter } from 'solito/router'
@@ -7,7 +7,8 @@ export const useUser = () => {
   const { session, isLoading: isLoadingSession } = useSessionContext()
   const user = session?.user
   const supabase = useSupabase()
-  const { data: profile, isLoading: isLoadingProfile } = useQuery(['profile'], {
+  const queryClient = useQueryClient()
+  const { data: profile, isLoading: isLoadingProfile, refetch } = useQuery(['profile'], {
     queryFn: async () => {
       const { data, error } = await supabase.from('profiles').select('*').single()
       if (error) {
@@ -26,6 +27,11 @@ export const useUser = () => {
   return {
     user,
     profile,
+    getAvatar: () =>
+      profile?.avatar_url ??
+      user?.user_metadata.avatar_url ??
+      `https://ui-avatars.com/api/?name=${user?.email ?? ''}`,
+    updateProfile: () => refetch(),
     isLoadingSession,
     isLoadingProfile,
     isLoading: isLoadingSession || isLoadingProfile,
