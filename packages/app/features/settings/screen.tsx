@@ -1,11 +1,8 @@
-import { SizableText, YStack } from '@my/ui'
-import { Lock, LogOut, Mail, Moon } from '@tamagui/lucide-icons'
+import { SizableText } from '@my/ui'
+import { Bell, Book, Info, Lock, LogOut, Mail, Moon } from '@tamagui/lucide-icons'
 import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { useUser } from 'app/utils/useUser'
-import { SettingGroup } from './components/group'
-import { SettingItem } from './components/item'
-import { SettingTitle } from './components/title'
-// import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { Settings } from './components/settings'
 
 export const SettingsScreen = () => {
   const { user, profile } = useUser()
@@ -15,39 +12,54 @@ export const SettingsScreen = () => {
 
   // const insets = useSafeAreaInsets()
   return (
-    <YStack gap="$5" f={1} px="$5" py="$10">
-      <SettingTitle backHref="/">Settings</SettingTitle>
+    <Settings>
+      <Settings.Title>Settings</Settings.Title>
 
-      <YStack gap="$4" mx="$-5">
-        <SettingGroup>
-          <SettingItemDarkModeAction />
-        </SettingGroup>
-        <SettingGroup>
-          <SettingItem icon={Lock} href="/settings/change-password" accentColor="$green9">
+      <Settings.Items>
+        <Settings.Group>
+          <Settings.Item icon={Lock} href="/settings/change-password" accentColor="$green9">
             Change Password
-          </SettingItem>
+          </Settings.Item>
 
-          <SettingItem icon={Mail} href="/settings/change-email" accentColor="$purple9">
+          <Settings.Item icon={Mail} href="/settings/change-email" accentColor="$blue9">
             Change Email
-          </SettingItem>
+          </Settings.Item>
 
-          <SettingLogoutAction />
-        </SettingGroup>
-      </YStack>
-    </YStack>
+          <Settings.Item icon={Bell} href="/settings/notifications" accentColor="$orange9">
+            Notifications
+          </Settings.Item>
+        </Settings.Group>
+
+        <Settings.Group>
+          <SettingsItemDarkModeAction />
+
+          <Settings.Item icon={Book} href="/settings/privacy" accentColor="$purple9">
+            Privacy
+          </Settings.Item>
+
+          <Settings.Item icon={Info} href="/settings/info" accentColor="$blue9">
+            About
+          </Settings.Item>
+
+          <SettingsItemLogoutAction />
+        </Settings.Group>
+      </Settings.Items>
+    </Settings>
   )
 }
 
-const SettingItemDarkModeAction = () => {
-  const { toggle, resolvedTheme, current } = useThemeSetting()
+const SettingsItemDarkModeAction = () => {
+  const { toggle, current } = useThemeSetting()
 
   return (
-    <SettingItem
+    <Settings.Item
       icon={Moon}
-      accentColor="$blue9"
+      accentColor="$gray9"
       onPress={toggle}
       rightSide={
-        <SizableText color="$color11" textTransform='capitalize'>{current}</SizableText>
+        <SizableText color="$color11" textTransform="capitalize">
+          {current}
+        </SizableText>
         // <Switch
         //   size="$4"
         //   checked={resolvedTheme === 'dark'}
@@ -58,16 +70,16 @@ const SettingItemDarkModeAction = () => {
       }
     >
       Theme
-    </SettingItem>
+    </Settings.Item>
   )
 }
 
-const SettingLogoutAction = () => {
+const SettingsItemLogoutAction = () => {
   const { logOut } = useUser()
 
   return (
-    <SettingItem icon={LogOut} accentColor="$red9" onPress={() => logOut()}>
+    <Settings.Item icon={LogOut} accentColor="$red9" onPress={() => logOut()}>
       Log Out
-    </SettingItem>
+    </Settings.Item>
   )
 }

@@ -1,20 +1,8 @@
-import {
-  Button,
-  ButtonText,
-  Fieldset,
-  Form,
-  H1,
-  H2,
-  H3,
-  Input,
-  Label,
-  YStack,
-  useToastController,
-} from '@my/ui'
+import { Button, Fieldset, Form, Input, Label, YStack, useToastController } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useState } from 'react'
-import { SettingTitle } from './components/title'
+import { Settings } from './components/settings'
 
 export const ChangeEmailScreen = () => {
   const { user } = useUser()
@@ -38,11 +26,9 @@ export const ChangeEmailScreen = () => {
   }
 
   return (
-    <Form onSubmit={() => handleChangePassword()} px="$5" py="$10" gap="$5" f={1} jc="space-between">
+    <Form onSubmit={() => handleChangePassword()} p="$5" gap="$5" f={1} jc="space-between">
       <YStack gap="$4">
-        <SettingTitle webOnly backHref="/settings">
-          Change Email
-        </SettingTitle>
+        <Settings.Title>Change Email</Settings.Title>
 
         <Fieldset>
           <Label htmlFor="current-email">Current Email</Label>

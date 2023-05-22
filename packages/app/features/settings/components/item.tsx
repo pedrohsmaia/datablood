@@ -33,11 +33,11 @@ export const SettingItem = ({
         {...(typeof href !== 'undefined' ? useLink({ ...linkProps, href }) : {})}
         {...props}
       >
-        <YStack  padding="$2" borderRadius="$3">
+        <YStack padding="$2" borderRadius="$3">
           <Icon color="$color" size={18} />
         </YStack>
         <SizableText flex={1}>{children}</SizableText>
-        {rightSide ?? <ChevronRight size={32} color="$color9" />}
+        {rightSide}
       </ListItem>
     </YGroup.Item>
   )
