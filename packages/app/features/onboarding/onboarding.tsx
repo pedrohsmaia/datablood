@@ -6,6 +6,7 @@ import { Animated, PanResponder } from 'react-native'
 import { Background } from './background'
 import { OnboardingControls } from './controls'
 import { StepContent } from './step-content'
+import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 
 const steps = {
   0: {
@@ -90,9 +91,19 @@ export const Onboarding = ({
     })
   }, [stepIdx])
 
+  const safeAreaInsets = useSafeAreaInsets()
+
   return (
     <Theme name={currentStep.theme}>
-      <YStack flex={1} backgroundColor="$color3" overflow="hidden">
+      <YStack
+        flex={1}
+        backgroundColor="$color3"
+        overflow="hidden"
+        paddingBottom={safeAreaInsets.bottom}
+        paddingRight={safeAreaInsets.right}
+        paddingTop={safeAreaInsets.top}
+        paddingLeft={safeAreaInsets.left}
+      >
         <AnimatePresence>
           <Background key={key} />
         </AnimatePresence>

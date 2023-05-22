@@ -34,7 +34,7 @@ export const SettingItem = ({
         <SizableText color="$color" fontSize={18} flex={1}>
           {children}
         </SizableText>
-        {rightSide ?? <ChevronRight size={32} color="$color9" />}
+        {rightSide ?? <ChevronRight size={24} color="$color9" />}
       </ListItem>
     </YGroup.Item>
   )

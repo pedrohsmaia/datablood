@@ -1,37 +1,39 @@
-import { H2, Paragraph, YStack, isWeb, withStaticProperties } from '@my/ui'
+import { H2, Paragraph, ScrollView, YStack, isWeb, withStaticProperties } from '@my/ui'
 
-const Wrapper = ({ children }: { children: React.ReactNode }) => (
+const Wrapper = YStack.styleable((props, ref) => (
   <YStack
+    ref={ref}
     p="$5"
     f={1}
     gap="$5"
     jc="center"
     $sm={{ jc: 'space-between' }}
     $gtSm={{ mx: 'auto', maxWidth: 500, width: '100%' }}
-  >
-    {children}
-  </YStack>
-)
+    {...props}
+  />
+))
 
-const Title = ({ children }: { children: React.ReactNode }) => (
+const Title = H2.styleable((props, ref) => (
   // don't display on native because of the stack title
-  <H2 display={isWeb ? 'block' : 'none'}>{children}</H2>
-)
+  <H2 ref={ref} display={isWeb ? 'block' : 'none'} {...props} />
+))
 
-const Subtitle = ({ children }: { children: React.ReactNode }) => (
-  <Paragraph theme="alt1">{children}</Paragraph>
-)
+const Subtitle = Paragraph.styleable((props, ref) => (
+  <Paragraph ref={ref} theme="alt1" {...props} />
+))
 
-const Header = ({ children }: { children: React.ReactNode }) => <YStack>{children}</YStack>
+const Header = YStack.styleable((props, ref) => <YStack ref={ref} {...props} />)
 
-const Body = ({ children }: { children: React.ReactNode }) => <YStack gap="$2">{children}</YStack>
+const Body = YStack.styleable((props, ref) => (
+  <ScrollView>
+    <YStack ref={ref} gap="$2" {...props} />
+  </ScrollView>
+))
 
-const Footer = ({ children }: { children: React.ReactNode }) => (
+const Footer = YStack.styleable((props, ref) => (
   // reverse the direction so that the primary button is on the bottom of the screen on mobile
-  <YStack {...(!isWeb && { flexDirection: 'column-reverse' })} gap="$4">
-    {children}
-  </YStack>
-)
+  <YStack ref={ref} {...(!isWeb && { flexDirection: 'column-reverse' })} gap="$4" {...props} />
+))
 
 export const AuthFormWrapper = withStaticProperties(Wrapper, {
   Title,
@@ -40,4 +42,3 @@ export const AuthFormWrapper = withStaticProperties(Wrapper, {
   Body,
   Footer,
 })
- 

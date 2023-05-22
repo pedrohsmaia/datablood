@@ -1,3 +1,4 @@
+import { HomeLayout } from 'app/features/home/layout'
 import { ChangeEmailScreen } from 'app/features/settings/change-email-screen'
 import { SettingsLayout } from 'app/features/settings/layout'
 import Head from 'next/head'
@@ -15,7 +16,11 @@ const Page: NextPageWithLayout = () => {
   )
 }
 
-Page.getLayout = (page) => <SettingsLayout>{page}</SettingsLayout>
+Page.getLayout = (page) => (
+  <HomeLayout>
+    <SettingsLayout isSettingsHome>{page}</SettingsLayout>
+  </HomeLayout>
+)
 
 export const getServerSideProps = userProtectedGetSSP()
 

@@ -4,7 +4,6 @@ import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import { useProtectedRoute } from '../utils/useProtectedRoute'
-import { Text, Theme } from '@my/ui'
 
 export default function HomeLayout() {
   const [loaded] = useFonts({
@@ -28,7 +27,14 @@ const InnerStack = () => {
 
   return (
     <ThemeProvider value={resolvedTheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="create"
+          options={{
+            presentation: 'modal',
+          }}
+        />
+      </Stack>
     </ThemeProvider>
   )
 }

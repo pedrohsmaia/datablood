@@ -1,16 +1,10 @@
 import { SettingsScreen } from 'app/features/settings/screen'
-import { Stack } from 'expo-router'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Screen() {
   return (
-    <>
-      {/* <Stack.Screen
-        options={{
-          title: 'Settings',
-          headerShown: false,
-        }}
-      /> */}
+    <SafeAreaView style={{ flex: 1 }}>
       <SettingsScreen />
-    </>
+    </SafeAreaView>
   )
 }

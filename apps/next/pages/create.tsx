@@ -1,4 +1,4 @@
-import { HomeScreen } from 'app/features/home/screen'
+import { CreateScreen } from 'app/features/create/screen'
 import { HomeLayout } from 'app/features/home/layout'
 import Head from 'next/head'
 import { userProtectedGetSSP } from 'utils/userProtected'
@@ -8,9 +8,9 @@ export const Page: NextPageWithLayout = () => {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Create</title>
       </Head>
-      <HomeScreen />
+      <CreateScreen />
     </>
   )
 }

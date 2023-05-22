@@ -1,9 +1,8 @@
-import { SettingsScreen } from 'app/features/settings/screen'
+import { HomeLayout } from 'app/features/home/layout'
 import { SettingsLayout } from 'app/features/settings/layout'
 import Head from 'next/head'
 import { NextPageWithLayout } from 'pages/_app'
 import { userProtectedGetSSP } from 'utils/userProtected'
-import { YStack, Paragraph } from '@my/ui'
 
 const Page: NextPageWithLayout = () => {
   return (
@@ -15,7 +14,11 @@ const Page: NextPageWithLayout = () => {
   )
 }
 
-Page.getLayout = (page) => <SettingsLayout isSettingsHome>{page}</SettingsLayout>
+Page.getLayout = (page) => (
+  <HomeLayout>
+    <SettingsLayout isSettingsHome>{page}</SettingsLayout>
+  </HomeLayout>
+)
 
 export const getServerSideProps = userProtectedGetSSP()
 

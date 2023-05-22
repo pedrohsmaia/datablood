@@ -1,18 +1,20 @@
 import { FullscreenSpinner, Separator, XStack, YStack } from '@my/ui'
-import { SettingsScreen } from './screen'
 import { useUser } from 'app/utils/useUser'
-import { useRouter } from 'solito/router'
+import { SettingsScreen } from './screen'
 
-// for web only
-export const SettingsLayout = ({
-  children,
-  isSettingsHome = false,
-}: {
+export type SettingsLayoutProps = {
+  /**
+   * web-only
+   */
   isSettingsHome?: boolean
-  children: React.ReactNode
-}) => {
+  /**
+   * web-only
+   */
+  children?: React.ReactNode
+}
+
+export const SettingsLayout = ({ children, isSettingsHome = false }: SettingsLayoutProps) => {
   const { isLoading, user } = useUser()
-  const router = useRouter()
   if (isLoading || !user) {
     return <FullscreenSpinner />
   }

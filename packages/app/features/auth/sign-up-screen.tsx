@@ -5,6 +5,7 @@ import {
   Input,
   Label,
   Link,
+  Paragraph,
   SizableText,
   Text,
   YStack,
@@ -73,6 +74,7 @@ export const SignUpScreen = () => {
           </Fieldset>
         </AuthFormWrapper.Body>
         <AuthFormWrapper.Footer>
+          
           <Form.Trigger asChild disabled={loading}>
             <Button borderRadius={100} themeInverse color="$color1">
               Sign up

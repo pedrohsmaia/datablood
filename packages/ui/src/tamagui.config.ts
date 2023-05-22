@@ -1,4 +1,4 @@
-import { createTamagui } from 'tamagui'
+import { createFont, createTamagui } from 'tamagui'
 import { createInterFont } from '@tamagui/font-inter'
 import { shorthands } from '@tamagui/shorthands'
 import { themes, tokens } from '@tamagui/themes'
@@ -6,49 +6,111 @@ import { createMedia } from '@tamagui/react-native-media-driver'
 
 import { animations } from './animations'
 
-const headingFont = createInterFont({
-  size: {
-    6: 15,
-  },
-  transform: {
-    6: 'uppercase',
-    7: 'none',
-  },
-  weight: {
-    6: '400',
-    7: '700',
-  },
-  color: {
-    6: '$colorFocus',
-    7: '$color',
-  },
-  letterSpacing: {
-    5: 2,
-    6: 1,
-    7: 0,
-    8: -1,
-    9: -2,
-    10: -3,
-    12: -4,
-    14: -5,
-    15: -6,
-  },
-  face: {
-    700: { normal: 'InterBold' },
-  },
-})
+const isNative = process.env.TAMAGUI_TARGET === 'native'
+const headingFont = isNative
+  ? createFont({
+      family: 'System',
+      size: {
+        1: 11,
+        2: 12,
+        3: 13,
+        4: 14,
+        true: 14,
+        5: 16,
+        6: 18,
+        7: 20,
+        8: 23,
+        9: 30,
+        10: 46,
+        11: 55,
+        12: 62,
+        13: 72,
+        14: 92,
+        15: 114,
+        16: 134,
+      },
+      weight: {
+        1: '300',
+        // 2 will be 300
+        3: '600',
+      },
+    })
+  : createInterFont({
+      size: {
+        6: 15,
+      },
+      transform: {
+        6: 'uppercase',
+        7: 'none',
+      },
+      weight: {
+        6: '400',
+        7: '700',
+      },
+      color: {
+        6: '$colorFocus',
+        7: '$color',
+      },
+      letterSpacing: {
+        5: 2,
+        6: 1,
+        7: 0,
+        8: -1,
+        9: -2,
+        10: -3,
+        12: -4,
+        14: -5,
+        15: -6,
+      },
+      face: {
+        700: { normal: 'InterBold' },
+      },
+    })
 
-const bodyFont = createInterFont(
-  {
-    face: {
-      700: { normal: 'InterBold' },
-    },
-  },
-  {
-    sizeSize: (size) => Math.round(size * 1.1),
-    sizeLineHeight: (size) => Math.round(size * 1.1 + (size > 20 ? 10 : 10)),
-  }
-)
+const bodyFont = isNative
+  ? createFont({
+      family: 'System',
+      // keys used for the objects you pass to `size`, `lineHeight`, `weight`
+      // and `letterSpacing` should be consistent. The `createFont` function
+      // will fill-in any missing values if `lineHeight`, `weight` or `letterSpacing`
+      // are subsets of `size`
+      size: {
+        1: 15,
+        2: 16,
+        3: 17,
+        4: 18,
+        true: 18,
+        5: 20,
+        6: 22,
+        7: 23,
+        8: 28,
+        9: 32,
+        10: 48,
+        11: 57,
+        12: 65,
+        13: 75,
+        14: 95,
+        15: 120,
+        16: 142,
+      },
+      weight: {
+        1: '300',
+        // 2 will be 300
+        4: '600',
+
+      },
+    })
+  : createInterFont(
+      {
+        face: {
+          700: { normal: 'InterBold' },
+        },
+      },
+      {
+        sizeSize: (size) => Math.round(size * 1.1),
+        sizeLineHeight: (size) => Math.round(size * 1.1 + (size > 20 ? 10 : 10)),
+      }
+    )
 
 export const config = createTamagui({
   animations,
