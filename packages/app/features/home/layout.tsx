@@ -1,4 +1,3 @@
-import { useRouter as useNextRouter } from 'next/router'
 import {
   Adapt,
   Avatar,
@@ -13,7 +12,8 @@ import {
 } from '@my/ui'
 import { Menu, Plus } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
-import { Children, useEffect, useState } from 'react'
+import { useRouter as useNextRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { Link, useLink } from 'solito/link'
 import { NavTabs } from './nav-tabs'
 
@@ -26,9 +26,13 @@ export type HomeLayoutProps = {
    * web-only
    */
   padded?: boolean
+  /**
+   * web-only
+   */
+  fullPage?: boolean
 }
 
-export const HomeLayout = ({ children, padded = false }) => {
+export const HomeLayout = ({ children, fullPage = false, padded = false }) => {
   return (
     <YStack f={1}>
       <YStack
@@ -63,7 +67,7 @@ export const HomeLayout = ({ children, padded = false }) => {
       </YStack>
 
       <YStack
-        flex={1}
+        {...(fullPage && { flex: 1 })}
         {...(padded && {
           maxWidth: 800,
           mx: 'auto',

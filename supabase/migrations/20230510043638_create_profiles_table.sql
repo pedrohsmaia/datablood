@@ -2,8 +2,7 @@ create table public.profiles (
   id uuid not null references auth.users on delete cascade,
   -- Your profile fields go here...
   avatar_url text,
-  first_name text,
-  last_name text,
+  name text,
 
   primary key (id)
 );

@@ -28,7 +28,7 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
             title: 'New',
             tabBarIcon: ({ size, focused }) => (
               <YStack
-                backgroundColor='$blue9'
+                backgroundColor="$blue9"
                 padding="$4"
                 borderRadius={100}
                 pos="absolute"
@@ -49,18 +49,6 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
                 <Avatar borderWidth="$1" borderColor={color} size={size} circular>
                   <Avatar.Image source={{ uri: getAvatar() }} />
                 </Avatar>
-              )
-            },
-            headerShown: true,
-            headerRight() {
-              return (
-                <Button
-                  chromeless
-                  {...useLink({ href: '/settings' })}
-                  icon={<Cog />}
-                  accessibilityLabel="Settings"
-                  borderRadius={0}
-                />
               )
             },
           }}

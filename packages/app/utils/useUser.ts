@@ -8,7 +8,11 @@ export const useUser = () => {
   const user = session?.user
   const supabase = useSupabase()
   const queryClient = useQueryClient()
-  const { data: profile, isLoading: isLoadingProfile, refetch } = useQuery(['profile'], {
+  const {
+    data: profile,
+    isLoading: isLoadingProfile,
+    refetch,
+  } = useQuery(['profile'], {
     queryFn: async () => {
       const { data, error } = await supabase.from('profiles').select('*').single()
       if (error) {
@@ -27,10 +31,14 @@ export const useUser = () => {
   return {
     user,
     profile,
-    getAvatar: () =>
-      profile?.avatar_url ??
-      user?.user_metadata.avatar_url ??
-      `https://ui-avatars.com/api/?name=${user?.email ?? ''}`,
+    getAvatar: () => {
+      if (profile?.avatar_url) return profile.avatar_url
+      if (typeof user?.user_metadata.avatar_url === 'string') return user.user_metadata.avatar_url
+
+      const params = new URLSearchParams()
+      params.append('name', profile?.name ?? user?.email ?? '')
+      return `https://ui-avatars.com/api/?${params.toString()}`
+    },
     updateProfile: () => refetch(),
     isLoadingSession,
     isLoadingProfile,

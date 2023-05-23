@@ -1,4 +1,14 @@
-import { Button, Fieldset, Form, Input, Label, YStack, useToastController } from '@my/ui'
+import {
+  Button,
+  Fieldset,
+  Form,
+  FormWrapper,
+  H2,
+  Input,
+  Label,
+  YStack,
+  useToastController,
+} from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useState } from 'react'
@@ -21,47 +31,49 @@ export const ChangeEmailScreen = () => {
     if (error) {
       toast.show(error.message)
     } else {
+      await supabase.auth.refreshSession()
       toast.show('Successfully updated!')
     }
   }
 
   return (
-    <Form onSubmit={() => handleChangePassword()} p="$5" gap="$5" f={1} jc="space-between">
-      <YStack gap="$4">
-        <Settings.Title>Change Email</Settings.Title>
+    <Form onSubmit={() => handleChangePassword()} asChild>
+      <FormWrapper>
+        <FormWrapper.Body>
+          <H2>Change Email</H2>
 
-        <Fieldset>
-          <Label htmlFor="current-email">Current Email</Label>
-          <Input
-            disabled
-            opacity={0.5}
-            id="current-email"
-            autoComplete="email"
-            value={user?.email}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-        </Fieldset>
+          <Fieldset>
+            <Label htmlFor="current-email">Current Email</Label>
+            <Input
+              disabled
+              opacity={0.5}
+              id="current-email"
+              autoComplete="email"
+              value={user?.email}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+          </Fieldset>
 
-        <Fieldset>
-          <Label htmlFor="email">New Email</Label>
-          <Input
-            id="email"
-            autoComplete="email"
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-            keyboardType="email-address"
-            placeholder="email@address.com"
-            autoCapitalize="none"
-          />
-        </Fieldset>
-      </YStack>
-
-      <Form.Trigger asChild>
-        <Button themeInverse>
-          Update Email
-        </Button>
-      </Form.Trigger>
+          <Fieldset>
+            <Label htmlFor="email">New Email</Label>
+            <Input
+              id="email"
+              autoComplete="email"
+              onChangeText={(text) => setEmail(text)}
+              value={email}
+              keyboardType="email-address"
+              placeholder="email@address.com"
+              autoCapitalize="none"
+            />
+          </Fieldset>
+        </FormWrapper.Body>
+        <FormWrapper.Footer>
+          <Form.Trigger asChild>
+            <Button themeInverse>Update Email</Button>
+          </Form.Trigger>
+        </FormWrapper.Footer>
+      </FormWrapper>
     </Form>
   )
 }

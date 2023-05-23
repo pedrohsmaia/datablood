@@ -13,14 +13,17 @@ export interface Database {
         Row: {
           avatar_url: string | null
           id: string
+          name: string | null
         }
         Insert: {
           avatar_url?: string | null
           id: string
+          name?: string | null
         }
         Update: {
           avatar_url?: string | null
           id?: string
+          name?: string | null
         }
       }
     }

@@ -1,5 +1,5 @@
 import { SizableText } from '@my/ui'
-import { Bell, Book, Info, Lock, LogOut, Mail, Moon } from '@tamagui/lucide-icons'
+import { Bell, Book, Info, Lock, LogOut, Mail, Moon, Unplug } from '@tamagui/lucide-icons'
 import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { useUser } from 'app/utils/useUser'
 import { Settings } from './components/settings'

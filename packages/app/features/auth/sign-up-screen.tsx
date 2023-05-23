@@ -2,18 +2,18 @@ import {
   Button,
   Fieldset,
   Form,
+  FormWrapper,
   Input,
   Label,
   Link,
-  Paragraph,
-  SizableText,
   Text,
-  YStack,
   useToastController,
+  H2,
+  Paragraph,
+  YStack,
 } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useState } from 'react'
-import { AuthFormWrapper } from './form-wrapper'
 
 export const SignUpScreen = () => {
   const supabase = useSupabase()
@@ -43,10 +43,12 @@ export const SignUpScreen = () => {
 
   return (
     <Form asChild onSubmit={() => signUpWithEmail()}>
-      <AuthFormWrapper>
-        <AuthFormWrapper.Body>
-          <AuthFormWrapper.Title>Get Started</AuthFormWrapper.Title>
-          <AuthFormWrapper.Subtitle>Create a new account</AuthFormWrapper.Subtitle>
+      <FormWrapper>
+        <YStack gap="$1">
+          <H2>Get Started</H2>
+          <Paragraph theme="alt2">Create a new account</Paragraph>
+        </YStack>
+        <FormWrapper.Body>
           <Fieldset>
             <Label htmlFor="signup-email">Email</Label>
             <Input
@@ -72,11 +74,10 @@ export const SignUpScreen = () => {
               autoCapitalize={'none'}
             />
           </Fieldset>
-        </AuthFormWrapper.Body>
-        <AuthFormWrapper.Footer>
-          
+        </FormWrapper.Body>
+        <FormWrapper.Footer>
           <Form.Trigger asChild disabled={loading}>
-            <Button borderRadius={100} themeInverse color="$color1">
+            <Button borderRadius={100} themeInverse>
               Sign up
             </Button>
           </Form.Trigger>
@@ -88,13 +89,10 @@ export const SignUpScreen = () => {
             textAlign="center"
             theme="alt1"
           >
-            Already signed up?{' '}
-            <Text fontFamily="$body" textDecorationLine="underline">
-              Sign in
-            </Text>
+            Already signed up? <Text textDecorationLine="underline">Sign in</Text>
           </Link>
-        </AuthFormWrapper.Footer>
-      </AuthFormWrapper>
+        </FormWrapper.Footer>
+      </FormWrapper>
     </Form>
   )
 }

@@ -76,14 +76,14 @@ const bodyFont = isNative
       // will fill-in any missing values if `lineHeight`, `weight` or `letterSpacing`
       // are subsets of `size`
       size: {
-        1: 15,
-        2: 16,
-        3: 17,
-        4: 18,
-        true: 18,
-        5: 20,
-        6: 22,
-        7: 23,
+        1: 14,
+        2: 15,
+        3: 16,
+        4: 17,
+        true: 17,
+        5: 18,
+        6: 20,
+        7: 22,
         8: 28,
         9: 32,
         10: 48,
@@ -114,6 +114,7 @@ const bodyFont = isNative
     )
 
 export const config = createTamagui({
+  defaultFont: "body",
   animations,
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,

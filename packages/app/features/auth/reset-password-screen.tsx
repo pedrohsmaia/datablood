@@ -1,7 +1,19 @@
-import { Button, Fieldset, Form, Input, Label, Link, useToastController } from '@my/ui'
+import {
+  Button,
+  Fieldset,
+  Form,
+  FormWrapper,
+  Input,
+  Label,
+  Link,
+  useToastController,
+  H2,
+  Paragraph,
+  YStack,
+  Text,
+} from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useState } from 'react'
-import { AuthFormWrapper } from './form-wrapper'
 
 export const ResetPasswordScreen = () => {
   const supabase = useSupabase()
@@ -20,13 +32,14 @@ export const ResetPasswordScreen = () => {
 
   return (
     <Form onSubmit={() => resetPassword()} asChild>
-      <AuthFormWrapper>
-        <AuthFormWrapper.Body>
-          <AuthFormWrapper.Title>Reset your password</AuthFormWrapper.Title>
-          <AuthFormWrapper.Subtitle>
+      <FormWrapper>
+        <YStack gap="$1">
+          <H2>Reset your password</H2>
+          <Paragraph theme="alt1">
             Type in your email and we'll send you a link to reset your password
-          </AuthFormWrapper.Subtitle>
-
+          </Paragraph>
+        </YStack>
+        <FormWrapper.Body>
           <Fieldset>
             <Label htmlFor="reset-email">Email</Label>
             <Input
@@ -38,20 +51,23 @@ export const ResetPasswordScreen = () => {
               autoCapitalize="none"
             />
           </Fieldset>
-        </AuthFormWrapper.Body>
+        </FormWrapper.Body>
 
-        <AuthFormWrapper.Footer>
+        <FormWrapper.Footer>
           <Form.Trigger asChild disabled={loading}>
             <Button borderRadius={100} themeInverse>
               Send Link
             </Button>
           </Form.Trigger>
 
-          <Link disabled={loading} href="/sign-in" textAlign="center">
-            Already have an account? Sign in
+          <Link disabled={loading} href="/sign-in" textAlign="center" theme="alt1">
+            Done resetting?{' '}
+            <Text textDecorationLine="underline">
+              Sign in
+            </Text>
           </Link>
-        </AuthFormWrapper.Footer>
-      </AuthFormWrapper>
+        </FormWrapper.Footer>
+      </FormWrapper>
     </Form>
   )
 }

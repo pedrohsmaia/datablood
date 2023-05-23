@@ -1,33 +1,36 @@
-import { Avatar, Button, Paragraph, YStack } from '@my/ui'
+import { Avatar, Button, H1, H2, Paragraph, XStack, YStack } from '@my/ui'
+import { Cog } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
 import React from 'react'
 import { useLink } from 'solito/link'
-import { UploadAvatar } from '../settings/components/upload-avatar'
 
 export function ProfileScreen() {
-  const { user } = useUser()
+  const { user, profile, getAvatar } = useUser()
+  const name = profile?.name
   const email = user?.email
 
   return (
-    <YStack f={1} $gtMd={{ flexDirection: 'row' }} gap="$2" p="$4" jc="space-between">
+    <YStack f={1} p="$4" gap='$8'>
       <YStack gap="$4">
-        <UploadAvatar>
-          <UserAvatar />
-        </UploadAvatar>
-        <YStack>
+        <XStack gap="$4" jc="space-between">
+          <Avatar circular size={128}>
+            <Avatar.Image source={{ uri: getAvatar(), width: 128, height: 128 }} />
+          </Avatar>
+          <Button
+            {...useLink({ href: '/settings' })}
+            icon={<Cog />}
+            accessibilityLabel="Settings"
+            circular
+          />
+        </XStack>
+        <YStack gap="$2">
+          <H2>{name}</H2>
           <Paragraph>{email}</Paragraph>
         </YStack>
       </YStack>
+      <Button {...useLink({ href: '/profile/edit' })} themeInverse>
+        Edit Profile
+      </Button>
     </YStack>
-  )
-}
-
-const UserAvatar = () => {
-  const { getAvatar } = useUser()
-
-  return (
-    <Avatar circular size={128}>
-      <Avatar.Image source={{ uri: getAvatar(), width: 128, height: 128 }} />
-    </Avatar>
   )
 }

@@ -15,7 +15,7 @@ const Page: NextPageWithLayout = () => {
 }
 
 Page.getLayout = (page) => (
-  <HomeLayout>
+  <HomeLayout fullPage>
     <SettingsLayout isSettingsHome>{page}</SettingsLayout>
   </HomeLayout>
 )
