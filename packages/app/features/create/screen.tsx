@@ -1,11 +1,11 @@
-import { H1, Paragraph, ScrollView } from '@my/ui'
+import { H2, Paragraph, ScrollView } from '@my/ui'
 
 export const CreateScreen = () => {
   return (
     <ScrollView p="$4">
-      <H1 ta="center">Create your new...</H1>
+      <H2 ta="center">Create your new...</H2>
       <Paragraph mt="$2" ta="center">
-        This is your CTA page
+        User clicked on the CTA, here's your chance!
       </Paragraph>
     </ScrollView>
   )

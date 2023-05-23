@@ -96,8 +96,8 @@ export const UploadAvatar = ({ children }: { children: React.ReactNode }) => {
         zIndex={100}
       >
         <YStack
-          backgroundColor="$color12"
-          opacity={0.5}
+          backgroundColor="black"
+          opacity={0.3}
           borderRadius={1000}
           position="absolute"
           left={0}
@@ -105,7 +105,9 @@ export const UploadAvatar = ({ children }: { children: React.ReactNode }) => {
           top={0}
           bottom={0}
         />
-        <Upload color="$color1" />
+        <YStack position="absolute" left={0} right={0} top={0} bottom={0} jc="center" ai="center">
+          <Upload color="white" />
+        </YStack>
       </YStack>
     </YStack>
   )

@@ -10,14 +10,14 @@ export function ProfileScreen() {
   const email = user?.email
 
   return (
-    <YStack f={1} p="$4" gap='$8'>
+    <YStack maxWidth={600} mx="auto" width="100%" f={1} p="$4" gap="$8">
       <YStack gap="$4">
         <XStack gap="$4" jc="space-between">
           <Avatar circular size={128}>
             <Avatar.Image source={{ uri: getAvatar(), width: 128, height: 128 }} />
           </Avatar>
           <Button
-            {...useLink({ href: '/settings' , replace: false})}
+            {...useLink({ href: '/settings', replace: false })}
             icon={<Cog />}
             accessibilityLabel="Settings"
             circular

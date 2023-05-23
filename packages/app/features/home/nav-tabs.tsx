@@ -96,9 +96,6 @@ export const NavTabs = (props: TabsProps) => {
         <Tab value="/" onInteraction={handleOnInteraction}>
           Home
         </Tab>
-        <Tab value="/profile" onInteraction={handleOnInteraction}>
-          Other Page
-        </Tab>
         <Tab value="/settings" onInteraction={handleOnInteraction}>
           Settings
         </Tab>

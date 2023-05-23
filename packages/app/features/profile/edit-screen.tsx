@@ -44,7 +44,7 @@ const EditProfileForm = ({ initial, userId }: { initial: string | null; userId: 
 
   return (
     <Form onSubmit={mutation.mutate} asChild>
-      <FormWrapper>
+      <FormWrapper maxWidth={600} mx="auto" width="100%">
         <UploadAvatar>
           <UserAvatar />
         </UploadAvatar>
