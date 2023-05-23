@@ -32,7 +32,7 @@ export type HomeLayoutProps = {
   fullPage?: boolean
 }
 
-export const HomeLayout = ({ children, fullPage = false, padded = false }) => {
+export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeLayoutProps) => {
   return (
     <YStack f={1}>
       <YStack

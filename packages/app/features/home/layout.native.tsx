@@ -46,9 +46,11 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
             tabBarIcon: ({ color, size }) => {
               const { getAvatar } = useUser()
               return (
-                <Avatar borderWidth="$1" borderColor={color} size={size} circular>
-                  <Avatar.Image source={{ uri: getAvatar() }} />
-                </Avatar>
+                <YStack borderWidth="$1" borderColor={color} borderRadius={100}>
+                  <Avatar circular p="$1" size={size}>
+                    <Avatar.Image source={{ uri: getAvatar() }} />
+                  </Avatar>
+                </YStack>
               )
             },
           }}
