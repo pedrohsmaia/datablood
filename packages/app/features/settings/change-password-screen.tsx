@@ -6,12 +6,11 @@ import {
   H2,
   Input,
   Label,
-  YStack,
+  isWeb,
   useToastController,
 } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useState } from 'react'
-import { Settings } from './components/settings'
 
 export const ChangePasswordScreen = () => {
   const [password, setPassword] = useState('')
@@ -39,7 +38,7 @@ export const ChangePasswordScreen = () => {
   return (
     <Form onSubmit={() => handleChangePassword()} asChild>
       <FormWrapper>
-        <H2>Change Password</H2>
+        {isWeb && <H2>Change Password</H2>}
         <FormWrapper.Body>
           <Fieldset>
             <Label htmlFor="password">New Password</Label>

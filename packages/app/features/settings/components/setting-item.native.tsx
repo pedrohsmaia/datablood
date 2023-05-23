@@ -1,7 +1,7 @@
 import { ListItem, SizableText, YGroup, YStack } from '@my/ui'
 import { ChevronRight } from '@tamagui/lucide-icons'
 import { useLink } from 'solito/link'
-import { SettingItemProps } from './item'
+import { SettingItemProps } from './setting-item'
 
 export const SettingItem = ({
   href,

@@ -1,19 +1,28 @@
 import {
   GroupProps,
   H2,
+  ScrollView,
   Separator,
+  TamaguiComponent,
   XStack,
   YGroup,
   YStack,
+  YStackProps,
   isWeb,
   withStaticProperties,
 } from '@my/ui'
-import { SettingItem } from './item'
+import { SettingItem } from './setting-item'
+import { forwardRef } from 'react'
 
-const Wrapper = YStack.styleable((props, ref) => <YStack ref={ref} gap="$5" f={1} {...props} />)
+const Wrapper = forwardRef((props: YStackProps, ref: TamaguiComponent) => (
+  <ScrollView>
+    <YStack ref={ref} gap="$5" f={1} {...props} />
+  </ScrollView>
+))
 
-const Items = YStack.styleable((props, ref) => (
+const Items = forwardRef((props: YStackProps, ref: TamaguiComponent) => (
   <YStack
+    {...(!isWeb && { mx: '$3' })}
     gap={isWeb ? undefined : '$4'}
     separator={isWeb && <Separator borderColor="$color4" borderWidth="$0.25" />}
     ref={ref}

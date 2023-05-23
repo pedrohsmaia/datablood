@@ -1,4 +1,4 @@
-import { SizableText } from '@my/ui'
+import { SizableText, Spacer } from '@my/ui'
 import { Bell, Book, Info, Lock, LogOut, Mail, Moon, Unplug } from '@tamagui/lucide-icons'
 import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { useUser } from 'app/utils/useUser'
@@ -10,11 +10,10 @@ export const SettingsScreen = () => {
     return null
   }
 
-  // const insets = useSafeAreaInsets()
   return (
     <Settings>
-      <Settings.Title>Settings</Settings.Title>
-
+      {/* <Settings.Title>Settings</Settings.Title> */}
+      <Spacer />
       <Settings.Items>
         <Settings.Group>
           <Settings.Item icon={Lock} href="/settings/change-password" accentColor="$green9">

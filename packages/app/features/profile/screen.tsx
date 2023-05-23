@@ -17,7 +17,7 @@ export function ProfileScreen() {
             <Avatar.Image source={{ uri: getAvatar(), width: 128, height: 128 }} />
           </Avatar>
           <Button
-            {...useLink({ href: '/settings' })}
+            {...useLink({ href: '/settings' , replace: false})}
             icon={<Cog />}
             accessibilityLabel="Settings"
             circular
