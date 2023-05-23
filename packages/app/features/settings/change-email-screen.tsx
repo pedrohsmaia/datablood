@@ -29,9 +29,9 @@ export const ChangeEmailScreen = () => {
   return (
     <Form onSubmit={() => handleChangePassword()} asChild>
       <FormWrapper>
-        <FormWrapper.Body>
-          <H2>Change Email</H2>
+        <H2>Change Email</H2>
 
+        <FormWrapper.Body>
           <Fieldset>
             <Label htmlFor="current-email">Current Email</Label>
             <Input
