@@ -1,18 +1,7 @@
-import {
-  Button,
-  Fieldset,
-  Form,
-  FormWrapper,
-  H2,
-  Input,
-  Label,
-  YStack,
-  useToastController,
-} from '@my/ui'
+import { Button, Fieldset, Form, FormWrapper, H2, Input, Label, useToastController } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useState } from 'react'
-import { Settings } from './components/settings'
 
 export const ChangeEmailScreen = () => {
   const { user } = useUser()
@@ -24,15 +13,16 @@ export const ChangeEmailScreen = () => {
     if (!email) {
       toast.show('Fill out the fields first.')
       return
-      return
     }
 
     const { data, error } = await supabase.auth.updateUser({ email })
     if (error) {
       toast.show(error.message)
     } else {
+      toast.show('Check your inbox', {
+        message: `We sent you a confirmation email to ${data.user.new_email}.`,
+      })
       await supabase.auth.refreshSession()
-      toast.show('Successfully updated!')
     }
   }
 
