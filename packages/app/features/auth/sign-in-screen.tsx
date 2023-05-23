@@ -87,7 +87,7 @@ export const SignInScreen = () => {
         </AuthFormWrapper.Body>
         <AuthFormWrapper.Footer>
           <Form.Trigger asChild disabled={loading}>
-            <Button borderRadius={100} themeInverse color="$color1">
+            <Button borderRadius={100} themeInverse>
               Sign in
             </Button>
           </Form.Trigger>

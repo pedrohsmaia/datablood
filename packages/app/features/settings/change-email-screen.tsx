@@ -58,7 +58,7 @@ export const ChangeEmailScreen = () => {
       </YStack>
 
       <Form.Trigger asChild>
-        <Button themeInverse textProps={{ color: '$color1' }}>
+        <Button themeInverse>
           Update Email
         </Button>
       </Form.Trigger>

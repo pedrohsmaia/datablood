@@ -59,7 +59,7 @@ export const ChangePasswordScreen = () => {
       </YStack>
 
       <Form.Trigger asChild>
-        <Button themeInverse textProps={{ color: '$color1' }}>
+        <Button themeInverse>
           Update Password
         </Button>
       </Form.Trigger>

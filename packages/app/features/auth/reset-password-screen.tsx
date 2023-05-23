@@ -42,7 +42,7 @@ export const ResetPasswordScreen = () => {
 
         <AuthFormWrapper.Footer>
           <Form.Trigger asChild disabled={loading}>
-            <Button borderRadius={100} themeInverse color="$color1">
+            <Button borderRadius={100} themeInverse>
               Send Link
             </Button>
           </Form.Trigger>

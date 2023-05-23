@@ -34,6 +34,7 @@ const headingFont = isNative
         // 2 will be 300
         3: '600',
       },
+      lineHeight: {},
     })
   : createInterFont({
       size: {
@@ -97,8 +98,8 @@ const bodyFont = isNative
         1: '300',
         // 2 will be 300
         4: '600',
-
       },
+      lineHeight: {},
     })
   : createInterFont(
       {
