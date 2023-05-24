@@ -32,7 +32,8 @@ const headingFont = isNative
       weight: {
         1: '300',
         // 2 will be 300
-        3: '600',
+        3: '700',
+        9: '800',
       },
       lineHeight: {},
     })
@@ -71,10 +72,6 @@ const headingFont = isNative
 const bodyFont = isNative
   ? createFont({
       family: 'System',
-      // keys used for the objects you pass to `size`, `lineHeight`, `weight`
-      // and `letterSpacing` should be consistent. The `createFont` function
-      // will fill-in any missing values if `lineHeight`, `weight` or `letterSpacing`
-      // are subsets of `size`
       size: {
         1: 14,
         2: 15,
@@ -114,7 +111,7 @@ const bodyFont = isNative
     )
 
 export const config = createTamagui({
-  defaultFont: "body",
+  defaultFont: 'body',
   animations,
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,
