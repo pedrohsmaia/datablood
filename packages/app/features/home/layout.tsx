@@ -82,10 +82,10 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
 }
 
 const UserAvatar = () => {
-  const { getAvatar } = useUser()
+  const { avatarUrl } = useUser()
   return (
     <Avatar size="$4" circular>
-      <Avatar.Image source={{ uri: getAvatar() }} />
+      <Avatar.Image source={{ uri: avatarUrl }} />
     </Avatar>
   )
 }

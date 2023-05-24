@@ -3,6 +3,7 @@ create table public.profiles (
   -- Your profile fields go here...
   avatar_url text,
   name text,
+  about text,
 
   primary key (id)
 );

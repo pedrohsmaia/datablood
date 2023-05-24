@@ -11,16 +11,19 @@ export interface Database {
     Tables: {
       profiles: {
         Row: {
+          about: string | null
           avatar_url: string | null
           id: string
           name: string | null
         }
         Insert: {
+          about?: string | null
           avatar_url?: string | null
           id: string
           name?: string | null
         }
         Update: {
+          about?: string | null
           avatar_url?: string | null
           id?: string
           name?: string | null

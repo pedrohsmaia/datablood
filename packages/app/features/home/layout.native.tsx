@@ -81,11 +81,11 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
           options={{
             title: 'Profile',
             tabBarIcon: ({ color, size }) => {
-              const { getAvatar } = useUser()
+              const { avatarUrl } = useUser()
               return (
                 <YStack borderWidth="$1" borderColor={color} borderRadius={100}>
                   <Avatar circular p="$1" size={size}>
-                    <Avatar.Image source={{ uri: getAvatar() }} />
+                    <Avatar.Image source={{ uri: avatarUrl }} />
                   </Avatar>
                 </YStack>
               )

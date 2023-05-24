@@ -7,6 +7,7 @@ import {
   FullscreenSpinner,
   Input,
   Label,
+  TextArea,
   useToastController,
 } from '@my/ui'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -22,18 +23,25 @@ export const EditProfileScreen = () => {
   if (!profile || !user?.id) {
     return <FullscreenSpinner />
   }
-  return <EditProfileForm userId={user.id} initial={profile.name} />
+  return <EditProfileForm userId={user.id} initial={{ name: profile.name, about: profile.about }} />
 }
 
-const EditProfileForm = ({ initial, userId }: { initial: string | null; userId: string }) => {
-  const [name, setName] = useState(initial ?? '')
+const EditProfileForm = ({
+  initial,
+  userId,
+}: {
+  initial: { name: string | null; about: string | null }
+  userId: string
+}) => {
+  const [name, setName] = useState(initial.name ?? '')
+  const [about, setAbout] = useState(initial.about ?? '')
   const supabase = useSupabase()
   const toast = useToastController()
   const queryClient = useQueryClient()
   const router = useRouter()
   const mutation = useMutation({
     async mutationFn() {
-      await supabase.from('profiles').update({ name }).eq('id', userId)
+      await supabase.from('profiles').update({ name, about }).eq('id', userId)
     },
     async onSuccess() {
       toast.show('Successfully updated!')
@@ -60,6 +68,16 @@ const EditProfileForm = ({ initial, userId }: { initial: string | null; userId: 
               placeholder="John Doe"
             />
           </Fieldset>
+          <Fieldset>
+            <Label htmlFor="about">About</Label>
+            <TextArea
+              numberOfLines={4}
+              id="about"
+              onChangeText={(text) => setAbout(text)}
+              value={about}
+              placeholder="Tell us a bit about yourself..."
+            />
+          </Fieldset>
         </FormWrapper.Body>
 
         <FormWrapper.Footer>
@@ -72,8 +90,11 @@ const EditProfileForm = ({ initial, userId }: { initial: string | null; userId: 
   )
 }
 
-const UserAvatar = () => (
-  <Avatar circular size={128}>
-    <Avatar.Image source={{ uri: useUser().getAvatar(), width: 128, height: 128 }} />
-  </Avatar>
-)
+const UserAvatar = () => {
+  const { avatarUrl } = useUser()
+  return (
+    <Avatar circular size={128}>
+      <Avatar.Image source={{ uri: avatarUrl, width: 128, height: 128 }} />
+    </Avatar>
+  )
+}

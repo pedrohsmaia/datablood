@@ -27,17 +27,19 @@ export const useUser = () => {
   })
   const router = useRouter()
 
+  const avatarUrl = (function () {
+    if (profile?.avatar_url) return profile.avatar_url
+    if (typeof user?.user_metadata.avatar_url === 'string') return user.user_metadata.avatar_url
+
+    const params = new URLSearchParams()
+    params.append('name', profile?.name ?? user?.email ?? '')
+    return `https://ui-avatars.com/api/?${params.toString()}`
+  })()
+
   return {
     user,
     profile,
-    getAvatar: () => {
-      if (profile?.avatar_url) return profile.avatar_url
-      if (typeof user?.user_metadata.avatar_url === 'string') return user.user_metadata.avatar_url
-
-      const params = new URLSearchParams()
-      params.append('name', profile?.name ?? user?.email ?? '')
-      return `https://ui-avatars.com/api/?${params.toString()}`
-    },
+    avatarUrl,
     updateProfile: () => refetch(),
     isLoadingSession,
     isLoadingProfile,
