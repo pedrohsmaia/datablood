@@ -22,9 +22,7 @@ const Wrapper = forwardRef((props: YStackProps, ref: TamaguiComponent) => (
 
 const Items = forwardRef((props: YStackProps, ref: TamaguiComponent) => (
   <YStack
-    {...(!isWeb && { mx: '$3' })}
-    gap={isWeb ? undefined : '$4'}
-    separator={isWeb && <Separator borderColor="$color4" borderWidth="$0.25" />}
+    gap="$4"
     ref={ref}
     {...props}
   />
@@ -35,10 +33,12 @@ const Group = (props: GroupProps) => (
     borderRadius={14}
     disablePassBorderRadius={isWeb}
     separator={
-      <XStack>
-        {!isWeb && <YStack width={20} backgroundColor="$color2" />}
-        <Separator borderColor="$color4" borderWidth="$0.25" />
-      </XStack>
+      !isWeb && (
+        <XStack>
+          <YStack width={20} backgroundColor="$color2" />
+          <Separator borderColor="$color4" borderWidth="$0.25" />
+        </XStack>
+      )
     }
     {...props}
   />

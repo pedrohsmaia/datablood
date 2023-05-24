@@ -17,15 +17,17 @@ export const FeedCard = ({
 } & CardProps) => {
   return (
     <Card
-      shadowColor="#00000015"
-      shadowRadius={2}
-      shadowOffset={{
-        height: 2,
-        width: 0,
-      }}
+      // shadowColor="#00000015"
+      // shadowRadius={2}
+      // shadowOffset={{
+      //   height: 2,
+      //   width: 0,
+      // }}
+
+      // backgroundColor="red"
       borderRadius="$8"
-      overflow="visible"
-      elevationAndroid="$1"
+      // overflow="visible"
+      // elevationAndroid="$1"
       f={1}
       {...props}
     >

@@ -1,5 +1,4 @@
 import { ListItem, ListItemProps, SizableText, YGroup, YStack } from '@my/ui'
-import { ChevronRight } from '@tamagui/lucide-icons'
 import { IconProps } from '@tamagui/lucide-icons/types/IconProps'
 import { LinkProps, useLink } from 'solito/link'
 
@@ -28,6 +27,7 @@ export const SettingItem = ({
   return (
     <YGroup.Item>
       <ListItem
+        hoverTheme
         cursor="pointer"
         gap="$4"
         {...(typeof href !== 'undefined' ? useLink({ ...linkProps, href }) : {})}
