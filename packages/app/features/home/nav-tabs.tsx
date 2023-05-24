@@ -56,9 +56,9 @@ export const NavTabs = (props: TabsProps) => {
             key="intent-indicator"
             borderRadius="$4"
             width={intentAt.width}
-            height={intentAt.height}
+            height={intentAt.height - 8}
             x={intentAt.x}
-            y={intentAt.y}
+            y={intentAt.y + 4}
             $sm={{ display: 'none' }}
           />
         )}

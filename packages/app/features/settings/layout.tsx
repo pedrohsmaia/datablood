@@ -25,7 +25,13 @@ export const SettingsLayout = ({ children, isSettingsHome = false }: SettingsLay
         <SettingsScreen />
       </YStack>
       <YStack f={4} ai="center" $sm={{ display: isSettingsHome ? 'none' : 'block' }}>
-        <YStack minWidth={500}>{children}</YStack>
+        <YStack
+          $gtSm={{
+            minWidth: 500,
+          }}
+        >
+          {children}
+        </YStack>
       </YStack>
     </XStack>
   )

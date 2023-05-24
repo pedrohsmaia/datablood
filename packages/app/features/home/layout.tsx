@@ -178,11 +178,14 @@ const ProfileButton = () => (
 )
 
 const WithUserDetail = ({ children, ...props }: StackProps) => {
-  const { user } = useUser()
+  const { user, profile } = useUser()
 
   return (
     <XStack gap="$2" {...props}>
-      <SizableText>{user?.email}</SizableText>
+      <YStack ai="flex-end">
+        <SizableText size="$5">{profile?.name}</SizableText>
+        <SizableText theme="alt1">{user?.email}</SizableText>
+      </YStack>
       {children}
     </XStack>
   )
