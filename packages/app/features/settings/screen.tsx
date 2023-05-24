@@ -32,11 +32,15 @@ export const SettingsScreen = () => {
         <Settings.Group>
           <SettingsItemDarkModeAction />
 
-          <Settings.Item icon={Book} href="/settings/privacy" accentColor="$purple9">
-            Privacy
+          <Settings.Item icon={Book} href="/privacy-policy" accentColor="$green9">
+            Privacy Policy
           </Settings.Item>
 
-          <Settings.Item icon={Info} href="/settings/info" accentColor="$blue9">
+          <Settings.Item icon={Book} href="/terms-of-service" accentColor="$purple9">
+            Terms Of Service
+          </Settings.Item>
+
+          <Settings.Item icon={Info} href="/about" accentColor="$blue9">
             About
           </Settings.Item>
 

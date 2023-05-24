@@ -1,9 +1,10 @@
-import { Avatar, Button, YStack } from '@my/ui'
-import { Cog, Home, Plus, User } from '@tamagui/lucide-icons'
-import { Tabs } from 'expo-router'
-import type { HomeLayoutProps } from './layout'
-import { useLink } from 'solito/link'
+import { Avatar, Circle, Theme, YStack } from '@my/ui'
+import { LinearGradient } from '@tamagui/linear-gradient'
+import { Home, Plus } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
+import { Tabs } from 'expo-router'
+import { useRouter } from 'solito/router'
+import type { HomeLayoutProps } from './layout'
 
 export const HomeLayout = ({}: HomeLayoutProps) => {
   return (
@@ -26,17 +27,53 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
           })}
           options={{
             title: 'New',
-            tabBarIcon: ({ size, focused }) => (
-              <YStack
-                backgroundColor="$blue9"
-                padding="$4"
-                borderRadius={100}
-                pos="absolute"
-                bottom={0}
-              >
-                <Plus color="white" size={size + 10} />
-              </YStack>
-            ),
+            tabBarIcon: ({ size }) => {
+              const router = useRouter()
+
+              return (
+                <Theme inverse>
+                  <Circle
+                    pos="absolute"
+                    bottom={5}
+                    backgroundColor="$color0"
+                    shadowOpacity={0.5}
+                    shadowRadius={2}
+                    shadowOffset={{
+                      height: 3,
+                      width: 0,
+                    }}
+                    width={size + 40}
+                    height={size + 40}
+                  />
+                  <LinearGradient
+                    onPress={() => router.push('/create')}
+                    colors={['$color1', '$color9']}
+                    start={[1, 1]}
+                    end={[0, 0]}
+                    width={size + 40}
+                    height={size + 40}
+                    borderRadius={100}
+                    pos="absolute"
+                    bottom={5}
+                    animation="quick"
+                    pressStyle={{
+                      rotate: '50deg',
+                    }}
+                  />
+                  <YStack
+                    pos="absolute"
+                    bottom={5}
+                    jc="center"
+                    ai="center"
+                    animation="quick"
+                    pointerEvents="none"
+                    height={size + 40}
+                  >
+                    <Plus color="$color" size={size + 20} />
+                  </YStack>
+                </Theme>
+              )
+            },
           }}
         />
         <Tabs.Screen

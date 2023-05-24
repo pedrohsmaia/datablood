@@ -1,13 +1,12 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { useSupabase } from './supabase/useSupabase'
-import { useSessionContext } from './supabase/useSessionContext'
+import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'solito/router'
+import { useSessionContext } from './supabase/useSessionContext'
+import { useSupabase } from './supabase/useSupabase'
 
 export const useUser = () => {
   const { session, isLoading: isLoadingSession } = useSessionContext()
   const user = session?.user
   const supabase = useSupabase()
-  const queryClient = useQueryClient()
   const {
     data: profile,
     isLoading: isLoadingProfile,
@@ -46,7 +45,7 @@ export const useUser = () => {
     logOut: async () => {
       if (session) {
         await supabase.auth.signOut()
-        await router.replace('/onboarding')
+        router.replace('/onboarding')
       }
     },
   }
