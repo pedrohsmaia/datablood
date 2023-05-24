@@ -16,7 +16,7 @@ export const OnboardingControls = ({
 }: OnboardingControlsProps) => {
   const handleGoNext = () => {
     if (currentIdx + 1 > stepsCount - 1) {
-      onFinish()
+      onFinish?.()
       return
     }
     onChange(currentIdx + 1)
@@ -36,11 +36,23 @@ export const OnboardingControls = ({
   return (
     <>
       <XStack jc="space-between" ai="center" p="$5" gap="$5" $gtSm={{ display: 'none' }}>
-        <Button chromeless color="$color1" borderRadius={100} onPress={() => handleSkip()}>
+        <Button
+          chromeless
+          color="$color1"
+          pressStyle={{
+            backgroundColor: "$color7"
+          }}
+          borderRadius={100}
+          onPress={() => handleSkip()}
+        >
           Skip
         </Button>
 
         <Button
+          pressStyle={{
+            backgroundColor: "$color7",
+            borderColor: '$color7',
+          }}
           chromeless
           bordered
           borderColor="$color1"
