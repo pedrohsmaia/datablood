@@ -1,12 +1,11 @@
-import { Paragraph, SizableText, Spacer, YStack } from '@my/ui'
+import { Paragraph, SizableText, Spacer, YStack, isWeb } from '@my/ui'
+import { Book, Info, Lock, LogOut, Mail, Moon, Twitter } from '@tamagui/lucide-icons'
+import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
+import { redirect } from 'app/utils/redirect'
+import { useUser } from 'app/utils/useUser'
 import rootPackageJson from '../../../../package.json'
 import packageJson from '../../package.json'
-import { Bell, Book, Info, Lock, LogOut, Mail, Moon, Twitter, Unplug } from '@tamagui/lucide-icons'
-import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
-import { useUser } from 'app/utils/useUser'
 import { Settings } from './components/settings'
-import { useRouter } from 'solito/router'
-import { redirect } from 'app/utils/redirect'
 
 export const SettingsScreen = () => {
   const { user, profile } = useUser()
@@ -42,9 +41,12 @@ export const SettingsScreen = () => {
               Terms Of Service
             </Settings.Item>
 
-            <Settings.Item icon={Info} href="/about" accentColor="$blue9">
-              About
-            </Settings.Item>
+            {/* removing about from web since landing pages are more common on web - feel free to add back if needed */}
+            {!isWeb && (
+              <Settings.Item icon={Info} href="/about" accentColor="$blue9">
+                About
+              </Settings.Item>
+            )}
           </Settings.Group>
 
           <Settings.Group>
