@@ -74,7 +74,13 @@ You can also install the native library inside of `packages/app` if you want to 
 
 You may potentially want to have the native module transpiled for the next app. If you get error messages with `Cannot use import statement outside a module`, you may need to use `transpilePackages` in your `next.config.js` and add the module to the array there.
 
-### Deploying to Vercel
+## Template Sync
+
+You can keep your repository in sync with the template using the `actions-template-sync` GitHub action. It will run on a custom interval and check for changes from the template so you don't miss out on the new updates.
+
+To set up this action, read the [Private template repository](https://github.com/marketplace/actions/actions-template-sync#private-template-repository) section.
+
+## Deploying to Vercel
 
 - Root: `./apps/next`
 - Install command to be `yarn set version berry && yarn install`
