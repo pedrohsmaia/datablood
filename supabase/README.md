@@ -1,3 +1,14 @@
+## Setting up Supabase
+
+Use Supabase's documentation to set up your project. Some highlights:
+
+- [Local Development](https://supabase.com/docs/guides/getting-started/local-development)
+- [Managing Environments](https://supabase.com/docs/guides/cli/managing-environments)
+
+This template also assumes you have a public storage bucket with the name `avatars`.
+
+After setting it up, you can use the [scripts](#scripts) to manage the common tasks related to Supabase.
+
 ## Scripts
 
 NOTE: Scripts starting with underscore (`_`) are not meant to be used directly.

@@ -1,4 +1,4 @@
-# Tamagui Unistack
+# Tamagui Universal Starter
 
 Tamagui Premium Universal Starter
 
@@ -31,6 +31,14 @@ Follows [how Next.js handles env variables](https://nextjs.org/docs/pages/buildi
 
 - Put the secrets inside `.env.local` - env files ending with .local will NOT be committed to git.
 - Do NOT put your secrets inside `.env` as it will get committed to git
+
+## Development
+
+1. Read [Supabase's README](/supabase/README.md) and set it up
+2. Run the dev script
+   - Web: `yarn web`
+   - iOS: `yarn ios`
+   - Android: `yarn android`
 
 ## UI Kit
 
