@@ -23,7 +23,7 @@ The main apps are:
   - `app` you'll be importing most files from `app/`
     - `features` (don't use a `screens` folder. organize by feature.)
     - `provider` (all the providers that wrap the app, and some no-ops for native or web.)
-- `supabase` supabase files, migrations, types, etc. + (scripts)[/supabase/README.md]
+- `supabase` supabase files, migrations, types, etc. + [scripts](/supabase/README.md)
 
 ## Environment Convention
 
