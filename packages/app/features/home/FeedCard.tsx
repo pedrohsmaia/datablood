@@ -31,7 +31,7 @@ export const FeedCard = ({
       f={1}
       {...props}
     >
-      <Card.Header padded>
+      <Card.Header padded gap="$2">
         <H4>{title}</H4>
 
         {!!description && <Paragraph theme="alt1">{description}</Paragraph>}
