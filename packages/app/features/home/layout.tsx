@@ -15,7 +15,7 @@ import { useUser } from 'app/utils/useUser'
 import { useRouter as useNextRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { Link, useLink } from 'solito/link'
-import { NavTabs } from './nav-tabs'
+import { NavTabs } from './components/nav-tabs'
 
 export type HomeLayoutProps = {
   /**

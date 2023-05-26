@@ -1,9 +1,8 @@
-import { AnimatePresence, Circle, Theme, XStack, YStack } from '@my/ui'
+import { AnimatePresence, Circle, Theme, XStack, YStack, useWindowDimensions } from '@my/ui'
 import { useAnimatedNumber, useAnimatedNumberStyle } from '@tamagui/animations-react-native'
 import { Brush, CloudLightning, Lock } from '@tamagui/lucide-icons'
 import React, { useEffect, useState } from 'react'
 import { Animated, PanResponder } from 'react-native'
-import { Background } from './background'
 import { OnboardingControls } from './controls'
 import { StepContent } from './step-content'
 import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
@@ -166,5 +165,30 @@ const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) =>
         height="100%"
       />
     </Animated.View>
+  )
+}
+
+export const Background = () => {
+  const { height } = useWindowDimensions()
+  return (
+    <YStack pos="absolute" left={0} right={0} top={0} bottom={0} jc="center" ai="center">
+      <Circle
+        animation={'lazy'}
+        x={0}
+        y={0}
+        opacity={1}
+        scale={1}
+        backgroundColor={'$color8'}
+        enterStyle={{
+          scale: 0,
+        }}
+        exitStyle={{
+          scale: 10,
+          opacity: 0,
+        }}
+        width={height * 3}
+        height={height * 3}
+      />
+    </YStack>
   )
 }

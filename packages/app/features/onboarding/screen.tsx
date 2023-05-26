@@ -1,5 +1,5 @@
 import { useRouter } from 'solito/router'
-import { Onboarding } from './onboarding'
+import { Onboarding } from './components/onboarding'
 
 // native only
 export const OnboardingScreen = () => {

@@ -1,5 +1,5 @@
 import { XStack, YStack } from '@my/ui'
-import { Onboarding } from '../onboarding/onboarding'
+import { Onboarding } from '../onboarding/components/onboarding'
 
 export type AuthLayoutProps = {
   children?: React.ReactNode

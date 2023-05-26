@@ -1,7 +1,7 @@
 import { H2, H3, H4, Paragraph, ScrollView, Theme, XStack, YStack } from '@my/ui'
 import { useUser } from 'app/utils/useUser'
 import React from 'react'
-import { FeedCard } from './FeedCard'
+import { FeedCard } from './components/feed-card'
 
 export function HomeScreen() {
   const { profile } = useUser()
