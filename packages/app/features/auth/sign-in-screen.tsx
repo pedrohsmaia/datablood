@@ -8,17 +8,15 @@ import {
   Label,
   Link,
   Paragraph,
-  ScrollView,
   Text,
   YStack,
-  isWeb,
   useToastController,
 } from '@my/ui'
-import { Provider } from '@supabase/supabase-js'
-import { redirect } from 'app/utils/redirect'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useState } from 'react'
 import { useRouter } from 'solito/router'
+
+// nice article for implementing Supabase OAuth with expo-auth-session: https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf
 
 export const SignInScreen = () => {
   const supabase = useSupabase()
@@ -42,22 +40,6 @@ export const SignInScreen = () => {
     setLoading(false)
   }
 
-  async function signInWithProvider(provider: Provider) {
-    setLoading(true)
-    const { error, data } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        skipBrowserRedirect: true,
-      },
-    })
-
-    if (error) {
-      toast.show(error.message)
-    } else {
-      redirect(data.url)
-    }
-    setLoading(false)
-  }
   return (
     <Form onSubmit={() => signInWithEmail()} asChild>
       <FormWrapper>
@@ -119,10 +101,7 @@ export const SignInScreen = () => {
             textAlign="center"
             theme="alt1"
           >
-            Don't have an account?{' '}
-            <Text textDecorationLine="underline">
-              Sign up
-            </Text>
+            Don't have an account? <Text textDecorationLine="underline">Sign up</Text>
           </Link>
         </FormWrapper.Footer>
       </FormWrapper>
