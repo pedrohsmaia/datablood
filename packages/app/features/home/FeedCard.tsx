@@ -65,7 +65,7 @@ export const FeedCard = ({
           borderRadius="$8"
           width="100%"
           height="100%"
-          colors={['$color3', '$color5']}
+          colors={['$color4', '$color5']}
           start={[1, 1]}
           end={[0.85, 0]}
         />

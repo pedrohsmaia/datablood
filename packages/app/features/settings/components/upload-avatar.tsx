@@ -1,4 +1,4 @@
-import { YStack } from '@my/ui'
+import { YStack, useToastController } from '@my/ui'
 import { Upload } from '@tamagui/lucide-icons'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
@@ -23,9 +23,10 @@ export const UploadAvatar = ({ children }: { children: React.ReactNode }) => {
   }
 
   const uploadImage = async (pickerResult: ImagePicker.ImagePickerResult) => {
+    const toast = useToastController()
     try {
       if (pickerResult.canceled) {
-        alert('Upload canceled')
+        // upload canceled
         return
       } else {
         if (!user) return
@@ -72,7 +73,7 @@ export const UploadAvatar = ({ children }: { children: React.ReactNode }) => {
       }
     } catch (e) {
       console.error(e)
-      alert('Upload failed')
+      alert('Upload failed.')
     }
   }
 
