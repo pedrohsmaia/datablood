@@ -44,9 +44,9 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
         jc="center"
         px="$4"
       >
-        <XStack jc="space-between" ai="flex-end">
+        <XStack jc="space-between" $sm={{ ai: 'center' }} ai="flex-end">
           <NavTabs $sm={{ display: 'none' }} orientation="horizontal" size="$4" />
-          <YStack $gtSm={{ display: 'none' }} pb="$2">
+          <YStack $gtSm={{ display: 'none' }} >
             <MobileNavbar>
               <YStack gap="$5" width="100%" alignItems="flex-end">
                 <NavTabs orientation="vertical" f={1} width="100%" size="$3" />
