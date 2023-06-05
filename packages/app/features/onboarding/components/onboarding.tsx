@@ -39,7 +39,7 @@ const steps = {
     ),
   },
 }
-const AUTO_SWIPE_THRESHOLD = 10_000 // ms
+const AUTO_SWIPE_THRESHOLD = 15_000 // ms
 export const Onboarding = ({
   onOnboarded,
   autoSwipe,
