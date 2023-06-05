@@ -2,7 +2,7 @@ import { Avatar, Button, H2, Paragraph, XStack, YStack } from '@my/ui'
 import { Cog } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
 import React from 'react'
-import { useLink } from 'solito/link'
+import { Link, useLink } from 'solito/link'
 
 export function ProfileScreen() {
   const { profile, avatarUrl } = useUser()
@@ -27,7 +27,14 @@ export function ProfileScreen() {
           />
         </XStack>
         <YStack gap="$2">
-          <H2>{name}</H2>
+          {name ? (
+            <H2>{name}</H2>
+          ) : (
+            <Link href="/profile/edit?edit_name=1">
+              <H2 textDecorationLine="underline">No Name</H2>
+            </Link>
+          )}
+
           {!!about && <Paragraph>{about}</Paragraph>}
         </YStack>
       </YStack>
