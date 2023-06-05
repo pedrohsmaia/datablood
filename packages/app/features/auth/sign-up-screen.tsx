@@ -1,16 +1,17 @@
 import {
+  AnimatePresence,
   Button,
   Fieldset,
   Form,
   FormWrapper,
+  H2,
   Input,
   Label,
   Link,
-  Text,
-  useToastController,
-  H2,
   Paragraph,
+  Text,
   YStack,
+  useToastController,
 } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
@@ -21,10 +22,21 @@ export const SignUpScreen = () => {
   const supabase = useSupabase()
   const router = useRouter()
   const toast = useToastController()
+  const [error, setError] = useState<string | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+
+  const handleUpdateEmail = (newEmail: string) => {
+    setError(null)
+    setEmail(newEmail)
+  }
+
+  const handleUpdatePassword = (newPassword: string) => {
+    setError(null)
+    setPassword(newPassword)
+  }
 
   async function signUpWithEmail() {
     setLoading(true)
@@ -41,7 +53,7 @@ export const SignUpScreen = () => {
     })
 
     if (error) {
-      toast.show(error.message)
+      setError(error.message)
     } else {
       router.replace('/')
       // do this instead if you're doing email confirms:
@@ -60,14 +72,25 @@ export const SignUpScreen = () => {
               We've sent you a confirmation link. Please check your email ({email}) and confirm it.
             </Paragraph>
           </YStack>
-
-          <Button icon={ChevronLeft} als="flex-start" onPress={() => setShowSuccess(false)}>
+        </FormWrapper.Body>
+        <FormWrapper.Footer>
+          <Button
+            themeInverse
+            icon={ChevronLeft}
+            borderRadius={100}
+            onPress={() => setShowSuccess(false)}
+          >
             Back
           </Button>
-        </FormWrapper.Body>
+        </FormWrapper.Footer>
       </FormWrapper>
     )
   }
+
+  // supabase won't return field specific errors, so we do this:
+  const errorLc = error?.toLowerCase()
+  const isEmailErrored = errorLc?.includes('email') || errorLc?.includes('credentials')
+  const isPasswordErrored = errorLc?.includes('password') || errorLc?.includes('credentials')
 
   return (
     <Form asChild onSubmit={() => signUpWithEmail()}>
@@ -78,10 +101,13 @@ export const SignUpScreen = () => {
         </YStack>
         <FormWrapper.Body>
           <Fieldset>
-            <Label htmlFor="signup-email">Email</Label>
+            <Label theme={isEmailErrored ? 'red_alt2' : undefined} htmlFor="signup-email">
+              Email
+            </Label>
             <Input
+              theme={isEmailErrored ? 'red_alt2' : undefined}
               id="signup-email"
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={handleUpdateEmail}
               value={email}
               keyboardType="email-address"
               placeholder="email@address.com"
@@ -90,18 +116,36 @@ export const SignUpScreen = () => {
           </Fieldset>
 
           <Fieldset>
-            <Label htmlFor="signup-password">Password</Label>
+            <Label theme={isPasswordErrored ? 'red_alt2' : undefined} htmlFor="signup-password">
+              Password
+            </Label>
             <Input
+              theme={isPasswordErrored ? 'red_alt2' : undefined}
               secureTextEntry
               textContentType="password"
               id="signup-password"
               autoComplete="password"
-              onChangeText={(text) => setPassword(text)}
+              onChangeText={handleUpdatePassword}
               value={password}
               placeholder="Password"
               autoCapitalize={'none'}
             />
           </Fieldset>
+
+          <AnimatePresence>
+            {!!error && (
+              <Paragraph
+                key="error-paragraph"
+                animation="quick"
+                opacity={1}
+                enterStyle={{ opacity: 0 }}
+                exitStyle={{ opacity: 0 }}
+                theme="red_alt2"
+              >
+                {error}
+              </Paragraph>
+            )}
+          </AnimatePresence>
         </FormWrapper.Body>
         <FormWrapper.Footer>
           <Form.Trigger asChild disabled={loading}>
