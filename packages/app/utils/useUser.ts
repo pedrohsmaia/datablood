@@ -13,7 +13,11 @@ export const useUser = () => {
     refetch,
   } = useQuery(['profile'], {
     queryFn: async () => {
-      const { data, error } = await supabase.from('profiles').select('*').single()
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user?.id)
+        .single()
       if (error) {
         if (error.code === 'PGRST116') {
           await supabase.auth.signOut()
@@ -37,6 +41,7 @@ export const useUser = () => {
   })()
 
   return {
+    session,
     user,
     profile,
     avatarUrl,

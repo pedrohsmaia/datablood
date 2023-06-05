@@ -33,8 +33,9 @@ export const SignInScreen = () => {
       password: password,
     })
 
-    if (error) toast.show(error.message)
-    else {
+    if (error) {
+      toast.show(error.message)
+    } else {
       router.replace('/')
     }
     setLoading(false)

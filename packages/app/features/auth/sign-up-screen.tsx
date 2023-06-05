@@ -12,12 +12,16 @@ import {
   Paragraph,
   YStack,
 } from '@my/ui'
+import { ChevronLeft } from '@tamagui/lucide-icons'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useState } from 'react'
+import { useRouter } from 'solito/router'
 
 export const SignUpScreen = () => {
   const supabase = useSupabase()
+  const router = useRouter()
   const toast = useToastController()
+  const [showSuccess, setShowSuccess] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -36,9 +40,33 @@ export const SignUpScreen = () => {
       },
     })
 
-    if (error) toast.show(error.message)
-    else toast.show('Check your email for a link!')
+    if (error) {
+      toast.show(error.message)
+    } else {
+      router.replace('/')
+      // do this instead if you're doing email confirms:
+      // setShowSuccess(true)
+    }
     setLoading(false)
+  }
+
+  if (showSuccess) {
+    return (
+      <FormWrapper>
+        <FormWrapper.Body>
+          <YStack gap="$3">
+            <H2>Check Your Email</H2>
+            <Paragraph theme="alt1">
+              We've sent you a confirmation link. Please check your email ({email}) and confirm it.
+            </Paragraph>
+          </YStack>
+
+          <Button icon={ChevronLeft} als="flex-start" onPress={() => setShowSuccess(false)}>
+            Back
+          </Button>
+        </FormWrapper.Body>
+      </FormWrapper>
+    )
   }
 
   return (
