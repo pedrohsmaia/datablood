@@ -1,7 +1,7 @@
 import { AuthLayout } from 'app/features/auth/layout'
 import { ResetPasswordScreen } from 'app/features/auth/reset-password-screen'
 import Head from 'next/head'
-import { guestOnlyGetSSP } from 'utils/guesOnly'
+import { guestOnlyGetSSP } from 'utils/guestOnly'
 import { NextPageWithLayout } from './_app'
 
 const Page: NextPageWithLayout = () => (

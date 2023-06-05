@@ -14,9 +14,11 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useState } from 'react'
-import { UploadAvatar } from '../settings/components/upload-avatar'
+import { createParam } from 'solito'
 import { useRouter } from 'solito/router'
+import { UploadAvatar } from '../settings/components/upload-avatar'
 
+const { useParams } = createParam<{ edit_name?: '1'; edit_about?: '1' }>()
 export const EditProfileScreen = () => {
   const { profile, user } = useUser()
 
@@ -33,6 +35,7 @@ const EditProfileForm = ({
   initial: { name: string | null; about: string | null }
   userId: string
 }) => {
+  const { params } = useParams()
   const [name, setName] = useState(initial.name ?? '')
   const [about, setAbout] = useState(initial.about ?? '')
   const supabase = useSupabase()
@@ -49,7 +52,6 @@ const EditProfileForm = ({
       router.back()
     },
   })
-
   return (
     <Form onSubmit={mutation.mutate} asChild>
       <FormWrapper maxWidth={600} mx="auto" width="100%">
@@ -61,6 +63,7 @@ const EditProfileForm = ({
           <Fieldset>
             <Label htmlFor="name">Name</Label>
             <Input
+              autoFocus={!!params?.edit_name}
               id="name"
               autoComplete="name"
               onChangeText={(text) => setName(text)}
@@ -71,6 +74,7 @@ const EditProfileForm = ({
           <Fieldset>
             <Label htmlFor="about">About</Label>
             <TextArea
+              autoFocus={!!params?.edit_about}
               numberOfLines={4}
               id="about"
               onChangeText={(text) => setAbout(text)}

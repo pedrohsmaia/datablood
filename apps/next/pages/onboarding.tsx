@@ -1,4 +1,4 @@
-import { guestOnlyGetSSP } from 'utils/guesOnly'
+import { guestOnlyGetSSP } from 'utils/guestOnly'
 
 /**
  * this page exists to keep it 1-1 with native

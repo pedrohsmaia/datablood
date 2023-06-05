@@ -13,7 +13,7 @@ export const SettingItem = ({
   icon: Icon,
   children,
   accentColor,
-  rightSide,
+  rightLabel,
   ...props
 }: SettingItemProps) => {
   const linkProps = { href, replace, scroll, shallow, prefetch, locale }
@@ -34,7 +34,13 @@ export const SettingItem = ({
         <SizableText color="$color" fontSize={18} flex={1}>
           {children}
         </SizableText>
-        {rightSide ?? <ChevronRight size={20} color="$color9" />}
+        {!!rightLabel ? (
+          <SizableText color="$color11" textTransform="capitalize">
+            {rightLabel}
+          </SizableText>
+        ) : (
+          <ChevronRight size={20} color="$color9" />
+        )}
       </ListItem>
     </YGroup.Item>
   )

@@ -1,4 +1,4 @@
-import { Avatar, Card, CardProps, H4, H6, Paragraph, XStack } from '@my/ui'
+import { Avatar, Card, CardProps, H4, H6, Paragraph, Tooltip, TooltipSimple, XStack } from '@my/ui'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import React from 'react'
 
@@ -7,13 +7,13 @@ export const FeedCard = ({
   title,
   description,
   tag,
-  showAvatars,
+  authors,
   ...props
 }: {
   title: string
   description?: string
   tag?: string
-  showAvatars?: boolean
+  authors?: { avatar: string; name: string; id: number }[]
 } & CardProps) => {
   return (
     <Card
@@ -38,24 +38,22 @@ export const FeedCard = ({
         {!!tag && <H6 theme="alt2">{tag}</H6>}
       </Card.Header>
 
-      {showAvatars && (
+      {!!(authors && authors.length > 0) && (
         <Card.Footer padded>
           <XStack>
-            <Avatar circular size={32} mr="$-2">
-              <Avatar.Image
-                source={{ uri: 'https://placekitten.com/32/32?ca=1', width: 32, height: 32 }}
-              />
-            </Avatar>
-            <Avatar circular size={32} mr="$-2">
-              <Avatar.Image
-                source={{ uri: 'https://placekitten.com/33/33?ca=2', width: 32, height: 32 }}
-              />
-            </Avatar>
-            <Avatar circular size={32} mr="$-2">
-              <Avatar.Image
-                source={{ uri: 'https://placekitten.com/34/34?ca=3', width: 32, height: 32 }}
-              />
-            </Avatar>
+            {authors.map((author) => (
+              <TooltipSimple key={author.id} label={author.name}>
+                <Avatar circular size={32} mr="$-2">
+                  <Avatar.Image
+                    source={{
+                      uri: author.avatar,
+                      width: 32,
+                      height: 32,
+                    }}
+                  />
+                </Avatar>
+              </TooltipSimple>
+            ))}
           </XStack>
         </Card.Footer>
       )}
@@ -65,7 +63,7 @@ export const FeedCard = ({
           borderRadius="$8"
           width="100%"
           height="100%"
-          colors={['$color4', '$color5']}
+          colors={['$color6', '$color7']}
           start={[1, 1]}
           end={[0.85, 0]}
         />

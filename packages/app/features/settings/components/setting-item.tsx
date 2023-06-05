@@ -1,10 +1,10 @@
-import { ListItem, ListItemProps, SizableText, YGroup, YStack } from '@my/ui'
+import { ListItem, ListItemProps, SizableText, XStack, YGroup, YStack } from '@my/ui'
 import { IconProps } from '@tamagui/lucide-icons/types/IconProps'
 import { LinkProps, useLink } from 'solito/link'
 
 export type SettingItemProps = {
   icon: React.FC<IconProps>
-  rightSide?: JSX.Element
+  rightLabel?: string
   accentColor?: ListItemProps['backgroundColor']
 } & Omit<ListItemProps, 'href'> &
   Partial<LinkProps>
@@ -19,7 +19,7 @@ export const SettingItem = ({
   icon: Icon,
   children,
   accentColor,
-  rightSide,
+  rightLabel,
   ...props
 }: SettingItemProps) => {
   const linkProps = { href, replace, scroll, shallow, prefetch, locale }
@@ -37,7 +37,13 @@ export const SettingItem = ({
           <Icon color="$color" size={18} />
         </YStack>
         <SizableText flex={1}>{children}</SizableText>
-        {rightSide}
+        {!!rightLabel && (
+          <XStack borderRadius={100} backgroundColor="$color5" px="$3" py="$1.5">
+            <SizableText size="$1" textTransform="capitalize">
+              {rightLabel}
+            </SizableText>
+          </XStack>
+        )}
       </ListItem>
     </YGroup.Item>
   )

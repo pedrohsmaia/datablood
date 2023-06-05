@@ -1,27 +1,30 @@
+import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useRouter, useSegments } from 'expo-router'
 import { useEffect, useState } from 'react'
 
 /**
- *  This hook will protect the route access based on user authentication.
+ *  this hook will protect the route access based on user authentication.
  */
 export function useProtectedRoute() {
-  const { user, isLoading } = useUser()
+  const { session, isLoading } = useUser()
   const segments = useSegments()
   const router = useRouter()
+  const supabase = useSupabase()
   const [initialLoading, setInitialLoading] = useState(true)
 
   useEffect(() => {
     const inAuthGroup = segments[0] === '(auth)'
     if (
-      // If the user is not logged in and the initial segment is not anything in the auth group.
+      // if the user is not logged in and the initial segment is not anything in the auth group.
+      // `user` being present does not mean user is logged in. it's session that determines if we have the user logged in, so we check session.
       !isLoading &&
-      !user &&
+      !session &&
       !inAuthGroup
     ) {
-      // Redirect to the login page.
+      // redirect to the login page.
       router.replace('/onboarding')
-    } else if (user && inAuthGroup) {
+    } else if (session && inAuthGroup) {
       // Redirect away from the login page.
       router.replace('/')
     }
@@ -29,7 +32,7 @@ export function useProtectedRoute() {
     if (!isLoading) {
       setInitialLoading(false)
     }
-  }, [user, segments, isLoading])
+  }, [session, segments, isLoading])
 
   return {
     initialLoading,

@@ -10,8 +10,8 @@ export const headingFont = createInterFont(
       7: 'none',
     },
     weight: {
-      4: '500',
-      7: '700',
+      3: '500',
+      4: '700',
     },
     face: {
       700: { normal: 'InterBold' },

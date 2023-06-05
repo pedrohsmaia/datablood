@@ -1,4 +1,5 @@
 import {
+  AnimatePresence,
   Button,
   Fieldset,
   Form,
@@ -10,7 +11,6 @@ import {
   Paragraph,
   Text,
   YStack,
-  useToastController,
 } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useState } from 'react'
@@ -20,39 +20,59 @@ import { useRouter } from 'solito/router'
 
 export const SignInScreen = () => {
   const supabase = useSupabase()
-  const toast = useToastController()
   const router = useRouter()
+  const [error, setError] = useState<string | null>(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
 
+  const handleUpdateEmail = (newEmail: string) => {
+    setError(null)
+    setEmail(newEmail)
+  }
+
+  const handleUpdatePassword = (newPassword: string) => {
+    setError(null)
+    setPassword(newPassword)
+  }
+
   async function signInWithEmail() {
+    setError(null)
     setLoading(true)
     const { error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
     })
 
-    if (error) toast.show(error.message)
-    else {
+    if (error) {
+      setError(error.message)
+    } else {
       router.replace('/')
     }
     setLoading(false)
   }
 
+  // supabase won't return field specific errors, so we do this:
+  const errorLc = error?.toLowerCase()
+  const isEmailErrored = errorLc?.includes('email') || errorLc?.includes('credentials')
+  const isPasswordErrored = errorLc?.includes('password') || errorLc?.includes('credentials')
+
   return (
     <Form onSubmit={() => signInWithEmail()} asChild>
       <FormWrapper>
-        <YStack gap="$1">
-          <H2>Welcome back</H2>
+        <YStack gap="$3">
+          <H2>Welcome Back</H2>
           <Paragraph theme="alt1">Sign in to your account</Paragraph>
         </YStack>
         <FormWrapper.Body>
           <Fieldset>
-            <Label htmlFor="signin-email">Email</Label>
+            <Label theme={isEmailErrored ? 'red_alt2' : undefined} htmlFor="signin-email">
+              Email
+            </Label>
             <Input
+              theme={isEmailErrored ? 'red_alt2' : undefined}
               id="signin-email"
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={handleUpdateEmail}
               value={email}
               keyboardType="email-address"
               placeholder="email@address.com"
@@ -60,18 +80,35 @@ export const SignInScreen = () => {
             />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor="signin-password">Password</Label>
+            <Label theme={isPasswordErrored ? 'red_alt2' : undefined} htmlFor="signin-password">
+              Password
+            </Label>
             <Input
+              theme={isPasswordErrored ? 'red_alt2' : undefined}
               secureTextEntry
               textContentType="password"
               id="signin-password"
               autoComplete="password"
-              onChangeText={(text) => setPassword(text)}
+              onChangeText={handleUpdatePassword}
               value={password}
               placeholder="Password"
               autoCapitalize={'none'}
             />
           </Fieldset>
+          <AnimatePresence>
+            {!!error && (
+              <Paragraph
+                key="error-paragraph"
+                animation="200ms"
+                opacity={1}
+                enterStyle={{ opacity: 0 }}
+                exitStyle={{ opacity: 0 }}
+                theme="red_alt2"
+              >
+                {error}
+              </Paragraph>
+            )}
+          </AnimatePresence>
           <Link
             color="$color"
             href="/reset-password"

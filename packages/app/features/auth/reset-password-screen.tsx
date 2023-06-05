@@ -1,39 +1,74 @@
 import {
+  AnimatePresence,
   Button,
   Fieldset,
   Form,
   FormWrapper,
+  H2,
   Input,
   Label,
   Link,
-  useToastController,
-  H2,
   Paragraph,
-  YStack,
   Text,
+  YStack,
 } from '@my/ui'
+import { ChevronLeft } from '@tamagui/lucide-icons'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useState } from 'react'
 
 export const ResetPasswordScreen = () => {
   const supabase = useSupabase()
-  const toast = useToastController()
+  const [error, setError] = useState<string | null>(null)
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+
+  const handleUpdateEmail = (newEmail: string) => {
+    setError(null)
+    setEmail(newEmail)
+  }
 
   async function resetPassword() {
     setLoading(true)
     const { error } = await supabase.auth.resetPasswordForEmail(email)
 
-    if (error) toast.show(error.message)
-    else toast.show('Check your email for a link!')
+    if (error) {
+      setError(error.message)
+    } else {
+      setShowSuccess(true)
+    }
     setLoading(false)
+  }
+
+  if (showSuccess) {
+    return (
+      <FormWrapper>
+        <FormWrapper.Body>
+          <YStack gap="$3">
+            <H2>Check Your Email</H2>
+            <Paragraph theme="alt1">
+              We've sent you a reset link. Please check your email ({email}) and confirm it.
+            </Paragraph>
+          </YStack>
+        </FormWrapper.Body>
+        <FormWrapper.Footer>
+          <Button
+            themeInverse
+            icon={ChevronLeft}
+            borderRadius={100}
+            onPress={() => setShowSuccess(false)}
+          >
+            Back
+          </Button>
+        </FormWrapper.Footer>
+      </FormWrapper>
+    )
   }
 
   return (
     <Form onSubmit={() => resetPassword()} asChild>
       <FormWrapper>
-        <YStack gap="$1">
+        <YStack gap="$3">
           <H2>Reset your password</H2>
           <Paragraph theme="alt1">
             Type in your email and we'll send you a link to reset your password
@@ -41,16 +76,34 @@ export const ResetPasswordScreen = () => {
         </YStack>
         <FormWrapper.Body>
           <Fieldset>
-            <Label htmlFor="reset-email">Email</Label>
+            <Label theme={error ? 'red_alt2' : undefined} htmlFor="reset-email">
+              Email
+            </Label>
             <Input
+              theme={error ? 'red_alt2' : undefined}
               id="reset-email"
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={handleUpdateEmail}
               value={email}
               keyboardType="email-address"
               placeholder="email@address.com"
               autoCapitalize="none"
             />
           </Fieldset>
+
+          <AnimatePresence>
+            {!!error && (
+              <Paragraph
+                key="error-paragraph"
+                animation="quick"
+                opacity={1}
+                enterStyle={{ opacity: 0 }}
+                exitStyle={{ opacity: 0 }}
+                theme="red_alt2"
+              >
+                {error}
+              </Paragraph>
+            )}
+          </AnimatePresence>
         </FormWrapper.Body>
 
         <FormWrapper.Footer>
@@ -61,10 +114,7 @@ export const ResetPasswordScreen = () => {
           </Form.Trigger>
 
           <Link disabled={loading} href="/sign-in" textAlign="center" theme="alt1">
-            Done resetting?{' '}
-            <Text textDecorationLine="underline">
-              Sign in
-            </Text>
+            Done resetting? <Text textDecorationLine="underline">Sign in</Text>
           </Link>
         </FormWrapper.Footer>
       </FormWrapper>

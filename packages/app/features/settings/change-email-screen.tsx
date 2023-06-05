@@ -1,4 +1,4 @@
-import { Button, Fieldset, Form, FormWrapper, H2, Input, Label, useToastController } from '@my/ui'
+import { Button, Fieldset, Form, FormWrapper, H2, Input, Label, isWeb, useToastController } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useState } from 'react'
@@ -29,7 +29,7 @@ export const ChangeEmailScreen = () => {
   return (
     <Form onSubmit={() => handleChangePassword()} asChild>
       <FormWrapper>
-        <H2>Change Email</H2>
+      {isWeb && <H2>Change Email</H2>}
 
         <FormWrapper.Body>
           <Fieldset>

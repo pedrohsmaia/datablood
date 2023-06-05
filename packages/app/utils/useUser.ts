@@ -13,7 +13,8 @@ export const useUser = () => {
     refetch,
   } = useQuery(['profile'], {
     queryFn: async () => {
-      const { data, error } = await supabase.from('profiles').select('*').single()
+      if (!user?.id) return null
+      const { data, error } = await supabase.from('profiles').select('*').eq('id', user.id).single()
       if (error) {
         if (error.code === 'PGRST116') {
           await supabase.auth.signOut()
@@ -32,11 +33,14 @@ export const useUser = () => {
     if (typeof user?.user_metadata.avatar_url === 'string') return user.user_metadata.avatar_url
 
     const params = new URLSearchParams()
-    params.append('name', profile?.name ?? user?.email ?? '')
+    const name = profile?.name || user?.email || ''
+    params.append('name', name)
+    params.append('size', '128')
     return `https://ui-avatars.com/api/?${params.toString()}`
   })()
 
   return {
+    session,
     user,
     profile,
     avatarUrl,
