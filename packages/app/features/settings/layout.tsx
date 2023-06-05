@@ -21,17 +21,19 @@ export const SettingsLayout = ({ children, isSettingsHome = false }: SettingsLay
 
   return (
     <XStack separator={<Separator vertical />} f={1}>
-      <YStack f={1} $sm={{ display: isSettingsHome ? 'flex' : 'none' }}>
+      <YStack
+        $sm={{ flex: 1, display: isSettingsHome ? 'flex' : 'none' }}
+        $gtSm={{
+          width: 300,
+        }}
+        $gtLg={{
+          width: 400,
+        }}
+      >
         <SettingsScreen />
       </YStack>
-      <YStack f={4} ai="center" $sm={{ display: isSettingsHome ? 'none' : 'block' }}>
-        <YStack
-          $gtSm={{
-            minWidth: 500,
-          }}
-        >
-          {children}
-        </YStack>
+      <YStack my="$10" f={1} ai="center" $sm={{ display: isSettingsHome ? 'none' : 'block' }}>
+        <YStack>{children}</YStack>
       </YStack>
     </XStack>
   )

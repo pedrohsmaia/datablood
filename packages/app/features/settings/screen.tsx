@@ -60,7 +60,7 @@ export const SettingsScreen = () => {
           </Settings.Group>
 
           <Settings.Group>
-            <SettingsItemDarkModeAction />
+            <SettingsThemeAction />
 
             <SettingsItemLogoutAction />
           </Settings.Group>
@@ -77,7 +77,7 @@ export const SettingsScreen = () => {
   )
 }
 
-const SettingsItemDarkModeAction = () => {
+const SettingsThemeAction = () => {
   const { toggle, current } = useThemeSetting()
 
   return (
@@ -85,18 +85,14 @@ const SettingsItemDarkModeAction = () => {
       icon={Moon}
       accentColor="$green9"
       onPress={toggle}
-      rightSide={
-        <SizableText color="$color11" textTransform="capitalize">
-          {current}
-        </SizableText>
-        // <Switch
-        //   size="$4"
-        //   checked={resolvedTheme === 'dark'}
-        //   onCheckedChange={() => set(resolvedTheme === 'dark' ? 'light' : 'dark')}
-        // >
-        //   <Switch.Thumb animation="100ms" />
-        // </Switch>
-      }
+      rightLabel={current}
+      // <Switch
+      //   size="$4"
+      //   checked={resolvedTheme === 'dark'}
+      //   onCheckedChange={() => set(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      // >
+      //   <Switch.Thumb animation="100ms" />
+      // </Switch>
     >
       Theme
     </Settings.Item>

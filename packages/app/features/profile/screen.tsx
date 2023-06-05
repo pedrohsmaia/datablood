@@ -17,8 +17,11 @@ export function ProfileScreen() {
             <Avatar.Image source={{ uri: avatarUrl, width: 128, height: 128 }} />
           </Avatar>
           <Button
+            scaleIcon={1.7}
+            color="$color12"
+            theme="alt2"
             {...useLink({ href: '/settings', replace: false })}
-            icon={<Cog />}
+            icon={Cog}
             accessibilityLabel="Settings"
             circular
           />
