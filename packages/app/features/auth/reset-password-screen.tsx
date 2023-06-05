@@ -33,7 +33,7 @@ export const ResetPasswordScreen = () => {
   return (
     <Form onSubmit={() => resetPassword()} asChild>
       <FormWrapper>
-        <YStack gap="$1">
+        <YStack gap="$3">
           <H2>Reset your password</H2>
           <Paragraph theme="alt1">
             Type in your email and we'll send you a link to reset your password

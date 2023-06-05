@@ -43,8 +43,8 @@ export const SignInScreen = () => {
   return (
     <Form onSubmit={() => signInWithEmail()} asChild>
       <FormWrapper>
-        <YStack gap="$1">
-          <H2>Welcome back</H2>
+        <YStack gap="$3">
+          <H2>Welcome Back</H2>
           <Paragraph theme="alt1">Sign in to your account</Paragraph>
         </YStack>
         <FormWrapper.Body>

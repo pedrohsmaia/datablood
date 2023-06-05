@@ -44,7 +44,7 @@ export const SignUpScreen = () => {
   return (
     <Form asChild onSubmit={() => signUpWithEmail()}>
       <FormWrapper>
-        <YStack gap="$1">
+        <YStack gap="$3">
           <H2>Get Started</H2>
           <Paragraph theme="alt2">Create a new account</Paragraph>
         </YStack>

@@ -1,7 +1,17 @@
 import { ScrollView, YStack, isWeb, withStaticProperties } from 'tamagui'
 
 const Wrapper = YStack.styleable((props, ref) => (
-  <YStack ref={ref} p="$4" gap="$5" flex={1} jc="center" $gtSm={{minWidth: 500}} $sm={{ jc: 'space-between' }} {...props} />
+  <YStack
+    ref={ref}
+    p="$4"
+    gap="$5"
+    flex={1}
+    jc="center"
+    $gtSm={{ maxWidth: 500 }}
+    $gtLg={{ width: 500, mx: "auto" }}
+    $sm={{ jc: 'space-between' }}
+    {...props}
+  />
 ))
 
 const Body = YStack.styleable((props, ref) => (
