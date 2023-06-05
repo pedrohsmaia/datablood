@@ -35,11 +35,12 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
                   <Circle
                     pos="absolute"
                     bottom={5}
-                    backgroundColor="$color0"
-                    shadowOpacity={0.5}
-                    shadowRadius={2}
+                    backgroundColor="$color1"
+                    shadowColor="$color1"
+                    shadowOpacity={1}
+                    shadowRadius={3}
                     shadowOffset={{
-                      height: 3,
+                      height: 0,
                       width: 0,
                     }}
                     width={size + 40}
@@ -47,17 +48,16 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
                   />
                   <LinearGradient
                     onPress={() => router.push('/create')}
-                    colors={['$color1', '$color9']}
+                    colors={['$gray1', '$gray7']}
                     start={[1, 1]}
-                    end={[0, 0]}
+                    end={[0.8, 0]}
                     width={size + 40}
                     height={size + 40}
                     borderRadius={100}
                     pos="absolute"
                     bottom={5}
-                    animation="quick"
                     pressStyle={{
-                      rotate: '50deg',
+                      rotate: '180deg',
                     }}
                   />
                   <YStack
