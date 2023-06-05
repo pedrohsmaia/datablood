@@ -16,7 +16,7 @@
     "migration:new": "npx supabase db diff -f ",
     "mn": "yarn migration:new",
     "start": "npx supabase status || npx supabase start",
-    "s": "yarn start",
+    "stop": "npx supabase status || npx supabase stop",
     "reset": "npx supabase db reset || npx supabase start",
     "r": "yarn reset",
     "lint": "npx supabase db lint --workdir ../",

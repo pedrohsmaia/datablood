@@ -58,7 +58,14 @@ Start local Supabase instance.
 
 ```shell
 yarn start
-yarn s #alias
+```
+
+#### Stop
+
+Stop local Supabase instance.
+
+```shell
+yarn stop
 ```
 
 #### Reset
