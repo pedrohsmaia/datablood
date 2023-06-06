@@ -11,20 +11,26 @@ import {
   Paragraph,
   Text,
   YStack,
-  useToastController,
 } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { createParam } from 'solito'
 import { useRouter } from 'solito/router'
+
+const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 export const SignUpScreen = () => {
   const supabase = useSupabase()
   const router = useRouter()
-  const toast = useToastController()
+  const updateParams = useUpdateParams()
+  const { params } = useParams()
   const [error, setError] = useState<string | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState(params.email || '')
+  useEffect(() => {
+    updateParams({ email: undefined })
+  }, [])
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -157,7 +163,7 @@ export const SignUpScreen = () => {
             color="$color"
             replace
             disabled={loading}
-            href="/sign-in"
+            href={`/sign-in?${new URLSearchParams(email ? { email } : undefined).toString()}`}
             textAlign="center"
             theme="alt1"
           >

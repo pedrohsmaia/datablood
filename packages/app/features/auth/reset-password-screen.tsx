@@ -14,12 +14,20 @@ import {
 } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { createParam } from 'solito'
+
+const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 export const ResetPasswordScreen = () => {
   const supabase = useSupabase()
+  const { params } = useParams()
+  const updateParams = useUpdateParams()
   const [error, setError] = useState<string | null>(null)
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState(params.email || '')
+  useEffect(() => {
+    updateParams({ email: undefined })
+  }, [])
   const [loading, setLoading] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
 
@@ -113,7 +121,12 @@ export const ResetPasswordScreen = () => {
             </Button>
           </Form.Trigger>
 
-          <Link disabled={loading} href="/sign-in" textAlign="center" theme="alt1">
+          <Link
+            disabled={loading}
+            href={`/sign-in?${new URLSearchParams(email ? { email } : undefined)}`}
+            textAlign="center"
+            theme="alt1"
+          >
             Done resetting? <Text textDecorationLine="underline">Sign in</Text>
           </Link>
         </FormWrapper.Footer>

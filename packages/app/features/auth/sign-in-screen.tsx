@@ -13,16 +13,25 @@ import {
   YStack,
 } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { createParam } from 'solito'
 import { useRouter } from 'solito/router'
 
 // nice article for implementing Supabase OAuth with expo-auth-session: https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf
 
+const { useParams, useUpdateParams } = createParam<{ email?: string }>()
+
 export const SignInScreen = () => {
   const supabase = useSupabase()
   const router = useRouter()
+  const { params } = useParams()
+  const updateParams = useUpdateParams()
   const [error, setError] = useState<string | null>(null)
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState(params.email || '')
+  useEffect(() => {
+    // remove the persisted email from the url, mostly to not leak user's email in case they share it
+    updateParams({ email: undefined })
+  }, [])
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -111,7 +120,7 @@ export const SignInScreen = () => {
           </AnimatePresence>
           <Link
             color="$color"
-            href="/reset-password"
+            href={`/reset-password?${new URLSearchParams(email ? { email } : undefined)}`}
             theme="alt2"
             textDecorationLine="underline"
             disabled={loading}
@@ -134,7 +143,7 @@ export const SignInScreen = () => {
             color="$color"
             replace
             disabled={loading}
-            href="/sign-up"
+            href={`/sign-up?${new URLSearchParams(email ? { email } : undefined).toString()}`}
             textAlign="center"
             theme="alt1"
           >
