@@ -24,7 +24,7 @@ export const ResetPasswordScreen = () => {
   const { params } = useParams()
   const updateParams = useUpdateParams()
   const [error, setError] = useState<string | null>(null)
-  const [email, setEmail] = useState(params.email || '')
+  const [email, setEmail] = useState(params?.email || '')
   useEffect(() => {
     updateParams({ email: undefined })
   }, [])

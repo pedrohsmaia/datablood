@@ -27,7 +27,7 @@ export const SignInScreen = () => {
   const { params } = useParams()
   const updateParams = useUpdateParams()
   const [error, setError] = useState<string | null>(null)
-  const [email, setEmail] = useState(params.email || '')
+  const [email, setEmail] = useState(params?.email || '')
   useEffect(() => {
     // remove the persisted email from the url, mostly to not leak user's email in case they share it
     updateParams({ email: undefined })

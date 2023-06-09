@@ -27,7 +27,7 @@ export const SignUpScreen = () => {
   const { params } = useParams()
   const [error, setError] = useState<string | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
-  const [email, setEmail] = useState(params.email || '')
+  const [email, setEmail] = useState(params?.email || '')
   useEffect(() => {
     updateParams({ email: undefined })
   }, [])
