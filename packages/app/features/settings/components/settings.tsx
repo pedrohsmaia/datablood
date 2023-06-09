@@ -15,9 +15,7 @@ import { SettingItem } from './setting-item'
 import { forwardRef } from 'react'
 
 const Wrapper = forwardRef((props: YStackProps, ref: TamaguiComponent) => (
-  <ScrollView>
     <YStack ref={ref} gap="$5" f={1} {...props} />
-  </ScrollView>
 ))
 
 const Items = forwardRef((props: YStackProps, ref: TamaguiComponent) => (

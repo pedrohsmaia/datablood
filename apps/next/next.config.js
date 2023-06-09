@@ -56,9 +56,19 @@ const plugins = [
 module.exports = function () {
   /** @type {import('next').NextConfig} */
   let config = {
-    typescript: {
-      ignoreBuildErrors: true,
+    images: {
+      remotePatterns: [
+        {
+          hostname: "ui-avatars.com"
+        },
+        {
+          hostname: 'localhost'
+        }
+      ]
     },
+    // typescript: {
+    //   ignoreBuildErrors: true,
+    // },
     modularizeImports: {
       '@tamagui/lucide-icons': {
         transform: `@tamagui/lucide-icons/dist/esm/icons/{{kebabCase member}}`,

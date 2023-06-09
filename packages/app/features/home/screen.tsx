@@ -36,7 +36,7 @@ export function HomeScreen() {
                   <FeedCard
                     title="Est duis anim ullamco"
                     authors={defaultAuthors}
-                    description="Nostrud officia pariatur commodo adipisicing cillum qui commodo voluptate ea laborum tempor."
+                    description="Nostrud officia pariatur commodo adipisicing cillum qui commodo voluptate."
                     tag="Javascript"
                     width={300}
                   />
@@ -54,7 +54,7 @@ export function HomeScreen() {
                   <FeedCard
                     title="Lorem consectetur non magna"
                     authors={defaultAuthors}
-                    description="Culpa pariatur Lorem exercitation dolore magna dolor esse laboris culpa sint exercitation elit culpa laboris."
+                    description="Culpa pariatur Lorem exercitation dolore magna dolor esse laboris."
                     tag="Web"
                     width={300}
                   />
@@ -63,7 +63,7 @@ export function HomeScreen() {
                   <FeedCard
                     title="Occaecat esse aliquip aliquip"
                     authors={defaultAuthors}
-                    description="Do in nisi qui tempor culpa Lorem cupidatat exercitation Lorem ipsum do."
+                    description="Do in nisi qui tempor culpa Lorem cupidatat exercitation Lorem ipsum."
                     tag="Javascript"
                     width={300}
                   />
@@ -72,7 +72,7 @@ export function HomeScreen() {
                   <FeedCard
                     title="Proident cupidatat pariatur dolor"
                     authors={defaultAuthors}
-                    description="Aliquip sunt commodo veniam sint sint anim aliquip esse duis adipisicing."
+                    description="Aliquip sunt commodo veniam sint sint anim aliquip esse duis."
                     tag="Tamagui"
                     width={300}
                   />
@@ -97,6 +97,7 @@ export function HomeScreen() {
             >
               <Theme name="green">
                 <FeedCard
+                  withImages
                   $gtSm={{ width: '40%' }}
                   $gtLg={{ width: '20%' }}
                   title="Nostrud officia veniam"
@@ -107,6 +108,7 @@ export function HomeScreen() {
               </Theme>
               <Theme name="green">
                 <FeedCard
+                  withImages
                   $gtSm={{ width: '40%' }}
                   $gtLg={{ width: '20%' }}
                   title="Id ullamco proident lorem"
@@ -117,6 +119,7 @@ export function HomeScreen() {
               </Theme>
               <Theme name="green">
                 <FeedCard
+                  withImages
                   $gtSm={{ width: '40%' }}
                   $gtLg={{ width: '20%' }}
                   title="Sint amet ea exercitation"
@@ -127,6 +130,7 @@ export function HomeScreen() {
               </Theme>
               <Theme name="green">
                 <FeedCard
+                  withImages
                   $gtSm={{ width: '40%' }}
                   $gtLg={{ width: '20%' }}
                   title="Proident labore laborum"
@@ -154,6 +158,7 @@ export function HomeScreen() {
             >
               <Theme name="purple">
                 <FeedCard
+                  withImages
                   $gtSm={{ width: '40%' }}
                   $gtLg={{ width: '20%' }}
                   title="Aliqua do eiusmod eu voluptate"
@@ -164,6 +169,7 @@ export function HomeScreen() {
               </Theme>
               <Theme name="purple">
                 <FeedCard
+                  withImages
                   $gtSm={{ width: '40%' }}
                   $gtLg={{ width: '20%' }}
                   title="Officia mollit proident"
@@ -174,6 +180,7 @@ export function HomeScreen() {
               </Theme>
               <Theme name="purple">
                 <FeedCard
+                  withImages
                   $gtSm={{ width: '40%' }}
                   $gtLg={{ width: '20%' }}
                   title="Enim sit dolor id elit in"
@@ -184,6 +191,7 @@ export function HomeScreen() {
               </Theme>
               <Theme name="purple">
                 <FeedCard
+                  withImages
                   $gtSm={{ width: '40%' }}
                   $gtLg={{ width: '20%' }}
                   title="Consequat id adipisicing officia"

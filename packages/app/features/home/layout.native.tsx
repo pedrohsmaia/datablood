@@ -1,10 +1,11 @@
-import { Avatar, Circle, Theme, YStack } from '@my/ui'
+import { Avatar, Circle, Theme, YStack, getVariable } from '@my/ui'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
 import { Tabs } from 'expo-router'
 import { useRouter } from 'solito/router'
 import type { HomeLayoutProps } from './layout'
+import { SolitoImage } from 'solito/image'
 
 export const HomeLayout = ({}: HomeLayoutProps) => {
   return (
@@ -85,7 +86,7 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
               return (
                 <YStack borderWidth="$1" borderColor={color} borderRadius={100}>
                   <Avatar circular p="$1" size={size}>
-                    <Avatar.Image source={{ uri: avatarUrl }} />
+                    <SolitoImage src={avatarUrl} alt="your avatar" width={size} height={size} />
                   </Avatar>
                 </YStack>
               )

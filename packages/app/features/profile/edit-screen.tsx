@@ -17,6 +17,7 @@ import { useState } from 'react'
 import { createParam } from 'solito'
 import { useRouter } from 'solito/router'
 import { UploadAvatar } from '../settings/components/upload-avatar'
+import { SolitoImage } from 'solito/image'
 
 const { useParams } = createParam<{ edit_name?: '1'; edit_about?: '1' }>()
 export const EditProfileScreen = () => {
@@ -98,7 +99,7 @@ const UserAvatar = () => {
   const { avatarUrl } = useUser()
   return (
     <Avatar circular size={128}>
-      <Avatar.Image source={{ uri: avatarUrl, width: 128, height: 128 }} />
+      <SolitoImage src={avatarUrl} alt="your avatar" width={128} height={128} />
     </Avatar>
   )
 }

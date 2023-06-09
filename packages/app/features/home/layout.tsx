@@ -9,11 +9,13 @@ import {
   StackProps,
   XStack,
   YStack,
+  getTokens,
 } from '@my/ui'
 import { Menu, Plus } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
 import { useRouter as useNextRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { SolitoImage } from 'solito/image'
 import { Link, useLink } from 'solito/link'
 import { NavTabs } from './components/nav-tabs'
 
@@ -46,7 +48,7 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
       >
         <XStack jc="space-between" $sm={{ ai: 'center' }} ai="flex-end">
           <NavTabs $sm={{ display: 'none' }} orientation="horizontal" size="$4" />
-          <YStack $gtSm={{ display: 'none' }} >
+          <YStack $gtSm={{ display: 'none' }}>
             <MobileNavbar>
               <YStack gap="$5" width="100%" alignItems="flex-end">
                 <NavTabs orientation="vertical" f={1} width="100%" size="$3" />
@@ -83,9 +85,15 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
 
 const UserAvatar = () => {
   const { avatarUrl } = useUser()
+
   return (
     <Avatar size="$4" circular>
-      <Avatar.Image source={{ uri: avatarUrl }} />
+      <SolitoImage
+        src={avatarUrl}
+        alt="your avatar"
+        width={getTokens().size['4'].val}
+        height={getTokens().size['4'].val}
+      />
     </Avatar>
   )
 }
@@ -116,7 +124,7 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
         </Button>
       </Popover.Trigger>
 
-      <Adapt platform="touch" when="sm">
+      <Adapt platform="web" when="sm">
         <Popover.Sheet zIndex={100000000} modal dismissOnSnapToBottom>
           <Popover.Sheet.Frame>
             <Popover.Sheet.ScrollView>
