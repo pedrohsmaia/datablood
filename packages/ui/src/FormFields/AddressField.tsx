@@ -7,7 +7,7 @@ import { Shake } from '../Shake'
 
 export const AddressSchema = z.object({
   street: z.string(),
-  zipCode: z.string().regex(/d{5}/, 'ZIP code should have 5 integers'),
+  zipCode: z.string().regex(/\d{5}/, 'ZIP code should have 5 integers'),
 })
 
 export const AddressField = (props: Pick<InputProps, 'size'>) => {
@@ -22,7 +22,7 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
 
       <XStack $sm={{ flexDirection: 'column' }} $gtSm={{ flexWrap: 'wrap' }} gap="$4">
         <Theme name={error?.street ? 'red' : undefined}>
-          <Fieldset f={1}>
+          <Fieldset f={1} fb={0}>
             <Label theme="alt1" size={props.size} htmlFor={`${id}-street`}>
               Street
             </Label>
@@ -42,7 +42,7 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
         </Theme>
 
         <Theme name={error?.zipCode ? 'red' : undefined}>
-          <Fieldset f={1}>
+          <Fieldset f={1} fb={0}>
             <Label theme="alt1" size={props.size} htmlFor={`${id}-zip-code`}>
               US ZIP Code
             </Label>
