@@ -38,7 +38,12 @@ export const ResetPasswordScreen = () => {
     const { error } = await supabase.auth.resetPasswordForEmail(email)
 
     if (error) {
-      alert(error.message)
+      const errorMessage = error?.message.toLowerCase()
+      if (errorMessage.includes('email')) {
+        form.setError('email', { type: 'custom', message: errorMessage })
+      } else {
+        form.setError('root', { type: 'custom', message: errorMessage })
+      }
     }
   }
 

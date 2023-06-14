@@ -1,6 +1,6 @@
 import { createTsForm, createUniqueFieldSchema } from '@ts-react/form'
 import { forwardRef } from 'react'
-import { Form, FormProps } from 'tamagui'
+import { Form, FormProps, Theme } from 'tamagui'
 import { z } from 'zod'
 import { AddressField, AddressSchema } from './FormFields/AddressField'
 import { BooleanCheckboxField } from './FormFields/BooleanCheckboxField'
@@ -13,11 +13,13 @@ import { TextField } from './FormFields/TextField'
 import { FormWrapper } from './FormWrapper'
 import { EmailField } from './FormFields/EmailField'
 import { PasswordField } from './FormFields/PasswordField'
+import { useFormContext } from 'react-hook-form'
+import { FieldError } from './FieldError'
 
 export const formFields = {
   text: z.string(),
   email: createUniqueFieldSchema(z.string().email(), 'email'),
-  password: createUniqueFieldSchema(z.string().min(6), 'password'),
+  password: createUniqueFieldSchema(z.string(), 'password'),
   textarea: createUniqueFieldSchema(z.string(), 'textarea'),
   /**
    * input that takes number
@@ -62,12 +64,16 @@ const mapping = [
   [formFields.address, AddressField] as const,
 ] as const
 
-const _SchemaForm = createTsForm(mapping, {
-  FormComponent: (props: FormProps) => (
+const FormComponent = (props: FormProps) => {
+  return (
     <FormWrapper asChild>
       <Form {...props}>{props.children}</Form>
     </FormWrapper>
-  ),
+  )
+}
+
+const _SchemaForm = createTsForm(mapping, {
+  FormComponent,
 })
 
 export const SchemaForm = forwardRef<
@@ -100,8 +106,21 @@ export const SchemaForm = forwardRef<
         <FormWrapper.Body>
           {header}
           {Object.values(fields)}
+          <RootError />
         </FormWrapper.Body>
       )}
     </_SchemaForm>
   )
 })
+
+// handle manual errors (most commonly coming from a server) for cases where it's not for a specific field - make sure to wrap inside a provider first
+const RootError = () => {
+  const context = useFormContext()
+  const errorMessage = context?.formState.errors.root?.message
+  
+  return (
+    <Theme name="red">
+      <FieldError message={errorMessage} />
+    </Theme>
+  )
+}
