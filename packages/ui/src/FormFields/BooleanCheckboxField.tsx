@@ -1,15 +1,8 @@
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
-import {
-  Checkbox,
-  CheckboxProps,
-  CheckedState,
-  Label,
-  Paragraph,
-  Theme,
-  XStack,
-  YStack,
-} from 'tamagui'
+import { Fieldset } from 'tamagui'
+import { Checkbox, CheckboxProps, CheckedState, Label, Theme, XStack } from 'tamagui'
+import { FieldError } from '../FieldError'
 
 export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native'>) => {
   const { field, error } = useTsController<CheckedState>()
@@ -19,7 +12,7 @@ export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native
 
   return (
     <Theme name={error ? 'red' : undefined}>
-      <YStack>
+      <Fieldset>
         <XStack gap="$4">
           {!!label && (
             <Label size={props.size} htmlFor={id}>
@@ -37,12 +30,8 @@ export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native
             <Checkbox.Indicator />
           </Checkbox>
         </XStack>
-        {error && (
-          <Paragraph mt="$2" theme="alt2">
-            {error.errorMessage}
-          </Paragraph>
-        )}
-      </YStack>
+        <FieldError message={error?.errorMessage} />
+      </Fieldset>
     </Theme>
   )
 }
