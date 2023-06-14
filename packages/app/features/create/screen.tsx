@@ -28,6 +28,10 @@ export const CreateScreen = () => {
         description: '',
         numOfDays: 10,
         paidProject: false,
+        billingAddress: {
+          street: '',
+          zipCode: 0,
+        },
         type: 'code',
       }}
       props={{

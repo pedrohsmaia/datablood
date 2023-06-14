@@ -38,6 +38,9 @@ export const ChangeEmailScreen = () => {
       onSubmit={handleChangePassword}
       schema={ChangeEmailSchema}
       renderBefore={() => <H2>Change Email</H2>}
+      defaultValues={{
+        email: '',
+      }}
       header={
         <Fieldset>
           <Label htmlFor="current-email">Current Email</Label>

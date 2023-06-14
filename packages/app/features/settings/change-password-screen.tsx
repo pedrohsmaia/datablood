@@ -34,6 +34,10 @@ export const ChangePasswordScreen = () => {
     <SchemaForm
       onSubmit={handleChangePassword}
       schema={ChangePasswordSchema}
+      defaultValues={{
+        password: '',
+        passwordConfirm: '',
+      }}
       renderBefore={() => <H2>Change Password</H2>}
       renderAfter={({ submit }) => (
         <Button onPress={() => submit()} themeInverse>
