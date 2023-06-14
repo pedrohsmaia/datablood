@@ -38,6 +38,7 @@ export const FeedCard = ({
       // }}
       // backgroundColor="red"
       borderRadius="$4"
+      bordered
       // overflow="visible"
       // elevationAndroid="$1"
       f={1}
@@ -47,7 +48,7 @@ export const FeedCard = ({
         {withImages && (
           <Image
             source={{
-              uri: `https://picsum.photos/seed/${title}/400/200`,
+              uri: `https://picsum.photos/seed/${title}/1000/500`,
             }}
             height={200}
             $sm={{
@@ -86,7 +87,7 @@ export const FeedCard = ({
           // borderRadius="$4"
           width="100%"
           height="100%"
-          colors={['$color6', '$color7']}
+          colors={['$color4', '$color1']}
           start={[1, 1]}
           end={[0.85, 0]}
         />
