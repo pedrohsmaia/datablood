@@ -1,5 +1,10 @@
 import { ScrollView, YStack, isWeb, withStaticProperties } from 'tamagui'
-
+/**
+ * this utility component is when creating forms where we want to
+ * push the action button to the bottom of the screen on native
+ * wrap the fields inside Body and the actions in Footer
+ * you may use asChild on the wrapper as well
+ */
 const Wrapper = YStack.styleable((props, ref) => (
   <YStack
     ref={ref}
@@ -8,7 +13,7 @@ const Wrapper = YStack.styleable((props, ref) => (
     flex={1}
     jc="center"
     $gtSm={{ maxWidth: 500 }}
-    $gtLg={{ width: 500, mx: "auto" }}
+    $gtLg={{ width: 500, mx: 'auto' }}
     $sm={{ jc: 'space-between' }}
     {...props}
   />
@@ -16,7 +21,7 @@ const Wrapper = YStack.styleable((props, ref) => (
 
 const Body = YStack.styleable((props, ref) => (
   <ScrollView>
-    <YStack p="$1" ref={ref} gap="$4" {...props} />
+    <YStack p="$1" ref={ref} gap="$2" pb="$8" {...props} />
   </ScrollView>
 ))
 

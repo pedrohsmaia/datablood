@@ -1,23 +1,20 @@
 import {
   Avatar,
   Button,
-  Fieldset,
-  Form,
-  FormWrapper,
   FullscreenSpinner,
-  Input,
-  Label,
-  TextArea,
+  SchemaForm,
+  YStack,
+  formFields,
   useToastController,
 } from '@my/ui'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
-import { useState } from 'react'
 import { createParam } from 'solito'
-import { useRouter } from 'solito/router'
-import { UploadAvatar } from '../settings/components/upload-avatar'
 import { SolitoImage } from 'solito/image'
+import { useRouter } from 'solito/router'
+import { z } from 'zod'
+import { UploadAvatar } from '../settings/components/upload-avatar'
 
 const { useParams } = createParam<{ edit_name?: '1'; edit_about?: '1' }>()
 export const EditProfileScreen = () => {
@@ -29,6 +26,11 @@ export const EditProfileScreen = () => {
   return <EditProfileForm userId={user.id} initial={{ name: profile.name, about: profile.about }} />
 }
 
+const ProfileSchema = z.object({
+  name: formFields.text.describe('Name // John Doe'),
+  about: formFields.textarea.describe('About // Tell us a bit about yourself'),
+})
+
 const EditProfileForm = ({
   initial,
   userId,
@@ -37,15 +39,16 @@ const EditProfileForm = ({
   userId: string
 }) => {
   const { params } = useParams()
-  const [name, setName] = useState(initial.name ?? '')
-  const [about, setAbout] = useState(initial.about ?? '')
   const supabase = useSupabase()
   const toast = useToastController()
   const queryClient = useQueryClient()
   const router = useRouter()
   const mutation = useMutation({
-    async mutationFn() {
-      await supabase.from('profiles').update({ name, about }).eq('id', userId)
+    async mutationFn(data: z.infer<typeof ProfileSchema>) {
+      await supabase
+        .from('profiles')
+        .update({ name: data.name, about: data.about })
+        .eq('id', userId)
     },
     async onSuccess() {
       toast.show('Successfully updated!')
@@ -53,45 +56,36 @@ const EditProfileForm = ({
       router.back()
     },
   })
+
   return (
-    <Form onSubmit={mutation.mutate} asChild>
-      <FormWrapper maxWidth={600} mx="auto" width="100%">
-        <UploadAvatar>
-          <UserAvatar />
-        </UploadAvatar>
-
-        <FormWrapper.Body>
-          <Fieldset>
-            <Label htmlFor="name">Name</Label>
-            <Input
-              autoFocus={!!params?.edit_name}
-              id="name"
-              autoComplete="name"
-              onChangeText={(text) => setName(text)}
-              value={name}
-              placeholder="John Doe"
-            />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor="about">About</Label>
-            <TextArea
-              autoFocus={!!params?.edit_about}
-              numberOfLines={4}
-              id="about"
-              onChangeText={(text) => setAbout(text)}
-              value={about}
-              placeholder="Tell us a bit about yourself..."
-            />
-          </Fieldset>
-        </FormWrapper.Body>
-
-        <FormWrapper.Footer>
-          <Form.Trigger asChild>
-            <Button themeInverse> Update Profile</Button>
-          </Form.Trigger>
-        </FormWrapper.Footer>
-      </FormWrapper>
-    </Form>
+    <SchemaForm
+      header={
+        <YStack mb="$10">
+          <UploadAvatar>
+            <UserAvatar />
+          </UploadAvatar>
+        </YStack>
+      }
+      schema={ProfileSchema}
+      props={{
+        name: {
+          autoFocus: !!params?.edit_name,
+        },
+        about: {
+          autoFocus: !!params?.edit_about,
+        },
+      }}
+      defaultValues={{
+        name: initial.name,
+        about: initial.about,
+      }}
+      onSubmit={(values) => mutation.mutate(values)}
+      renderAfter={({ submit }) => (
+        <Button onPress={() => submit()} themeInverse>
+          Update Profile
+        </Button>
+      )}
+    />
   )
 }
 

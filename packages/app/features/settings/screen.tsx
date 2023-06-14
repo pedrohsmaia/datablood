@@ -8,11 +8,6 @@ import packageJson from '../../package.json'
 import { Settings } from './components/settings'
 
 export const SettingsScreen = () => {
-  const { user, profile } = useUser()
-  if (!user || !profile) {
-    return null
-  }
-
   return (
     <YStack f={1} gap="$2" jc="space-between">
       <ScrollView>

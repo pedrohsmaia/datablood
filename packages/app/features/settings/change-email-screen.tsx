@@ -1,20 +1,27 @@
-import { Button, Fieldset, Form, FormWrapper, H2, Input, Label, isWeb, useToastController } from '@my/ui'
+import {
+  Button,
+  Fieldset,
+  H2,
+  Input,
+  Label,
+  SchemaForm,
+  formFields,
+  useToastController,
+} from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
-import { useState } from 'react'
+import { z } from 'zod'
+
+const ChangeEmailSchema = z.object({
+  email: formFields.email.describe('New Email // email@adderss.com'),
+})
 
 export const ChangeEmailScreen = () => {
   const { user } = useUser()
-  const [email, setEmail] = useState('')
   const supabase = useSupabase()
   const toast = useToastController()
 
-  const handleChangePassword = async () => {
-    if (!email) {
-      toast.show('Fill out the fields first.')
-      return
-    }
-
+  const handleChangePassword = async ({ email }: z.infer<typeof ChangeEmailSchema>) => {
     const { data, error } = await supabase.auth.updateUser({ email })
     if (error) {
       toast.show(error.message)
@@ -27,43 +34,29 @@ export const ChangeEmailScreen = () => {
   }
 
   return (
-    <Form onSubmit={() => handleChangePassword()} asChild>
-      <FormWrapper>
-      {isWeb && <H2>Change Email</H2>}
-
-        <FormWrapper.Body>
-          <Fieldset>
-            <Label htmlFor="current-email">Current Email</Label>
-            <Input
-              disabled
-              opacity={0.5}
-              id="current-email"
-              autoComplete="email"
-              value={user?.email}
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-          </Fieldset>
-
-          <Fieldset>
-            <Label htmlFor="email">New Email</Label>
-            <Input
-              id="email"
-              autoComplete="email"
-              onChangeText={(text) => setEmail(text)}
-              value={email}
-              keyboardType="email-address"
-              placeholder="email@address.com"
-              autoCapitalize="none"
-            />
-          </Fieldset>
-        </FormWrapper.Body>
-        <FormWrapper.Footer>
-          <Form.Trigger asChild>
-            <Button themeInverse>Update Email</Button>
-          </Form.Trigger>
-        </FormWrapper.Footer>
-      </FormWrapper>
-    </Form>
+    <SchemaForm
+      onSubmit={handleChangePassword}
+      schema={ChangeEmailSchema}
+      renderBefore={() => <H2>Change Email</H2>}
+      header={
+        <Fieldset>
+          <Label htmlFor="current-email">Current Email</Label>
+          <Input
+            disabled
+            opacity={0.5}
+            id="current-email"
+            autoComplete="email"
+            value={user?.email}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </Fieldset>
+      }
+      renderAfter={({ submit }) => (
+        <Button onPress={() => submit()} themeInverse>
+          Update Email
+        </Button>
+      )}
+    />
   )
 }
