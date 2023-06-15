@@ -6,9 +6,8 @@ import { FieldError } from '../FieldError'
 
 export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native'>) => {
   const { field, error } = useTsController<CheckedState>()
-  const { label, isOptional, uniqueId } = useFieldInfo()
-  const reactId = useId()
-  const id = uniqueId || reactId
+  const { label, isOptional } = useFieldInfo()
+  const id = useId()
 
   return (
     <Theme name={error ? 'red' : undefined}>

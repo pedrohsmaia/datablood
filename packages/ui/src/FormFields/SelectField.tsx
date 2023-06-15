@@ -31,9 +31,8 @@ export const SelectField = ({
   options: SelectItem[]
 } & Pick<SelectProps, 'size' | 'native'>) => {
   const { field, error } = useTsController<string>()
-  const { label, isOptional, uniqueId } = useFieldInfo()
-  const reactId = useId()
-  const id = uniqueId || reactId
+  const { label, isOptional } = useFieldInfo()
+  const id = useId()
 
   return (
     <Theme name={error ? 'red' : undefined}>

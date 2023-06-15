@@ -6,9 +6,8 @@ import { Shake } from '../Shake'
 
 export const PasswordField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
   const { field, error } = useTsController<string>()
-  const { label, isOptional, placeholder, uniqueId } = useFieldInfo()
-  const reactId = useId()
-  const id = uniqueId || reactId
+  const { label, isOptional, placeholder } = useFieldInfo()
+  const id = useId()
 
   return (
     <Theme name={error ? 'red' : undefined}>

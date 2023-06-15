@@ -5,9 +5,8 @@ import { FieldError } from '../FieldError'
 
 export const BooleanSwitchField = (props: Pick<SwitchProps, 'size' | 'native'>) => {
   const { field, error } = useTsController<boolean>()
-  const { label, isOptional, uniqueId } = useFieldInfo()
-  const reactId = useId()
-  const id = uniqueId || reactId
+  const { label, isOptional } = useFieldInfo()
+  const id = useId()
 
   return (
     <Theme name={error ? 'red' : undefined}>

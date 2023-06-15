@@ -12,9 +12,8 @@ export const AddressSchema = z.object({
 
 export const AddressField = (props: Pick<InputProps, 'size'>) => {
   const { field, error } = useTsController<z.infer<typeof AddressSchema>>()
-  const { label, uniqueId } = useFieldInfo()
-  const reactId = useId()
-  const id = uniqueId || reactId
+  const { label } = useFieldInfo()
+  const id = useId()
 
   return (
     <Fieldset gap="$2">
