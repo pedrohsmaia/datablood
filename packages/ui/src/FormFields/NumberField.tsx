@@ -1,4 +1,4 @@
-import { useFieldInfo, useTsController } from '@ts-react/form'
+import { useFieldInfo, useNumberFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
 import { Fieldset, Input, InputProps, Label, Theme } from 'tamagui'
 import { FieldError } from '../FieldError'
@@ -6,7 +6,8 @@ import { Shake } from '../Shake'
 
 export const NumberField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
   const { field, error } = useTsController<number>()
-  const { label, defaultValue, isOptional, placeholder, uniqueId } = useFieldInfo()
+  const { label, defaultValue, isOptional, placeholder, uniqueId, minValue, maxValue } =
+    useNumberFieldInfo()
   const reactId = useId()
   const id = uniqueId || reactId
 
@@ -28,6 +29,14 @@ export const NumberField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
                 if (!field.value) {
                   field.onChange(defaultValue || 0)
                 }
+                return
+              }
+              if (typeof maxValue !== 'undefined' && num > maxValue) {
+                field.onChange(minValue)
+                return
+              }
+              if (typeof minValue !== 'undefined' && num < minValue) {
+                field.onChange(minValue)
                 return
               }
               field.onChange(num)

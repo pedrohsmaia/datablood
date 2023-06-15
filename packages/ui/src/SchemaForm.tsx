@@ -1,5 +1,6 @@
 import { createTsForm, createUniqueFieldSchema } from '@ts-react/form'
-import { forwardRef } from 'react'
+
+import { forwardRef, memo, useMemo } from 'react'
 import { Form, FormProps, Theme } from 'tamagui'
 import { z } from 'zod'
 import { AddressField, AddressSchema } from './FormFields/AddressField'
@@ -11,14 +12,12 @@ import { SelectField } from './FormFields/SelectField'
 import { TextAreaField } from './FormFields/TextAreaField'
 import { TextField } from './FormFields/TextField'
 import { FormWrapper } from './FormWrapper'
-import { EmailField } from './FormFields/EmailField'
 import { PasswordField } from './FormFields/PasswordField'
 import { useFormContext } from 'react-hook-form'
 import { FieldError } from './FieldError'
 
 export const formFields = {
   text: z.string(),
-  email: createUniqueFieldSchema(z.string().email(), 'email'),
   password: createUniqueFieldSchema(z.string(), 'password'),
   textarea: createUniqueFieldSchema(z.string(), 'textarea'),
   /**
@@ -53,7 +52,6 @@ export const formFields = {
 
 const mapping = [
   [formFields.text, TextField] as const,
-  [formFields.email, EmailField] as const,
   [formFields.password, PasswordField] as const,
   [formFields.textarea, TextAreaField] as const,
   [formFields.number, NumberField] as const,
@@ -102,11 +100,10 @@ export const SchemaForm = forwardRef<
       }
       {...props}
     >
-      {(fields) => (
+      {(fields, context) => (
         <FormWrapper.Body>
           {header}
-          {Object.values(fields)}
-          <RootError />
+          {props.children ? props.children(fields, context) : Object.values(fields)}
         </FormWrapper.Body>
       )}
     </_SchemaForm>
@@ -114,10 +111,11 @@ export const SchemaForm = forwardRef<
 })
 
 // handle manual errors (most commonly coming from a server) for cases where it's not for a specific field - make sure to wrap inside a provider first
-const RootError = () => {
+// stopped using it cause of state issues it introduced - set the errors to specific fields instead of root for now
+export const RootError = () => {
   const context = useFormContext()
-  const errorMessage = context?.formState.errors.root?.message
-  
+  const errorMessage = context?.formState?.errors?.root?.message
+
   return (
     <Theme name="red">
       <FieldError message={errorMessage} />

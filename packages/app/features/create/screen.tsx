@@ -14,7 +14,7 @@ export const CreateScreen = () => {
         </YStack>
       }
       schema={z.object({
-        title: formFields.text.min(10).optional().describe("Name // Your project's name"),
+        title: formFields.text.min(10).describe("Name // Your project's name"),
         description: formFields.textarea.describe(
           'Description // I need a mobile app for this one customer...'
         ),
@@ -30,7 +30,7 @@ export const CreateScreen = () => {
         paidProject: false,
         billingAddress: {
           street: '',
-          zipCode: 0,
+          zipCode: '',
         },
         type: 'code',
       }}

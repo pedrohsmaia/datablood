@@ -19,7 +19,7 @@ import { z } from 'zod'
 const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 const ResetPasswordSchema = z.object({
-  email: formFields.email.describe('Email // your@email.acme'),
+  email: formFields.text.email().describe('Email // your@email.acme'),
 })
 
 export const ResetPasswordScreen = () => {
@@ -42,7 +42,7 @@ export const ResetPasswordScreen = () => {
       if (errorMessage.includes('email')) {
         form.setError('email', { type: 'custom', message: errorMessage })
       } else {
-        form.setError('root', { type: 'custom', message: errorMessage })
+        form.setError('email', { type: 'custom', message: errorMessage })
       }
     }
   }

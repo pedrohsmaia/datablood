@@ -76,8 +76,8 @@ const EditProfileForm = ({
         },
       }}
       defaultValues={{
-        name: initial.name,
-        about: initial.about,
+        name: initial.name ?? '',
+        about: initial.about ?? '',
       }}
       onSubmit={(values) => mutation.mutate(values)}
       renderAfter={({ submit }) => (

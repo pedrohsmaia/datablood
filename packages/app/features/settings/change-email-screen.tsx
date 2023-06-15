@@ -13,7 +13,7 @@ import { useUser } from 'app/utils/useUser'
 import { z } from 'zod'
 
 const ChangeEmailSchema = z.object({
-  email: formFields.email.describe('New Email // email@adderss.com'),
+  email: formFields.text.email().describe('New Email // email@adderss.com'),
 })
 
 export const ChangeEmailScreen = () => {

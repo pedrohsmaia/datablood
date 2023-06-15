@@ -6,8 +6,8 @@ import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
 
 export const AddressSchema = z.object({
-  street: z.string(),
-  zipCode: z.string().regex(/\d{5}/, 'ZIP code should have 5 integers'),
+  street: z.string().min(4),
+  zipCode: z.string().regex(/\d{5}/, 'ZIP code should contain only 5 integers'),
 })
 
 export const AddressField = (props: Pick<InputProps, 'size'>) => {

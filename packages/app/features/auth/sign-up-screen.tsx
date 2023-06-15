@@ -25,7 +25,7 @@ import { z } from 'zod'
 const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 const SignUpSchema = z.object({
-  email: formFields.email.describe('Email // your@email.acme'),
+  email: formFields.text.email().describe('Email // your@email.acme'),
   password: formFields.password.describe('Password // Enter your password'),
 })
 
@@ -66,7 +66,7 @@ export const SignUpScreen = () => {
       } else if (errorMessage.includes('password')) {
         form.setError('password', { type: 'custom', message: errorMessage })
       } else {
-        form.setError('root', { type: 'custom', message: errorMessage })
+        form.setError('password', { type: 'custom', message: errorMessage })
       }
     } else {
       router.replace('/')
