@@ -1,4 +1,4 @@
-import { Button, H2, SchemaForm, formFields, useToastController } from '@my/ui'
+import { Button, H2, SchemaForm, YStack, formFields, useToastController } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { z } from 'zod'
 
@@ -38,7 +38,11 @@ export const ChangePasswordScreen = () => {
         password: '',
         passwordConfirm: '',
       }}
-      renderBefore={() => <H2>Change Password</H2>}
+      renderBefore={() => (
+        <YStack p="$4">
+          <H2>Change Password</H2>
+        </YStack>
+      )}
       renderAfter={({ submit }) => (
         <Button onPress={() => submit()} themeInverse>
           Update Password

@@ -1,15 +1,22 @@
-import { ScrollView, YStack, isWeb, withStaticProperties } from 'tamagui'
+import {
+  ScrollView,
+  TamaguiElement,
+  YStack,
+  YStackProps,
+  isWeb,
+  withStaticProperties,
+} from 'tamagui'
+import { forwardRef } from 'react'
 /**
  * this utility component is when creating forms where we want to
  * push the action button to the bottom of the screen on native
  * wrap the fields inside Body and the actions in Footer
  * you may use asChild on the wrapper as well
  */
-const Wrapper = YStack.styleable((props, ref) => (
+const Wrapper = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
   <YStack
     ref={ref}
-    p="$4"
-    gap="$5"
+    gap="$4"
     flex={1}
     jc="center"
     $gtSm={{ maxWidth: 500 }}
@@ -19,17 +26,19 @@ const Wrapper = YStack.styleable((props, ref) => (
   />
 ))
 
-const Body = YStack.styleable((props, ref) => (
+const Body = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
   <ScrollView>
-    <YStack p="$1" ref={ref} gap="$2" pb="$8" {...props} />
+    <YStack p="$4" ref={ref} gap="$2" pb="$8" {...props} />
   </ScrollView>
 ))
 
 /**
  * on native, these will be pushed to the bottom of the screen
  */
-const Footer = YStack.styleable((props, ref) => (
+const Footer = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
   <YStack
+    pb="$4"
+    px="$4"
     ref={ref}
     // reverse the direction so that the primary button is on the bottom of the screen on mobile
     {...(!isWeb && {

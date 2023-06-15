@@ -5,6 +5,7 @@ import {
   Input,
   Label,
   SchemaForm,
+  YStack,
   formFields,
   useToastController,
 } from '@my/ui'
@@ -37,7 +38,11 @@ export const ChangeEmailScreen = () => {
     <SchemaForm
       onSubmit={handleChangePassword}
       schema={ChangeEmailSchema}
-      renderBefore={() => <H2>Change Email</H2>}
+      renderBefore={() => (
+        <YStack p="$4">
+          <H2>Change Email</H2>
+        </YStack>
+      )}
       defaultValues={{
         email: '',
       }}

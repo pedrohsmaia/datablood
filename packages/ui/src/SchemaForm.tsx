@@ -64,7 +64,7 @@ const mapping = [
 
 const FormComponent = (props: FormProps) => {
   return (
-    <FormWrapper asChild>
+    <FormWrapper>
       <Form {...props}>{props.children}</Form>
     </FormWrapper>
   )
@@ -89,7 +89,6 @@ export const SchemaForm = forwardRef<
           als: 'center',
         },
         flex: 1,
-        p: '$4',
         ...props.formProps,
       }}
       schema={schema}
