@@ -9,9 +9,8 @@ import {
   TooltipSimple,
   XStack,
   YStack,
-} from '@my/ui'
+} from 'tamagui'
 import { LinearGradient } from '@tamagui/linear-gradient'
-import React from 'react'
 
 // mostly for showing something on home so it's not empty
 export const FeedCard = ({

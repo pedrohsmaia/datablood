@@ -1,8 +1,8 @@
-import { Button, Card, CardProps, H3, H5, Progress, SizableText, Theme, YStack } from '@my/ui'
 import { ChevronRight } from '@tamagui/lucide-icons'
 import { IconProps } from '@tamagui/lucide-icons/types/IconProps'
 import React from 'react'
 import { useLink } from 'solito/link'
+import { Button, Card, CardProps, H3, H5, Progress, SizableText, YStack } from 'tamagui'
 
 export type AchievementCardTypes = {
   icon: React.FC<IconProps>
@@ -42,7 +42,7 @@ export const AchievementCard = ({
               /{progress.full.toLocaleString()} {progress.label}
             </SizableText>
           </SizableText>
-          <Progress mt="$2"  theme="alt2" value={(progress.current / progress.full) * 100}>
+          <Progress mt="$2" theme="alt2" value={(progress.current / progress.full) * 100}>
             <Progress.Indicator animation="bouncy" />
           </Progress>
           {!!action && (
