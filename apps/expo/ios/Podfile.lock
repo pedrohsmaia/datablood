@@ -22,7 +22,7 @@ PODS:
   - EXJSONUtils (0.5.1)
   - EXManifests (0.5.2):
     - EXJSONUtils
-  - Expo (48.0.16):
+  - Expo (48.0.19):
     - ExpoModulesCore
   - expo-dev-client (2.2.1):
     - EXManifests
@@ -139,9 +139,9 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.71.8)
   - fmt (6.2.1)
   - glog (0.3.5)
-  - hermes-engine (0.71.7):
-    - hermes-engine/Pre-built (= 0.71.7)
-  - hermes-engine/Pre-built (0.71.7)
+  - hermes-engine (0.71.8):
+    - hermes-engine/Pre-built (= 0.71.8)
+  - hermes-engine/Pre-built (0.71.8)
   - libaom (2.0.2):
     - libvmaf
   - libavif (0.10.1):
@@ -758,7 +758,7 @@ SPEC CHECKSUMS:
   EXImageLoader: 9d209a8231962d4aafa60ca40380b02a398f07b9
   EXJSONUtils: 48b1e764ac35160e6f54d21ab60d7d9501f3e473
   EXManifests: 500666d48e8dd7ca5a482c9e729e4a7a6c34081b
-  Expo: b1457fbd549c00d17b62c402bc98c8229aace6d8
+  Expo: 8448e3a2aa1b295f029c81551e1ab6d986517fdb
   expo-dev-client: 92b9e487ad6a05a3ad1dda70334729ccaf622bfe
   expo-dev-launcher: 5275974e9f825f70a33bb79301a8ab894179fa94
   expo-dev-menu: 985a8a6a76c65035ba5497a5d64b5ee00dd1d58c
@@ -778,7 +778,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 8c29541858a7b6354833ba79e98ccef24fa184f6
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
-  hermes-engine: 4438d2b8bf8bebaba1b1ac0451160bab59e491f8
+  hermes-engine: 47986d26692ae75ee7a17ab049caee8864f855de
   libaom: 9bb51e0f8f9192245e3ca2a1c9e4375d9cbccc52
   libavif: e242998ccec1c83bcba0bbdc256f460ad5077348
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913

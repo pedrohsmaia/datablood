@@ -33,7 +33,7 @@ export const SettingsLayout = ({ children, isSettingsHome = false }: SettingsLay
         <SettingsScreen />
       </YStack>
       <YStack my="$10" f={1} ai="center" $sm={{ display: isSettingsHome ? 'none' : 'block' }}>
-        <YStack>{children}</YStack>
+        <YStack width="100%">{children}</YStack>
       </YStack>
     </XStack>
   )

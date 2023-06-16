@@ -14,7 +14,7 @@ export const StepContent = ({
   return (
     <YStack
       ai="center"
-      p="$4"
+      p="$8"
       pos="absolute"
       mx="auto"
       left={0}

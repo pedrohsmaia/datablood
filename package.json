@@ -22,7 +22,8 @@
     "build": "yarn workspaces foreach --exclude next-app run build",
     "upgrade:tamagui": "yarn up '*tamagui*'@latest '@tamagui/*'@latest react-native-web-lite@latest",
     "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary react-native-web-lite@canary",
-    "check-deps": "check-dependency-version-consistency ."
+    "check-deps": "check-dependency-version-consistency .",
+    "supa": "yarn workspace @my/supabase"
   },
   "resolutions": {
     "@types/react-native": "^0.71.3",
@@ -35,6 +36,7 @@
   "dependencies": {
     "@babel/runtime": "^7.18.9",
     "@manypkg/cli": "^0.19.1",
+    "@tamagui/cli": "latest",
     "check-dependency-version-consistency": "^3.0.3",
     "dotenv": "^16.0.3",
     "dotenv-cli": "^6.0.0",

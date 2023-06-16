@@ -1,156 +1,126 @@
 import {
-  AnimatePresence,
   Button,
-  Fieldset,
-  Form,
-  FormWrapper,
   H2,
-  Input,
-  Label,
   Link,
   Paragraph,
+  SchemaForm,
   Text,
   YStack,
+  formFields
 } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { FormProvider, useForm, useWatch } from 'react-hook-form'
 import { createParam } from 'solito'
 import { useRouter } from 'solito/router'
+import { z } from 'zod'
 
 // nice article for implementing Supabase OAuth with expo-auth-session: https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf
 
 const { useParams, useUpdateParams } = createParam<{ email?: string }>()
+
+const SignInSchema = z.object({
+  email: formFields.text.email().describe('Email // Enter your email'),
+  password: formFields.password.describe('Password // Choose a password'),
+})
 
 export const SignInScreen = () => {
   const supabase = useSupabase()
   const router = useRouter()
   const { params } = useParams()
   const updateParams = useUpdateParams()
-  const [error, setError] = useState<string | null>(null)
-  const [email, setEmail] = useState(params.email || '')
   useEffect(() => {
     // remove the persisted email from the url, mostly to not leak user's email in case they share it
-    updateParams({ email: undefined })
+    if (params?.email) {
+      updateParams({ email: undefined }, { web: { replace: true } })
+    }
   }, [])
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
+  const form = useForm<z.infer<typeof SignInSchema>>()
 
-  const handleUpdateEmail = (newEmail: string) => {
-    setError(null)
-    setEmail(newEmail)
-  }
-
-  const handleUpdatePassword = (newPassword: string) => {
-    setError(null)
-    setPassword(newPassword)
-  }
-
-  async function signInWithEmail() {
-    setError(null)
-    setLoading(true)
+  async function signInWithEmail({ email, password }: z.infer<typeof SignInSchema>) {
     const { error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
     })
 
     if (error) {
-      setError(error.message)
+      const errorMessage = error?.message.toLowerCase()
+      if (errorMessage.includes('email')) {
+        form.setError('email', { type: 'custom', message: errorMessage })
+      } else if (errorMessage.includes('password')) {
+        form.setError('password', { type: 'custom', message: errorMessage })
+      } else {
+        form.setError('password', { type: 'custom', message: errorMessage })
+      }
     } else {
       router.replace('/')
     }
-    setLoading(false)
   }
 
-  // supabase won't return field specific errors, so we do this:
-  const errorLc = error?.toLowerCase()
-  const isEmailErrored = errorLc?.includes('email') || errorLc?.includes('credentials')
-  const isPasswordErrored = errorLc?.includes('password') || errorLc?.includes('credentials')
-
   return (
-    <Form onSubmit={() => signInWithEmail()} asChild>
-      <FormWrapper>
-        <YStack gap="$3">
-          <H2>Welcome Back</H2>
-          <Paragraph theme="alt1">Sign in to your account</Paragraph>
-        </YStack>
-        <FormWrapper.Body>
-          <Fieldset>
-            <Label theme={isEmailErrored ? 'red_alt2' : undefined} htmlFor="signin-email">
-              Email
-            </Label>
-            <Input
-              theme={isEmailErrored ? 'red_alt2' : undefined}
-              id="signin-email"
-              onChangeText={handleUpdateEmail}
-              value={email}
-              keyboardType="email-address"
-              placeholder="email@address.com"
-              autoCapitalize="none"
-            />
-          </Fieldset>
-          <Fieldset>
-            <Label theme={isPasswordErrored ? 'red_alt2' : undefined} htmlFor="signin-password">
-              Password
-            </Label>
-            <Input
-              theme={isPasswordErrored ? 'red_alt2' : undefined}
-              secureTextEntry
-              textContentType="password"
-              id="signin-password"
-              autoComplete="password"
-              onChangeText={handleUpdatePassword}
-              value={password}
-              placeholder="Password"
-              autoCapitalize={'none'}
-            />
-          </Fieldset>
-          <AnimatePresence>
-            {!!error && (
-              <Paragraph
-                key="error-paragraph"
-                animation="200ms"
-                opacity={1}
-                enterStyle={{ opacity: 0 }}
-                exitStyle={{ opacity: 0 }}
-                theme="red_alt2"
-              >
-                {error}
-              </Paragraph>
-            )}
-          </AnimatePresence>
-          <Link
-            color="$color"
-            href={`/reset-password?${new URLSearchParams(email ? { email } : undefined)}`}
-            theme="alt2"
-            textDecorationLine="underline"
-            disabled={loading}
-          >
-            Forgot your password?
-          </Link>
-        </FormWrapper.Body>
-        <FormWrapper.Footer>
-          <Form.Trigger asChild disabled={loading}>
-            <Button borderRadius={100} themeInverse>
+    <FormProvider {...form}>
+      <SchemaForm
+        form={form}
+        schema={SignInSchema}
+        defaultValues={{
+          email: params?.email,
+          password: '',
+        }}
+        onSubmit={signInWithEmail}
+        header={
+          <YStack gap="$3" mb="$4">
+            <H2>Welcome Back</H2>
+            <Paragraph theme="alt1">Sign in to your account</Paragraph>
+          </YStack>
+        }
+        props={{
+          password: {
+            afterElement: <ForgotPasswordLink />,
+          },
+        }}
+        renderAfter={({ submit }) => (
+          <>
+            <Button onPress={() => submit()} borderRadius={100} themeInverse>
               Sign in
             </Button>
-          </Form.Trigger>
-          {/* <YStack>
+            <SignUpLink />
+            {/* <YStack>
             <Button disabled={loading} onPress={() => signInWithProvider('github')}>
               GitHub Login
             </Button>
           </YStack> */}
-          <Link
-            color="$color"
-            replace
-            disabled={loading}
-            href={`/sign-up?${new URLSearchParams(email ? { email } : undefined).toString()}`}
-            textAlign="center"
-            theme="alt1"
-          >
-            Don't have an account? <Text textDecorationLine="underline">Sign up</Text>
-          </Link>
-        </FormWrapper.Footer>
-      </FormWrapper>
-    </Form>
+          </>
+        )}
+      />
+    </FormProvider>
+  )
+}
+
+const SignUpLink = () => {
+  const email = useWatch<z.infer<typeof SignInSchema>>({ name: 'email' })
+  return (
+    <Link
+      replace
+      href={`/sign-up?${new URLSearchParams(email ? { email } : undefined).toString()}`}
+      textAlign="center"
+      theme="alt1"
+    >
+      Don't have an account? <Text textDecorationLine="underline">Sign up</Text>
+    </Link>
+  )
+}
+
+const ForgotPasswordLink = () => {
+  const email = useWatch<z.infer<typeof SignInSchema>>({ name: 'email' })
+
+  return (
+    <Link
+      mt="$1"
+      href={`/reset-password?${new URLSearchParams(email ? { email } : undefined)}`}
+      theme="alt2"
+      textDecorationLine="underline"
+    >
+      Forgot your password?
+    </Link>
   )
 }

@@ -1,32 +1,27 @@
-import {
-  Button,
-  Fieldset,
-  Form,
-  FormWrapper,
-  H2,
-  Input,
-  Label,
-  isWeb,
-  useToastController,
-} from '@my/ui'
+import { Button, H2, SchemaForm, YStack, formFields, useToastController } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
-import { useState } from 'react'
+import { z } from 'zod'
+
+const ChangePasswordSchema = z
+  .object({
+    password: formFields.password.describe('New Password // Enter your new password'),
+    passwordConfirm: formFields.password.describe('Confirm Password // Repeat your password'),
+  })
+  .superRefine(({ passwordConfirm, password }, ctx) => {
+    if (passwordConfirm !== password) {
+      ctx.addIssue({
+        path: ['passwordConfirm'],
+        code: 'custom',
+        message: 'The passwords did not match',
+      })
+    }
+  })
 
 export const ChangePasswordScreen = () => {
-  const [password, setPassword] = useState('')
-  const [passwordConfirm, setPasswordConfirm] = useState('')
   const supabase = useSupabase()
   const toast = useToastController()
 
-  const handleChangePassword = async () => {
-    if (!password || !passwordConfirm) {
-      toast.show('Fill out the fields first.')
-      return
-    }
-    if (password !== passwordConfirm) {
-      toast.show("Your passwords don't match.")
-      return
-    }
+  const handleChangePassword = async ({ password }) => {
     const { data, error } = await supabase.auth.updateUser({ password })
     if (error) {
       toast.show(error.message)
@@ -36,42 +31,23 @@ export const ChangePasswordScreen = () => {
   }
 
   return (
-    <Form onSubmit={() => handleChangePassword()} asChild>
-      <FormWrapper>
-        {isWeb && <H2>Change Password</H2>}
-        <FormWrapper.Body>
-          <Fieldset>
-            <Label htmlFor="password">New Password</Label>
-            <Input
-              id="password"
-              secureTextEntry
-              textContentType="password"
-              autoComplete="password"
-              onChangeText={(text) => setPassword(text)}
-              value={password}
-              placeholder="Password"
-              autoCapitalize={'none'}
-            />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor="password-confirm">Confirm Password</Label>
-            <Input
-              id="password-confirm"
-              secureTextEntry
-              textContentType="password"
-              autoComplete="password"
-              onChangeText={(text) => setPasswordConfirm(text)}
-              value={passwordConfirm}
-              placeholder="Password"
-              autoCapitalize={'none'}
-            />
-          </Fieldset>
-        </FormWrapper.Body>
-
-        <Form.Trigger asChild>
-          <Button themeInverse>Update Password</Button>
-        </Form.Trigger>
-      </FormWrapper>
-    </Form>
+    <SchemaForm
+      onSubmit={handleChangePassword}
+      schema={ChangePasswordSchema}
+      defaultValues={{
+        password: '',
+        passwordConfirm: '',
+      }}
+      renderBefore={() => (
+        <YStack p="$4">
+          <H2>Change Password</H2>
+        </YStack>
+      )}
+      renderAfter={({ submit }) => (
+        <Button onPress={() => submit()} themeInverse>
+          Update Password
+        </Button>
+      )}
+    />
   )
 }

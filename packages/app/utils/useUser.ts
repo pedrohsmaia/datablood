@@ -35,8 +35,8 @@ export const useUser = () => {
     const params = new URLSearchParams()
     const name = profile?.name || user?.email || ''
     params.append('name', name)
-    params.append('size', '128')
-    return `https://ui-avatars.com/api/?${params.toString()}`
+    params.append('size', '256') // will be resized again by NextImage/SolitoImage
+    return `https://ui-avatars.com/api.jpg?${params.toString()}`
   })()
 
   return {

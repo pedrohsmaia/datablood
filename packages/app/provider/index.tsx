@@ -8,6 +8,7 @@ import { QueryClientProvider } from './react-query/QueryProvider'
 import { SafeAreaProvider } from './safe-area/SafeAreaProvider'
 import { UniversalThemeProvider, useRootTheme } from './theme/UniversalThemeProvider'
 import { ToastViewport } from './toast/ToastViewport'
+import { useState } from 'react'
 
 export function Provider({
   initialSession,
@@ -24,9 +25,11 @@ export function Provider({
 
 type InnerProviderProps = Omit<TamaguiProviderProps, 'config'>
 const InnerProvider = ({ children, ...rest }: InnerProviderProps) => {
-  const queryClient = new QueryClient({
-    // query config
-  })
+  const [queryClient] = useState(
+    new QueryClient({
+      // query config
+    })
+  )
 
   const [rootTheme] = useRootTheme()
 
