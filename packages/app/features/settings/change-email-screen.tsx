@@ -48,10 +48,13 @@ export const ChangeEmailScreen = () => {
       }}
       header={
         <Fieldset>
-          <Label htmlFor="current-email">Current Email</Label>
+          <Label theme="alt1" htmlFor="current-email">
+            Current Email
+          </Label>
           <Input
             disabled
-            opacity={0.5}
+            opacity={0.8}
+            cursor="not-allowed"
             id="current-email"
             autoComplete="email"
             value={user?.email}

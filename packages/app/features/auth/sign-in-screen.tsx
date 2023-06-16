@@ -21,7 +21,7 @@ const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 const SignInSchema = z.object({
   email: formFields.text.email().describe('Email // Enter your email'),
-  password: formFields.password.describe('Password // Choose a password'),
+  password: formFields.text.min(6).describe('Password // Enter your password'),
 })
 
 export const SignInScreen = () => {
@@ -76,6 +76,7 @@ export const SignInScreen = () => {
         props={{
           password: {
             afterElement: <ForgotPasswordLink />,
+            secureTextEntry: true,
           },
         }}
         renderAfter={({ submit }) => (

@@ -26,7 +26,7 @@ const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 const SignUpSchema = z.object({
   email: formFields.text.email().describe('Email // your@email.acme'),
-  password: formFields.password.describe('Password // Enter your password'),
+  password: formFields.text.min(6).describe('Password // Choose a password'),
 })
 
 // change it to true if you're doing email confirms
@@ -86,6 +86,11 @@ export const SignUpScreen = () => {
           defaultValues={{
             email: params?.email,
             password: '',
+          }}
+          props={{
+            password: {
+              secureTextEntry: true,
+            },
           }}
           onSubmit={signUpWithEmail}
           header={

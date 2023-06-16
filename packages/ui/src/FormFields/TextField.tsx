@@ -13,13 +13,14 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label alignItems='center' size={props.size} htmlFor={id}>
+          <Label theme="alt1" alignItems="center" size={props.size} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}
         <Shake shakeKey={error?.errorMessage}>
           <Input
             maxLength={maxLength}
+            placeholderTextColor="$color10"
             autoCapitalize={isEmail ? 'none' : undefined}
             keyboardType={isEmail ? 'email-address' : undefined}
             value={field.value}

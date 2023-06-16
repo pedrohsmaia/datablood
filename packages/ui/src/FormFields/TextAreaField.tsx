@@ -13,7 +13,7 @@ export const TextAreaField = (props: Pick<TextAreaProps, 'size' | 'autoFocus'>) 
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label size={props.size} htmlFor={id}>
+          <Label theme="alt1" size={props.size} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}

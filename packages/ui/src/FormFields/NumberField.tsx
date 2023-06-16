@@ -13,12 +13,13 @@ export const NumberField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label size={props.size} htmlFor={id}>
+          <Label theme="alt1" size={props.size} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}
         <Shake shakeKey={error?.errorMessage}>
           <Input
+            placeholderTextColor="$color10"
             keyboardType="number-pad"
             value={field.value?.toString() || '0'}
             onChangeText={(text) => {

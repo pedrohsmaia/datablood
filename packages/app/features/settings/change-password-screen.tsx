@@ -4,8 +4,8 @@ import { z } from 'zod'
 
 const ChangePasswordSchema = z
   .object({
-    password: formFields.password.describe('New Password // Enter your new password'),
-    passwordConfirm: formFields.password.describe('Confirm Password // Repeat your password'),
+    password: formFields.text.min(6).describe('New Password // Enter your new password'),
+    passwordConfirm: formFields.text.min(6).describe('Confirm Password // Repeat your password'),
   })
   .superRefine(({ passwordConfirm, password }, ctx) => {
     if (passwordConfirm !== password) {
@@ -37,6 +37,14 @@ export const ChangePasswordScreen = () => {
       defaultValues={{
         password: '',
         passwordConfirm: '',
+      }}
+      props={{
+        password: {
+          secureTextEntry: true,
+        },
+        passwordConfirm: {
+          secureTextEntry: true,
+        },
       }}
       renderBefore={() => (
         <YStack p="$4">

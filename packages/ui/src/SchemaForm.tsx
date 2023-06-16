@@ -1,8 +1,10 @@
 import { createTsForm, createUniqueFieldSchema } from '@ts-react/form'
 
-import { forwardRef, memo, useMemo } from 'react'
+import { forwardRef } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { Form, FormProps, Theme } from 'tamagui'
 import { z } from 'zod'
+import { FieldError } from './FieldError'
 import { AddressField, AddressSchema } from './FormFields/AddressField'
 import { BooleanCheckboxField } from './FormFields/BooleanCheckboxField'
 import { BooleanField } from './FormFields/BooleanField'
@@ -12,13 +14,9 @@ import { SelectField } from './FormFields/SelectField'
 import { TextAreaField } from './FormFields/TextAreaField'
 import { TextField } from './FormFields/TextField'
 import { FormWrapper } from './FormWrapper'
-import { PasswordField } from './FormFields/PasswordField'
-import { useFormContext } from 'react-hook-form'
-import { FieldError } from './FieldError'
 
 export const formFields = {
   text: z.string(),
-  password: createUniqueFieldSchema(z.string(), 'password'),
   textarea: createUniqueFieldSchema(z.string(), 'textarea'),
   /**
    * input that takes number
@@ -52,7 +50,6 @@ export const formFields = {
 
 const mapping = [
   [formFields.text, TextField] as const,
-  [formFields.password, PasswordField] as const,
   [formFields.textarea, TextAreaField] as const,
   [formFields.number, NumberField] as const,
   [formFields.boolean, BooleanField] as const,

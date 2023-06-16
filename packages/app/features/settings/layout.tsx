@@ -1,4 +1,4 @@
-import { FullscreenSpinner, Separator, XStack, YStack } from '@my/ui'
+import { FullscreenSpinner, Separator, XStack, YStack, isWeb } from '@my/ui'
 import { useUser } from 'app/utils/useUser'
 import { SettingsScreen } from './screen'
 
@@ -23,6 +23,10 @@ export const SettingsLayout = ({ children, isSettingsHome = false }: SettingsLay
     <XStack separator={<Separator vertical />} f={1}>
       <YStack
         $sm={{ flex: 1, display: isSettingsHome ? 'flex' : 'none' }}
+        // this file is web-only so we can safely use CSS
+        style={{
+          transition: '200ms ease width',
+        }}
         $gtSm={{
           width: 300,
         }}

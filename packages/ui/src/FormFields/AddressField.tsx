@@ -27,6 +27,7 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
             </Label>
             <Shake shakeKey={error?.street?.errorMessage}>
               <Input
+                placeholderTextColor="$color10"
                 value={field.value?.street}
                 onChangeText={(street) => field.onChange({ ...field.value, street })}
                 onBlur={field.onBlur}
@@ -47,6 +48,7 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
             </Label>
             <Shake shakeKey={error?.zipCode?.errorMessage}>
               <Input
+                placeholderTextColor="$color10"
                 value={field.value?.zipCode}
                 onChangeText={(zipCode) => field.onChange({ ...field.value, zipCode })}
                 onBlur={field.onBlur}

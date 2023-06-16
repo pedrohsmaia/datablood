@@ -38,7 +38,7 @@ export const SelectField = ({
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label size={props.size} htmlFor={id}>
+          <Label theme="alt1" size={props.size} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}
