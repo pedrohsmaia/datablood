@@ -14,7 +14,7 @@ const steps = {
       <StepContent
         title="Fast"
         icon={CloudLightning}
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        description="This app is very fast and responsive, you'll love it."
       />
     ),
   },
@@ -24,7 +24,7 @@ const steps = {
       <StepContent
         title="Secure"
         icon={Lock}
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        description="It's also very secure, most people like things being secure."
       />
     ),
   },
@@ -34,7 +34,7 @@ const steps = {
       <StepContent
         title="Customizable"
         icon={Brush}
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        description="You can customize a lot about this app and make it your own."
       />
     ),
   },

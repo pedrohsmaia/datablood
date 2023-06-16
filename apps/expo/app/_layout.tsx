@@ -4,7 +4,9 @@ import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { useProtectedRoute } from '../utils/useProtectedRoute'
+import { LogBox } from 'react-native'
 
+LogBox.ignoreAllLogs()
 export default function HomeLayout() {
   return (
     <Provider>
