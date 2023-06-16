@@ -4,7 +4,7 @@ import { Fieldset, Input, InputProps, Label, Theme } from 'tamagui'
 import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
 
-export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
+export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secureTextEntry'>) => {
   const { field, error } = useTsController<string>()
   const { label, placeholder, isOptional, maxLength, isEmail } = useStringFieldInfo()
   const id = useId()
@@ -13,7 +13,7 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label theme="alt1" alignItems="center" size={props.size} htmlFor={id}>
+          <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}
@@ -21,6 +21,7 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
           <Input
             maxLength={maxLength}
             placeholderTextColor="$color10"
+            spellCheck={isEmail ? false : undefined}
             autoCapitalize={isEmail ? 'none' : undefined}
             keyboardType={isEmail ? 'email-address' : undefined}
             value={field.value}

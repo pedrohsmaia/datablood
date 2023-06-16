@@ -13,7 +13,7 @@ export const NumberField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label theme="alt1" size={props.size} htmlFor={id}>
+          <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}

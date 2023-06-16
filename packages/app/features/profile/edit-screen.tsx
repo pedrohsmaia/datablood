@@ -1,12 +1,5 @@
-import {
-  Avatar,
-  Button,
-  FullscreenSpinner,
-  SchemaForm,
-  YStack,
-  formFields,
-  useToastController,
-} from '@my/ui'
+import { Avatar, Button, FullscreenSpinner, YStack, useToastController } from '@my/ui'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
@@ -59,13 +52,6 @@ const EditProfileForm = ({
 
   return (
     <SchemaForm
-      header={
-        <YStack mb="$10">
-          <UploadAvatar>
-            <UserAvatar />
-          </UploadAvatar>
-        </YStack>
-      }
       schema={ProfileSchema}
       props={{
         name: {
@@ -85,7 +71,18 @@ const EditProfileForm = ({
           Update Profile
         </Button>
       )}
-    />
+    >
+      {(fields) => (
+        <>
+          <YStack mb="$10">
+            <UploadAvatar>
+              <UserAvatar />
+            </UploadAvatar>
+          </YStack>
+          {Object.values(fields)}
+        </>
+      )}
+    </SchemaForm>
   )
 }
 

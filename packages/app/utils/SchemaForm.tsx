@@ -1,19 +1,22 @@
 import { createTsForm, createUniqueFieldSchema } from '@ts-react/form'
 
+import {
+  AddressField,
+  AddressSchema,
+  BooleanCheckboxField,
+  BooleanField,
+  BooleanSwitchField,
+  FieldError,
+  FormWrapper,
+  NumberField,
+  SelectField,
+  TextAreaField,
+  TextField,
+} from '@my/ui'
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { Form, FormProps, Theme } from 'tamagui'
 import { z } from 'zod'
-import { FieldError } from './FieldError'
-import { AddressField, AddressSchema } from './FormFields/AddressField'
-import { BooleanCheckboxField } from './FormFields/BooleanCheckboxField'
-import { BooleanField } from './FormFields/BooleanField'
-import { BooleanSwitchField } from './FormFields/BooleanSwitchField'
-import { NumberField } from './FormFields/NumberField'
-import { SelectField } from './FormFields/SelectField'
-import { TextAreaField } from './FormFields/TextAreaField'
-import { TextField } from './FormFields/TextField'
-import { FormWrapper } from './FormWrapper'
 
 export const formFields = {
   text: z.string(),
@@ -71,40 +74,36 @@ const _SchemaForm = createTsForm(mapping, {
   FormComponent,
 })
 
-export const SchemaForm = forwardRef<
-  any,
-  React.ComponentProps<typeof _SchemaForm> & {
-    header?: React.ReactNode
+export const SchemaForm = forwardRef<any, React.ComponentProps<typeof _SchemaForm>>(
+  ({ schema, renderAfter, ...props }, ref) => {
+    return (
+      <_SchemaForm
+        formProps={{
+          $gtSm: {
+            width: '100%',
+            maxWidth: 600,
+            als: 'center',
+          },
+          flex: 1,
+          ...props.formProps,
+        }}
+        schema={schema}
+        renderAfter={
+          renderAfter
+            ? (vars) => <FormWrapper.Footer>{renderAfter(vars)}</FormWrapper.Footer>
+            : undefined
+        }
+        {...props}
+      >
+        {(fields, context) => (
+          <FormWrapper.Body>
+            {props.children ? props.children(fields, context) : Object.values(fields)}
+          </FormWrapper.Body>
+        )}
+      </_SchemaForm>
+    )
   }
->(({ schema, header, renderAfter, ...props }, ref) => {
-  return (
-    <_SchemaForm
-      formProps={{
-        $gtSm: {
-          width: '100%',
-          maxWidth: 600,
-          als: 'center',
-        },
-        flex: 1,
-        ...props.formProps,
-      }}
-      schema={schema}
-      renderAfter={
-        renderAfter
-          ? (vars) => <FormWrapper.Footer>{renderAfter(vars)}</FormWrapper.Footer>
-          : undefined
-      }
-      {...props}
-    >
-      {(fields, context) => (
-        <FormWrapper.Body>
-          {header}
-          {props.children ? props.children(fields, context) : Object.values(fields)}
-        </FormWrapper.Body>
-      )}
-    </_SchemaForm>
-  )
-})
+) as typeof _SchemaForm
 
 // handle manual errors (most commonly coming from a server) for cases where it's not for a specific field - make sure to wrap inside a provider first
 // stopped using it cause of state issues it introduced - set the errors to specific fields instead of root for now

@@ -1,22 +1,8 @@
-import {
-  AnimatePresence,
-  Button,
-  Fieldset,
-  Form,
-  FormWrapper,
-  H2,
-  Input,
-  Label,
-  Link,
-  Paragraph,
-  SchemaForm,
-  Text,
-  YStack,
-  formFields,
-} from '@my/ui'
+import { Button, FormWrapper, H2, Link, Paragraph, Text, YStack } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { FormProvider, useForm, useFormContext, useWatch } from 'react-hook-form'
 import { createParam } from 'solito'
 import { useRouter } from 'solito/router'
@@ -93,12 +79,6 @@ export const SignUpScreen = () => {
             },
           }}
           onSubmit={signUpWithEmail}
-          header={
-            <YStack gap="$3" mb="$4">
-              <H2>Get Started</H2>
-              <Paragraph theme="alt2">Create a new account</Paragraph>
-            </YStack>
-          }
           renderAfter={({ submit }) => (
             <>
               <Button onPress={() => submit()} borderRadius={100} themeInverse>
@@ -112,7 +92,17 @@ export const SignUpScreen = () => {
           </YStack> */}
             </>
           )}
-        />
+        >
+          {(fields) => (
+            <>
+              <YStack gap="$3" mb="$4">
+                <H2>Get Started</H2>
+                <Paragraph theme="alt2">Create a new account</Paragraph>
+              </YStack>
+              {Object.values(fields)}
+            </>
+          )}
+        </SchemaForm>
       )}
     </FormProvider>
   )

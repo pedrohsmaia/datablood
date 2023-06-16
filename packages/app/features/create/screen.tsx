@@ -1,18 +1,11 @@
-import { Button, H2, Paragraph, SchemaForm, YStack, formFields } from '@my/ui'
+import { Button, H2, Paragraph, YStack } from '@my/ui'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { z } from 'zod'
 
 export const CreateScreen = () => {
   return (
     <SchemaForm
       onSubmit={console.log}
-      header={
-        <YStack gap="$2" pb="$8">
-          <H2 ta="center">Create Your New Project</H2>
-          <Paragraph ta="center">
-            User clicked on the CTA! This is a dummy page showing a form.
-          </Paragraph>
-        </YStack>
-      }
       schema={z.object({
         title: formFields.text.min(10).describe("Name // Your project's name"),
         description: formFields.textarea.describe(
@@ -59,6 +52,16 @@ export const CreateScreen = () => {
           </Button>
         </>
       )}
-    />
+    >
+      {(fields) => (
+        <>
+          <YStack gap="$2" pb="$8">
+            <H2 ta="center">New Project</H2>
+            <Paragraph ta="center">Dummy page showing a form</Paragraph>
+          </YStack>
+          {Object.values(fields)}
+        </>
+      )}
+    </SchemaForm>
   )
 }

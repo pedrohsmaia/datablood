@@ -1,14 +1,5 @@
-import {
-  Button,
-  FormWrapper,
-  H2,
-  Link,
-  Paragraph,
-  SchemaForm,
-  Text,
-  YStack,
-  formFields,
-} from '@my/ui'
+import { Button, FormWrapper, H2, Link, Paragraph, Text, YStack } from '@my/ui'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { ChevronLeft } from '@tamagui/lucide-icons'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useEffect } from 'react'
@@ -59,14 +50,6 @@ export const ResetPasswordScreen = () => {
             email: params?.email,
           }}
           onSubmit={resetPassword}
-          header={
-            <YStack gap="$3" mb="$4">
-              <H2>Reset your password</H2>
-              <Paragraph theme="alt1">
-                Type in your email and we'll send you a link to reset your password
-              </Paragraph>
-            </YStack>
-          }
           renderAfter={({ submit }) => (
             <>
               <Button onPress={() => submit()} borderRadius={100} themeInverse>
@@ -80,7 +63,19 @@ export const ResetPasswordScreen = () => {
           </YStack> */}
             </>
           )}
-        />
+        >
+          {(fields) => (
+            <>
+              <YStack gap="$3" mb="$4">
+                <H2>Reset your password</H2>
+                <Paragraph theme="alt1">
+                  Type in your email and we'll send you a link to reset your password
+                </Paragraph>
+              </YStack>
+              {Object.values(fields)}
+            </>
+          )}
+        </SchemaForm>
       )}
     </FormProvider>
   )

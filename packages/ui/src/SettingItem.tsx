@@ -1,4 +1,4 @@
-import { ListItem, ListItemProps, SizableText, XStack, YGroup, YStack } from '@my/ui'
+import { ListItem, ListItemProps, SizableText, XStack, YGroup, YStack } from 'tamagui'
 import { IconProps } from '@tamagui/lucide-icons/types/IconProps'
 import { LinkProps, useLink } from 'solito/link'
 
@@ -29,12 +29,13 @@ export const SettingItem = ({
       <ListItem
         hoverTheme
         cursor="pointer"
-        gap="$4"
+        px="$4"
+        gap="$2"
         {...(typeof href !== 'undefined' ? useLink({ ...linkProps, href }) : {})}
         {...props}
       >
         <YStack padding="$2" borderRadius="$3">
-          <Icon color="$color" size={18} />
+          <Icon opacity={0.6} size={18} />
         </YStack>
         <SizableText flex={1}>{children}</SizableText>
         {!!rightLabel && (

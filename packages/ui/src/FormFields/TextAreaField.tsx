@@ -13,12 +13,13 @@ export const TextAreaField = (props: Pick<TextAreaProps, 'size' | 'autoFocus'>) 
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label theme="alt1" size={props.size} htmlFor={id}>
+          <Label theme="alt1" size={props.size || "$3"} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}
         <Shake shakeKey={error?.errorMessage}>
           <TextArea
+          placeholderTextColor="$color10"
             value={field.value}
             onChangeText={(text) => field.onChange(text)}
             onBlur={field.onBlur}

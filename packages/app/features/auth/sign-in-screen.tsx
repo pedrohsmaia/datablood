@@ -1,13 +1,5 @@
-import {
-  Button,
-  H2,
-  Link,
-  Paragraph,
-  SchemaForm,
-  Text,
-  YStack,
-  formFields
-} from '@my/ui'
+import { Button, H2, Link, Paragraph, Text, YStack } from '@my/ui'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useEffect } from 'react'
 import { FormProvider, useForm, useWatch } from 'react-hook-form'
@@ -67,12 +59,6 @@ export const SignInScreen = () => {
           password: '',
         }}
         onSubmit={signInWithEmail}
-        header={
-          <YStack gap="$3" mb="$4">
-            <H2>Welcome Back</H2>
-            <Paragraph theme="alt1">Sign in to your account</Paragraph>
-          </YStack>
-        }
         props={{
           password: {
             afterElement: <ForgotPasswordLink />,
@@ -92,7 +78,17 @@ export const SignInScreen = () => {
           </YStack> */}
           </>
         )}
-      />
+      >
+        {(fields) => (
+          <>
+            <YStack gap="$3" mb="$4">
+              <H2>Welcome Back</H2>
+              <Paragraph theme="alt1">Sign in to your account</Paragraph>
+            </YStack>
+            {Object.values(fields)}
+          </>
+        )}
+      </SchemaForm>
     </FormProvider>
   )
 }

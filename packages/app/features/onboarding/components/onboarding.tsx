@@ -1,11 +1,19 @@
-import { AnimatePresence, Circle, Theme, XStack, YStack, useWindowDimensions } from '@my/ui'
+import {
+  AnimatePresence,
+  Circle,
+  Theme,
+  ThemeName,
+  XStack,
+  YStack,
+  useWindowDimensions,
+} from '@my/ui'
 import { useAnimatedNumber, useAnimatedNumberStyle } from '@tamagui/animations-react-native'
 import { Brush, CloudLightning, Lock } from '@tamagui/lucide-icons'
 import React, { useEffect, useState } from 'react'
 import { Animated, PanResponder } from 'react-native'
 import { OnboardingControls } from './controls'
 import { StepContent } from './step-content'
-import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
+import { useSafeAreaInsets } from '@my/ui'
 
 const steps = {
   0: {
@@ -51,7 +59,7 @@ export const Onboarding = ({
   // prevent a background to ever "continue" animation / try to continue where it left off - cause looks weird
 
   const [key, setKey] = useState(0)
-  const currentStep = steps[stepIdx]
+  const currentStep = steps[stepIdx as keyof typeof steps]
   const stepsCount = Object.keys(steps).length
 
   const setStepIdx = (newIdx: number) => {
@@ -93,7 +101,7 @@ export const Onboarding = ({
   const safeAreaInsets = useSafeAreaInsets()
 
   return (
-    <Theme name={currentStep.theme}>
+    <Theme name={currentStep.theme as ThemeName}>
       <YStack
         flex={1}
         backgroundColor="$color3"

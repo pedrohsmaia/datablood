@@ -1,18 +1,16 @@
-import { Paragraph, ScrollView, SizableText, Spacer, YStack, isWeb } from '@my/ui'
+import { Paragraph, ScrollView, Settings, YStack, isWeb } from '@my/ui'
 import { Book, Info, Lock, LogOut, Mail, Moon, Twitter } from '@tamagui/lucide-icons'
 import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { redirect } from 'app/utils/redirect'
 import { useUser } from 'app/utils/useUser'
 import rootPackageJson from '../../../../package.json'
 import packageJson from '../../package.json'
-import { Settings } from './components/settings'
 
 export const SettingsScreen = () => {
   return (
     <YStack f={1} gap="$2" jc="space-between">
       <ScrollView>
-        <Settings>
-          <Spacer />
+        <Settings mt="$6">
           <Settings.Items>
             <Settings.Group>
               <Settings.Item icon={Lock} href="/settings/change-password" accentColor="$green9">

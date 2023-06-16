@@ -47,7 +47,13 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
         px="$4"
       >
         <XStack jc="space-between" $sm={{ ai: 'center' }} ai="flex-end">
-          <NavTabs $sm={{ display: 'none' }} orientation="horizontal" size="$4" />
+          <YStack>
+            {/* <XStack px="$2" pt="$4" pb="$2" ai="center" gap="$3">
+              <Component />
+              <H3>Tamagui Takeout</H3>
+            </XStack> */}
+            <NavTabs $sm={{ display: 'none' }} orientation="horizontal" size="$4" />
+          </YStack>
           <YStack $gtSm={{ display: 'none' }}>
             <MobileNavbar>
               <YStack gap="$5" width="100%" alignItems="flex-end">
@@ -87,12 +93,12 @@ const UserAvatar = () => {
   const { avatarUrl } = useUser()
 
   return (
-    <Avatar size="$4" circular>
+    <Avatar size="$2" circular>
       <SolitoImage
         src={avatarUrl}
         alt="your avatar"
-        width={getTokens().size['4'].val}
-        height={getTokens().size['4'].val}
+        width={getTokens().size['2'].val}
+        height={getTokens().size['2'].val}
       />
     </Avatar>
   )
@@ -174,7 +180,14 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
 }
 
 const CtaButton = (props: ButtonProps) => (
-  <Button {...useLink({ href: '/create' })} size="$3" themeInverse icon={<Plus />} {...props}>
+  <Button
+    {...useLink({ href: '/create' })}
+    size="$2"
+    scaleIcon={1.3}
+    space="$1.5"
+    icon={Plus}
+    {...props}
+  >
     Create
   </Button>
 )
