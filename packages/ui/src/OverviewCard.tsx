@@ -17,9 +17,11 @@ export const OverviewCard = ({
   ...props
 }: OverviewCardTypes) => {
   return (
-    <Card borderRadius={0} backgroundColor="transparent" {...props}>
-      <Card.Header>
-        <H6 theme="alt2">{title}</H6>
+    <Card borderRadius={0}  f={1} backgroundColor="transparent" {...props}>
+      <Card.Header f={1} jc='space-between'>
+        <H6 size="$4" theme="alt2">
+          {title}
+        </H6>
         <H2 mt="$2">{value}</H2>
         <XStack mt="$4">
           {!!badgeText && (

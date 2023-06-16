@@ -71,12 +71,19 @@ const AchievementsSection = () => {
         <H4>Achievements</H4>
       </XStack>
 
-      <XStack px="$4" flexWrap="wrap" jc="space-between" flex={1} gap="$4">
+      <XStack
+        px="$4"
+        flexWrap="wrap"
+        flex={1}
+        gap="$2"
+        jc="space-evenly"
+        // $gtLg={{ jc: 'flex-start' }}
+      >
         <AchievementCard
           icon={DollarSign}
           $sm={{ width: '100%' }}
           $gtSm={{ width: '40%' }}
-          $gtLg={{ width: '20%' }}
+          $gtLg={{ width: '24%' }}
           title="Make your first 100K"
           progress={{ current: 81_500, full: 100_000, label: 'dollars made' }}
           action={{
@@ -87,8 +94,8 @@ const AchievementsSection = () => {
         <AchievementCard
           icon={User}
           $sm={{ width: '100%' }}
-          $gtSm={{ width: '40%' }}
-          $gtLg={{ width: '20%' }}
+          $gtSm={{ width: '42%' }}
+          $gtLg={{ width: '24%' }}
           title="Build your community"
           progress={{ current: 280, full: 500, label: 'community members' }}
           action={{
@@ -100,7 +107,7 @@ const AchievementsSection = () => {
           icon={Edit2}
           $sm={{ width: '100%' }}
           $gtSm={{ width: '40%' }}
-          $gtLg={{ width: '20%' }}
+          $gtLg={{ width: '24%' }}
           title="Set up your profile"
           progress={{ current: 3, full: 3, label: 'steps completed' }}
           action={{
@@ -112,7 +119,7 @@ const AchievementsSection = () => {
           icon={Users}
           $sm={{ width: '100%' }}
           $gtSm={{ width: '40%' }}
-          $gtLg={{ width: '20%' }}
+          $gtLg={{ width: '24%' }}
           title="Refer 5 friends"
           progress={{ current: 4, full: 5, label: 'friends referred' }}
           action={{
@@ -138,9 +145,9 @@ const OverviewSection = () => {
             $gtSm={{ width: 300 }}
             $gtMd={{ width: 240 }}
             $sm={{ width: 200 }}
-            title="Today's revenue"
-            value="$1,908"
-            badgeText="+5.9%"
+            title="Weekly Recurring Revenue"
+            value="$18,908"
+            badgeText="+0.5%"
             badgeState="success"
           />
 
@@ -148,9 +155,9 @@ const OverviewSection = () => {
             $gtSm={{ width: 300 }}
             $gtMd={{ width: 240 }}
             $sm={{ width: 200 }}
-            title="Week's revenue"
-            value="$8,908"
-            badgeText="+4.5%"
+            title="Yearly Recurring Revenue"
+            value="$204,010"
+            badgeText="+40.5%"
             badgeState="success"
           />
 
@@ -172,6 +179,26 @@ const OverviewSection = () => {
             value="14 Users"
             badgeText="-2%"
             badgeState="failure"
+          />
+
+          <OverviewCard
+            $gtSm={{ width: 300 }}
+            $gtMd={{ width: 240 }}
+            $sm={{ width: 200 }}
+            title="Weekly Post Views"
+            value="30,104"
+            badgeText="-2%"
+            badgeState="failure"
+          />
+
+          <OverviewCard
+            $gtSm={{ width: 300 }}
+            $gtMd={{ width: 240 }}
+            $sm={{ width: 200 }}
+            title="Monthly Post Views"
+            value="150,104"
+            badgeText="+1%"
+            badgeState="success"
           />
         </XStack>
       </ScrollView>

@@ -186,6 +186,7 @@ const CtaButton = (props: ButtonProps) => (
     scaleIcon={1.3}
     space="$1.5"
     icon={Plus}
+    themeInverse
     {...props}
   >
     Create
