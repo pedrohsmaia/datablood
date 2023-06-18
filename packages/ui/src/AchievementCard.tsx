@@ -1,5 +1,5 @@
 import { ChevronRight } from '@tamagui/lucide-icons'
-import { IconProps } from '@tamagui/lucide-icons/types/IconProps'
+import { IconProps } from '@tamagui/helpers-icon'
 import React from 'react'
 import { useLink } from 'solito/link'
 import { Button, Card, CardProps, H3, H5, Progress, SizableText, YStack } from 'tamagui'

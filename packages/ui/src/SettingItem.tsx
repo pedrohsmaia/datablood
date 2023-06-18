@@ -1,5 +1,5 @@
 import { ListItem, ListItemProps, SizableText, XStack, YGroup, YStack } from 'tamagui'
-import { IconProps } from '@tamagui/lucide-icons/types/IconProps'
+import { IconProps } from '@tamagui/helpers-icon'
 import { LinkProps, useLink } from 'solito/link'
 
 export type SettingItemProps = {

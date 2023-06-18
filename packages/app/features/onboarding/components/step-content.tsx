@@ -1,5 +1,5 @@
 import { H2, Paragraph, YStack } from '@my/ui'
-import { IconProps } from '@tamagui/lucide-icons/types/IconProps'
+import { IconProps } from '@tamagui/helpers-icon'
 import React from 'react'
 
 export const StepContent = ({
