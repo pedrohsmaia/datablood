@@ -1,33 +1,18 @@
-import { ListItem, SizableText, YGroup, YStack } from 'tamagui'
 import { ChevronRight } from '@tamagui/lucide-icons'
-import { useLink } from 'solito/link'
+import { ListItem, SizableText, YGroup, YStack } from 'tamagui'
 import { SettingItemProps } from './SettingItem'
 
 export const SettingItem = ({
   href,
-  replace,
-  scroll,
-  shallow,
-  prefetch,
-  locale,
   icon: Icon,
   children,
   accentColor,
   rightLabel,
   ...props
 }: SettingItemProps) => {
-  const linkProps = { href, replace, scroll, shallow, prefetch, locale }
-
   return (
     <YGroup.Item>
-      <ListItem
-        cursor="pointer"
-        gap="$4"
-        hoverTheme
-        pressTheme
-        {...(typeof href !== 'undefined' ? useLink({ ...linkProps, href }) : {})}
-        {...props}
-      >
+      <ListItem cursor="pointer" gap="$4" hoverTheme pressTheme {...props}>
         <YStack backgroundColor={accentColor} padding="$2" borderRadius="$3">
           <Icon color="white" size={18} />
         </YStack>
