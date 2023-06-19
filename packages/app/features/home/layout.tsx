@@ -49,12 +49,8 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
         backgroundColor="$color1"
       >
         <XStack jc="space-between" $sm={{ ai: 'center' }} ai="flex-end">
-          <YStack>
-            {/* <XStack px="$2" pt="$4" pb="$2" ai="center" gap="$3">
-              <Component />
-              <H3>Tamagui Takeout</H3>
-            </XStack> */}
-            <NavTabs $sm={{ display: 'none' }} orientation="horizontal" size="$4" />
+          <YStack $sm={{ display: 'none' }}>
+            <NavTabs orientation="horizontal" size="$4" />
           </YStack>
           <YStack $gtSm={{ display: 'none' }}>
             <MobileNavbar>

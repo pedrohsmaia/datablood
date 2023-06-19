@@ -72,7 +72,7 @@ export const NavTabs = (props: TabsProps) => {
       <AnimatePresence>
         {activeAt && (
           <TabsRovingIndicator
-          zIndex={1}
+            zIndex={1}
             key="active-indicator"
             theme="active"
             active
@@ -100,6 +100,7 @@ export const NavTabs = (props: TabsProps) => {
         loop={false}
         w="100%"
         f={1}
+        flexDirection={props.orientation === 'horizontal' ? "row" : 'column'} // temp fix: would be fixed after https://github.com/tamagui/tamagui/pull/1313
       >
         <Tab value="/" onInteraction={handleOnInteraction}>
           Home
