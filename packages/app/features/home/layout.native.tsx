@@ -38,7 +38,7 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
                     bottom={5}
                     backgroundColor="$color1"
                     shadowColor="$color1"
-                    shadowOpacity={1}
+                    shadowOpacity={0.7}
                     shadowRadius={3}
                     shadowOffset={{
                       height: 0,
@@ -58,7 +58,7 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
                     pos="absolute"
                     bottom={5}
                     pressStyle={{
-                      rotate: '180deg',
+                      rotate: '20deg',
                     }}
                   />
                   <YStack

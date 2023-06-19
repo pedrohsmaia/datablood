@@ -19,7 +19,12 @@ export const SettingsLayout = ({}: SettingsLayoutProps) => {
               : undefined,
         }}
       />
-
+      <Stack.Screen
+        name="general"
+        options={{
+          title: 'General',
+        }}
+      />
       <Stack.Screen
         name="change-email"
         options={{

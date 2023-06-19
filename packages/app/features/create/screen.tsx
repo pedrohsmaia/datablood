@@ -1,4 +1,4 @@
-import { Button, H2, Paragraph, Theme, YStack } from '@my/ui'
+import { Button, H2, Paragraph, Theme, YStack, isWeb } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { z } from 'zod'
 
@@ -54,7 +54,7 @@ export const CreateScreen = () => {
       {(fields) => (
         <>
           <YStack gap="$2" py="$4" pb="$8">
-            <H2 ta="center">New Project</H2>
+            {isWeb && <H2 ta="center">New Project</H2>}
             <Paragraph ta="center">Dummy page showing a form</Paragraph>
           </YStack>
           {Object.values(fields)}

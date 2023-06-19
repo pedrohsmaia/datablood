@@ -145,7 +145,7 @@ const OverviewSection = () => {
             $gtSm={{ width: 300 }}
             $gtMd={{ width: 240 }}
             $sm={{ width: 200 }}
-            title="Weekly Recurring Revenue"
+            title="MRR"
             value="$18,908"
             badgeText="+0.5%"
             badgeState="success"
@@ -155,7 +155,7 @@ const OverviewSection = () => {
             $gtSm={{ width: 300 }}
             $gtMd={{ width: 240 }}
             $sm={{ width: 200 }}
-            title="Yearly Recurring Revenue"
+            title="ARR"
             value="$204,010"
             badgeText="+40.5%"
             badgeState="success"
