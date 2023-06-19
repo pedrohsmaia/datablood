@@ -29,14 +29,12 @@ export const AchievementCard = ({
 }: AchievementCardTypes) => {
   return (
     <Card borderRadius={0} chromeless {...props}>
-      <Card.Header my="auto" padded f={1}>
-        <YStack>
-          <Icon size={64} />
-        </YStack>
+      <Card.Header my="auto" padded f={1} gap="$4">
+        <Icon size={64} opacity={0.6} />
         <YStack>
           <H5 theme="alt2">{subtitle}</H5>
           <H3 mt="$2">{title}</H3>
-          <SizableText mt="$4">
+          <SizableText mt="$2">
             <SizableText>{progress.current.toLocaleString()}</SizableText>
             <SizableText theme="alt2">
               /{progress.full.toLocaleString()} {progress.label}

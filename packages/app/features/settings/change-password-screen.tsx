@@ -1,4 +1,4 @@
-import { Button, H2, YStack, isWeb, useToastController } from '@my/ui'
+import { Button, H2, Theme, YStack, isWeb, useToastController } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
@@ -60,9 +60,9 @@ export const ChangePasswordScreen = () => {
         )
       }
       renderAfter={({ submit }) => (
-        <Button onPress={() => submit()} themeInverse>
-          Update Password
-        </Button>
+        <Theme inverse>
+          <Button onPress={() => submit()}>Update Password</Button>
+        </Theme>
       )}
     />
   )

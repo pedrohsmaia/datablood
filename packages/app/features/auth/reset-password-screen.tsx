@@ -1,4 +1,4 @@
-import { Button, FormWrapper, H2, Link, Paragraph, Text, YStack } from '@my/ui'
+import { Button, FormWrapper, H2, Link, Paragraph, Text, Theme, YStack } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { ChevronLeft } from '@tamagui/lucide-icons'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
@@ -52,9 +52,11 @@ export const ResetPasswordScreen = () => {
           onSubmit={resetPassword}
           renderAfter={({ submit }) => (
             <>
-              <Button onPress={() => submit()} borderRadius={100} themeInverse>
-                Send Link
-              </Button>
+              <Theme inverse>
+                <Button onPress={() => submit()} borderRadius={100} themeInverse>
+                  Send Link
+                </Button>
+              </Theme>
               <SignInLink />
               {/* <YStack>
             <Button disabled={loading} onPress={() => signInWithProvider('github')}>

@@ -1,4 +1,4 @@
-import { Button, H2, Paragraph, YStack } from '@my/ui'
+import { Button, H2, Paragraph, Theme, YStack } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { z } from 'zod'
 
@@ -46,11 +46,9 @@ export const CreateScreen = () => {
         },
       }}
       renderAfter={({ submit }) => (
-        <>
-          <Button onPress={() => submit()} themeInverse>
-            Submit
-          </Button>
-        </>
+        <Theme inverse>
+          <Button onPress={() => submit()}>Submit</Button>
+        </Theme>
       )}
     >
       {(fields) => (

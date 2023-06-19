@@ -1,4 +1,14 @@
-import { Button, Fieldset, H2, Input, Label, YStack, isWeb, useToastController } from '@my/ui'
+import {
+  Button,
+  Fieldset,
+  H2,
+  Input,
+  Label,
+  Theme,
+  YStack,
+  isWeb,
+  useToastController,
+} from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
@@ -45,9 +55,9 @@ export const ChangeEmailScreen = () => {
         email: '',
       }}
       renderAfter={({ submit }) => (
-        <Button onPress={() => submit()} themeInverse>
-          Update Email
-        </Button>
+        <Theme inverse>
+          <Button onPress={() => submit()}>Update Email</Button>
+        </Theme>
       )}
     >
       {(fields) => (

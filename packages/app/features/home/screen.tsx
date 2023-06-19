@@ -212,7 +212,7 @@ const PostsSection = () => {
       <H4 px="$4">Latest Posts</H4>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <XStack px="$4" gap="$4" mb="$4">
-          <Theme name="blue">
+          
             <FeedCard
               withImages
               $sm={{ width: 300 }}
@@ -223,8 +223,7 @@ const PostsSection = () => {
               tag="Design"
               authors={defaultAuthors}
             />
-          </Theme>
-          <Theme name="blue">
+          
             <FeedCard
               withImages
               $sm={{ width: 300 }}
@@ -235,8 +234,7 @@ const PostsSection = () => {
               tag="React"
               authors={defaultAuthors}
             />
-          </Theme>
-          <Theme name="blue">
+          
             <FeedCard
               withImages
               $sm={{ width: 300 }}
@@ -247,8 +245,7 @@ const PostsSection = () => {
               tag="Programming"
               authors={defaultAuthors}
             />
-          </Theme>
-          <Theme name="blue">
+          
             <FeedCard
               withImages
               $sm={{ width: 300 }}
@@ -259,7 +256,6 @@ const PostsSection = () => {
               tag="React"
               authors={defaultAuthors}
             />
-          </Theme>
         </XStack>
       </ScrollView>
     </YStack>
