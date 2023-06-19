@@ -118,14 +118,12 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
     <Popover open={open} onOpenChange={setOpen} size="$5" stayInFrame={{ padding: 20 }}>
       <Popover.Trigger asChild>
         <Button
-          size="$4"
           chromeless
-          noTextWrap
+          p="$2"
           onPress={() => setOpen(!open)}
           theme={open ? 'alt1' : undefined}
-        >
-          <Menu size={24} color="var(--color)" />
-        </Button>
+          icon={<Menu size={32} />}
+        />
       </Popover.Trigger>
 
       <Adapt platform="web" when="sm">
