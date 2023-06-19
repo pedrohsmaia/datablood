@@ -22,6 +22,7 @@ export const SettingsLayout = ({ children, isSettingsHome = false }: SettingsLay
   return (
     <XStack separator={<Separator vertical />} f={1}>
       <YStack
+        backgroundColor="$color1"
         $sm={{ flex: 1, display: isSettingsHome ? 'flex' : 'none' }}
         // this file is web-only so we can safely use CSS
         style={{

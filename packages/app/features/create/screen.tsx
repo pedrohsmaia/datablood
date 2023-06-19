@@ -55,7 +55,7 @@ export const CreateScreen = () => {
     >
       {(fields) => (
         <>
-          <YStack gap="$2" pb="$8">
+          <YStack gap="$2" py="$4" pb="$8">
             <H2 ta="center">New Project</H2>
             <Paragraph ta="center">Dummy page showing a form</Paragraph>
           </YStack>

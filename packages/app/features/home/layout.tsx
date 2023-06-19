@@ -7,6 +7,7 @@ import {
   Separator,
   SizableText,
   StackProps,
+  Theme,
   XStack,
   YStack,
   getTokens,
@@ -45,6 +46,7 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
         borderBottomWidth="$0.5"
         jc="center"
         px="$4"
+        backgroundColor="$color1"
       >
         <XStack jc="space-between" $sm={{ ai: 'center' }} ai="flex-end">
           <YStack>
@@ -180,17 +182,18 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
 }
 
 const CtaButton = (props: ButtonProps) => (
-  <Button
-    {...useLink({ href: '/create' })}
-    size="$2"
-    scaleIcon={1.3}
-    space="$1.5"
-    icon={Plus}
-    themeInverse
-    {...props}
-  >
-    Create
-  </Button>
+  <Theme inverse>
+    <Button
+      {...useLink({ href: '/create' })}
+      size="$2"
+      scaleIcon={1.3}
+      space="$1.5"
+      icon={Plus}
+      {...props}
+    >
+      Create
+    </Button>
+  </Theme>
 )
 
 const ProfileButton = () => (

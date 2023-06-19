@@ -30,9 +30,9 @@ const Items = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
   <YStack
     {...(isWeb
       ? {
-          separator: <Separator borderColor="$color4" borderWidth="$0.25" />,
-          gap: '$2',
-          my: '$2',
+          separator: <Separator borderColor="$color3" mx="$-4" borderWidth="$0.25" />,
+          gap: '$4',
+          m: '$4',
         }
       : {
           gap: '$4',
@@ -45,6 +45,7 @@ const Items = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
 
 const Group = (props: GroupProps) => (
   <YGroup
+    backgroundColor="transparent"
     borderRadius={14}
     disablePassBorderRadius={isWeb}
     separator={

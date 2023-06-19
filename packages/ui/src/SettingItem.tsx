@@ -29,17 +29,18 @@ export const SettingItem = ({
       <ListItem
         hoverTheme
         cursor="pointer"
-        px="$4"
         gap="$2"
+        borderRadius="$10"
         {...(typeof href !== 'undefined' ? useLink({ ...linkProps, href }) : {})}
         {...props}
+        backgroundColor="transparent"
       >
         <YStack padding="$2" borderRadius="$3">
           <Icon opacity={0.6} size={18} />
         </YStack>
         <SizableText flex={1}>{children}</SizableText>
         {!!rightLabel && (
-          <XStack borderRadius={100} backgroundColor="$color5" px="$3" py="$1.5">
+          <XStack borderRadius={100} backgroundColor="$backgroundPress" px="$3" py="$1.5">
             <SizableText size="$1" textTransform="capitalize">
               {rightLabel}
             </SizableText>

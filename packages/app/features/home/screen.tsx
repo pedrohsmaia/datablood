@@ -47,7 +47,7 @@ export function HomeScreen() {
 
   return (
     <ScrollView>
-      <YStack gap="$8" pb="$8">
+      <YStack gap="$8" pt="$4" pb="$8">
         <YStack px="$4" mt="$4" gap="$2">
           <H3>
             Good {getTimeOfDay()}
