@@ -1,6 +1,6 @@
-import { Button, FormWrapper, H2, Link, Paragraph, Text, Theme, YStack } from '@my/ui'
-import { SchemaForm, formFields } from 'app/utils/SchemaForm'
+import { Button, FormWrapper, H2, Link, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useEffect } from 'react'
 import { FormProvider, useForm, useFormContext, useWatch } from 'react-hook-form'
@@ -50,21 +50,15 @@ export const ResetPasswordScreen = () => {
             email: params?.email,
           }}
           onSubmit={resetPassword}
-          renderAfter={({ submit }) => (
-            <>
+          renderAfter={({ submit }) => {
+            return (
               <Theme inverse>
-                <Button onPress={() => submit()} borderRadius={100} themeInverse>
+                <SubmitButton onPress={() => submit()} borderRadius="$10">
                   Send Link
-                </Button>
+                </SubmitButton>
               </Theme>
-              <SignInLink />
-              {/* <YStack>
-            <Button disabled={loading} onPress={() => signInWithProvider('github')}>
-              GitHub Login
-            </Button>
-          </YStack> */}
-            </>
-          )}
+            )
+          }}
         >
           {(fields) => (
             <>
@@ -86,6 +80,7 @@ export const ResetPasswordScreen = () => {
 const CheckYourEmail = () => {
   const email = useWatch<z.infer<typeof ResetPasswordSchema>>({ name: 'email' })
   const { reset } = useFormContext()
+
   return (
     <FormWrapper>
       <FormWrapper.Body>

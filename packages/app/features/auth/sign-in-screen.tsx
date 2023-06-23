@@ -1,4 +1,4 @@
-import { Button, H2, Link, Paragraph, Text, Theme, YStack } from '@my/ui'
+import { Button, H2, Link, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useEffect } from 'react'
@@ -65,21 +65,22 @@ export const SignInScreen = () => {
             secureTextEntry: true,
           },
         }}
-        renderAfter={({ submit }) => (
-          <>
-            <Theme inverse>
-              <Button onPress={() => submit()} borderRadius={100} themeInverse>
-                Sign in
-              </Button>
-            </Theme>
-            <SignUpLink />
-            {/* <YStack>
+        renderAfter={({ submit }) => {
+          return (
+            <>
+              <Theme inverse>
+                <SubmitButton onPress={() => submit()} borderRadius="$10">
+                  Sign In
+                </SubmitButton>
+              </Theme>
+              {/* <YStack>
             <Button disabled={loading} onPress={() => signInWithProvider('github')}>
               GitHub Login
             </Button>
           </YStack> */}
-          </>
-        )}
+            </>
+          )
+        }}
       >
         {(fields) => (
           <>

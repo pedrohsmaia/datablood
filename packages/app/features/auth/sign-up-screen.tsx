@@ -1,4 +1,4 @@
-import { Button, FormWrapper, H2, Link, Paragraph, Text, Theme, YStack } from '@my/ui'
+import { Button, FormWrapper, H2, Link, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
@@ -82,9 +82,9 @@ export const SignUpScreen = () => {
           renderAfter={({ submit }) => (
             <>
               <Theme inverse>
-                <Button onPress={() => submit()} borderRadius={100}>
-                  Sign up
-                </Button>
+                <SubmitButton onPress={() => submit()} borderRadius="$10">
+                  Sign Up
+                </SubmitButton>
               </Theme>
               <SignInLink />
               {/* <YStack>

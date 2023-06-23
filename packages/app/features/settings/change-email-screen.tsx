@@ -4,6 +4,7 @@ import {
   H2,
   Input,
   Label,
+  SubmitButton,
   Theme,
   YStack,
   isWeb,
@@ -56,7 +57,7 @@ export const ChangeEmailScreen = () => {
       }}
       renderAfter={({ submit }) => (
         <Theme inverse>
-          <Button onPress={() => submit()}>Update Email</Button>
+          <SubmitButton onPress={() => submit()}>Update Email</SubmitButton>
         </Theme>
       )}
     >

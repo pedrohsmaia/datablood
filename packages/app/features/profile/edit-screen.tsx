@@ -1,4 +1,4 @@
-import { Avatar, Button, FullscreenSpinner, Theme, YStack, useToastController } from '@my/ui'
+import { Avatar, Button, FullscreenSpinner, SubmitButton, Theme, YStack, useToastController } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
@@ -68,7 +68,7 @@ const EditProfileForm = ({
       onSubmit={(values) => mutation.mutate(values)}
       renderAfter={({ submit }) => (
         <Theme inverse>
-          <Button onPress={() => submit()}>Update Profile</Button>
+          <SubmitButton onPress={() => submit()}>Update Profile</SubmitButton>
         </Theme>
       )}
     >
