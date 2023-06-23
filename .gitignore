@@ -43,3 +43,6 @@ THUMBS_DB
 thumbs.db
 
 **/node_modules/*
+
+# intellij
+.idea
