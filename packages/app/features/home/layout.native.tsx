@@ -54,7 +54,7 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
                     end={[0.8, 0]}
                     width={size + 40}
                     height={size + 40}
-                    borderRadius={100}
+                    borderRadius="$10"
                     pos="absolute"
                     bottom={5}
                     pressStyle={{
@@ -84,7 +84,7 @@ export const HomeLayout = ({}: HomeLayoutProps) => {
             tabBarIcon: ({ color, size }) => {
               const { avatarUrl } = useUser()
               return (
-                <YStack borderWidth="$1" borderColor={color} borderRadius={100}>
+                <YStack borderWidth="$1" borderColor={color} borderRadius="$10">
                   <Avatar circular p="$1" size={size}>
                     <SolitoImage src={avatarUrl} alt="your avatar" width={size} height={size} />
                   </Avatar>
