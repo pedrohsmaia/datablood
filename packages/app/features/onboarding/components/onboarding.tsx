@@ -8,7 +8,7 @@ import {
   useWindowDimensions,
 } from '@my/ui'
 import { useAnimatedNumber, useAnimatedNumberStyle } from '@tamagui/animations-react-native'
-import { Brush, CloudLightning, Lock } from '@tamagui/lucide-icons'
+import { ArrowUp, Brush, CloudLightning, Lock, Rocket, Sparkles } from '@tamagui/lucide-icons'
 import React, { useEffect, useState } from 'react'
 import { Animated, PanResponder } from 'react-native'
 import { OnboardingControls } from './controls'
@@ -17,12 +17,12 @@ import { useSafeAreaInsets } from 'app/utils/safe-area'
 
 const steps = {
   0: {
-    theme: 'blue',
+    theme: 'orange',
     Content: () => (
       <StepContent
-        title="Fast"
-        icon={CloudLightning}
-        description="This app is very fast and responsive, you'll love it."
+        title="Kickstart"
+        icon={Sparkles}
+        description="Auth, profile, settings, adaptive layouts and many more ready for you to build on top of"
       />
     ),
   },
@@ -30,19 +30,19 @@ const steps = {
     theme: 'green',
     Content: () => (
       <StepContent
-        title="Secure"
-        icon={Lock}
-        description="It's also very secure, most people like things being secure."
+        title="Updates"
+        icon={ArrowUp}
+        description="As we make the starter better, we'll keep sending PRs with our GitHub app so your app keeps improving"
       />
     ),
   },
   2: {
-    theme: 'orange',
+    theme: 'blue',
     Content: () => (
       <StepContent
-        title="Customizable"
-        icon={Brush}
-        description="You can customize a lot about this app and make it your own."
+        title="Deploy"
+        icon={Rocket}
+        description="The Takeout starter is the best way to go from zero to deploy and target all platforms at the same time."
       />
     ),
   },
@@ -101,39 +101,41 @@ export const Onboarding = ({
   const safeAreaInsets = useSafeAreaInsets()
 
   return (
-    <Theme name={currentStep.theme as ThemeName}>
-      <YStack
-        flex={1}
-        backgroundColor="$color3"
-        overflow="hidden"
-        paddingBottom={safeAreaInsets.bottom}
-        paddingRight={safeAreaInsets.right}
-        paddingTop={safeAreaInsets.top}
-        paddingLeft={safeAreaInsets.left}
-      >
-        <AnimatePresence>
-          <Background key={key} />
-        </AnimatePresence>
-
-        <YStack f={1} {...panResponder.panHandlers}>
+    <Theme name="light">
+      <Theme name={currentStep.theme as ThemeName}>
+        <YStack
+          flex={1}
+          backgroundColor="$color3"
+          overflow="hidden"
+          paddingBottom={safeAreaInsets.bottom}
+          paddingRight={safeAreaInsets.right}
+          paddingTop={safeAreaInsets.top}
+          paddingLeft={safeAreaInsets.left}
+        >
           <AnimatePresence>
-            <currentStep.Content key={key} />
+            <Background key={key} />
           </AnimatePresence>
-        </YStack>
 
-        <XStack gap={10} jc="center" my="$4">
-          {Array.from(Array(stepsCount)).map((_, idx) => {
-            const isActive = idx === stepIdx
-            return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
-          })}
-        </XStack>
-        <OnboardingControls
-          currentIdx={stepIdx}
-          onChange={(val) => setStepIdx(val)}
-          stepsCount={stepsCount}
-          onFinish={onOnboarded}
-        />
-      </YStack>
+          <YStack f={1} {...panResponder.panHandlers}>
+            <AnimatePresence>
+              <currentStep.Content key={key} />
+            </AnimatePresence>
+          </YStack>
+
+          <XStack gap={10} jc="center" my="$4">
+            {Array.from(Array(stepsCount)).map((_, idx) => {
+              const isActive = idx === stepIdx
+              return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
+            })}
+          </XStack>
+          <OnboardingControls
+            currentIdx={stepIdx}
+            onChange={(val) => setStepIdx(val)}
+            stepsCount={stepsCount}
+            onFinish={onOnboarded}
+          />
+        </YStack>
+      </Theme>
     </Theme>
   )
 }
@@ -186,7 +188,7 @@ export const Background = () => {
         y={0}
         opacity={1}
         scale={1}
-        backgroundColor={'$color8'}
+        backgroundColor="$color8"
         enterStyle={{
           scale: 0,
         }}

@@ -1,4 +1,4 @@
-import { Button, XStack, isWeb } from '@my/ui'
+import { Button, Theme, XStack, isWeb } from '@my/ui'
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
 
 export type OnboardingControlsProps = {
@@ -47,24 +47,26 @@ export const OnboardingControls = ({
           right={0}
           $sm={{ display: 'none' }}
         >
-          <Button
-            chromeless
-            themeInverse
-            f={1}
-            borderRadius={100}
-            circular
-            onPress={() => handleGoPrev()}
-            iconAfter={ChevronLeft}
-          />
-          <Button
-            themeInverse
-            chromeless
-            f={1}
-            borderRadius={100}
-            circular
-            onPress={() => handleGoNext()}
-            iconAfter={ChevronRight}
-          />
+          <Theme inverse>
+            <Button
+              chromeless
+              f={1}
+              borderRadius={100}
+              circular
+              onPress={() => handleGoPrev()}
+              iconAfter={ChevronLeft}
+            />
+          </Theme>
+          <Theme inverse>
+            <Button
+              chromeless
+              f={1}
+              borderRadius={100}
+              circular
+              onPress={() => handleGoNext()}
+              iconAfter={ChevronRight}
+            />
+          </Theme>
         </XStack>
       </>
     )

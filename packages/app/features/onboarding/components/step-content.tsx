@@ -47,11 +47,13 @@ export const StepContent = ({
         size="$10"
         color="$color1"
         selectable={false}
+        textAlign="center"
       >
         {title}
       </H2>
       <Paragraph
-        mt="$2"
+        mt="$4"
+        maxWidth={400} mx="auto"
         animation="bouncy"
         y={0}
         enterStyle={{ scale: 0.95, y: -2, opacity: 0 }}
