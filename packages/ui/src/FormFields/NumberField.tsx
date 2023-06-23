@@ -5,9 +5,14 @@ import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
 
 export const NumberField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
-  const { field, error } = useTsController<number>()
+  const {
+    field,
+    error,
+    formState: { isSubmitting },
+  } = useTsController<number>()
   const { label, defaultValue, isOptional, placeholder, minValue, maxValue } = useNumberFieldInfo()
   const id = useId()
+  const disabled = isSubmitting
 
   return (
     <Theme name={error ? 'red' : undefined}>
@@ -19,6 +24,7 @@ export const NumberField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
         )}
         <Shake shakeKey={error?.errorMessage}>
           <Input
+            disabled={disabled}
             placeholderTextColor="$color10"
             keyboardType="number-pad"
             value={field.value?.toString() || '0'}

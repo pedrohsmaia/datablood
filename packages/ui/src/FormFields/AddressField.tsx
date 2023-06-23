@@ -11,22 +11,30 @@ export const AddressSchema = z.object({
 })
 
 export const AddressField = (props: Pick<InputProps, 'size'>) => {
-  const { field, error } = useTsController<z.infer<typeof AddressSchema>>()
+  const {
+    field,
+    error,
+    formState: { isSubmitting },
+  } = useTsController<z.infer<typeof AddressSchema>>()
   const { label } = useFieldInfo()
   const id = useId()
+  const disabled = isSubmitting
 
   return (
     <Fieldset gap="$2">
-      <Label theme="alt1" size="$3">{label}</Label>
+      <Label theme="alt1" size="$3">
+        {label}
+      </Label>
 
       <XStack $sm={{ flexDirection: 'column' }} $gtSm={{ flexWrap: 'wrap' }} gap="$4">
         <Theme name={error?.street ? 'red' : undefined}>
           <Fieldset $gtSm={{ fb: 0 }} f={1}>
-            <Label theme="alt1" size={props.size || "$3"} htmlFor={`${id}-street`}>
+            <Label theme="alt1" size={props.size || '$3'} htmlFor={`${id}-street`}>
               Street
             </Label>
             <Shake shakeKey={error?.street?.errorMessage}>
               <Input
+                disabled={disabled}
                 placeholderTextColor="$color10"
                 value={field.value?.street}
                 onChangeText={(street) => field.onChange({ ...field.value, street })}
@@ -43,11 +51,12 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
 
         <Theme name={error?.zipCode ? 'red' : undefined}>
           <Fieldset $gtSm={{ fb: 0 }} f={1}>
-            <Label theme="alt1" size={props.size || "$3"} htmlFor={`${id}-zip-code`}>
+            <Label theme="alt1" size={props.size || '$3'} htmlFor={`${id}-zip-code`}>
               US ZIP Code
             </Label>
             <Shake shakeKey={error?.zipCode?.errorMessage}>
               <Input
+                disabled={disabled}
                 placeholderTextColor="$color10"
                 value={field.value?.zipCode}
                 onChangeText={(zipCode) => field.onChange({ ...field.value, zipCode })}

@@ -4,20 +4,26 @@ import { Fieldset, Label, Switch, SwitchProps, Theme } from 'tamagui'
 import { FieldError } from '../FieldError'
 
 export const BooleanSwitchField = (props: Pick<SwitchProps, 'size' | 'native'>) => {
-  const { field, error } = useTsController<boolean>()
+  const {
+    field,
+    error,
+    formState: { isSubmitting },
+  } = useTsController<boolean>()
   const { label, isOptional } = useFieldInfo()
   const id = useId()
+  const disabled = isSubmitting
 
   return (
     <Theme name={error ? 'red' : undefined}>
       <Fieldset ai="flex-start">
         {!!label && (
-          <Label theme="alt1" size={props.size || "$3"} htmlFor={id}>
+          <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}
 
         <Switch
+          disabled={disabled}
           native
           checked={field.value}
           onCheckedChange={(checked) => field.onChange(checked)}

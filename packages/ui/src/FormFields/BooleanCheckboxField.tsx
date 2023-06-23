@@ -5,20 +5,26 @@ import { Checkbox, CheckboxProps, CheckedState, Label, Theme, XStack } from 'tam
 import { FieldError } from '../FieldError'
 
 export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native'>) => {
-  const { field, error } = useTsController<CheckedState>()
+  const {
+    field,
+    error,
+    formState: { isSubmitting },
+  } = useTsController<CheckedState>()
   const { label, isOptional } = useFieldInfo()
   const id = useId()
+  const disabled = isSubmitting
 
   return (
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         <XStack gap="$4">
           {!!label && (
-            <Label theme="alt1" size={props.size || "$3"} htmlFor={id}>
+            <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
               {label} {isOptional && `(Optional)`}
             </Label>
           )}
           <Checkbox
+            disabled={disabled}
             native
             checked={field.value}
             onCheckedChange={(checked) => field.onChange(checked)}

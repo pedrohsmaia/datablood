@@ -5,9 +5,14 @@ import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
 
 export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secureTextEntry'>) => {
-  const { field, error } = useTsController<string>()
+  const {
+    field,
+    error,
+    formState: { isSubmitting },
+  } = useTsController<string>()
   const { label, placeholder, isOptional, maxLength, isEmail } = useStringFieldInfo()
   const id = useId()
+  const disabled = isSubmitting
 
   return (
     <Theme name={error ? 'red' : undefined}>
@@ -19,6 +24,7 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secure
         )}
         <Shake shakeKey={error?.errorMessage}>
           <Input
+            disabled={disabled}
             maxLength={maxLength}
             placeholderTextColor="$color10"
             spellCheck={isEmail ? false : undefined}
