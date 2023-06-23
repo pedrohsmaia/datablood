@@ -73,6 +73,7 @@ export const SignInScreen = () => {
                   Sign In
                 </SubmitButton>
               </Theme>
+              <SignUpLink />
               {/* <YStack>
             <Button disabled={loading} onPress={() => signInWithProvider('github')}>
               GitHub Login
