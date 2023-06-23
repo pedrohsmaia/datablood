@@ -13,7 +13,7 @@ import React, { useEffect, useState } from 'react'
 import { Animated, PanResponder } from 'react-native'
 import { OnboardingControls } from './controls'
 import { StepContent } from './step-content'
-import { useSafeAreaInsets } from '@my/ui'
+import { useSafeAreaInsets } from 'app/utils/safe-area'
 
 const steps = {
   0: {

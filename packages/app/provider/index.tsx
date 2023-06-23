@@ -2,13 +2,13 @@ import { CustomToast, TamaguiProvider, TamaguiProviderProps, ToastProvider } fro
 
 import { Session } from '@supabase/supabase-js'
 import { QueryClient } from '@tanstack/react-query'
+import { SafeAreaProvider } from 'app/utils/safe-area'
+import { useState } from 'react'
 import config from '../tamagui.config'
 import { AuthProvider } from './auth'
 import { QueryClientProvider } from './react-query/QueryProvider'
-import { SafeAreaProvider } from './safe-area/SafeAreaProvider'
 import { UniversalThemeProvider, useRootTheme } from './theme/UniversalThemeProvider'
 import { ToastViewport } from './toast/ToastViewport'
-import { useState } from 'react'
 
 export function Provider({
   initialSession,
@@ -42,7 +42,7 @@ const InnerProvider = ({ children, ...rest }: InnerProviderProps) => {
           duration={6000}
           native={
             [
-              /* uncomment the next line to do native toasts on mobile. NOTE: it'll require you making a dev build and won't work with Expo Go */
+              /* uncomment the next line to do native toasts on mobile - note that it won't be as customizable as custom toasts, especially on android */
               // 'mobile'
             ]
           }
