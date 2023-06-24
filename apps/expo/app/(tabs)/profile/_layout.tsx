@@ -8,7 +8,10 @@ export default function Layout() {
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="edit" options={{ title: 'Edit Profile', presentation: 'modal' }} />
+      <Stack.Screen
+        name="edit"
+        options={{ headerShown: true, title: 'Edit Profile', presentation: 'modal' }}
+      />
     </Stack>
   )
 }

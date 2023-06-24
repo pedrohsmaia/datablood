@@ -7,6 +7,7 @@ import {
   Separator,
   SizableText,
   StackProps,
+  Theme,
   XStack,
   YStack,
   getTokens,
@@ -45,9 +46,12 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
         borderBottomWidth="$0.5"
         jc="center"
         px="$4"
+        backgroundColor="$color1"
       >
         <XStack jc="space-between" $sm={{ ai: 'center' }} ai="flex-end">
-          <NavTabs $sm={{ display: 'none' }} orientation="horizontal" size="$4" />
+          <YStack $sm={{ display: 'none' }}>
+            <NavTabs orientation="horizontal" size="$4" />
+          </YStack>
           <YStack $gtSm={{ display: 'none' }}>
             <MobileNavbar>
               <YStack gap="$5" width="100%" alignItems="flex-end">
@@ -87,12 +91,12 @@ const UserAvatar = () => {
   const { avatarUrl } = useUser()
 
   return (
-    <Avatar size="$4" circular>
+    <Avatar size="$2" circular>
       <SolitoImage
         src={avatarUrl}
         alt="your avatar"
-        width={getTokens().size['4'].val}
-        height={getTokens().size['4'].val}
+        width={getTokens().size['2'].val}
+        height={getTokens().size['2'].val}
       />
     </Avatar>
   )
@@ -114,14 +118,12 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
     <Popover open={open} onOpenChange={setOpen} size="$5" stayInFrame={{ padding: 20 }}>
       <Popover.Trigger asChild>
         <Button
-          size="$4"
           chromeless
-          noTextWrap
+          p="$2"
           onPress={() => setOpen(!open)}
           theme={open ? 'alt1' : undefined}
-        >
-          <Menu size={24} color="var(--color)" />
-        </Button>
+          icon={<Menu size={32} />}
+        />
       </Popover.Trigger>
 
       <Adapt platform="web" when="sm">
@@ -174,9 +176,18 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
 }
 
 const CtaButton = (props: ButtonProps) => (
-  <Button {...useLink({ href: '/create' })} size="$3" themeInverse icon={<Plus />} {...props}>
-    Create
-  </Button>
+  <Theme inverse>
+    <Button
+      {...useLink({ href: '/create' })}
+      size="$2"
+      scaleIcon={1.3}
+      space="$1.5"
+      icon={Plus}
+      {...props}
+    >
+      Create
+    </Button>
+  </Theme>
 )
 
 const ProfileButton = () => (

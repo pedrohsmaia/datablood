@@ -1,4 +1,4 @@
-import { CardProps, Card, H6, H2, Paragraph, Button, XStack } from 'tamagui'
+import { CardProps, Card, H6, H2, Paragraph, Button, XStack, Theme } from 'tamagui'
 
 export type OverviewCardTypes = {
   title: string
@@ -17,21 +17,24 @@ export const OverviewCard = ({
   ...props
 }: OverviewCardTypes) => {
   return (
-    <Card borderRadius={0} backgroundColor="transparent" {...props}>
-      <Card.Header>
-        <H6 theme="alt2">{title}</H6>
+    <Card borderRadius={0}  f={1} backgroundColor="transparent" {...props}>
+      <Card.Header f={1} jc='space-between'>
+        <H6 size="$4" theme="alt2">
+          {title}
+        </H6>
         <H2 mt="$2">{value}</H2>
         <XStack mt="$4">
           {!!badgeText && (
+            <Theme name={badgeState === 'success' ? 'green_alt1' : badgeState === 'failure' ? 'red_alt1' : undefined}>
+
             <Button
               size="$3"
               disabled
-              theme={
-                badgeState === 'success' ? 'green' : badgeState === 'failure' ? 'red' : undefined
-              }
-            >
+              
+              >
               {badgeText}
             </Button>
+              </Theme>
           )}
           {badgeAfter && <Paragraph>{badgeAfter}</Paragraph>}
         </XStack>

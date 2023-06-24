@@ -4,13 +4,16 @@ import {
   H2,
   Input,
   Label,
-  SchemaForm,
+  SubmitButton,
+  Theme,
   YStack,
-  formFields,
+  isWeb,
   useToastController,
 } from '@my/ui'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
+import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
 const ChangeEmailSchema = z.object({
@@ -21,6 +24,7 @@ export const ChangeEmailScreen = () => {
   const { user } = useUser()
   const supabase = useSupabase()
   const toast = useToastController()
+  const router = useRouter()
 
   const handleChangePassword = async ({ email }: z.infer<typeof ChangeEmailSchema>) => {
     const { data, error } = await supabase.auth.updateUser({ email })
@@ -30,7 +34,10 @@ export const ChangeEmailScreen = () => {
       toast.show('Check your inbox', {
         message: `We sent you a confirmation email to ${data.user.new_email}.`,
       })
-      await supabase.auth.refreshSession()
+      router.back()
+      if (!isWeb) {
+        await supabase.auth.refreshSession()
+      }
     }
   }
 
@@ -38,33 +45,42 @@ export const ChangeEmailScreen = () => {
     <SchemaForm
       onSubmit={handleChangePassword}
       schema={ChangeEmailSchema}
-      renderBefore={() => (
-        <YStack p="$4">
-          <H2>Change Email</H2>
-        </YStack>
-      )}
+      renderBefore={() =>
+        isWeb && (
+          <YStack px="$4" py="$4" pb="$2">
+            <H2>Change Email</H2>
+          </YStack>
+        )
+      }
       defaultValues={{
         email: '',
       }}
-      header={
-        <Fieldset>
-          <Label htmlFor="current-email">Current Email</Label>
-          <Input
-            disabled
-            opacity={0.5}
-            id="current-email"
-            autoComplete="email"
-            value={user?.email}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-        </Fieldset>
-      }
       renderAfter={({ submit }) => (
-        <Button onPress={() => submit()} themeInverse>
-          Update Email
-        </Button>
+        <Theme inverse>
+          <SubmitButton onPress={() => submit()}>Update Email</SubmitButton>
+        </Theme>
       )}
-    />
+    >
+      {(fields) => (
+        <>
+          <Fieldset>
+            <Label theme="alt1" size="$3" htmlFor="current-email">
+              Current Email
+            </Label>
+            <Input
+              disabled
+              opacity={0.8}
+              cursor="not-allowed"
+              id="current-email"
+              autoComplete="email"
+              value={user?.email}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+          </Fieldset>
+          {Object.values(fields)}
+        </>
+      )}
+    </SchemaForm>
   )
 }

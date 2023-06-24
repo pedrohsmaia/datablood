@@ -1,44 +1,35 @@
-import { ListItem, ListItemProps, SizableText, XStack, YGroup, YStack } from '@my/ui'
-import { IconProps } from '@tamagui/lucide-icons/types/IconProps'
-import { LinkProps, useLink } from 'solito/link'
+import { IconProps } from '@tamagui/helpers-icon'
+import { ListItem, ListItemProps, SizableText, XStack, YGroup, YStack } from 'tamagui'
 
 export type SettingItemProps = {
   icon: React.FC<IconProps>
   rightLabel?: string
   accentColor?: ListItemProps['backgroundColor']
-} & Omit<ListItemProps, 'href'> &
-  Partial<LinkProps>
+} & ListItemProps
 
 export const SettingItem = ({
-  href,
-  replace,
-  scroll,
-  shallow,
-  prefetch,
-  locale,
   icon: Icon,
   children,
   accentColor,
   rightLabel,
   ...props
 }: SettingItemProps) => {
-  const linkProps = { href, replace, scroll, shallow, prefetch, locale }
-
   return (
     <YGroup.Item>
       <ListItem
         hoverTheme
         cursor="pointer"
-        gap="$4"
-        {...(typeof href !== 'undefined' ? useLink({ ...linkProps, href }) : {})}
+        gap="$2"
+        borderRadius="$10"
         {...props}
+        backgroundColor="transparent"
       >
         <YStack padding="$2" borderRadius="$3">
-          <Icon color="$color" size={18} />
+          <Icon opacity={0.6} size={18} />
         </YStack>
         <SizableText flex={1}>{children}</SizableText>
         {!!rightLabel && (
-          <XStack borderRadius={100} backgroundColor="$color5" px="$3" py="$1.5">
+          <XStack borderRadius="$10" backgroundColor="$backgroundPress" px="$3" py="$1.5">
             <SizableText size="$1" textTransform="capitalize">
               {rightLabel}
             </SizableText>

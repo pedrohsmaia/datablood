@@ -4,22 +4,30 @@ import { Fieldset, Input, InputProps, Label, Theme } from 'tamagui'
 import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
 
-export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
-  const { field, error } = useTsController<string>()
+export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secureTextEntry'>) => {
+  const {
+    field,
+    error,
+    formState: { isSubmitting },
+  } = useTsController<string>()
   const { label, placeholder, isOptional, maxLength, isEmail } = useStringFieldInfo()
   const id = useId()
+  const disabled = isSubmitting
 
   return (
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label alignItems='center' size={props.size} htmlFor={id}>
+          <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}
         <Shake shakeKey={error?.errorMessage}>
           <Input
+            disabled={disabled}
             maxLength={maxLength}
+            placeholderTextColor="$color10"
+            spellCheck={isEmail ? false : undefined}
             autoCapitalize={isEmail ? 'none' : undefined}
             keyboardType={isEmail ? 'email-address' : undefined}
             value={field.value}

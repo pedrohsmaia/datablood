@@ -1,40 +1,68 @@
-import { Paragraph, ScrollView, SizableText, Spacer, YStack, isWeb } from '@my/ui'
-import { Book, Info, Lock, LogOut, Mail, Moon, Twitter } from '@tamagui/lucide-icons'
+import { Paragraph, ScrollView, Settings, YStack, isWeb, useMedia } from '@my/ui'
+import { Book, Cog, Info, Lock, LogOut, Mail, Moon, Twitter } from '@tamagui/lucide-icons'
 import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { redirect } from 'app/utils/redirect'
 import { useUser } from 'app/utils/useUser'
 import rootPackageJson from '../../../../package.json'
 import packageJson from '../../package.json'
-import { Settings } from './components/settings'
+import { useLink } from 'solito/link'
+
+const brandColors = {
+  twitter: '#1DA1F2',
+}
 
 export const SettingsScreen = () => {
+  const media = useMedia()
+
   return (
     <YStack f={1} gap="$2" jc="space-between">
       <ScrollView>
-        <Settings>
-          <Spacer />
+        <Settings mt="$6">
           <Settings.Items>
             <Settings.Group>
-              <Settings.Item icon={Lock} href="/settings/change-password" accentColor="$green9">
+              <Settings.Item
+                icon={Cog}
+                {...useLink({ href: media.sm ? '/settings/general' : '/settings' })}
+                accentColor="$green9"
+              >
+                General
+              </Settings.Item>
+              <Settings.Item
+                icon={Lock}
+                {...useLink({ href: '/settings/change-password' })}
+                accentColor="$green9"
+              >
                 Change Password
               </Settings.Item>
-              <Settings.Item icon={Mail} href="/settings/change-email" accentColor="$blue9">
+              <Settings.Item
+                icon={Mail}
+                {...useLink({ href: '/settings/change-email' })}
+                accentColor="$green9"
+              >
                 Change Email
               </Settings.Item>
-              {/* <Settings.Item icon={Bell} href="/settings/notifications" accentColor="$orange9">
+              {/* <Settings.Item icon={Bell} {...useLink({href: "/settings/notifications"})} accentColor="$orange9">
                 Notifications
               </Settings.Item> */}
             </Settings.Group>
             <Settings.Group>
-              <Settings.Item icon={Book} href="/privacy-policy" accentColor="$blue9">
+              <Settings.Item
+                icon={Book}
+                {...useLink({ href: '/privacy-policy' })}
+                accentColor="$purple9"
+              >
                 Privacy Policy
               </Settings.Item>
-              <Settings.Item icon={Book} href="/terms-of-service" accentColor="$purple9">
+              <Settings.Item
+                icon={Book}
+                {...useLink({ href: '/terms-of-service' })}
+                accentColor="$purple9"
+              >
                 Terms Of Service
               </Settings.Item>
               {/* removing about from web since landing pages are more common on web - feel free to add back if needed */}
               {!isWeb && (
-                <Settings.Item icon={Info} href="/about" accentColor="$blue9">
+                <Settings.Item icon={Info} {...useLink({ href: '/about' })} accentColor="$blue9">
                   About
                 </Settings.Item>
               )}
@@ -43,7 +71,7 @@ export const SettingsScreen = () => {
               <Settings.Item
                 icon={Twitter}
                 onPress={() => redirect('https://twitter.com/tamagui_js')}
-                accentColor="#1DA1F2"
+                accentColor={brandColors.twitter}
               >
                 Our Twitter
               </Settings.Item>
@@ -72,7 +100,7 @@ const SettingsThemeAction = () => {
   return (
     <Settings.Item
       icon={Moon}
-      accentColor="$green9"
+      accentColor="$blue9"
       onPress={toggle}
       rightLabel={current}
       // <Switch

@@ -4,9 +4,10 @@ import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { useProtectedRoute } from '../utils/useProtectedRoute'
-import { LogBox } from 'react-native'
+// import { LogBox } from 'react-native'
 
-LogBox.ignoreAllLogs()
+// LogBox.ignoreAllLogs()
+
 export default function HomeLayout() {
   return (
     <Provider>
@@ -31,6 +32,8 @@ const InnerStack = () => {
           <Stack.Screen
             name="create"
             options={{
+              title: "New Project",
+              headerShown: true,
               presentation: 'modal',
             }}
           />

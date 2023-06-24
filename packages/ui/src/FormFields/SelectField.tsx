@@ -30,15 +30,20 @@ export const SelectField = ({
 }: {
   options: SelectItem[]
 } & Pick<SelectProps, 'size' | 'native'>) => {
-  const { field, error } = useTsController<string>()
+  const {
+    field,
+    error,
+    formState: { isSubmitting },
+  } = useTsController<string>()
   const { label, isOptional } = useFieldInfo()
   const id = useId()
+  const disabled = isSubmitting
 
   return (
     <Theme name={error ? 'red' : undefined}>
       <Fieldset>
         {!!label && (
-          <Label size={props.size} htmlFor={id}>
+          <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
             {label} {isOptional && `(Optional)`}
           </Label>
         )}
@@ -81,7 +86,7 @@ export const SelectField = ({
 
               <Select.Viewport minWidth={200}>
                 <XStack als="flex-start">
-                  <Select.Group space="$0">
+                  <Select.Group disabled={disabled} space="$0">
                     <Select.Label>Fruits</Select.Label>
                     {options.map((item, i) => {
                       return (

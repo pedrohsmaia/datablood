@@ -1,13 +1,5 @@
-import {
-  Button,
-  H2,
-  Link,
-  Paragraph,
-  SchemaForm,
-  Text,
-  YStack,
-  formFields
-} from '@my/ui'
+import { Button, H2, Link, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useEffect } from 'react'
 import { FormProvider, useForm, useWatch } from 'react-hook-form'
@@ -21,7 +13,7 @@ const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 const SignInSchema = z.object({
   email: formFields.text.email().describe('Email // Enter your email'),
-  password: formFields.password.describe('Password // Choose a password'),
+  password: formFields.text.min(6).describe('Password // Enter your password'),
 })
 
 export const SignInScreen = () => {
@@ -67,31 +59,40 @@ export const SignInScreen = () => {
           password: '',
         }}
         onSubmit={signInWithEmail}
-        header={
-          <YStack gap="$3" mb="$4">
-            <H2>Welcome Back</H2>
-            <Paragraph theme="alt1">Sign in to your account</Paragraph>
-          </YStack>
-        }
         props={{
           password: {
             afterElement: <ForgotPasswordLink />,
+            secureTextEntry: true,
           },
         }}
-        renderAfter={({ submit }) => (
-          <>
-            <Button onPress={() => submit()} borderRadius={100} themeInverse>
-              Sign in
-            </Button>
-            <SignUpLink />
-            {/* <YStack>
+        renderAfter={({ submit }) => {
+          return (
+            <>
+              <Theme inverse>
+                <SubmitButton onPress={() => submit()} borderRadius="$10">
+                  Sign In
+                </SubmitButton>
+              </Theme>
+              <SignUpLink />
+              {/* <YStack>
             <Button disabled={loading} onPress={() => signInWithProvider('github')}>
               GitHub Login
             </Button>
           </YStack> */}
+            </>
+          )
+        }}
+      >
+        {(fields) => (
+          <>
+            <YStack gap="$3" mb="$4">
+              <H2>Welcome Back</H2>
+              <Paragraph theme="alt1">Sign in to your account</Paragraph>
+            </YStack>
+            {Object.values(fields)}
           </>
         )}
-      />
+      </SchemaForm>
     </FormProvider>
   )
 }

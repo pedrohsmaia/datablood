@@ -49,7 +49,13 @@ export const NavTabs = (props: TabsProps) => {
   }
 
   return (
-    <Tabs value={currentTab} onValueChange={setCurrentTab} activationMode="manual" {...props}>
+    <Tabs
+      $gtSm={{ mb: '$-0.75' }} // for the active TabsRovingIndicator to look good
+      value={currentTab}
+      onValueChange={setCurrentTab}
+      activationMode="manual"
+      {...props}
+    >
       <AnimatePresence>
         {intentAt && (
           <TabsRovingIndicator
@@ -66,6 +72,7 @@ export const NavTabs = (props: TabsProps) => {
       <AnimatePresence>
         {activeAt && (
           <TabsRovingIndicator
+            zIndex={1}
             key="active-indicator"
             theme="active"
             active
@@ -74,12 +81,13 @@ export const NavTabs = (props: TabsProps) => {
                   y: activeAt.y,
                   right: '$-1',
                   height: activeAt.height,
-                  width: 2,
+                  width: 3,
                 }
               : {
                   x: activeAt.x,
                   bottom: '$-1',
-                  height: 2,
+                  height: 3,
+
                   width: activeAt.width,
                 })}
           />
@@ -92,6 +100,7 @@ export const NavTabs = (props: TabsProps) => {
         loop={false}
         w="100%"
         f={1}
+        flexDirection={props.orientation === 'horizontal' ? "row" : 'column'} // temp fix: would be fixed after https://github.com/tamagui/tamagui/pull/1313
       >
         <Tab value="/" onInteraction={handleOnInteraction}>
           Home
@@ -123,7 +132,7 @@ const TabsRovingIndicator = ({ active, ...props }: { active?: boolean } & StackP
       opacity: 0,
     }}
     {...(active && {
-      backgroundColor: '$blue10',
+      backgroundColor: '$color9',
     })}
     {...props}
   />

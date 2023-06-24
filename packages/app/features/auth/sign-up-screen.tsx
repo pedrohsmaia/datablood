@@ -1,22 +1,8 @@
-import {
-  AnimatePresence,
-  Button,
-  Fieldset,
-  Form,
-  FormWrapper,
-  H2,
-  Input,
-  Label,
-  Link,
-  Paragraph,
-  SchemaForm,
-  Text,
-  YStack,
-  formFields,
-} from '@my/ui'
+import { Button, FormWrapper, H2, Link, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { FormProvider, useForm, useFormContext, useWatch } from 'react-hook-form'
 import { createParam } from 'solito'
 import { useRouter } from 'solito/router'
@@ -26,7 +12,7 @@ const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 const SignUpSchema = z.object({
   email: formFields.text.email().describe('Email // your@email.acme'),
-  password: formFields.password.describe('Password // Enter your password'),
+  password: formFields.text.min(6).describe('Password // Choose a password'),
 })
 
 // change it to true if you're doing email confirms
@@ -87,18 +73,19 @@ export const SignUpScreen = () => {
             email: params?.email,
             password: '',
           }}
+          props={{
+            password: {
+              secureTextEntry: true,
+            },
+          }}
           onSubmit={signUpWithEmail}
-          header={
-            <YStack gap="$3" mb="$4">
-              <H2>Get Started</H2>
-              <Paragraph theme="alt2">Create a new account</Paragraph>
-            </YStack>
-          }
           renderAfter={({ submit }) => (
             <>
-              <Button onPress={() => submit()} borderRadius={100} themeInverse>
-                Sign up
-              </Button>
+              <Theme inverse>
+                <SubmitButton onPress={() => submit()} borderRadius="$10">
+                  Sign Up
+                </SubmitButton>
+              </Theme>
               <SignInLink />
               {/* <YStack>
             <Button disabled={loading} onPress={() => signInWithProvider('github')}>
@@ -107,7 +94,17 @@ export const SignUpScreen = () => {
           </YStack> */}
             </>
           )}
-        />
+        >
+          {(fields) => (
+            <>
+              <YStack gap="$3" mb="$4">
+                <H2>Get Started</H2>
+                <Paragraph theme="alt2">Create a new account</Paragraph>
+              </YStack>
+              {Object.values(fields)}
+            </>
+          )}
+        </SchemaForm>
       )}
     </FormProvider>
   )
@@ -143,7 +140,7 @@ const CheckYourEmail = () => {
         </YStack>
       </FormWrapper.Body>
       <FormWrapper.Footer>
-        <Button themeInverse icon={ChevronLeft} borderRadius={100} onPress={() => reset()}>
+        <Button themeInverse icon={ChevronLeft} borderRadius="$10" onPress={() => reset()}>
           Back
         </Button>
       </FormWrapper.Footer>

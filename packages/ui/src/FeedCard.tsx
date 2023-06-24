@@ -29,17 +29,9 @@ export const FeedCard = ({
 } & CardProps) => {
   return (
     <Card
-      // shadowColor="#00000015"
-      // shadowRadius={2}
-      // shadowOffset={{
-      //   height: 2,
-      //   width: 0,
-      // }}
-      // backgroundColor="red"
       borderRadius="$4"
       bordered
-      // overflow="visible"
-      // elevationAndroid="$1"
+      overflow="hidden"
       f={1}
       {...props}
     >
@@ -86,7 +78,7 @@ export const FeedCard = ({
           // borderRadius="$4"
           width="100%"
           height="100%"
-          colors={['$color4', '$color1']}
+          colors={['$color2', '$color1']}
           start={[1, 1]}
           end={[0.85, 0]}
         />
