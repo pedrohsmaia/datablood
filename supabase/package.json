@@ -18,6 +18,7 @@
     "start": "npx supabase start",
     "stop": "npx supabase stop",
     "reset": "npx supabase db reset && npx supabase start",
+    "status": "npx supabase status",
     "r": "yarn reset",
     "lint": "npx supabase db lint --workdir ../",
     "l": "yarn lint",
