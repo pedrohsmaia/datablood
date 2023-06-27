@@ -4,7 +4,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "expo start --dev-client",
+    "start": "TAMAGUI_TARGET=native expo start --dev-client",
     "android": "TAMAGUI_TARGET=native yarn expo run:android",
     "ios": "TAMAGUI_TARGET=native yarn expo run:ios",
     "eject": "expo eject"
