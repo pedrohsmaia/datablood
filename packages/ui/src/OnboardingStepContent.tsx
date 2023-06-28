@@ -1,4 +1,4 @@
-import { H2, Paragraph, YStack } from '@my/ui'
+import { H2, Paragraph, YStack } from 'tamagui'
 import { IconProps } from '@tamagui/helpers-icon'
 import React from 'react'
 

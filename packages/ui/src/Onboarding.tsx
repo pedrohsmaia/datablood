@@ -6,61 +6,38 @@ import {
   XStack,
   YStack,
   useWindowDimensions,
-} from '@my/ui'
+} from 'tamagui'
 import { useAnimatedNumber, useAnimatedNumberStyle } from '@tamagui/animations-react-native'
-import { ArrowUp, Brush, CloudLightning, Lock, Rocket, Sparkles } from '@tamagui/lucide-icons'
+import { useSafeAreaInsets } from 'app/utils/safe-area'
 import React, { useEffect, useState } from 'react'
 import { Animated, PanResponder } from 'react-native'
-import { OnboardingControls } from './controls'
-import { StepContent } from './step-content'
-import { useSafeAreaInsets } from 'app/utils/safe-area'
+import { OnboardingControls } from './OnboardingControls'
 
-const steps = {
-  0: {
-    theme: 'orange',
-    Content: () => (
-      <StepContent
-        title="Kickstart"
-        icon={Sparkles}
-        description="Auth, profile, settings, adaptive layouts and many more ready for you to build on top of"
-      />
-    ),
-  },
-  1: {
-    theme: 'green',
-    Content: () => (
-      <StepContent
-        title="Updates"
-        icon={ArrowUp}
-        description="As we make the starter better, we'll keep sending PRs with our GitHub app so your app keeps improving"
-      />
-    ),
-  },
-  2: {
-    theme: 'blue',
-    Content: () => (
-      <StepContent
-        title="Deploy"
-        icon={Rocket}
-        description="The Takeout starter is the best way to go from zero to deploy and target all platforms at the same time."
-      />
-    ),
-  },
+export type OnboardingStepInfo = {
+  theme: ThemeName
+  Content: React.FC<{}>
 }
-const AUTO_SWIPE_THRESHOLD = 15_000 // ms
-export const Onboarding = ({
-  onOnboarded,
-  autoSwipe,
-}: {
+
+export type OnboardingProps = {
+  /**
+   * native only
+   */
   onOnboarded?: () => void
+  /**
+   * web only
+   */
   autoSwipe?: boolean
-}) => {
+  steps: OnboardingStepInfo[]
+}
+
+const AUTO_SWIPE_THRESHOLD = 15_000 // ms
+export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) => {
   const [stepIdx, _setStepIdx] = useState(0)
   // prevent a background to ever "continue" animation / try to continue where it left off - cause looks weird
 
   const [key, setKey] = useState(0)
-  const currentStep = steps[stepIdx as keyof typeof steps]
-  const stepsCount = Object.keys(steps).length
+  const currentStep = steps[stepIdx]!
+  const stepsCount = steps.length
 
   const setStepIdx = (newIdx: number) => {
     if (stepIdx !== newIdx) {
