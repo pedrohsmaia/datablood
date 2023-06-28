@@ -1,4 +1,5 @@
-import { Button, FormWrapper, H2, Link, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
+import { Button, FormWrapper, H2, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
+import { Link } from 'solito/link'
 import { ChevronLeft } from '@tamagui/lucide-icons'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
@@ -52,11 +53,14 @@ export const ResetPasswordScreen = () => {
           onSubmit={resetPassword}
           renderAfter={({ submit }) => {
             return (
-              <Theme inverse>
-                <SubmitButton onPress={() => submit()} borderRadius="$10">
-                  Send Link
-                </SubmitButton>
-              </Theme>
+              <>
+                <Theme inverse>
+                  <SubmitButton onPress={() => submit()} borderRadius="$10">
+                    Send Link
+                  </SubmitButton>
+                </Theme>
+                <SignInLink />
+              </>
             )
           }}
         >
@@ -104,12 +108,10 @@ const SignInLink = () => {
   const email = useWatch<z.infer<typeof ResetPasswordSchema>>({ name: 'email' })
 
   return (
-    <Link
-      href={`/sign-in?${new URLSearchParams(email ? { email } : undefined)}`}
-      textAlign="center"
-      theme="alt1"
-    >
-      Done resetting? <Text textDecorationLine="underline">Sign in</Text>
+    <Link href={`/sign-in?${new URLSearchParams(email ? { email } : undefined)}`}>
+      <Paragraph textAlign="center" theme="alt1">
+        Done resetting? <Text textDecorationLine="underline">Sign in</Text>
+      </Paragraph>
     </Link>
   )
 }
