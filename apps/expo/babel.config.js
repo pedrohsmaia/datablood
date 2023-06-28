@@ -1,3 +1,6 @@
+// temp: ignore solito/link bundle error
+process.env.TAMAGUI_IGNORE_BUNDLE_ERRORS = "solito/link"
+
 module.exports = function (api) {
   api.cache(true)
   return {
