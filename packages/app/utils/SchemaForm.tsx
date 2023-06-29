@@ -12,10 +12,13 @@ import {
   SelectField,
   TextAreaField,
   TextField,
+  TamaguiComponent,
+  Form,
+  FormProps,
+  Theme,
 } from '@my/ui'
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { Form, FormProps, Theme } from 'tamagui'
 import { z } from 'zod'
 
 export const formFields = {
@@ -62,16 +65,16 @@ const mapping = [
   [formFields.address, AddressField] as const,
 ] as const
 
-const FormComponent = (props: FormProps) => {
+const FormComponent = forwardRef<TamaguiComponent, FormProps>((props, ref) => {
   return (
-    <FormWrapper asChild>
-      <Form {...props}>{props.children}</Form>
-    </FormWrapper>
+    <Form asChild ref={ref as any} {...props}>
+      <FormWrapper>{props.children}</FormWrapper>
+    </Form>
   )
-}
+})
 
 const _SchemaForm = createTsForm(mapping, {
-  FormComponent,
+  FormComponent: FormComponent as unknown as typeof Form,
 })
 
 export const SchemaForm = forwardRef<any, React.ComponentProps<typeof _SchemaForm>>(

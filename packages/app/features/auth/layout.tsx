@@ -1,5 +1,5 @@
 import { XStack, YStack } from '@my/ui'
-import { Onboarding } from '../onboarding/components/onboarding'
+import { OnboardingScreen } from './onboarding-screen'
 
 export type AuthLayoutProps = {
   children?: React.ReactNode
@@ -13,7 +13,7 @@ export const AuthLayout = ({ children }: AuthLayoutProps) => {
       </YStack>
 
       <YStack $sm={{ display: 'none' }} f={3} fb={0}>
-        <Onboarding autoSwipe />
+        <OnboardingScreen />
       </YStack>
     </XStack>
   )

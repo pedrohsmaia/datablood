@@ -1,4 +1,5 @@
-import { Button, H2, Link, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
+import { H2, Paragraph, SubmitButton, Text, Theme, YStack } from '@my/ui'
+import { Link } from 'solito/link'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import React, { useEffect } from 'react'
@@ -86,7 +87,7 @@ export const SignInScreen = () => {
         {(fields) => (
           <>
             <YStack gap="$3" mb="$4">
-              <H2>Welcome Back</H2>
+              <H2 $sm={{ size: '$8' }}>Welcome Back</H2>
               <Paragraph theme="alt1">Sign in to your account</Paragraph>
             </YStack>
             {Object.values(fields)}
@@ -100,13 +101,10 @@ export const SignInScreen = () => {
 const SignUpLink = () => {
   const email = useWatch<z.infer<typeof SignInSchema>>({ name: 'email' })
   return (
-    <Link
-      replace
-      href={`/sign-up?${new URLSearchParams(email ? { email } : undefined).toString()}`}
-      textAlign="center"
-      theme="alt1"
-    >
-      Don't have an account? <Text textDecorationLine="underline">Sign up</Text>
+    <Link href={`/sign-up?${new URLSearchParams(email ? { email } : undefined).toString()}`}>
+      <Paragraph textAlign="center" theme="alt1">
+        Don't have an account? <Text textDecorationLine="underline">Sign up</Text>
+      </Paragraph>
     </Link>
   )
 }
@@ -115,13 +113,10 @@ const ForgotPasswordLink = () => {
   const email = useWatch<z.infer<typeof SignInSchema>>({ name: 'email' })
 
   return (
-    <Link
-      mt="$1"
-      href={`/reset-password?${new URLSearchParams(email ? { email } : undefined)}`}
-      theme="alt2"
-      textDecorationLine="underline"
-    >
-      Forgot your password?
+    <Link href={`/reset-password?${new URLSearchParams(email ? { email } : undefined)}`}>
+      <Paragraph mt="$1" theme="alt2" textDecorationLine="underline">
+        Forgot your password?
+      </Paragraph>
     </Link>
   )
 }

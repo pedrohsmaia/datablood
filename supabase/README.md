@@ -1,12 +1,14 @@
 ## Setting up Supabase
 
-Use Supabase's documentation to set up your project. Some highlights:
+To go through the supabase setup, CD to the root of the directory and run `yarn setup`.
+
+Here are some guides from the official Supabase documentation:
 
 - [Local Development](https://supabase.com/docs/guides/getting-started/local-development)
 - [Managing Environments](https://supabase.com/docs/guides/cli/managing-environments)
 
-This template also assumes you have a public storage bucket with the name `avatars`.
- 
+NOTE: This template assumes you have a public storage bucket with the name `avatars` - Make sure to create it if it doesn't exist.
+
 After setting it up, you can use the [scripts](#scripts) to manage the common tasks related to Supabase.
 
 ## Scripts
