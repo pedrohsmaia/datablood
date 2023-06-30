@@ -14,7 +14,7 @@ import {
   useWindowDimensions,
 } from 'tamagui'
 import { OnboardingControls } from './OnboardingControls'
-import { OnboardingProps } from './onboarding'
+import { OnboardingProps } from './Onboarding'
 
 const { width: DEVICE_WIDTH } = Dimensions.get('screen')
 export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
