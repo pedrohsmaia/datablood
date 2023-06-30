@@ -2,7 +2,7 @@ import { EditProfileScreen } from 'app/features/profile/edit-screen'
 import Head from 'next/head'
 import { userProtectedGetSSP } from 'utils/userProtected'
 import { NextPageWithLayout } from '../_app'
-import { HomeLayout } from 'app/features/home/layout'
+import { HomeLayout } from 'app/features/home/layout.web'
 
 const Page: NextPageWithLayout = () => {
   return (

@@ -1,5 +1,5 @@
-import { HomeLayout } from 'app/features/home/layout'
-import { SettingsLayout } from 'app/features/settings/layout'
+import { HomeLayout } from 'app/features/home/layout.web'
+import { SettingsLayout } from 'app/features/settings/layout.web'
 import { GeneralSettingsScreen } from 'app/features/settings/general-screen'
 import Head from 'next/head'
 import { NextPageWithLayout } from 'pages/_app'

@@ -1,4 +1,4 @@
-import { AuthLayout } from 'app/features/auth/layout'
+import { AuthLayout } from 'app/features/auth/layout.web'
 import { ResetPasswordScreen } from 'app/features/auth/reset-password-screen'
 import Head from 'next/head'
 import { guestOnlyGetSSP } from 'utils/guestOnly'
