@@ -166,3 +166,11 @@ You may potentially want to have the native module transpiled for the next app. 
 - Install command to be `yarn set version berry && yarn install`
 - Build command: leave default setting
 - Output dir: leave default setting
+
+## Using With Expo Application Services (EAS)
+
+EAS has already been configured for you, but you still need to do the following:
+
+- `npm install --global eas-cli`
+- `cd apps/expo`
+- `eas build` - This will also add your EAS project ID to app.json
