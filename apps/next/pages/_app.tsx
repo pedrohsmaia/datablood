@@ -27,7 +27,7 @@ function MyApp({
       <Head>
         <title>Tamagui Universal App</title>
         <meta name="description" content="Tamagui Universal Starter" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <NextThemeProvider
         onChangeTheme={(next) => {
