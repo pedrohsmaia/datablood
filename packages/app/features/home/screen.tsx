@@ -1,5 +1,6 @@
 import {
   AchievementCard,
+  Button,
   EnsureFlexed,
   EventCard,
   FeedCard,
@@ -13,7 +14,7 @@ import {
   YStack,
   useMedia,
 } from '@my/ui'
-import { DollarSign, Edit2, User, Users } from '@tamagui/lucide-icons'
+import { ArrowRight, DollarSign, Edit2, User, Users } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
 import React from 'react'
 import { useLink } from 'solito/link'
@@ -60,7 +61,7 @@ export function HomeScreen() {
             </H2>
             <Separator />
           </YStack>
-          <YStack gap="$8">
+          <YStack gap="$10">
             <OverviewSection />
             <PostsSection />
             <AchievementsSection />
@@ -118,8 +119,13 @@ export function HomeScreen() {
 const AchievementsSection = () => {
   return (
     <YStack gap="$4">
-      <XStack px="$4" ai="center" gap="$2">
+      <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Achievements</H4>
+        <Theme name="alt2">
+        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+          All Achievements
+        </Button>
+        </Theme>
       </XStack>
 
       <ScrollAdapt>
@@ -201,8 +207,13 @@ const AchievementsSection = () => {
 const OverviewSection = () => {
   return (
     <YStack gap="$4">
-      <XStack px="$4" ai="center" gap="$2">
+      <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Overview</H4>
+        <Theme name="alt2">
+        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+          View All Stats
+        </Button>
+        </Theme>
       </XStack>
 
       <ScrollAdapt>
@@ -269,9 +280,14 @@ const OverviewSection = () => {
 const PostsSection = () => {
   return (
     <YStack gap="$4">
-      <H4 fontWeight="400" px="$4">
-        Latest Posts
-      </H4>
+      <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
+        <H4 fontWeight="400">Latest Posts</H4>
+        <Theme name="alt2">
+        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+          View All Posts
+        </Button>
+        </Theme>
+      </XStack>
       <ScrollAdapt>
         <XStack px="$4" gap="$4" mb="$4" jc="flex-start" flexWrap="wrap">
           <FeedCard
