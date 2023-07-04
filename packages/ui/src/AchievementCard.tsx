@@ -2,7 +2,19 @@ import { ChevronRight } from '@tamagui/lucide-icons'
 import { IconProps } from '@tamagui/helpers-icon'
 import React from 'react'
 import { useLink } from 'solito/link'
-import { Button, Card, CardProps, H3, H5, Progress, SizableText, YStack } from 'tamagui'
+import {
+  Button,
+  Card,
+  CardProps,
+  H3,
+  H4,
+  H5,
+  H6,
+  Progress,
+  SizableText,
+  Theme,
+  YStack,
+} from 'tamagui'
 
 export type AchievementCardTypes = {
   icon: React.FC<IconProps>
@@ -28,29 +40,40 @@ export const AchievementCard = ({
   ...props
 }: AchievementCardTypes) => {
   return (
-    <Card borderRadius={0} chromeless {...props}>
-      <Card.Header my="auto" padded f={1} gap="$4">
-        <Icon size={64} opacity={0.6} />
+    <Card borderRadius="$0" chromeless {...props}>
+      <Card.Header my="auto" padded f={1} gap="$2">
+        <Icon size={40} opacity={0.6} />
         <YStack>
-          <H5 theme="alt2">{subtitle}</H5>
-          <H3 mt="$2">{title}</H3>
-          <SizableText mt="$2">
-            <SizableText>{progress.current.toLocaleString()}</SizableText>
-            <SizableText theme="alt2">
+          {/* <H6 theme="alt2">{subtitle}</H6> */}
+          <H4 size="$4" textTransform="capitalize" mt="$2">
+            {title}
+          </H4>
+          <SizableText mt="$1">
+            <SizableText size="$4" theme="alt1" fontWeight="900">
+              {progress.current.toLocaleString()}
+            </SizableText>
+            <SizableText size="$2" theme="alt1">
               /{progress.full.toLocaleString()} {progress.label}
             </SizableText>
           </SizableText>
-          <Progress mt="$2" theme="alt2" value={(progress.current / progress.full) * 100}>
-            <Progress.Indicator animation="bouncy" />
+
+          <Progress
+            mt="$2"
+            theme="alt2"
+            value={(progress.current / progress.full) * 100}
+            backgroundColor="$color2"
+          >
+            <Progress.Indicator backgroundColor="$color7" animation="bouncy" />
           </Progress>
+
           {!!action && (
             <Button
               mt="$2"
               chromeless
               als="flex-end"
-              size="$4"
-              {...action.props}
+              size="$2"
               iconAfter={<ChevronRight />}
+              {...action.props}
             >
               {action.text}
             </Button>

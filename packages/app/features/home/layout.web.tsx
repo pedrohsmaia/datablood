@@ -171,9 +171,10 @@ const CtaButton = (props: ButtonProps) => (
     <Button
       {...useLink({ href: '/create' })}
       size="$2"
-      scaleIcon={1.3}
+      scaleIcon={0.8}
       space="$1.5"
       icon={Plus}
+      br="$10"
       {...props}
     >
       Create
