@@ -53,7 +53,8 @@ export const AchievementCard = ({
               {progress.current.toLocaleString()}
             </SizableText>
             <SizableText size="$2" theme="alt1">
-              /{progress.full.toLocaleString()} {progress.label}
+              {' '}
+              / {progress.full.toLocaleString()} {progress.label}
             </SizableText>
           </SizableText>
 
