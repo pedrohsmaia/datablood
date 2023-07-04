@@ -1,5 +1,6 @@
 import {
   AchievementCard,
+  EnsureFlexed,
   EventCard,
   FeedCard,
   H2,
@@ -122,16 +123,15 @@ const AchievementsSection = () => {
       </XStack>
 
       <ScrollAdapt>
-        <XStack
-          px="$4"
-          flexWrap="wrap"
-          flex={1}
-          gap="$1"
-
-          // $gtLg={{ jc: 'flex-start' }}
-        >
+        <XStack px="$4" flexWrap="wrap" flex={1} gap="$1">
           <Theme name="purple">
             <AchievementCard
+              $gtMd={{
+                width: 'calc(50% - 10px)',
+              }}
+              $gtLg={{
+                width: 'calc(25% - 10px)',
+              }}
               icon={DollarSign}
               title="Make your first 100K"
               progress={{ current: 81_500, full: 100_000, label: 'dollars made' }}
@@ -143,6 +143,12 @@ const AchievementsSection = () => {
           </Theme>
           <Theme name="orange">
             <AchievementCard
+              $gtMd={{
+                width: 'calc(50% - 10px)',
+              }}
+              $gtLg={{
+                width: 'calc(25% - 10px)',
+              }}
               icon={User}
               title="Build your community"
               progress={{ current: 280, full: 500, label: 'members' }}
@@ -154,6 +160,12 @@ const AchievementsSection = () => {
           </Theme>
           <Theme name="green">
             <AchievementCard
+              $gtMd={{
+                width: 'calc(50% - 10px)',
+              }}
+              $gtLg={{
+                width: 'calc(25% - 10px)',
+              }}
               icon={Edit2}
               title="Set up your profile"
               progress={{ current: 3, full: 3, label: 'steps completed' }}
@@ -165,6 +177,12 @@ const AchievementsSection = () => {
           </Theme>
           <Theme name="blue">
             <AchievementCard
+              $gtMd={{
+                width: 'calc(50% - 10px)',
+              }}
+              $gtLg={{
+                width: 'calc(25% - 10px)',
+              }}
               icon={Users}
               title="Refer 5 friends"
               progress={{ current: 4, full: 5, label: 'friends referred' }}
@@ -190,8 +208,8 @@ const OverviewSection = () => {
       <ScrollAdapt>
         <XStack flexWrap="wrap" ai="flex-start" jc="flex-start" px="$4" gap="$8" mb="$4">
           <OverviewCard
-            $gtSm={{ minWidth: 300 }}
-            $sm={{ width: 200 }}
+            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $md={{ width: 200 }}
             title="MRR"
             value="$18,908"
             badgeText="+0.5%"
@@ -199,8 +217,8 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtSm={{ minWidth: 300 }}
-            $sm={{ width: 200 }}
+            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $md={{ width: 200 }}
             title="ARR"
             value="$204,010"
             badgeText="+40.5%"
@@ -208,8 +226,8 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtSm={{ minWidth: 300 }}
-            $sm={{ width: 200 }}
+            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $md={{ width: 200 }}
             title="Today's new users"
             value="4 Users"
             badgeText="+25%"
@@ -217,8 +235,8 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtSm={{ minWidth: 300 }}
-            $sm={{ width: 200 }}
+            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $md={{ width: 200 }}
             title="This week's new users"
             value="14 Users"
             badgeText="-2%"
@@ -226,8 +244,8 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtSm={{ minWidth: 300 }}
-            $sm={{ width: 200 }}
+            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $md={{ width: 200 }}
             title="Weekly Post Views"
             value="30,104"
             badgeText="-2%"
@@ -235,8 +253,8 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtSm={{ minWidth: 300 }}
-            $sm={{ width: 200 }}
+            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $md={{ width: 200 }}
             title="Monthly Post Views"
             value="150,104"
             badgeText="+1%"
@@ -255,10 +273,11 @@ const PostsSection = () => {
         Latest Posts
       </H4>
       <ScrollAdapt>
-        <XStack px="$4" gap="$4" mb="$4" flexWrap="wrap">
+        <XStack px="$4" gap="$4" mb="$4" jc="flex-start" flexWrap="wrap">
           <FeedCard
             withImages
-            width={300}
+            $md={{ width: 300 }}
+            $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Why lorem ipsum look bad"
             description="Maybe it's just me - I'll just write out some dummy text just ignore the text tyvm..."
             tag="Design"
@@ -267,7 +286,8 @@ const PostsSection = () => {
 
           <FeedCard
             withImages
-            width={300}
+            $md={{ width: 300 }}
+            $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Why you should use Tamagui"
             description="Tamagui is the best way to develop performant cross-platform apps with one codebase..."
             tag="React"
@@ -276,7 +296,8 @@ const PostsSection = () => {
 
           <FeedCard
             withImages
-            width={300}
+            $md={{ width: 300 }}
+            $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Merits of functional programming"
             description="What is FP anyways? let's talk about it and learn about it's pros and cons..."
             tag="Programming"
@@ -285,7 +306,8 @@ const PostsSection = () => {
 
           <FeedCard
             withImages
-            width={300}
+            $md={{ width: 300 }}
+            $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Different React paradigms"
             description="We're gonna talk about different react paradigm and jargons..."
             tag="React"
@@ -294,9 +316,19 @@ const PostsSection = () => {
 
           <FeedCard
             withImages
-            width={300}
+            $md={{ width: 300 }}
+            $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Another Post"
             description="Hey this is yet another post I'm putting here for demo purposes..."
+            tag="React"
+            authors={defaultAuthors}
+          />
+          <FeedCard
+            withImages
+            $md={{ width: 300 }}
+            $gtMd={{ width: 'calc(33.33% - 12px)' }}
+            title="And Another Post"
+            description="I'm out of ideas for dummy posts, Sint labore sit magna ea proident aute..."
             tag="React"
             authors={defaultAuthors}
           />
