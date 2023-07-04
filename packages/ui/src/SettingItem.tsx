@@ -5,6 +5,10 @@ export type SettingItemProps = {
   icon: React.FC<IconProps>
   rightLabel?: string
   accentColor?: ListItemProps['backgroundColor']
+  /**
+   * web only - to indicate the current page
+   */
+  isActive?: boolean
 } & ListItemProps
 
 export const SettingItem = ({
@@ -12,6 +16,7 @@ export const SettingItem = ({
   children,
   accentColor,
   rightLabel,
+  isActive,
   ...props
 }: SettingItemProps) => {
   return (
@@ -21,8 +26,8 @@ export const SettingItem = ({
         cursor="pointer"
         gap="$2"
         borderRadius="$10"
+        backgroundColor={isActive ? '$backgroundFocus' : 'transparent'}
         {...props}
-        backgroundColor="transparent"
       >
         <YStack padding="$2" borderRadius="$3">
           <Icon opacity={0.6} size={18} />
