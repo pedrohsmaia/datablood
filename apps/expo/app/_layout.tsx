@@ -32,9 +32,8 @@ const InnerStack = () => {
           <Stack.Screen
             name="create"
             options={{
-              title: "New Project",
+              title: 'New Project',
               headerShown: true,
-              presentation: 'modal',
             }}
           />
         </Stack>
