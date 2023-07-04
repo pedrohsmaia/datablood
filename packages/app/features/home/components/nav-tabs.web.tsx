@@ -21,24 +21,14 @@ export const NavTabs = (props: TabsProps) => {
   const router = useRouter()
   const currentTab = nextRouter.pathname
   const setCurrentTab = (newRoute: string) => router.push(newRoute)
-
-  const [tabState, setTabState] = useState<{
-    /**
-     * Layout of the Tab user might intend to select (hovering / focusing)
-     */
-    intentAt: TabLayout | null
-    /**
-     * Layout of the Tab user selected
-     */
-    activeAt: TabLayout | null
-  }>({
-    activeAt: null,
-    intentAt: null,
-  })
-
-  const setIntentIndicator = (intentAt: TabLayout | null) => setTabState({ ...tabState, intentAt })
-  const setActiveIndicator = (activeAt: TabLayout | null) => setTabState({ ...tabState, activeAt })
-  const { activeAt, intentAt } = tabState
+  /**
+   * Layout of the Tab user might intend to select (hovering / focusing)
+   */
+  const [intentAt, setIntentIndicator] = useState<TabLayout | null>(null)
+  /**
+   * Layout of the Tab user selected
+   */
+  const [activeAt, setActiveIndicator] = useState<TabLayout | null>(null)
 
   const handleOnInteraction: TabsTabProps['onInteraction'] = (type, layout) => {
     if (type === 'select') {
@@ -100,7 +90,7 @@ export const NavTabs = (props: TabsProps) => {
         loop={false}
         w="100%"
         f={1}
-        flexDirection={props.orientation === 'horizontal' ? "row" : 'column'} // temp fix: would be fixed after https://github.com/tamagui/tamagui/pull/1313
+        flexDirection={props.orientation === 'horizontal' ? 'row' : 'column'} // temp fix: would be fixed after https://github.com/tamagui/tamagui/pull/1313
       >
         <Tab value="/" onInteraction={handleOnInteraction}>
           Home
