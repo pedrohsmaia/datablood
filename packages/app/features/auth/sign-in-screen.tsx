@@ -8,8 +8,6 @@ import { createParam } from 'solito'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
-// nice article for implementing Supabase OAuth with expo-auth-session: https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf
-
 const { useParams, useUpdateParams } = createParam<{ email?: string }>()
 
 const SignInSchema = z.object({
@@ -56,7 +54,7 @@ export const SignInScreen = () => {
         form={form}
         schema={SignInSchema}
         defaultValues={{
-          email: params?.email,
+          email: params?.email || '',
           password: '',
         }}
         onSubmit={signInWithEmail}

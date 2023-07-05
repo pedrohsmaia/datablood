@@ -28,32 +28,31 @@ export const FeedCard = ({
   withImages?: boolean
 } & CardProps) => {
   return (
-    <Card
-      borderRadius="$4"
-      bordered
-      overflow="hidden"
-      f={1}
-      {...props}
-    >
+    <Card borderRadius="$4" bordered overflow="hidden" {...props}>
       <Card.Header>
         {withImages && (
           <Image
             source={{
               uri: `https://picsum.photos/seed/${title}/1000/500`,
             }}
-            height={200}
+            height={150}
             $sm={{
-              height: 150,
+              height: 100,
             }}
           />
         )}
         <YStack px="$4" pt="$4" gap="$1">
-          <H4>{title}</H4>
-          {!!description && <Paragraph theme="alt1">{description}</Paragraph>}
+          {!!tag && (
+            <H6 size="$2" theme="alt2" mb="$1">
+              {tag}
+            </H6>
+          )}
+
+          <H4 size="$4" textTransform='capitalize'>{title}</H4>
+          {!!description && <Paragraph size="$3" theme="alt1">{description}</Paragraph>}
         </YStack>
       </Card.Header>
-      <Card.Footer flexDirection="column" padded gap="$2">
-        {!!tag && <H6 theme="alt2">{tag}</H6>}
+      <Card.Footer jc="space-between" ai="center" padded gap="$2">
         {authors && authors.length > 0 && (
           <XStack>
             {authors.map((author) => (

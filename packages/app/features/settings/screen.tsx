@@ -6,6 +6,7 @@ import { useUser } from 'app/utils/useUser'
 import rootPackageJson from '../../../../package.json'
 import packageJson from '../../package.json'
 import { useLink } from 'solito/link'
+import { usePathname } from 'app/utils/usePathname'
 
 const brandColors = {
   twitter: '#1DA1F2',
@@ -13,6 +14,7 @@ const brandColors = {
 
 export const SettingsScreen = () => {
   const media = useMedia()
+  const pathname = usePathname()
 
   return (
     <YStack f={1} gap="$2" jc="space-between">
@@ -22,6 +24,7 @@ export const SettingsScreen = () => {
             <Settings.Group>
               <Settings.Item
                 icon={Cog}
+                isActive={pathname === '/settings' || pathname === 'settings/general'}
                 {...useLink({ href: media.sm ? '/settings/general' : '/settings' })}
                 accentColor="$green9"
               >
@@ -29,6 +32,7 @@ export const SettingsScreen = () => {
               </Settings.Item>
               <Settings.Item
                 icon={Lock}
+                isActive={pathname === '/settings/change-password'}
                 {...useLink({ href: '/settings/change-password' })}
                 accentColor="$green9"
               >
@@ -36,18 +40,25 @@ export const SettingsScreen = () => {
               </Settings.Item>
               <Settings.Item
                 icon={Mail}
+                isActive={pathname === '/settings/change-email'}
                 {...useLink({ href: '/settings/change-email' })}
                 accentColor="$green9"
               >
                 Change Email
               </Settings.Item>
-              {/* <Settings.Item icon={Bell} {...useLink({href: "/settings/notifications"})} accentColor="$orange9">
+              {/* <Settings.Item
+                icon={Bell}
+                isActive={pathname === '/settings/notifications'}
+                {...useLink({ href: '/settings/notifications' })}
+                accentColor="$orange9"
+              >
                 Notifications
               </Settings.Item> */}
             </Settings.Group>
             <Settings.Group>
               <Settings.Item
                 icon={Book}
+                isActive={pathname === '/privacy-policy'}
                 {...useLink({ href: '/privacy-policy' })}
                 accentColor="$purple9"
               >
@@ -55,6 +66,7 @@ export const SettingsScreen = () => {
               </Settings.Item>
               <Settings.Item
                 icon={Book}
+                isActive={pathname === '/terms-of-service'}
                 {...useLink({ href: '/terms-of-service' })}
                 accentColor="$purple9"
               >

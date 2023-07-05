@@ -1,5 +1,5 @@
 import { CreateScreen } from 'app/features/create/screen'
-import { HomeLayout } from 'app/features/home/layout'
+import { HomeLayout } from 'app/features/home/layout.web'
 import Head from 'next/head'
 import { userProtectedGetSSP } from 'utils/userProtected'
 import { NextPageWithLayout } from './_app'
