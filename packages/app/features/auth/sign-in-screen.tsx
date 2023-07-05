@@ -54,7 +54,7 @@ export const SignInScreen = () => {
         form={form}
         schema={SignInSchema}
         defaultValues={{
-          email: params?.email,
+          email: params?.email || '',
           password: '',
         }}
         onSubmit={signInWithEmail}

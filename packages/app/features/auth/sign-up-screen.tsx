@@ -71,7 +71,7 @@ export const SignUpScreen = () => {
           form={form}
           schema={SignUpSchema}
           defaultValues={{
-            email: params?.email,
+            email: params?.email || '',
             password: '',
           }}
           props={{

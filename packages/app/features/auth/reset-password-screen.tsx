@@ -48,7 +48,7 @@ export const ResetPasswordScreen = () => {
           form={form}
           schema={ResetPasswordSchema}
           defaultValues={{
-            email: params?.email,
+            email: params?.email || '',
           }}
           onSubmit={resetPassword}
           renderAfter={({ submit }) => {
