@@ -3797,7 +3797,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/native@npm:^6.1.6, @react-navigation/native@npm:~6.1.6":
+"@react-navigation/native@npm:~6.1.6":
   version: 6.1.6
   resolution: "@react-navigation/native@npm:6.1.6"
   dependencies:
@@ -10709,7 +10709,6 @@ __metadata:
     "@my/ui": "*"
     "@react-native-async-storage/async-storage": ^1.18.1
     "@react-native-community/netinfo": ^9.3.10
-    "@react-navigation/native": ^6.1.6
     "@tamagui/babel-plugin": latest
     "@types/react-native": ^0.71.3
     add: ^2.0.6
