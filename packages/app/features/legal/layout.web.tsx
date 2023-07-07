@@ -1,5 +1,6 @@
-import { Button, Footer, Main, SizableText, Theme, YStack, isWeb } from '@my/ui'
-import { Link, useLink } from 'solito/link'
+import { Button, Main, Theme, YStack, isWeb } from '@my/ui'
+import { ChevronLeft } from '@tamagui/lucide-icons'
+import { useLink } from 'solito/link'
 
 export type LegalLayoutProps = {
   children?: React.ReactNode
@@ -9,7 +10,7 @@ export const LegalLayout = ({ children }: LegalLayoutProps) => {
   return (
     <YStack f={1}>
       <YStack
-        gap="$10"
+        gap="$1"
         borderWidth="$0"
         borderBottomColor="$borderColor"
         borderStyle="solid"
@@ -17,22 +18,26 @@ export const LegalLayout = ({ children }: LegalLayoutProps) => {
         jc="center"
         px="$4"
         backgroundColor="$color1"
-        ai="center"
         f={1}
+        ai="center"
       >
-        <Main maxWidth={800} f={1}>
-          {children}
-        </Main>
-
-        {isWeb && (
-          <Footer p="$4">
-            <SizableText size="$5" fontWeight="900" textDecorationLine="underline">
-              <Theme inverse>
-                <Button {...useLink({ href: '/' })}>Go Home</Button>
-              </Theme>
-            </SizableText>
-          </Footer>
-        )}
+        <YStack maxWidth={800} f={1}>
+          {isWeb && (
+            <Theme>
+              <Button
+                chromeless
+                mt="$4"
+                ml="$4"
+                als="flex-start"
+                {...useLink({ href: '/' })}
+                icon={ChevronLeft}
+              >
+                Go Home
+              </Button>
+            </Theme>
+          )}
+          <Main>{children}</Main>
+        </YStack>
       </YStack>
     </YStack>
   )
