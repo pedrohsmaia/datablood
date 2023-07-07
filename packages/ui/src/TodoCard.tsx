@@ -1,4 +1,4 @@
-import { Card, Checkbox, CheckboxProps, Label, Paragraph, Theme, XStack } from 'tamagui'
+import { Card, Checkbox, CheckboxProps, Label, Paragraph, Theme, XStack, YStack } from 'tamagui'
 import { Check } from '@tamagui/lucide-icons'
 import { useId } from 'react'
 
@@ -12,7 +12,7 @@ export const TodoCard = ({
   const reactId = useId()
   const id = _id || reactId
   return (
-    <Theme name={props.checked ? 'green_alt2' : undefined}>
+    <Theme name={props.checked ? 'green' : undefined}>
       <Card backgroundColor="$backgroundStrong" borderRadius="$0">
         <Card.Header padded>
           <Label htmlFor={id}>
@@ -22,9 +22,14 @@ export const TodoCard = ({
                   <Check />
                 </Checkbox.Indicator>
               </Checkbox>
-              <Paragraph textDecorationLine={props.checked ? 'line-through' : 'none'} size="$3">
-                {label}
-              </Paragraph>
+              <YStack>
+                <Paragraph textDecorationLine={props.checked ? 'line-through' : 'none'} size="$3">
+                  {label}
+                </Paragraph>
+                <Paragraph size="$1" theme="alt2">
+                  {props.checked ? "Completed" : "To do"}
+                </Paragraph>
+              </YStack>
             </XStack>
           </Label>
         </Card.Header>
