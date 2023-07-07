@@ -36,7 +36,7 @@ export default function Layout() {
                     pos="absolute"
                     bottom={5}
                     backgroundColor="$color1"
-                    shadowColor="$color1"
+                    shadowColor="black"
                     shadowOpacity={0.7}
                     shadowRadius={3}
                     shadowOffset={{

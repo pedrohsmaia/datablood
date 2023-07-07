@@ -14,6 +14,7 @@ import {
   TodoCard,
   XStack,
   YStack,
+  isWeb,
   useMedia,
 } from '@my/ui'
 import { ArrowRight, DollarSign, Edit2, User, Users, X } from '@tamagui/lucide-icons'
@@ -39,6 +40,7 @@ export function HomeScreen() {
     <XStack f={1}>
       <ScrollView f={3} fb={0}>
         <YStack gap="$6" pt="$5" pb="$8">
+          {!isWeb && <Greetings />}
           <YStack gap="$8">
             <AchievementsSection />
             <OverviewSection />
@@ -218,7 +220,7 @@ const OverviewSection = () => {
         <XStack flexWrap="wrap" ai="flex-start" jc="flex-start" px="$4" gap="$8" mb="$4">
           <OverviewCard
             $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
-            $md={{ width: 200 }}
+            $md={{ width: 150 }}
             title="MRR"
             value="$18,908"
             badgeText="+0.5%"
@@ -227,7 +229,7 @@ const OverviewSection = () => {
 
           <OverviewCard
             $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
-            $md={{ width: 200 }}
+            $md={{ width: 150 }}
             title="ARR"
             value="$204,010"
             badgeText="+40.5%"
@@ -236,7 +238,7 @@ const OverviewSection = () => {
 
           <OverviewCard
             $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
-            $md={{ width: 200 }}
+            $md={{ width: 150 }}
             title="Today's new users"
             value="4 Users"
             badgeText="+25%"
@@ -245,25 +247,25 @@ const OverviewSection = () => {
 
           <OverviewCard
             $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
-            $md={{ width: 200 }}
-            title="This week's new users"
-            value="14 Users"
-            badgeText="-2%"
-            badgeState="failure"
-          />
-
-          {/* <OverviewCard
-            $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
-            $md={{ width: 200 }}
+            $md={{ width: 150 }}
             title="Weekly Post Views"
             value="30,104"
             badgeText="-2%"
             badgeState="failure"
           />
 
+          {/* <OverviewCard
+            $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
+            $md={{ width: 150 }}
+            title="This week's new users"
+            value="14 Users"
+            badgeText="-2%"
+            badgeState="failure"
+          />
+
           <OverviewCard
             $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
-            $md={{ width: 200 }}
+            $md={{ width: 150 }}
             title="Monthly Post Views"
             value="150,104"
             badgeText="+1%"
@@ -383,12 +385,10 @@ const Greetings = () => {
 
   return (
     <YStack gap="$2">
-      <H2 px="$4" my="$4">
+      <H2 px="$4" my="$2">
         Good {getTimeOfDay()}
         {profile?.name ? `, ${profile?.name}!` : '!'}
       </H2>
-
-      <Separator />
     </YStack>
   )
 }
