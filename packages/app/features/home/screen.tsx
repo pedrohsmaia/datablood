@@ -1,14 +1,18 @@
 import {
   AchievementCard,
+  Banner,
   Button,
   EventCard,
   FeedCard,
   H2,
+  H3,
   H4,
   OverviewCard,
+  Paragraph,
   ScrollView,
   Separator,
   Theme,
+  TodoCard,
   XStack,
   YStack,
   useMedia,
@@ -72,57 +76,65 @@ export function HomeScreen() {
       <Separator vertical />
 
       <ScrollView f={1} fb={0} $md={{ display: 'none' }}>
-        <YStack>
-          <EventCard
-            title="Event #1"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[
-              { text: 'New', theme: 'green_alt2' },
-              { text: 'Hot', theme: 'orange_alt2' },
-            ]}
-          />
-          <EventCard
-            title="Event #2"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[{ text: '1 Day Remaining', theme: 'blue_alt2' }]}
-          />
-          <EventCard
-            title="Event #3"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[{ text: 'Ongoing', theme: 'alt1' }]}
-          />
-          <EventCard
-            title="Event #4"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[{ text: 'Finished', theme: 'alt2' }]}
-          />
-          <EventCard
-            title="Event #5"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[{ text: 'Finished', theme: 'alt2' }]}
-          />
+        <YStack separator={<Separator />}>
+          <YStack>
+            <EventCard
+              title="Event #1"
+              description="Lorem ipsum dolor sit, amet."
+              action={{
+                text: 'Show Event',
+                props: useLink({ href: '/' }),
+              }}
+              tags={[
+                { text: 'New', theme: 'green_alt2' },
+                { text: 'Hot', theme: 'orange_alt2' },
+              ]}
+            />
+            <EventCard
+              title="Event #2"
+              description="Lorem ipsum dolor sit, amet."
+              action={{
+                text: 'Show Event',
+                props: useLink({ href: '/' }),
+              }}
+              tags={[{ text: '1 Day Remaining', theme: 'blue_alt2' }]}
+            />
+            <EventCard
+              title="Event #3"
+              description="Lorem ipsum dolor sit, amet."
+              action={{
+                text: 'Show Event',
+                props: useLink({ href: '/' }),
+              }}
+              tags={[{ text: 'Ongoing', theme: 'alt1' }]}
+            />
+            <EventCard
+              title="Event #4"
+              description="Lorem ipsum dolor sit, amet."
+              action={{
+                text: 'Show Event',
+                props: useLink({ href: '/' }),
+              }}
+              tags={[{ text: 'Finished', theme: 'alt2' }]}
+            />
+          </YStack>
+          <YStack p="$3">
+            <Theme name="blue_alt1">
+              <Banner {...useLink({ href: '/' })} cursor="pointer">
+                <H4>Upgrade Now!</H4>
+                <Paragraph size="$2" mt="$1">
+                  Upgrade to access exclusive features and more!
+                </Paragraph>
+              </Banner>
+            </Theme>
+          </YStack>
+          <YStack>
+            <TodoCard label="Contribute to OSS" checked={false} />
+            <TodoCard label="Learn about Tamagui's latest features" checked={true} />
+            <TodoCard label="Upgrade to the new Expo version" checked={false} />
+            <TodoCard label="Do the dishes" checked={false} />
+          </YStack>
         </YStack>
-        <Separator />
       </ScrollView>
     </XStack>
   )
