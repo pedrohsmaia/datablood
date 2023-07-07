@@ -68,7 +68,7 @@ export const AchievementCard = ({
           borderRadius="$6"
           width="100%"
           height="100%"
-          colors={['$color3', '$color2']}
+          colors={['$color1', '$color2', '$color1']}
           start={[1, 1]}
           end={[0.85, 0]}
         />

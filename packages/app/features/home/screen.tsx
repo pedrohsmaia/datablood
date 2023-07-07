@@ -62,8 +62,8 @@ export function HomeScreen() {
             <Separator />
           </YStack>
           <YStack gap="$8">
-            <AchievementsSection />
             <OverviewSection />
+            <AchievementsSection />
             <PostsSection />
           </YStack>
         </YStack>
@@ -82,7 +82,7 @@ export function HomeScreen() {
             }}
             tags={[
               { text: 'New', theme: 'green_alt2' },
-              { text: 'Hot', theme: 'red_alt2' },
+              { text: 'Hot', theme: 'orange_alt2' },
             ]}
           />
           <EventCard
@@ -132,7 +132,7 @@ const AchievementsSection = () => {
   return (
     <YStack gap="$4">
       <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
-        <H4 fontWeight="400">Get Started</H4>
+        <H4 fontWeight="400">Getting Started</H4>
         <Theme name="alt2">
           <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={X}>
             Hide
@@ -231,7 +231,7 @@ const OverviewSection = () => {
       <ScrollAdapt>
         <XStack flexWrap="wrap" ai="flex-start" jc="flex-start" px="$4" gap="$8" mb="$4">
           <OverviewCard
-            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
             $md={{ width: 200 }}
             title="MRR"
             value="$18,908"
@@ -240,7 +240,7 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
             $md={{ width: 200 }}
             title="ARR"
             value="$204,010"
@@ -249,7 +249,7 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
             $md={{ width: 200 }}
             title="Today's new users"
             value="4 Users"
@@ -258,7 +258,7 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
             $md={{ width: 200 }}
             title="This week's new users"
             value="14 Users"
@@ -266,8 +266,8 @@ const OverviewSection = () => {
             badgeState="failure"
           />
 
-          <OverviewCard
-            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+          {/* <OverviewCard
+            $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
             $md={{ width: 200 }}
             title="Weekly Post Views"
             value="30,104"
@@ -276,13 +276,13 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtMd={{ minWidth: 300, flex: 1, flexBasis: 0 }}
+            $gtMd={{ minWidth: 200, flex: 1, flexBasis: 0 }}
             $md={{ width: 200 }}
             title="Monthly Post Views"
             value="150,104"
             badgeText="+1%"
             badgeState="success"
-          />
+          /> */}
         </XStack>
       </ScrollAdapt>
     </YStack>

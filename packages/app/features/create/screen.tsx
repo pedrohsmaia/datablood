@@ -14,7 +14,7 @@ export const CreateScreen = () => {
         numOfDays: formFields.number.min(2).max(200).describe('Number of Days // 60 '),
         paidProject: formFields.boolean.describe('Paid Project'),
         billingAddress: formFields.address.describe('Billing Address'),
-        type: formFields.select.describe('Project type'),
+        type: formFields.select.describe('Project Type'),
       })}
       defaultValues={{
         title: '',
