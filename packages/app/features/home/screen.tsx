@@ -1,7 +1,6 @@
 import {
   AchievementCard,
   Button,
-  EnsureFlexed,
   EventCard,
   FeedCard,
   H2,
@@ -14,7 +13,7 @@ import {
   YStack,
   useMedia,
 } from '@my/ui'
-import { ArrowRight, DollarSign, Edit2, User, Users } from '@tamagui/lucide-icons'
+import { ArrowRight, DollarSign, Edit2, User, Users, X } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
 import React from 'react'
 import { useLink } from 'solito/link'
@@ -53,18 +52,19 @@ export function HomeScreen() {
   return (
     <XStack f={1}>
       <ScrollView f={3} fb={0}>
-        <YStack gap="$3" pt="$4" pb="$8">
+        <YStack gap="$6" pt="$4" pb="$8">
           <YStack gap="$2">
             <H2 px="$4" my="$4">
               Good {getTimeOfDay()}
               {profile?.name ? `, ${profile?.name}!` : '!'}
             </H2>
+
             <Separator />
           </YStack>
-          <YStack gap="$10">
+          <YStack gap="$8">
+            <AchievementsSection />
             <OverviewSection />
             <PostsSection />
-            <AchievementsSection />
           </YStack>
         </YStack>
       </ScrollView>
@@ -72,42 +72,54 @@ export function HomeScreen() {
       <Separator vertical />
 
       <ScrollView f={1} fb={0} $md={{ display: 'none' }}>
-        <H4 p="$4" fontWeight="400">
-          News
-        </H4>
-        <Separator />
-        <YStack separator={<Separator />}>
+        <YStack>
           <EventCard
             title="Event #1"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            description="Lorem ipsum dolor sit, amet."
             action={{
               text: 'Show Event',
               props: useLink({ href: '/' }),
             }}
+            tags={[
+              { text: 'New', theme: 'green_alt2' },
+              { text: 'Hot', theme: 'red_alt2' },
+            ]}
           />
           <EventCard
             title="Event #2"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            description="Lorem ipsum dolor sit, amet."
             action={{
               text: 'Show Event',
               props: useLink({ href: '/' }),
             }}
+            tags={[{ text: '1 Day Remaining', theme: 'blue_alt2' }]}
           />
           <EventCard
             title="Event #3"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            description="Lorem ipsum dolor sit, amet."
             action={{
               text: 'Show Event',
               props: useLink({ href: '/' }),
             }}
+            tags={[{ text: 'Ongoing', theme: 'alt1' }]}
           />
           <EventCard
             title="Event #4"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+            description="Lorem ipsum dolor sit, amet."
             action={{
               text: 'Show Event',
               props: useLink({ href: '/' }),
             }}
+            tags={[{ text: 'Finished', theme: 'alt2' }]}
+          />
+          <EventCard
+            title="Event #5"
+            description="Lorem ipsum dolor sit, amet."
+            action={{
+              text: 'Show Event',
+              props: useLink({ href: '/' }),
+            }}
+            tags={[{ text: 'Finished', theme: 'alt2' }]}
           />
         </YStack>
         <Separator />
@@ -120,23 +132,23 @@ const AchievementsSection = () => {
   return (
     <YStack gap="$4">
       <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
-        <H4 fontWeight="400">Achievements</H4>
+        <H4 fontWeight="400">Get Started</H4>
         <Theme name="alt2">
-        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-          All Achievements
-        </Button>
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={X}>
+            Hide
+          </Button>
         </Theme>
       </XStack>
 
       <ScrollAdapt>
-        <XStack px="$4" flexWrap="wrap" flex={1} gap="$1">
-          <Theme name="purple">
+        <XStack px="$4" flexWrap="wrap" flex={1} gap="$3">
+          <Theme name="green">
             <AchievementCard
               $gtMd={{
-                width: 'calc(50% - 10px)',
+                width: 'calc(50% - 12px)',
               }}
               $gtLg={{
-                width: 'calc(25% - 10px)',
+                width: 'calc(25% - 12px)',
               }}
               icon={DollarSign}
               title="Make your first 100K"
@@ -147,13 +159,13 @@ const AchievementsSection = () => {
               }}
             />
           </Theme>
-          <Theme name="orange">
+          <Theme name="blue">
             <AchievementCard
               $gtMd={{
-                width: 'calc(50% - 10px)',
+                width: 'calc(50% - 12px)',
               }}
               $gtLg={{
-                width: 'calc(25% - 10px)',
+                width: 'calc(25% - 12px)',
               }}
               icon={User}
               title="Build your community"
@@ -164,30 +176,30 @@ const AchievementsSection = () => {
               }}
             />
           </Theme>
-          <Theme name="green">
+          <Theme name="orange">
             <AchievementCard
               $gtMd={{
-                width: 'calc(50% - 10px)',
+                width: 'calc(50% - 12px)',
               }}
               $gtLg={{
-                width: 'calc(25% - 10px)',
+                width: 'calc(25% - 12px)',
               }}
               icon={Edit2}
               title="Set up your profile"
-              progress={{ current: 3, full: 3, label: 'steps completed' }}
+              progress={{ current: 2, full: 3, label: 'steps completed' }}
               action={{
                 text: 'Continue profile setup',
                 props: useLink({ href: '#' }),
               }}
             />
           </Theme>
-          <Theme name="blue">
+          <Theme name="pink">
             <AchievementCard
               $gtMd={{
-                width: 'calc(50% - 10px)',
+                width: 'calc(50% - 12px)',
               }}
               $gtLg={{
-                width: 'calc(25% - 10px)',
+                width: 'calc(25% - 12px)',
               }}
               icon={Users}
               title="Refer 5 friends"
@@ -210,9 +222,9 @@ const OverviewSection = () => {
       <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Overview</H4>
         <Theme name="alt2">
-        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-          View All Stats
-        </Button>
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            View All Stats
+          </Button>
         </Theme>
       </XStack>
 
@@ -283,9 +295,9 @@ const PostsSection = () => {
       <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Latest Posts</H4>
         <Theme name="alt2">
-        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-          View All Posts
-        </Button>
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            View All Posts
+          </Button>
         </Theme>
       </XStack>
       <ScrollAdapt>
