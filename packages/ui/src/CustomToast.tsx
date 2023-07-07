@@ -1,5 +1,6 @@
+import { X } from '@tamagui/lucide-icons'
 import { Toast, useToastState } from '@tamagui/toast'
-import { YStack } from 'tamagui'
+import { Button, Theme, XStack, YStack, isWeb } from 'tamagui'
 
 export const CustomToast = () => {
   const currentToast = useToastState()
@@ -22,7 +23,19 @@ export const CustomToast = () => {
       themeInverse
     >
       <YStack>
-        <Toast.Title>{currentToast.title}</Toast.Title>
+        <XStack gap="$3">
+          <Toast.Title>{currentToast.title}</Toast.Title>
+
+          {/* <Toast.Close asChild>
+            <Button
+              chromeless
+              icon={X}
+              size="$1"
+              circular
+              style={{ alignItems: 'center', justifyContent: 'center' }}
+            ></Button>
+          </Toast.Close> */}
+        </XStack>
         {!!currentToast.message && <Toast.Description>{currentToast.message}</Toast.Description>}
       </YStack>
     </Toast>
