@@ -34,39 +34,14 @@ const defaultAuthors = [
   },
 ]
 
-function getTimeOfDay() {
-  var today = new Date()
-  var curHr = today.getHours()
-
-  if (curHr < 4) {
-    return 'night'
-  } else if (curHr < 12) {
-    return 'morning'
-  } else if (curHr < 18) {
-    return 'afternoon'
-  } else {
-    return 'night'
-  }
-}
-
 export function HomeScreen() {
-  const { profile } = useUser()
-
   return (
     <XStack f={1}>
       <ScrollView f={3} fb={0}>
-        <YStack gap="$6" pt="$4" pb="$8">
-          <YStack gap="$2">
-            <H2 px="$4" my="$4">
-              Good {getTimeOfDay()}
-              {profile?.name ? `, ${profile?.name}!` : '!'}
-            </H2>
-
-            <Separator />
-          </YStack>
+        <YStack gap="$6" pt="$5" pb="$8">
           <YStack gap="$8">
-            <OverviewSection />
             <AchievementsSection />
+            <OverviewSection />
             <PostsSection />
           </YStack>
         </YStack>
@@ -145,7 +120,7 @@ const AchievementsSection = () => {
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Getting Started</H4>
         <Theme name="alt2">
-          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={X}>
+          <Button size="$2" chromeless {...useLink({ href: '/' })}>
             Hide
           </Button>
         </Theme>
@@ -385,5 +360,35 @@ function ScrollAdapt({ children }: { children: React.ReactNode }) {
     </ScrollView>
   ) : (
     <>{children}</>
+  )
+}
+
+const Greetings = () => {
+  const { profile } = useUser()
+
+  function getTimeOfDay() {
+    var today = new Date()
+    var curHr = today.getHours()
+
+    if (curHr < 4) {
+      return 'night'
+    } else if (curHr < 12) {
+      return 'morning'
+    } else if (curHr < 18) {
+      return 'afternoon'
+    } else {
+      return 'night'
+    }
+  }
+
+  return (
+    <YStack gap="$2">
+      <H2 px="$4" my="$4">
+        Good {getTimeOfDay()}
+        {profile?.name ? `, ${profile?.name}!` : '!'}
+      </H2>
+
+      <Separator />
+    </YStack>
   )
 }
