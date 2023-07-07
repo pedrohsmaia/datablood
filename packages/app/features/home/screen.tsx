@@ -143,7 +143,7 @@ export function HomeScreen() {
 const AchievementsSection = () => {
   return (
     <YStack gap="$4">
-      <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
+      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Getting Started</H4>
         <Theme name="alt2">
           <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={X}>
@@ -231,7 +231,7 @@ const AchievementsSection = () => {
 const OverviewSection = () => {
   return (
     <YStack gap="$4">
-      <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
+      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Overview</H4>
         <Theme name="alt2">
           <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
@@ -304,7 +304,7 @@ const OverviewSection = () => {
 const PostsSection = () => {
   return (
     <YStack gap="$4">
-      <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
+      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Latest Posts</H4>
         <Theme name="alt2">
           <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
