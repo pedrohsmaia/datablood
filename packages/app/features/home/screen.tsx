@@ -51,7 +51,7 @@ export function HomeScreen() {
   const { profile } = useUser()
 
   return (
-    <XStack f={1}>
+    <XStack maw={1480} als="center" f={1}>
       <ScrollView f={3} fb={0}>
         <YStack gap="$3" pt="$4" pb="$8">
           <YStack gap="$2">
@@ -122,9 +122,9 @@ const AchievementsSection = () => {
       <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Achievements</H4>
         <Theme name="alt2">
-        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-          All Achievements
-        </Button>
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            All Achievements
+          </Button>
         </Theme>
       </XStack>
 
@@ -210,9 +210,9 @@ const OverviewSection = () => {
       <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Overview</H4>
         <Theme name="alt2">
-        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-          View All Stats
-        </Button>
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            View All Stats
+          </Button>
         </Theme>
       </XStack>
 
@@ -283,9 +283,9 @@ const PostsSection = () => {
       <XStack px="$4" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Latest Posts</H4>
         <Theme name="alt2">
-        <Button  size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-          View All Posts
-        </Button>
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            View All Posts
+          </Button>
         </Theme>
       </XStack>
       <ScrollAdapt>

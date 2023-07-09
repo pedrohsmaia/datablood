@@ -41,15 +41,21 @@ export const FeedCard = ({
             }}
           />
         )}
-        <YStack px="$4" pt="$4" gap="$1">
+        <YStack px="$4" pt="$4" gap="$2">
           {!!tag && (
             <H6 size="$2" theme="alt2" mb="$1">
               {tag}
             </H6>
           )}
 
-          <H4 size="$4" textTransform='capitalize'>{title}</H4>
-          {!!description && <Paragraph size="$3" theme="alt1">{description}</Paragraph>}
+          <H4 size="$5" textTransform="capitalize">
+            {title}
+          </H4>
+          {!!description && (
+            <Paragraph size="$3" theme="alt1">
+              {description}
+            </Paragraph>
+          )}
         </YStack>
       </Card.Header>
       <Card.Footer jc="space-between" ai="center" padded gap="$2">

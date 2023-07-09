@@ -170,9 +170,9 @@ const CtaButton = (props: ButtonProps) => (
   <Theme inverse>
     <Button
       {...useLink({ href: '/create' })}
-      size="$2"
-      scaleIcon={0.8}
+      size="$3"
       space="$1.5"
+      my="$-1"
       icon={Plus}
       br="$10"
       {...props}

@@ -7,6 +7,8 @@ import {
   YStack,
   isWeb,
   useToastController,
+  Separator,
+  styled,
 } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
@@ -24,46 +26,62 @@ export const GeneralSettingsScreen = () => {
         </YStack>
       )}
       <FormWrapper.Body mt="$2" gap="$10">
-        <KVTable>
-          <H4>Profile Data</H4>
-          <KVTable.Row>
-            <KVTable.Key>
-              <SizableText fontWeight="900">Name</SizableText>
-            </KVTable.Key>
-            <KVTable.Value gap="$4">
-              <SizableText>{profile?.name}</SizableText>
-              <Link href="/profile/edit">
-                <SizableText textDecorationLine="underline">Change</SizableText>
-              </Link>
-            </KVTable.Value>
-          </KVTable.Row>
-        </KVTable>
+        <Section>
+          <KVTable>
+            <YStack gap="$4">
+              <H4>Profile Data</H4>
+              <Separator />
+            </YStack>
+            <KVTable.Row>
+              <KVTable.Key>
+                <SizableText fontWeight="900">Name</SizableText>
+              </KVTable.Key>
+              <KVTable.Value gap="$4">
+                <SizableText>{profile?.name}</SizableText>
+                <Link href="/profile/edit">
+                  <SizableText textDecorationLine="underline">Change</SizableText>
+                </Link>
+              </KVTable.Value>
+            </KVTable.Row>
+          </KVTable>
+        </Section>
 
-        <KVTable>
-          <H4>Account Data</H4>
+        <Section>
+          <KVTable>
+            <YStack gap="$4">
+              <H4>Account Data</H4>
+              <Separator />
+            </YStack>
+            <KVTable.Row>
+              <KVTable.Key>
+                <SizableText fontWeight="900">Email</SizableText>
+              </KVTable.Key>
+              <KVTable.Value gap="$4">
+                <SizableText>{user?.email}</SizableText>
+                <Link href="/settings/change-email">
+                  <SizableText textDecorationLine="underline">Change</SizableText>
+                </Link>
+              </KVTable.Value>
+            </KVTable.Row>
 
-          <KVTable.Row>
-            <KVTable.Key>
-              <SizableText fontWeight="900">Email</SizableText>
-            </KVTable.Key>
-            <KVTable.Value gap="$4">
-              <SizableText>{user?.email}</SizableText>
-              <Link href="/settings/change-email">
-                <SizableText textDecorationLine="underline">Change</SizableText>
-              </Link>
-            </KVTable.Value>
-          </KVTable.Row>
-
-          <KVTable.Row>
-            <KVTable.Key>
-              <SizableText fontWeight="900">User ID</SizableText>
-            </KVTable.Key>
-            <KVTable.Value>
-              <SizableText>{user?.id}</SizableText>
-            </KVTable.Value>
-          </KVTable.Row>
-        </KVTable>
+            <KVTable.Row>
+              <KVTable.Key>
+                <SizableText fontWeight="900">User ID</SizableText>
+              </KVTable.Key>
+              <KVTable.Value>
+                <SizableText>{user?.id}</SizableText>
+              </KVTable.Value>
+            </KVTable.Row>
+          </KVTable>
+        </Section>
       </FormWrapper.Body>
     </FormWrapper>
   )
 }
+
+const Section = styled(YStack, {
+  borderColor: '$borderColor',
+  borderWidth: 1,
+  p: '$4',
+  br: '$4',
+})

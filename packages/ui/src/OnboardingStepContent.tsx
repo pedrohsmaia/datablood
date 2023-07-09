@@ -34,7 +34,7 @@ export const StepContent = ({
         opacity={1}
         scale={1}
       >
-        <Icon color="$color1" size={96} />
+        <Icon color="$color9" size={96} />
       </YStack>
       <H2
         mt="$5"
@@ -45,7 +45,7 @@ export const StepContent = ({
         opacity={1}
         scale={1}
         size="$10"
-        color="$color1"
+        color="$color9"
         selectable={false}
         textAlign="center"
       >
@@ -53,15 +53,18 @@ export const StepContent = ({
       </H2>
       <Paragraph
         mt="$4"
-        maxWidth={400} mx="auto"
+        maxWidth={520}
+        mx="auto"
         animation="bouncy"
         y={0}
         enterStyle={{ scale: 0.95, y: -2, opacity: 0 }}
         exitStyle={{ scale: 0.95, y: -2, opacity: 0 }}
         opacity={1}
         scale={1}
+        size="$6"
+        lineHeight="$8"
         textAlign="center"
-        color="$color1"
+        color="$color9"
         selectable={false}
       >
         {description}

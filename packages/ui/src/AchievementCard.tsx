@@ -41,11 +41,11 @@ export const AchievementCard = ({
 }: AchievementCardTypes) => {
   return (
     <Card borderRadius="$0" chromeless {...props}>
-      <Card.Header my="auto" padded f={1} gap="$2">
-        <Icon size={40} opacity={0.6} />
-        <YStack>
+      <Card.Header my="auto" padded f={1} gap="$3">
+        <Icon size="$2" opacity={0.6} />
+        <YStack gap="$2">
           {/* <H6 theme="alt2">{subtitle}</H6> */}
-          <H4 size="$4" textTransform="capitalize" mt="$2">
+          <H4 size="$5" textTransform="capitalize" mt="$2">
             {title}
           </H4>
           <SizableText mt="$1">
@@ -63,6 +63,8 @@ export const AchievementCard = ({
             theme="alt2"
             value={(progress.current / progress.full) * 100}
             backgroundColor="$color2"
+            borderColor="$color5"
+            borderWidth={1}
           >
             <Progress.Indicator backgroundColor="$color7" animation="bouncy" />
           </Progress>
