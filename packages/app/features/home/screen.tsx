@@ -37,7 +37,7 @@ const defaultAuthors = [
 
 export function HomeScreen() {
   return (
-    <XStack f={1}>
+    <XStack maw={1480} als="center" f={1}>
       <ScrollView f={3} fb={0}>
         <YStack gap="$6" pt="$5" pb="$8">
           {!isWeb && <Greetings />}
@@ -122,8 +122,8 @@ const AchievementsSection = () => {
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fontWeight="400">Getting Started</H4>
         <Theme name="alt2">
-          <Button size="$2" chromeless {...useLink({ href: '/' })}>
-            Hide
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            All Achievements
           </Button>
         </Theme>
       </XStack>

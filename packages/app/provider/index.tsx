@@ -24,6 +24,7 @@ export function Provider({
 }
 
 type InnerProviderProps = Omit<TamaguiProviderProps, 'config'>
+
 const InnerProvider = ({ children, ...rest }: InnerProviderProps) => {
   const [queryClient] = useState(
     new QueryClient({
@@ -35,7 +36,13 @@ const InnerProvider = ({ children, ...rest }: InnerProviderProps) => {
 
   return (
     <SafeAreaProvider>
-      <TamaguiProvider config={config} disableInjectCSS defaultTheme={rootTheme} {...rest}>
+      <TamaguiProvider
+        config={config}
+        disableInjectCSS
+        disableRootThemeClass
+        defaultTheme={rootTheme}
+        {...rest}
+      >
         <ToastProvider
           swipeDirection="up"
           swipeThreshold={20}

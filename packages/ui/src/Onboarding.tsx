@@ -78,41 +78,39 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
   const safeAreaInsets = useSafeAreaInsets()
 
   return (
-    <Theme name="light">
-      <Theme name={currentStep.theme as ThemeName}>
-        <YStack
-          flex={1}
-          backgroundColor="$color3"
-          overflow="hidden"
-          paddingBottom={safeAreaInsets.bottom}
-          paddingRight={safeAreaInsets.right}
-          paddingTop={safeAreaInsets.top}
-          paddingLeft={safeAreaInsets.left}
-        >
+    <Theme name={currentStep.theme as ThemeName}>
+      <YStack
+        flex={1}
+        backgroundColor="$color3"
+        overflow="hidden"
+        paddingBottom={safeAreaInsets.bottom}
+        paddingRight={safeAreaInsets.right}
+        paddingTop={safeAreaInsets.top}
+        paddingLeft={safeAreaInsets.left}
+      >
+        <AnimatePresence>
+          <Background key={key} />
+        </AnimatePresence>
+
+        <YStack f={1} {...panResponder.panHandlers}>
           <AnimatePresence>
-            <Background key={key} />
+            <currentStep.Content key={key} />
           </AnimatePresence>
-
-          <YStack f={1} {...panResponder.panHandlers}>
-            <AnimatePresence>
-              <currentStep.Content key={key} />
-            </AnimatePresence>
-          </YStack>
-
-          <XStack gap={10} jc="center" my="$4">
-            {Array.from(Array(stepsCount)).map((_, idx) => {
-              const isActive = idx === stepIdx
-              return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
-            })}
-          </XStack>
-          <OnboardingControls
-            currentIdx={stepIdx}
-            onChange={(val) => setStepIdx(val)}
-            stepsCount={stepsCount}
-            onFinish={onOnboarded}
-          />
         </YStack>
-      </Theme>
+
+        <XStack gap={10} jc="center" my="$4">
+          {Array.from(Array(stepsCount)).map((_, idx) => {
+            const isActive = idx === stepIdx
+            return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
+          })}
+        </XStack>
+        <OnboardingControls
+          currentIdx={stepIdx}
+          onChange={(val) => setStepIdx(val)}
+          stepsCount={stepsCount}
+          onFinish={onOnboarded}
+        />
+      </YStack>
     </Theme>
   )
 }
@@ -160,12 +158,12 @@ export const Background = () => {
   return (
     <YStack pos="absolute" left={0} right={0} top={0} bottom={0} jc="center" ai="center">
       <Circle
-        animation={'lazy'}
+        animation="lazy"
         x={0}
         y={0}
         opacity={1}
         scale={1}
-        backgroundColor="$color8"
+        backgroundColor="$color3"
         enterStyle={{
           scale: 0,
         }}

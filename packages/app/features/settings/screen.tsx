@@ -21,7 +21,7 @@ export const SettingsScreen = () => {
       <ScrollView>
         <Settings mt="$6">
           <Settings.Items>
-            <Settings.Group>
+            <Settings.Group $gtSm={{ space: '$2' }}>
               <Settings.Item
                 icon={Cog}
                 isActive={pathname === '/settings' || pathname === 'settings/general'}

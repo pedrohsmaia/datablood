@@ -10,6 +10,10 @@ import 'raf/polyfill'
 import { ReactElement, ReactNode } from 'react'
 import type { SolitoAppProps } from 'solito'
 
+if (process.env.NODE_ENV === 'production') {
+  require('../public/tamagui.css')
+}
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
