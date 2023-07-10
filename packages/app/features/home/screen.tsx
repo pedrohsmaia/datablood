@@ -132,6 +132,7 @@ const AchievementsSection = () => {
         <XStack px="$4" flexWrap="wrap" flex={1} gap="$3">
           <Theme name="green">
             <AchievementCard
+            width={300}
               $gtMd={{
                 width: 'calc(50% - 12px)',
               }}
@@ -149,6 +150,7 @@ const AchievementsSection = () => {
           </Theme>
           <Theme name="blue">
             <AchievementCard
+            width={300}
               $gtMd={{
                 width: 'calc(50% - 12px)',
               }}
@@ -166,6 +168,7 @@ const AchievementsSection = () => {
           </Theme>
           <Theme name="orange">
             <AchievementCard
+            width={300}
               $gtMd={{
                 width: 'calc(50% - 12px)',
               }}
@@ -183,6 +186,7 @@ const AchievementsSection = () => {
           </Theme>
           <Theme name="pink">
             <AchievementCard
+            width={300}
               $gtMd={{
                 width: 'calc(50% - 12px)',
               }}

@@ -48,62 +48,54 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
 
   const safeAreaInsets = useSafeAreaInsets()
   return (
-    <Theme name="light">
-      <Theme name={currentStep.theme as ThemeName}>
-        <YStack
-          flex={1}
-          backgroundColor="$color3"
-          overflow="hidden"
-          paddingBottom={safeAreaInsets.bottom}
-          paddingRight={safeAreaInsets.right}
-          paddingTop={safeAreaInsets.top}
-          paddingLeft={safeAreaInsets.left}
+    <Theme name={currentStep.theme as ThemeName}>
+      <YStack
+        flex={1}
+        backgroundColor="$color3"
+        overflow="hidden"
+        paddingBottom={safeAreaInsets.bottom}
+        paddingRight={safeAreaInsets.right}
+        paddingTop={safeAreaInsets.top}
+        paddingLeft={safeAreaInsets.left}
+      >
+        <Background />
+
+        <ScrollView
+          ref={scrollRef as unknown as React.Ref<TamaguiElement>}
+          horizontal
+          pagingEnabled
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          onScroll={handleScroll}
         >
-          <Background />
+          {steps.map((step, idx) => {
+            const isActive = idx === stepIdx
+            return (
+              <YStack key={idx} width={DEVICE_WIDTH}>
+                {isActive && <step.Content key={idx} />}
+              </YStack>
+            )
+          })}
+        </ScrollView>
 
-          <ScrollView
-            ref={scrollRef as unknown as React.Ref<TamaguiElement>}
-            horizontal
-            pagingEnabled
-            scrollEventThrottle={16}
-            showsHorizontalScrollIndicator={false}
-            onScroll={handleScroll}
-          >
-            {steps.map((step, idx) => {
-              const isActive = idx === stepIdx
-              return (
-                <YStack key={idx} width={DEVICE_WIDTH}>
-                  {isActive && <step.Content key={idx} />}
-                </YStack>
-              )
-            })}
-          </ScrollView>
-
-          <XStack gap={10} jc="center" my="$4">
-            {Array.from(Array(stepsCount)).map((_, idx) => {
-              const isActive = idx === stepIdx
-              return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
-            })}
-          </XStack>
-          <OnboardingControls
-            currentIdx={stepIdx}
-            onChange={(val) => changePage(val)}
-            stepsCount={stepsCount}
-            onFinish={onOnboarded}
-          />
-        </YStack>
-      </Theme>
+        <XStack gap={10} jc="center" my="$4">
+          {Array.from(Array(stepsCount)).map((_, idx) => {
+            const isActive = idx === stepIdx
+            return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
+          })}
+        </XStack>
+        <OnboardingControls
+          currentIdx={stepIdx}
+          onChange={(val) => changePage(val)}
+          stepsCount={stepsCount}
+          onFinish={onOnboarded}
+        />
+      </YStack>
     </Theme>
   )
 }
 
 const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) => {
-  const animatedNumber = useAnimatedNumber(10)
-
-  useEffect(() => {
-    animatedNumber.setValue(active ? 30 : 10)
-  }, [active])
-
   return (
     <Animated.View
       style={[
@@ -111,8 +103,6 @@ const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) =>
           width: active ? 30 : 10,
           height: 10,
         },
-        // TODO:
-        // animatedStyles,
       ]}
       // @ts-ignore
       animation="100ms"
@@ -120,7 +110,7 @@ const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) =>
       <Circle
         animation="100ms"
         onPress={onPress}
-        backgroundColor={active ? '$color6' : '$color7'}
+        backgroundColor={active ? '$color8' : '$color6'}
         width="100%"
         height="100%"
       />
@@ -138,7 +128,7 @@ export const Background = () => {
         y={0}
         opacity={1}
         scale={1}
-        backgroundColor="$color8"
+        backgroundColor="$color3"
         enterStyle={{
           scale: 0,
         }}
