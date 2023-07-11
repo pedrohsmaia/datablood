@@ -10,7 +10,7 @@ import {
   getTokens,
 } from '@my/ui'
 import { Box, Cog, Milestone, ShoppingCart, Users } from '@tamagui/lucide-icons'
-import { useSafeAreaInsets } from 'app/utils/safe-area'
+import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import { useUser } from 'app/utils/useUser'
 import React from 'react'
 import { SolitoImage } from 'solito/image'

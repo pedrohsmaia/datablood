@@ -1,5 +1,5 @@
 import { useAnimatedNumber } from '@tamagui/animations-react-native'
-import { useSafeAreaInsets } from 'app/utils/safe-area'
+import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import React, { useEffect, useRef, useState } from 'react'
 import { Animated, Dimensions, ScrollView as RNScrollView } from 'react-native'
 import {

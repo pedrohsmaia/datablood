@@ -1,5 +1,5 @@
 import { ToastViewport as ToastViewportOg } from '@my/ui'
-import { useSafeAreaInsets } from 'app/utils/safe-area'
+import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 
 export const ToastViewport = () => {
   const { top, right, left } = useSafeAreaInsets()

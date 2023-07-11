@@ -8,7 +8,7 @@ import {
   useWindowDimensions,
 } from 'tamagui'
 import { useAnimatedNumber, useAnimatedNumberStyle } from '@tamagui/animations-react-native'
-import { useSafeAreaInsets } from 'app/utils/safe-area'
+import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import React, { useEffect, useState } from 'react'
 import { Animated, PanResponder } from 'react-native'
 import { OnboardingControls } from './OnboardingControls'

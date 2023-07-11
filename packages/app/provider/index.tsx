@@ -1,5 +1,5 @@
 import { Session } from '@supabase/supabase-js'
-import { SafeAreaProvider } from 'app/utils/safe-area'
+import { SafeAreaProvider } from './safe-area'
 import { AuthProvider } from './auth'
 import { QueryClientProvider } from './react-query'
 import { TamaguiProvider } from './tamagui'
