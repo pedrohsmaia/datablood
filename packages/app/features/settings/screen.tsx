@@ -1,6 +1,6 @@
 import { Paragraph, ScrollView, Settings, YStack, isWeb, useMedia } from '@my/ui'
 import { Book, Cog, Info, Lock, LogOut, Mail, Moon, Twitter } from '@tamagui/lucide-icons'
-import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
+import { useThemeSetting } from 'app/provider/theme'
 import { redirect } from 'app/utils/redirect'
 import { useUser } from 'app/utils/useUser'
 import rootPackageJson from '../../../../package.json'

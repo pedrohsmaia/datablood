@@ -38,11 +38,7 @@ function MyApp({
           setTheme(next as any)
         }}
       >
-        <Provider
-          disableRootThemeClass
-          initialSession={pageProps.initialSession}
-          defaultTheme={theme}
-        >
+        <Provider initialSession={pageProps.initialSession}>
           {getLayout(<Component {...pageProps} />)}
         </Provider>
       </NextThemeProvider>

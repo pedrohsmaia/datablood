@@ -1,11 +1,12 @@
 import NetInfo from '@react-native-community/netinfo'
 import {
+  QueryClient,
   QueryClientProvider as QueryClientProviderOG,
   QueryClientProviderProps,
   focusManager,
   onlineManager,
 } from '@tanstack/react-query'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import type { AppStateStatus } from 'react-native'
 import { AppState, Platform } from 'react-native'
 
@@ -21,11 +22,17 @@ function onAppStateChange(status: AppStateStatus) {
   }
 }
 
-export const QueryClientProvider = (props: QueryClientProviderProps) => {
+export const QueryClientProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const subscription = AppState.addEventListener('change', onAppStateChange)
 
     return () => subscription.remove()
   }, [])
-  return <QueryClientProviderOG {...props} />
+
+  const [queryClient] = useState(
+    new QueryClient({
+      // native query config
+    })
+  )
+  return <QueryClientProviderOG client={queryClient}>{children}</QueryClientProviderOG>
 }
