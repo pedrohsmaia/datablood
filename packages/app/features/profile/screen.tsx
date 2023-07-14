@@ -62,7 +62,7 @@ export function ProfileScreen() {
             )}
           </YStack>
         </YStack>
-        <Button mx="$4" {...useLink({ href: '/profile/edit' })} size="$5" themeInverse>
+        <Button mx="$4" {...useLink({ href: '/profile/edit' })} themeInverse>
           Edit Profile
         </Button>
 
