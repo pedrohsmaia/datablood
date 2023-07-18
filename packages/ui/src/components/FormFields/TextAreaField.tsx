@@ -32,7 +32,9 @@ export const TextAreaField = (props: Pick<TextAreaProps, 'size' | 'autoFocus'>) 
             ref={field.ref}
             placeholder={placeholder}
             id={id}
-            numberOfLines={5}
+            rows={5}
+            // temp fix
+            height={150}
             {...props}
           />
         </Shake>

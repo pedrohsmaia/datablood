@@ -1,4 +1,4 @@
-import { Avatar, Circle, Theme, YStack } from '@my/ui'
+import { Avatar, Circle, Theme, YStack, useThemeName } from '@my/ui'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
@@ -32,45 +32,7 @@ export default function Layout() {
 
               return (
                 <Theme inverse>
-                  <Circle
-                    pos="absolute"
-                    bottom={5}
-                    backgroundColor="$color1"
-                    shadowColor="$color1"
-                    shadowOpacity={0.7}
-                    shadowRadius={3}
-                    shadowOffset={{
-                      height: 0,
-                      width: 0,
-                    }}
-                    width={size + 40}
-                    height={size + 40}
-                  />
-                  <LinearGradient
-                    onPress={() => router.push('/create')}
-                    colors={['$gray1', '$gray7']}
-                    start={[1, 1]}
-                    end={[0.8, 0]}
-                    width={size + 40}
-                    height={size + 40}
-                    borderRadius="$10"
-                    pos="absolute"
-                    bottom={5}
-                    pressStyle={{
-                      rotate: '20deg',
-                    }}
-                  />
-                  <YStack
-                    pos="absolute"
-                    bottom={5}
-                    jc="center"
-                    ai="center"
-                    animation="quick"
-                    pointerEvents="none"
-                    height={size + 40}
-                  >
-                    <Plus color="$color" size={size + 20} />
-                  </YStack>
+                  <PlusButton size={size} />
                 </Theme>
               )
             },
@@ -93,6 +55,56 @@ export default function Layout() {
           }}
         />
       </Tabs>
+    </>
+  )
+}
+
+const PlusButton = ({ size }: { size: number }) => {
+  const router = useRouter()
+  const theme = useThemeName()
+const isDark = theme.startsWith('dark')
+
+  return (
+    <>
+      <Circle
+        pos="absolute"
+        bottom={5}
+        backgroundColor="$color1"
+        shadowColor='black'
+        shadowOpacity={isDark ? 0.7 : 1}
+        shadowRadius={isDark ? 3 : 10}
+        shadowOffset={{
+          height: 0,
+          width: 5,
+        }}
+        width={size + 34}
+        height={size + 34}
+      />
+      <LinearGradient
+        onPress={() => router.push('/create')}
+        colors={['$gray1', '$gray7']}
+        start={[1, 1]}
+        end={[0.8, 0]}
+        width={size + 34}
+        height={size + 34}
+        borderRadius="$10"
+        pos="absolute"
+        bottom={5}
+        pressStyle={{
+          rotate: '20deg',
+        }}
+      />
+      <YStack
+        pos="absolute"
+        bottom={5}
+        jc="center"
+        ai="center"
+        animation="quick"
+        pointerEvents="none"
+        height={size + 34}
+      >
+        <Plus color="$color" size={size + 20} />
+      </YStack>
     </>
   )
 }

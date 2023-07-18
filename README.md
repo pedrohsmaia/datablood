@@ -2,6 +2,10 @@
 
 Tamagui's Premium Universal Starter
 
+## Getting Started
+
+If you want to clone this starter, you can run `yarn create tamagui --template takeout-starter`. Otherwise, ignore this section.
+
 ## Included packages
 
 - [Tamagui](https://tamagui.dev)
@@ -13,9 +17,9 @@ Tamagui's Premium Universal Starter
 
 ## First-time Configuration
 
-`cd` into the root of the project and run `yarn setup`.
+Note that you don't need to do this if you've already cloned this using `create tamagui`.
 
-Note that you don't need to do this if you've cloned the template using `create-tamagui` and have gone through the setup steps.
+To configure the project, `cd` into the root of the project and run `yarn setup`.
 
 ## Development
 

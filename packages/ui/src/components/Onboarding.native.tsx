@@ -1,37 +1,23 @@
+import { useAnimatedNumber } from '@tamagui/animations-react-native'
+import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
+import React, { useEffect, useRef, useState } from 'react'
+import { Animated, Dimensions, ScrollView as RNScrollView } from 'react-native'
 import {
-  AnimatePresence,
   Circle,
+  ScrollView,
+  ScrollViewProps,
+  TamaguiElement,
   Theme,
   ThemeName,
   XStack,
   YStack,
   useWindowDimensions,
 } from 'tamagui'
-import { useAnimatedNumber, useAnimatedNumberStyle } from '@tamagui/animations-react-native'
-import { useSafeAreaInsets } from 'app/utils/safe-area'
-import React, { useEffect, useState } from 'react'
-import { Animated, PanResponder } from 'react-native'
 import { OnboardingControls } from './OnboardingControls'
+import { OnboardingProps } from './Onboarding'
 
-export type OnboardingStepInfo = {
-  theme: ThemeName
-  Content: React.FC<{}>
-}
-
-export type OnboardingProps = {
-  /**
-   * native only
-   */
-  onOnboarded?: () => void
-  /**
-   * web only
-   */
-  autoSwipe?: boolean
-  steps: OnboardingStepInfo[]
-}
-
-const AUTO_SWIPE_THRESHOLD = 15_000 // ms
-export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) => {
+const { width: DEVICE_WIDTH } = Dimensions.get('screen')
+export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
   const [stepIdx, _setStepIdx] = useState(0)
   // prevent a background to ever "continue" animation / try to continue where it left off - cause looks weird
 
@@ -46,37 +32,21 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
     }
   }
 
-  useEffect(() => {
-    if (autoSwipe) {
-      const interval = setTimeout(() => {
-        if (stepIdx >= stepsCount - 1) {
-          setStepIdx(0)
-        } else {
-          setStepIdx(stepIdx + 1)
-        }
-      }, AUTO_SWIPE_THRESHOLD)
-      return () => clearTimeout(interval)
+  const handleScroll: ScrollViewProps['onScroll'] = (event) => {
+    const val = event.nativeEvent.contentOffset.x / DEVICE_WIDTH
+    const newIdx = Math.round(val)
+    if (stepIdx !== newIdx) {
+      setStepIdx(newIdx)
     }
-  }, [stepIdx, autoSwipe])
+  }
 
-  const panResponder = React.useMemo(() => {
-    return PanResponder.create({
-      onMoveShouldSetPanResponderCapture: (e, gesture) => {
-        const THRESHOLD = 100
-        if (gesture.dx > THRESHOLD) {
-          setStepIdx(Math.max(0, stepIdx - 1))
-          return true
-        } else if (gesture.dx < -THRESHOLD) {
-          setStepIdx(Math.min(stepsCount - 1, stepIdx + 1))
-          return true
-        }
-        return false
-      },
-    })
-  }, [stepIdx])
+  const changePage = (newStepIdx: number) => {
+    scrollRef.current?.scrollTo({ x: newStepIdx * DEVICE_WIDTH, animated: true })
+  }
+
+  const scrollRef = useRef<RNScrollView>(null)
 
   const safeAreaInsets = useSafeAreaInsets()
-
   return (
     <Theme name={currentStep.theme as ThemeName}>
       <YStack
@@ -88,15 +58,25 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
         paddingTop={safeAreaInsets.top}
         paddingLeft={safeAreaInsets.left}
       >
-        <AnimatePresence>
-          <Background key={key} />
-        </AnimatePresence>
+        <Background />
 
-        <YStack f={1} {...panResponder.panHandlers}>
-          <AnimatePresence>
-            <currentStep.Content key={key} />
-          </AnimatePresence>
-        </YStack>
+        <ScrollView
+          ref={scrollRef as unknown as React.Ref<TamaguiElement>}
+          horizontal
+          pagingEnabled
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          onScroll={handleScroll}
+        >
+          {steps.map((step, idx) => {
+            const isActive = idx === stepIdx
+            return (
+              <YStack key={idx} width={DEVICE_WIDTH}>
+                {isActive && <step.Content key={idx} />}
+              </YStack>
+            )
+          })}
+        </ScrollView>
 
         <XStack gap={10} jc="center" my="$4">
           {Array.from(Array(stepsCount)).map((_, idx) => {
@@ -106,7 +86,7 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
         </XStack>
         <OnboardingControls
           currentIdx={stepIdx}
-          onChange={(val) => setStepIdx(val)}
+          onChange={(val) => changePage(val)}
           stepsCount={stepsCount}
           onFinish={onOnboarded}
         />
@@ -116,19 +96,6 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
 }
 
 const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) => {
-  const animatedNumber = useAnimatedNumber(10)
-
-  useEffect(() => {
-    animatedNumber.setValue(active ? 30 : 10)
-  }, [active])
-
-  const animatedStyles = useAnimatedNumberStyle(animatedNumber, (val) => {
-    'worklet'
-    return {
-      width: val,
-    }
-  })
-
   return (
     <Animated.View
       style={[
@@ -136,8 +103,6 @@ const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) =>
           width: active ? 30 : 10,
           height: 10,
         },
-        // TODO:
-        // animatedStyles,
       ]}
       // @ts-ignore
       animation="100ms"
@@ -145,7 +110,7 @@ const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) =>
       <Circle
         animation="100ms"
         onPress={onPress}
-        backgroundColor={active ? '$color6' : '$color7'}
+        backgroundColor={active ? '$color8' : '$color6'}
         width="100%"
         height="100%"
       />
@@ -158,7 +123,7 @@ export const Background = () => {
   return (
     <YStack pos="absolute" left={0} right={0} top={0} bottom={0} jc="center" ai="center">
       <Circle
-        animation="lazy"
+        animation={'lazy'}
         x={0}
         y={0}
         opacity={1}

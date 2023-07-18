@@ -10,7 +10,7 @@ import {
   getTokens,
 } from '@my/ui'
 import { Box, Cog, Milestone, ShoppingCart, Users } from '@tamagui/lucide-icons'
-import { useSafeAreaInsets } from 'app/utils/safe-area'
+import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import { useUser } from 'app/utils/useUser'
 import React from 'react'
 import { SolitoImage } from 'solito/image'
@@ -29,12 +29,12 @@ export function ProfileScreen() {
         mx="auto"
         width="100%"
         f={1}
-        gap="$8"
+        gap="$4"
         pb={insets.bottom + 20}
         pt={insets.top + 10}
       >
-        <YStack gap="$4">
-          <XStack gap="$4" jc="center" $sm={{ mt: '$8' }}>
+        <YStack gap="$8">
+          <XStack gap="$2" jc="center" $sm={{ mt: '$8' }}>
             <Avatar circular size="$14">
               <SolitoImage
                 src={avatarUrl}
@@ -56,13 +56,13 @@ export function ProfileScreen() {
             )}
 
             {!!about && (
-              <Paragraph ta="center" size="$6">
+              <Paragraph theme="alt1" ta="center" size="$6">
                 {about}
               </Paragraph>
             )}
           </YStack>
         </YStack>
-        <Button mx="$4" {...useLink({ href: '/profile/edit' })} size="$6" themeInverse>
+        <Button mx="$4" {...useLink({ href: '/profile/edit' })} themeInverse>
           Edit Profile
         </Button>
 

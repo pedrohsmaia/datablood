@@ -1,6 +1,6 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { Provider } from 'app/provider'
-import { useThemeSetting } from 'app/provider/theme/UniversalThemeProvider'
+import { useThemeSetting } from 'app/provider/theme'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { useProtectedRoute } from '../utils/useProtectedRoute'
