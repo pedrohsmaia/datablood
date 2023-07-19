@@ -15,7 +15,7 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secure
   const disabled = isSubmitting
 
   return (
-    <Theme name={error ? 'red' : undefined}>
+    <Theme name={error ? 'red' : undefined} forceClassName>
       <Fieldset>
         {!!label && (
           <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>

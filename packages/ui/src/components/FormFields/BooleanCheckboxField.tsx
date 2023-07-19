@@ -15,7 +15,7 @@ export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native
   const disabled = isSubmitting
 
   return (
-    <Theme name={error ? 'red' : undefined}>
+    <Theme name={error ? 'red' : undefined} forceClassName>
       <Fieldset>
         <XStack gap="$4">
           {!!label && (
