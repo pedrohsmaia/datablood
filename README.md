@@ -6,6 +6,9 @@ Tamagui's Premium Universal Starter
 
 If you want to clone this starter, you can run `yarn create tamagui --template takeout-starter`. Otherwise, ignore this section.
 
+
+To rename the project you can search the workspace for the word `myapp` and replace with your name. You may also run [react-native-rename](https://github.com/junedomingo/react-native-rename) from `/apps/expo` to rename the react-native references.
+
 ## Included packages
 
 - [Tamagui](https://tamagui.dev)
@@ -92,7 +95,7 @@ We use a hook to check for auth and then redirect the user to auth pages, and al
 
 ## How Authorization is Handled
 
-You can use Supabase's (Row-Level Security (RLS))[https://supabase.com/docs/guides/auth/row-level-security] to handle authorization of users.
+You can use Supabase's [Row-Level Security (RLS)](https://supabase.com/docs/guides/auth/row-level-security) to handle authorization of users.
 
 ## Environment Convention
 
