@@ -4,7 +4,7 @@ import { ChevronRight } from '@tamagui/lucide-icons'
 import React from 'react'
 import { useLink } from 'solito/link'
 
-import { Button, Card, CardProps, H4, H6, Progress, SizableText, YStack } from 'tamagui'
+import { Button, Card, CardProps, Circle, H4, H6, Progress, SizableText, YStack } from 'tamagui'
 
 export type AchievementCardTypes = {
   icon: React.FC<IconProps>

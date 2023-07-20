@@ -1,3 +1,6 @@
+import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
+import React, { useEffect, useState } from 'react'
+import { Animated, PanResponder } from 'react-native'
 import {
   AnimatePresence,
   Circle,
@@ -7,10 +10,6 @@ import {
   YStack,
   useWindowDimensions,
 } from 'tamagui'
-import { useAnimatedNumber, useAnimatedNumberStyle } from '@tamagui/animations-react-native'
-import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
-import React, { useEffect, useState } from 'react'
-import { Animated, PanResponder } from 'react-native'
 import { OnboardingControls } from './OnboardingControls'
 
 export type OnboardingStepInfo = {
@@ -116,40 +115,14 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
 }
 
 const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) => {
-  const animatedNumber = useAnimatedNumber(10)
-
-  useEffect(() => {
-    animatedNumber.setValue(active ? 30 : 10)
-  }, [active])
-
-  const animatedStyles = useAnimatedNumberStyle(animatedNumber, (val) => {
-    'worklet'
-    return {
-      width: val,
-    }
-  })
-
   return (
-    <Animated.View
-      style={[
-        {
-          width: active ? 30 : 10,
-          height: 10,
-        },
-        // TODO:
-        // animatedStyles,
-      ]}
-      // @ts-ignore
-      animation="100ms"
-    >
-      <Circle
-        animation="100ms"
-        onPress={onPress}
-        backgroundColor={active ? '$color6' : '$color7'}
-        width="100%"
-        height="100%"
-      />
-    </Animated.View>
+    <YStack
+      br="$10"
+      width={active ? 30 : 10}
+      height={10}
+      onPress={onPress}
+      backgroundColor={active ? '$color7' : '$color6'}
+    />
   )
 }
 

@@ -1,5 +1,5 @@
-// temp: ignore solito/link bundle error
-process.env.TAMAGUI_IGNORE_BUNDLE_ERRORS = "solito/link"
+// temp: ignore bundle error
+process.env.TAMAGUI_IGNORE_BUNDLE_ERRORS = "solito/link,moti"
 
 module.exports = function (api) {
   api.cache(true)
@@ -29,8 +29,7 @@ module.exports = function (api) {
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
         },
       ],
-      // if you want reanimated support
-      // 'react-native-reanimated/plugin',
+      'react-native-reanimated/plugin',
       ...(process.env.EAS_BUILD_PLATFORM === 'android'
         ? []
         : [
