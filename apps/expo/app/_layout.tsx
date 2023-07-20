@@ -1,33 +1,33 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { Provider } from 'app/provider'
-import { useThemeSetting } from 'app/provider/theme'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
-import { useProtectedRoute } from '../utils/useProtectedRoute'
+import { useCallback } from 'react'
+import { View } from 'react-native'
 // import { LogBox } from 'react-native'
 
 // LogBox.ignoreAllLogs()
 
-export default function HomeLayout() {
-  return (
-    <Provider>
-      <InnerStack />
-    </Provider>
-  )
-}
+SplashScreen.preventAutoHideAsync()
 
-const InnerStack = () => {
-  const { initialLoading } = useProtectedRoute()
-  const { resolvedTheme } = useThemeSetting()
+export default function HomeLayout() {
   const [fontLoaded] = useFonts({
     Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
   })
 
+  const onLayoutRootView = useCallback(async () => {
+    if (fontLoaded) {
+      await SplashScreen.hideAsync()
+    }
+  }, [fontLoaded])
+
+  if (!fontLoaded) {
+    return null
+  }
+
   return (
-    <>
-      {(initialLoading || !fontLoaded) && <SplashScreen />}
-      <ThemeProvider value={resolvedTheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+      <Provider>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen
             name="create"
@@ -37,7 +37,7 @@ const InnerStack = () => {
             }}
           />
         </Stack>
-      </ThemeProvider>
-    </>
+      </Provider>
+    </View>
   )
 }
