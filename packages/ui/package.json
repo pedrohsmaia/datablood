@@ -13,12 +13,16 @@
     "dist"
   ],
   "scripts": {
-    "build": "tamagui-build",
-    "watch": "tamagui-build --watch"
+    "build": "tamagui-build ./src",
+    "watch": "tamagui-build --watch",
+    "generate-theme": "tamagui generate-themes ./src/themes/theme.ts ./src/themes/theme-generated.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
+    "@tamagui/animations-moti": "^1.43.13",
     "@tamagui/animations-react-native": "latest",
+    "@tamagui/cli": "latest",
+    "@tamagui/create-theme": "latest",
     "@tamagui/font-inter": "latest",
     "@tamagui/helpers-icon": "latest",
     "@tamagui/react-native-media-driver": "latest",
@@ -26,6 +30,7 @@
     "@tamagui/themes": "latest",
     "@tamagui/toast": "latest",
     "@ts-react/form": "^1.6.4",
+    "moti": "^0.25.3",
     "react-hook-form": "^7.44.3",
     "tamagui": "latest",
     "zod": "^3.21.4"

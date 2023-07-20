@@ -14,7 +14,7 @@ export const BooleanSwitchField = (props: Pick<SwitchProps, 'size' | 'native'>) 
   const disabled = isSubmitting
 
   return (
-    <Theme name={error ? 'red' : undefined}>
+    <Theme name={error ? 'red' : undefined} forceClassName>
       <Fieldset ai="flex-start">
         {!!label && (
           <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>

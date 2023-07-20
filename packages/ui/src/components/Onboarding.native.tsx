@@ -1,20 +1,18 @@
-import { useAnimatedNumber } from '@tamagui/animations-react-native'
 import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
-import React, { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Animated, Dimensions, ScrollView as RNScrollView } from 'react-native'
 import {
   Circle,
   ScrollView,
   ScrollViewProps,
-  TamaguiElement,
   Theme,
   ThemeName,
   XStack,
   YStack,
   useWindowDimensions,
 } from 'tamagui'
-import { OnboardingControls } from './OnboardingControls'
 import { OnboardingProps } from './Onboarding'
+import { OnboardingControls } from './OnboardingControls'
 
 const { width: DEVICE_WIDTH } = Dimensions.get('screen')
 export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
@@ -61,7 +59,7 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
         <Background />
 
         <ScrollView
-          ref={scrollRef as unknown as React.Ref<TamaguiElement>}
+          ref={scrollRef}
           horizontal
           pagingEnabled
           scrollEventThrottle={16}
@@ -97,24 +95,13 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
 
 const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) => {
   return (
-    <Animated.View
-      style={[
-        {
-          width: active ? 30 : 10,
-          height: 10,
-        },
-      ]}
-      // @ts-ignore
-      animation="100ms"
-    >
-      <Circle
-        animation="100ms"
-        onPress={onPress}
-        backgroundColor={active ? '$color8' : '$color6'}
-        width="100%"
-        height="100%"
-      />
-    </Animated.View>
+    <YStack
+      br="$10"
+      width={active ? 30 : 10}
+      height={10}
+      onPress={onPress}
+      backgroundColor={active ? '$color7' : '$color6'}
+    />
   )
 }
 

@@ -12,7 +12,7 @@ export const TodoCard = ({
   const reactId = useId()
   const id = _id || reactId
   return (
-    <Theme name={props.checked ? 'green' : undefined}>
+    <Theme name={props.checked ? 'green' : undefined} forceClassName>
       <Card backgroundColor="$backgroundStrong" borderRadius="$0">
         <Card.Header padded>
           <Label htmlFor={id}>

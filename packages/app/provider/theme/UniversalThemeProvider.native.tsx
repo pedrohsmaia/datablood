@@ -1,4 +1,5 @@
 import { useForceUpdate } from '@my/ui'
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ThemeProviderProps, useThemeSetting as next_useThemeSetting } from '@tamagui/next-theme'
 import { createContext, useContext, useEffect, useLayoutEffect, useState } from 'react'
@@ -46,8 +47,18 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
         systemTheme: Appearance.getColorScheme() as string,
       }}
     >
-      {children}
+      <InnerProvider>{children}</InnerProvider>
     </ThemeContext.Provider>
+  )
+}
+
+const InnerProvider = ({ children }: { children: React.ReactNode }) => {
+  const { resolvedTheme } = useThemeSetting()
+
+  return (
+    <ThemeProvider value={resolvedTheme === 'dark' ? DarkTheme : DefaultTheme}>
+      {children}
+    </ThemeProvider>
   )
 }
 

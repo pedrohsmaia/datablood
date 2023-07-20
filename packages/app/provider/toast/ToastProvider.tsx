@@ -1,4 +1,5 @@
 import { CustomToast, ToastProvider as ToastProviderOG } from '@my/ui'
+import { ToastViewport } from './ToastViewport'
 
 export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,6 +15,7 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
       }
     >
       {children}
+      <ToastViewport />
       <CustomToast />
     </ToastProviderOG>
   )

@@ -45,26 +45,23 @@ export const OnboardingControls = ({
         right={0}
         $sm={{ display: 'none' }}
       >
-        <Theme inverse>
-          <Button
-            chromeless
-            f={1}
-            borderRadius="$10"
-            circular
-            onPress={() => handleGoPrev()}
-            iconAfter={ChevronLeft}
-          />
-        </Theme>
-        <Theme inverse>
-          <Button
-            chromeless
-            f={1}
-            borderRadius="$10"
-            circular
-            onPress={() => handleGoNext()}
-            iconAfter={ChevronRight}
-          />
-        </Theme>
+        <Button
+          chromeless
+          f={1}
+          borderRadius="$10"
+          circular
+          onPress={() => handleGoPrev()}
+          iconAfter={ChevronLeft}
+        />
+
+        <Button
+          chromeless
+          f={1}
+          borderRadius="$10"
+          circular
+          onPress={() => handleGoNext()}
+          iconAfter={ChevronRight}
+        />
       </XStack>
     </>
   )

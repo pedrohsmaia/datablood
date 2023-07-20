@@ -82,7 +82,7 @@ const isDark = theme.startsWith('dark')
       />
       <LinearGradient
         onPress={() => router.push('/create')}
-        colors={['$gray1', '$gray7']}
+        colors={['$gray6', '$gray7']}
         start={[1, 1]}
         end={[0.8, 0]}
         width={size + 34}

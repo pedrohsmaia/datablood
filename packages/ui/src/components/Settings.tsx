@@ -46,7 +46,7 @@ const Items = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
 const Group = (props: GroupProps) => (
   <YGroup
     backgroundColor="transparent"
-    borderRadius={14}
+    // borderRadius="$4"
     disablePassBorderRadius={isWeb}
     separator={
       !isWeb ? (

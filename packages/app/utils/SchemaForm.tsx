@@ -65,16 +65,16 @@ const mapping = [
   [formFields.address, AddressField] as const,
 ] as const
 
-const FormComponent = forwardRef<TamaguiComponent, FormProps>((props, ref) => {
+const FormComponent = (props: FormProps) => {
   return (
-    <Form asChild ref={ref as any} {...props}>
-      <FormWrapper>{props.children}</FormWrapper>
+    <Form asChild {...props}>
+      <FormWrapper tag="form">{props.children}</FormWrapper>
     </Form>
   )
-})
+}
 
 const _SchemaForm = createTsForm(mapping, {
-  FormComponent: FormComponent as unknown as typeof Form,
+  FormComponent: FormComponent,
 })
 
 export const SchemaForm = forwardRef<any, React.ComponentProps<typeof _SchemaForm>>(
@@ -100,7 +100,7 @@ export const SchemaForm = forwardRef<any, React.ComponentProps<typeof _SchemaFor
       </_SchemaForm>
     )
   }
-) as typeof _SchemaForm
+)
 
 // handle manual errors (most commonly coming from a server) for cases where it's not for a specific field - make sure to wrap inside a provider first
 // stopped using it cause of state issues it introduced - set the errors to specific fields instead of root for now
