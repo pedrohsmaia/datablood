@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
-    "@tamagui/animations-moti": "^1.43.13",
+    "@tamagui/animations-moti": "latest",
     "@tamagui/animations-react-native": "latest",
     "@tamagui/cli": "latest",
     "@tamagui/create-theme": "latest",
