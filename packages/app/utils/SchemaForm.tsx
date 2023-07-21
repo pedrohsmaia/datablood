@@ -100,7 +100,7 @@ export const SchemaForm = forwardRef<any, React.ComponentProps<typeof _SchemaFor
       </_SchemaForm>
     )
   }
-)
+) as typeof _SchemaForm
 
 // handle manual errors (most commonly coming from a server) for cases where it's not for a specific field - make sure to wrap inside a provider first
 // stopped using it cause of state issues it introduced - set the errors to specific fields instead of root for now

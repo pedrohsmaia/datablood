@@ -21,7 +21,7 @@ export function Provider({
   )
 }
 
-const compose = (providers: React.FC<{ children?: React.ReactNode }>[]) =>
+const compose = (providers: React.FC<{ children: React.ReactNode }>[]) =>
   providers.reduce(
     (Prev, Curr) =>
       ({ children }) =>
