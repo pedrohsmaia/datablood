@@ -119,7 +119,7 @@ The package will be cloned into `packages/package-name`. After that's done, run 
 
 ## Sync With The Starter
 
-We actively maintain the starter and add new features and updates to it. You can keep your fork in sync with the starter to constantly get updates as we release them.
+We actively maintain the starter and add new features and updates to it.
 
 ### Takeout's Update Bot
 
