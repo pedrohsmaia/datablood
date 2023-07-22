@@ -2,7 +2,7 @@ import { useForceUpdate } from '@my/ui'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ThemeProviderProps, useThemeSetting as next_useThemeSetting } from '@tamagui/next-theme'
-import { createContext, useContext, useEffect, useLayoutEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { Appearance } from 'react-native'
 
 export const ThemeContext = createContext<
@@ -17,7 +17,7 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
   useLayoutEffect(() => {
     async function main() {
       const persistedTheme = await AsyncStorage.getItem('@preferred_theme')
-      if (persistedTheme && persistedTheme) {
+      if (persistedTheme) {
         setCurrent(persistedTheme as ThemeName)
       }
     }
@@ -31,22 +31,37 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
     main()
   }, [current])
 
-  const set = (val: string) => {
-    setCurrent(val as ThemeName)
-  }
+  useEffect(() => {
+    const disposer = Appearance.addChangeListener(() => {
+      forceUpdate()
+    })
+    return () => {
+      disposer.remove()
+    }
+  }, [current])
+
   const forceUpdate = useForceUpdate()
+  const systemTheme = Appearance.getColorScheme() as string
+
+  const themeContext = useMemo(() => {
+    const set = (val: string) => {
+      setCurrent(val as ThemeName)
+    }
+
+    return {
+      set,
+      themes: ['light', 'dark'],
+      onChangeTheme: (next) => {
+        setCurrent(next as any)
+        forceUpdate()
+      },
+      current,
+      systemTheme,
+    }
+  }, [current, systemTheme])
+
   return (
-    <ThemeContext.Provider
-      value={{
-        themes: ['light', 'dark'],
-        onChangeTheme: (next) => {
-          setCurrent(next as any)
-          forceUpdate()
-        },
-        current,
-        systemTheme: Appearance.getColorScheme() as string,
-      }}
-    >
+    <ThemeContext.Provider value={themeContext}>
       <InnerProvider>{children}</InnerProvider>
     </ThemeContext.Provider>
   )

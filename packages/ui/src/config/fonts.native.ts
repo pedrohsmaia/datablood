@@ -23,6 +23,7 @@ const headingSize = {
   15: 114,
   16: 134,
 }
+
 export const headingFont = createFont({
   family: 'System',
   transform: {

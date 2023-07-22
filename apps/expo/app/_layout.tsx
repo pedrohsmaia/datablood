@@ -15,9 +15,9 @@ export default function HomeLayout() {
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
   })
 
-  const onLayoutRootView = useCallback(async () => {
+  const onLayoutRootView = useCallback(() => {
     if (fontLoaded) {
-      await SplashScreen.hideAsync()
+      SplashScreen.hideAsync()
     }
   }, [fontLoaded])
 
