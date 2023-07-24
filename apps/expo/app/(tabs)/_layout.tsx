@@ -2,13 +2,18 @@ import { Avatar, Circle, Theme, YStack, useThemeName } from '@my/ui'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
-import { Tabs } from 'expo-router'
+import { Stack, Tabs } from 'expo-router'
 import { SolitoImage } from 'solito/image'
 import { useRouter } from 'solito/router'
 
 export default function Layout() {
   return (
     <>
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+      />
       <Tabs screenOptions={{ headerShown: false, tabBarShowLabel: false }}>
         <Tabs.Screen
           name="index"
@@ -27,15 +32,11 @@ export default function Layout() {
           })}
           options={{
             title: 'New',
-            tabBarIcon: ({ size }) => {
-              const router = useRouter()
-
-              return (
-                <Theme inverse>
-                  <PlusButton size={size} />
-                </Theme>
-              )
-            },
+            tabBarIcon: ({ size }) => (
+              <Theme inverse>
+                <PlusButton size={size} />
+              </Theme>
+            ),
           }}
         />
         <Tabs.Screen
@@ -62,7 +63,7 @@ export default function Layout() {
 const PlusButton = ({ size }: { size: number }) => {
   const router = useRouter()
   const theme = useThemeName()
-const isDark = theme.startsWith('dark')
+  const isDark = theme.startsWith('dark')
 
   return (
     <>
@@ -70,7 +71,7 @@ const isDark = theme.startsWith('dark')
         pos="absolute"
         bottom={5}
         backgroundColor="$color1"
-        shadowColor='black'
+        shadowColor="black"
         shadowOpacity={isDark ? 0.7 : 1}
         shadowRadius={isDark ? 3 : 10}
         shadowOffset={{

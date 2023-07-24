@@ -28,15 +28,7 @@ export default function HomeLayout() {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <Provider>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen
-            name="create"
-            options={{
-              title: 'New Project',
-              headerShown: true,
-            }}
-          />
-        </Stack>
+        <Stack />
       </Provider>
     </View>
   )
