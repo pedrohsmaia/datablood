@@ -13,11 +13,11 @@ export const SessionContext = createContext<SessionContextHelper>({
   supabaseClient: supabase,
 })
 
-export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [session, setSession] = useState<Session | null>(null)
+export const AuthProvider = ({ children, initialSession }: AuthProviderProps) => {
+  const [session, setSession] = useState<Session | null>(initialSession || null)
   const [error, setError] = useState<AuthError | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  useProtectedRoute(session?.user ?? null)
+
   useEffect(() => {
     setIsLoading(true)
     supabase.auth
@@ -67,7 +67,6 @@ export function useProtectedRoute(user: User | null) {
   const segments = useSegments()
 
   useEffect(() => {
-    
     const inAuthGroup = segments[0] === '(auth)'
 
     if (
