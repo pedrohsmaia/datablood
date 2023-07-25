@@ -44,6 +44,9 @@ module.exports = function () {
         },
         {
           hostname: 'localhost'
+        },
+        {
+          hostname: '192.168.0.23',
         }
       ]
     },
