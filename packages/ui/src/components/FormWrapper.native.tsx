@@ -1,7 +1,14 @@
 import { useHeaderHeight } from '@react-navigation/elements'
 import { createContext, forwardRef, useContext, useState } from 'react'
-import { Dimensions, KeyboardAvoidingView, Platform } from 'react-native'
-import { ScrollView, TamaguiElement, YStack, YStackProps, withStaticProperties } from 'tamagui'
+import { KeyboardAvoidingView, Platform } from 'react-native'
+import {
+  ScrollView,
+  TamaguiElement,
+  YStack,
+  YStackProps,
+  useWindowDimensions,
+  withStaticProperties,
+} from 'tamagui'
 
 const FormWrapperContext = createContext<{ height: number } | null>(null)
 /**
@@ -45,16 +52,15 @@ const Body = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
   </ScrollView>
 ))
 
-const { height: DEVICE_HEIGHT } = Dimensions.get('screen')
-
 /**
  * on native, this will be pushed to the bottom of the screen
  */
 const Footer = forwardRef<TamaguiElement, YStackProps>((props, ref) => {
+  const dimensions = useWindowDimensions()
   const headerHeight = useHeaderHeight()
   const formWrapperContext = useContext(FormWrapperContext)
   const modalOffsetFromTop = formWrapperContext
-    ? DEVICE_HEIGHT - formWrapperContext.height
+    ? dimensions.height - formWrapperContext.height
     : headerHeight
 
   return (
