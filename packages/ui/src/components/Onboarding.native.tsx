@@ -14,8 +14,10 @@ import {
 import { OnboardingProps } from './Onboarding'
 import { OnboardingControls } from './OnboardingControls'
 
-const { width: DEVICE_WIDTH } = Dimensions.get('screen')
 export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
+  const dimensions = useWindowDimensions()
+  const safeAreaInsets = useSafeAreaInsets()
+
   const [stepIdx, _setStepIdx] = useState(0)
   // prevent a background to ever "continue" animation / try to continue where it left off - cause looks weird
 
@@ -31,7 +33,7 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
   }
 
   const handleScroll: ScrollViewProps['onScroll'] = (event) => {
-    const val = event.nativeEvent.contentOffset.x / DEVICE_WIDTH
+    const val = event.nativeEvent.contentOffset.x / dimensions.width
     const newIdx = Math.round(val)
     if (stepIdx !== newIdx) {
       setStepIdx(newIdx)
@@ -39,12 +41,11 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
   }
 
   const changePage = (newStepIdx: number) => {
-    scrollRef.current?.scrollTo({ x: newStepIdx * DEVICE_WIDTH, animated: true })
+    scrollRef.current?.scrollTo({ x: newStepIdx * dimensions.width, animated: true })
   }
 
   const scrollRef = useRef<RNScrollView>(null)
 
-  const safeAreaInsets = useSafeAreaInsets()
   return (
     <Theme name={currentStep.theme as ThemeName}>
       <YStack
@@ -58,30 +59,34 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
       >
         <Background />
 
-        <ScrollView
-          ref={scrollRef}
-          horizontal
-          pagingEnabled
-          scrollEventThrottle={16}
-          showsHorizontalScrollIndicator={false}
-          onScroll={handleScroll}
-        >
-          {steps.map((step, idx) => {
-            const isActive = idx === stepIdx
-            return (
-              <YStack key={idx} width={DEVICE_WIDTH}>
-                {isActive && <step.Content key={idx} />}
-              </YStack>
-            )
-          })}
-        </ScrollView>
-
-        <XStack gap={10} jc="center" my="$4">
-          {Array.from(Array(stepsCount)).map((_, idx) => {
-            const isActive = idx === stepIdx
-            return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
-          })}
-        </XStack>
+        <YStack flex={1}>
+          <ScrollView
+            ref={scrollRef}
+            horizontal
+            pagingEnabled
+            scrollEventThrottle={16}
+            showsHorizontalScrollIndicator={false}
+            onScroll={handleScroll}
+          >
+            {steps.map((step, idx) => {
+              const isActive = idx === stepIdx
+              return (
+                <YStack
+                  key={idx}
+                  width={dimensions.width - (safeAreaInsets.left + safeAreaInsets.right)}
+                >
+                  {isActive && <step.Content key={idx} />}
+                </YStack>
+              )
+            })}
+          </ScrollView>
+          {<XStack gap={10} jc="center" my="$4">
+            {Array.from(Array(stepsCount)).map((_, idx) => {
+              const isActive = idx === stepIdx
+              return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
+            })}
+          </XStack>}
+        </YStack>
         <OnboardingControls
           currentIdx={stepIdx}
           onChange={(val) => changePage(val)}

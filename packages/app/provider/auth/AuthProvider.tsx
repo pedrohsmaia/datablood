@@ -3,9 +3,6 @@ import { SessionContextProvider, SessionContextProviderProps } from '@supabase/a
 import { useState } from 'react'
 
 export type AuthProviderProps = {
-  /**
-   * web-only - pass `pageProps.initialSession` to this
-   */
   initialSession?: SessionContextProviderProps['initialSession']
   children?: React.ReactNode
 }

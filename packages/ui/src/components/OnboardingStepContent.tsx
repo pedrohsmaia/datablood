@@ -48,6 +48,10 @@ export const StepContent = ({
         color="$color9"
         selectable={false}
         textAlign="center"
+        $md={{
+          size: '$10',
+          mt: "$4"
+        }}
       >
         {title}
       </H2>
@@ -66,6 +70,9 @@ export const StepContent = ({
         textAlign="center"
         color="$color9"
         selectable={false}
+        $md={{
+          mt: '$3',
+        }}
       >
         {description}
       </Paragraph>
