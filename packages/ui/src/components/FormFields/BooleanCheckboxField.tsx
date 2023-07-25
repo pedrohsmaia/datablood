@@ -1,7 +1,7 @@
+import { Check } from '@tamagui/lucide-icons'
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
-import { Fieldset } from 'tamagui'
-import { Checkbox, CheckboxProps, CheckedState, Label, Theme, XStack } from 'tamagui'
+import { Checkbox, CheckboxProps, CheckedState, Fieldset, Label, Theme, XStack } from 'tamagui'
 import { FieldError } from '../FieldError'
 
 export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native'>) => {
@@ -32,7 +32,9 @@ export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native
             id={id}
             {...props}
           >
-            <Checkbox.Indicator />
+            <Checkbox.Indicator>
+              <Check />
+            </Checkbox.Indicator>
           </Checkbox>
         </XStack>
         <FieldError message={error?.errorMessage} />
