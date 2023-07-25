@@ -59,33 +59,34 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
       >
         <Background />
 
-        <ScrollView
-          ref={scrollRef}
-          horizontal
-          pagingEnabled
-          scrollEventThrottle={16}
-          showsHorizontalScrollIndicator={false}
-          onScroll={handleScroll}
-        >
-          {steps.map((step, idx) => {
-            const isActive = idx === stepIdx
-            return (
-              <YStack
-                key={idx}
-                width={dimensions.width - (safeAreaInsets.left + safeAreaInsets.right)}
-              >
-                {isActive && <step.Content key={idx} />}
-              </YStack>
-            )
-          })}
-        </ScrollView>
-
-        <XStack gap={10} jc="center" my="$4">
-          {Array.from(Array(stepsCount)).map((_, idx) => {
-            const isActive = idx === stepIdx
-            return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
-          })}
-        </XStack>
+        <YStack flex={1}>
+          <ScrollView
+            ref={scrollRef}
+            horizontal
+            pagingEnabled
+            scrollEventThrottle={16}
+            showsHorizontalScrollIndicator={false}
+            onScroll={handleScroll}
+          >
+            {steps.map((step, idx) => {
+              const isActive = idx === stepIdx
+              return (
+                <YStack
+                  key={idx}
+                  width={dimensions.width - (safeAreaInsets.left + safeAreaInsets.right)}
+                >
+                  {isActive && <step.Content key={idx} />}
+                </YStack>
+              )
+            })}
+          </ScrollView>
+          {<XStack gap={10} jc="center" my="$4">
+            {Array.from(Array(stepsCount)).map((_, idx) => {
+              const isActive = idx === stepIdx
+              return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
+            })}
+          </XStack>}
+        </YStack>
         <OnboardingControls
           currentIdx={stepIdx}
           onChange={(val) => changePage(val)}

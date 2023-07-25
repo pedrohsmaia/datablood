@@ -21,7 +21,7 @@ export const OnboardingControls = ({
   }
 
   return (
-    <XStack jc="space-between" ai="center" p="$5" gap="$5" $gtSm={{ display: 'none' }}>
+    <XStack jc="space-between" ai="center" p="$5" gap="$5">
       <Button
         chromeless
         color="$color"
