@@ -42,7 +42,6 @@ Generates types from your remote Supabase instance using your project ID specifi
 
 ```shell
 yarn generate:remote
-yarn gr #alias
 ```
 
 #### New Migration
@@ -50,8 +49,7 @@ yarn gr #alias
 Generates a new migration by diffing against the db.
 
 ```shell
-yarn migration:new <MIGRATION_NAME>
-yarn mn <MIGRATION_NAME> #alias
+yarn migration:diff <MIGRATION_NAME>
 ```
 
 - [Reference](https://supabase.com/docs/reference/cli/supabase-db-diff)
@@ -78,12 +76,10 @@ Reset local Supabase DB.
 
 ```shell
 yarn reset
-yarn r #alias
 ```
 
 #### Lint
 
 ```shell
 yarn lint
-yarn l #alias
 ```
