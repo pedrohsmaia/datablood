@@ -28,25 +28,34 @@ To configure the project, `cd` into the root of the project and run `yarn setup`
 
 ## Development
 
-Run the dev script
+Development scripts:
 
 - Web: `yarn web`
 - iOS: `yarn ios`
 - Android: `yarn android`
+
+Storybook scripts:
+
+- Storybook Web: `yarn storybook:web`
+- Storybook iOS: `yarn storybook:ios`
+- Storybook Android: `yarn storybook:android`
+- Publish to Chromatic: `yarn chromatic` (Need to set your token first in `apps/storybook/package.json -> scripts -> chromatic`)
 
 ## Folder layout
 
 The main apps are:
 
 - `apps`
-  - `expo` (native)
-  - `next` (web)
-- `packages` shared packages across apps
-  - `ui` includes your custom UI kit that will be optimized by Tamagui
-  - `app` you'll be importing most files from `app/`
-    - `features` (don't use a `screens` folder. organize by feature.)
-    - `provider` (all the providers that wrap the app, and some no-ops for native or web.)
-- `supabase` supabase files, migrations, types, etc. + [scripts](/supabase/README.md)
+  - `expo` (Native)
+  - `next` (Web)
+  - `storybook` (Web Storybook)
+  - `storybook-rn` (Native Storybook)
+- `packages` Shared packages across apps
+  - `ui` Includes your custom UI kit that will be optimized by Tamagui
+  - `app` You'll be importing most files from `app/`
+    - `features` (Don't use a `screens` folder. organize by feature.)
+    - `provider` (All the providers that wrap the app, and some no-ops for native or web.)
+- `supabase` Supabase files, migrations, types, etc. + [scripts](/supabase/README.md)
 
 ## Layouts
 
