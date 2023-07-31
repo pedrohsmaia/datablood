@@ -2,14 +2,14 @@
 process.env.TAMAGUI_IGNORE_BUNDLE_ERRORS = "solito/link,moti"
 
 module.exports = function (api) {
-  api.cache(true)
+  api.cache(false)
   return {
     presets: [['babel-preset-expo', { jsxRuntime: 'automatic' }]],
     plugins: [
       ["module:react-native-dotenv", {
         "envName": "APP_ENV",
         "moduleName": "@env",
-        "path": "../../.env.local",
+        "path": "../../.env",
         "blocklist": null,
         "allowlist": null,
         "safe": false,

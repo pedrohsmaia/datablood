@@ -27,6 +27,7 @@
     "@tamagui/helpers-icon": "latest",
     "@tamagui/react-native-media-driver": "latest",
     "@tamagui/shorthands": "latest",
+    "@tamagui/theme-builder": "latest",
     "@tamagui/themes": "latest",
     "@tamagui/toast": "latest",
     "@ts-react/form": "^1.6.4",

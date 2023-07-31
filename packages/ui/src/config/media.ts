@@ -1,18 +1,28 @@
 import { createMedia } from '@tamagui/react-native-media-driver'
 
 export const media = createMedia({
-  xs: { maxWidth: 660 },
-  sm: { maxWidth: 800 },
-  md: { maxWidth: 1020 },
+  xl: { maxWidth: 1650 },
   lg: { maxWidth: 1280 },
-  xl: { maxWidth: 1420 },
-  xxl: { maxWidth: 1600 },
+  md: { maxWidth: 1020 },
+  sm: { maxWidth: 800 },
+  xs: { maxWidth: 660 },
+  xxs: { maxWidth: 390 },
   gtXs: { minWidth: 660 + 1 },
   gtSm: { minWidth: 800 + 1 },
   gtMd: { minWidth: 1020 + 1 },
   gtLg: { minWidth: 1280 + 1 },
-  short: { maxHeight: 820 },
-  tall: { minHeight: 820 },
-  hoverNone: { hover: 'none' },
-  pointerCoarse: { pointer: 'coarse' },
+  gtXl: { minWidth: 1650 + 1 },
 })
+
+// note all the non "gt" ones should be true to start to match mobile-first
+// we're aiming for "xs" to be the default to "gtXs" true too
+export const mediaQueryDefaultActive = {
+  xl: true,
+  lg: true,
+  md: true,
+  sm: true,
+  xs: true,
+
+  //
+  xxs: false,
+}

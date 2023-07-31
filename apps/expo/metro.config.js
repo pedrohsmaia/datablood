@@ -19,4 +19,6 @@ config.resolver.nodeModulesPaths = [
 config.transformer = { ...config.transformer, unstable_allowRequireContext: true }
 config.transformer.minifierPath = require.resolve('metro-minify-terser')
 
+config.resetCache = true
+
 module.exports = config

@@ -1,19 +1,6 @@
-import {
-  FormWrapper,
-  H2,
-  H4,
-  KVTable,
-  SizableText,
-  YStack,
-  isWeb,
-  useToastController,
-  Separator,
-  styled,
-} from '@my/ui'
-import { useSupabase } from 'app/utils/supabase/useSupabase'
+import { FormWrapper, H2, H4, KVTable, Separator, SizableText, YStack, isWeb, styled } from '@my/ui'
 import { useUser } from 'app/utils/useUser'
 import { Link } from 'solito/link'
-import { useRouter } from 'solito/router'
 
 export const GeneralSettingsScreen = () => {
   const { user, profile } = useUser()
