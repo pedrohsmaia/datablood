@@ -3,6 +3,10 @@ import { createClient } from '@supabase/supabase-js'
 import * as SecureStore from 'expo-secure-store'
 import { NativeModules } from 'react-native'
 
+if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+  throw new Error(`NEXT_PUBLIC_SUPABASE_URL is not set. Please update the root .env.local and restart the server.`)
+}
+
 const hostname = NativeModules.SourceCode.scriptURL
   .split('://')[1] // Remove the scheme
   .split('/')[0] // Remove the path
