@@ -51,67 +51,69 @@ export function HomeScreen() {
 
       <Separator vertical />
 
-      <ScrollView f={1} fb={0} $md={{ display: 'none' }}>
-        <YStack separator={<Separator />}>
-          <YStack>
-            <EventCard
-              title="Event #1"
-              description="Lorem ipsum dolor sit, amet."
-              action={{
-                text: 'Show Event',
-                props: useLink({ href: '/' }),
-              }}
-              tags={[
-                { text: 'New', theme: 'green_alt2' },
-                { text: 'Hot', theme: 'orange_alt2' },
-              ]}
-            />
-            <EventCard
-              title="Event #2"
-              description="Lorem ipsum dolor sit, amet."
-              action={{
-                text: 'Show Event',
-                props: useLink({ href: '/' }),
-              }}
-              tags={[{ text: '1 Day Remaining', theme: 'blue_alt2' }]}
-            />
-            <EventCard
-              title="Event #3"
-              description="Lorem ipsum dolor sit, amet."
-              action={{
-                text: 'Show Event',
-                props: useLink({ href: '/' }),
-              }}
-              tags={[{ text: 'Ongoing', theme: 'alt1' }]}
-            />
-            <EventCard
-              title="Event #4"
-              description="Lorem ipsum dolor sit, amet."
-              action={{
-                text: 'Show Event',
-                props: useLink({ href: '/' }),
-              }}
-              tags={[{ text: 'Finished', theme: 'alt2' }]}
-            />
+      {isWeb && (
+        <ScrollView f={1} fb={0} $md={{ display: 'none' }}>
+          <YStack separator={<Separator />}>
+            <YStack>
+              <EventCard
+                title="Event #1"
+                description="Lorem ipsum dolor sit, amet."
+                action={{
+                  text: 'Show Event',
+                  props: useLink({ href: '/' }),
+                }}
+                tags={[
+                  { text: 'New', theme: 'green_alt2' },
+                  { text: 'Hot', theme: 'orange_alt2' },
+                ]}
+              />
+              <EventCard
+                title="Event #2"
+                description="Lorem ipsum dolor sit, amet."
+                action={{
+                  text: 'Show Event',
+                  props: useLink({ href: '/' }),
+                }}
+                tags={[{ text: '1 Day Remaining', theme: 'blue_alt2' }]}
+              />
+              <EventCard
+                title="Event #3"
+                description="Lorem ipsum dolor sit, amet."
+                action={{
+                  text: 'Show Event',
+                  props: useLink({ href: '/' }),
+                }}
+                tags={[{ text: 'Ongoing', theme: 'alt1' }]}
+              />
+              <EventCard
+                title="Event #4"
+                description="Lorem ipsum dolor sit, amet."
+                action={{
+                  text: 'Show Event',
+                  props: useLink({ href: '/' }),
+                }}
+                tags={[{ text: 'Finished', theme: 'alt2' }]}
+              />
+            </YStack>
+            <YStack p="$3">
+              <Theme name="blue_alt1">
+                <Banner {...useLink({ href: '/' })} cursor="pointer">
+                  <H4>Upgrade Now!</H4>
+                  <Paragraph size="$2" mt="$1">
+                    Upgrade to access exclusive features and more!
+                  </Paragraph>
+                </Banner>
+              </Theme>
+            </YStack>
+            <YStack>
+              <TodoCard label="Contribute to OSS" checked={false} />
+              <TodoCard label="Learn about Tamagui's latest features" checked={true} />
+              <TodoCard label="Upgrade to the new Expo version" checked={false} />
+              <TodoCard label="Do the dishes" checked={false} />
+            </YStack>
           </YStack>
-          <YStack p="$3">
-            <Theme name="blue_alt1">
-              <Banner {...useLink({ href: '/' })} cursor="pointer">
-                <H4>Upgrade Now!</H4>
-                <Paragraph size="$2" mt="$1">
-                  Upgrade to access exclusive features and more!
-                </Paragraph>
-              </Banner>
-            </Theme>
-          </YStack>
-          <YStack>
-            <TodoCard label="Contribute to OSS" checked={false} />
-            <TodoCard label="Learn about Tamagui's latest features" checked={true} />
-            <TodoCard label="Upgrade to the new Expo version" checked={false} />
-            <TodoCard label="Do the dishes" checked={false} />
-          </YStack>
-        </YStack>
-      </ScrollView>
+        </ScrollView>
+      )}
     </XStack>
   )
 }
@@ -296,7 +298,7 @@ const PostsSection = () => {
         <XStack px="$4" gap="$4" mb="$4" jc="flex-start" flexWrap="wrap">
           <FeedCard
             withImages
-            $md={{ width: 300 }}
+            width={300}
             $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Why lorem ipsum look bad"
             description="Maybe it's just me - I'll just write out some dummy text just ignore the text tyvm..."
@@ -306,7 +308,7 @@ const PostsSection = () => {
 
           <FeedCard
             withImages
-            $md={{ width: 300 }}
+            width={300}
             $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Why you should use Tamagui"
             description="Tamagui is the best way to develop performant cross-platform apps with one codebase..."
@@ -316,7 +318,7 @@ const PostsSection = () => {
 
           <FeedCard
             withImages
-            $md={{ width: 300 }}
+            width={300}
             $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Merits of functional programming"
             description="What is FP anyways? let's talk about it and learn about it's pros and cons..."
@@ -326,7 +328,7 @@ const PostsSection = () => {
 
           <FeedCard
             withImages
-            $md={{ width: 300 }}
+            width={300}
             $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Different React paradigms"
             description="We're gonna talk about different react paradigm and jargons..."
@@ -336,7 +338,7 @@ const PostsSection = () => {
 
           <FeedCard
             withImages
-            $md={{ width: 300 }}
+            width={300}
             $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="Another Post"
             description="Hey this is yet another post I'm putting here for demo purposes..."
@@ -345,7 +347,7 @@ const PostsSection = () => {
           />
           <FeedCard
             withImages
-            $md={{ width: 300 }}
+            width={300}
             $gtMd={{ width: 'calc(33.33% - 12px)' }}
             title="And Another Post"
             description="I'm out of ideas for dummy posts, Sint labore sit magna ea proident aute..."

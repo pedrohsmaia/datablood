@@ -36,6 +36,7 @@ const KVTableValue = (props: XStackProps) => {
       $sm={{
         width: '100%',
       }}
+      flexWrap="wrap"
       {...props}
     />
   )

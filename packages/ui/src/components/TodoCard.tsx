@@ -1,6 +1,16 @@
-import { Card, Checkbox, CheckboxProps, Label, Paragraph, Theme, XStack, YStack } from 'tamagui'
 import { Check } from '@tamagui/lucide-icons'
 import { useId } from 'react'
+import {
+  Card,
+  Checkbox,
+  CheckboxProps,
+  Label,
+  Paragraph,
+  Theme,
+  XStack,
+  YStack,
+  useThemeName,
+} from 'tamagui'
 
 export const TodoCard = ({
   id: _id,
@@ -11,8 +21,9 @@ export const TodoCard = ({
 } & CheckboxProps) => {
   const reactId = useId()
   const id = _id || reactId
+  const themeName = useThemeName()
   return (
-    <Theme name={props.checked ? 'green' : undefined} forceClassName>
+    <Theme name={props.checked ? 'green' : themeName} forceClassName>
       <Card backgroundColor="$backgroundStrong" borderRadius="$0">
         <Card.Header padded>
           <Label htmlFor={id}>

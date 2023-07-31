@@ -11,6 +11,7 @@ import {
   XStack,
   YStack,
   getTokens,
+  useThemeName,
 } from '@my/ui'
 import { Menu, Plus } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
@@ -105,6 +106,7 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
       router.events.off('routeChangeStart', handleRouteChange)
     }
   }, [router.events])
+  const themeName = useThemeName()
   return (
     <Popover open={open} onOpenChange={setOpen} size="$5" stayInFrame={{ padding: 20 }}>
       <Popover.Trigger asChild>
@@ -112,7 +114,7 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
           chromeless
           p="$2"
           onPress={() => setOpen(!open)}
-          theme={open ? 'alt1' : undefined}
+          theme={open ? 'alt1' : themeName}
           icon={<Menu size={32} />}
         />
       </Popover.Trigger>
