@@ -12,7 +12,7 @@ import { zIndex } from './themes/token-z-index'
 import * as themes from './themes/theme-generated'
 import { color } from './themes/token-colors'
 
-const config = createTamagui({
+const conf = {
   themes,
   defaultFont: 'body',
   animations,
@@ -31,8 +31,10 @@ const config = createTamagui({
     size,
   }),
   media,
-})
 
-config.mediaQueryDefaultActive = mediaQueryDefaultActive
+} satisfies Parameters<typeof createTamagui>['0']
 
-export { config }
+// @ts-ignore - passing this directly breaks TS
+conf.mediaQueryDefaultActive = mediaQueryDefaultActive
+
+export const config = createTamagui(conf)
