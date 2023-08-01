@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ThemeProviderProps, useThemeSetting as next_useThemeSetting } from '@tamagui/next-theme'
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { Appearance } from 'react-native'
-
+import { StatusBar } from 'expo-status-bar'
 export const ThemeContext = createContext<
   (ThemeProviderProps & { current?: string | null }) | null
 >(null)
@@ -72,6 +72,7 @@ const InnerProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ThemeProvider value={resolvedTheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <StatusBar style={resolvedTheme === 'dark' ? 'light' : 'dark'} />
       {children}
     </ThemeProvider>
   )
