@@ -33,7 +33,6 @@ const config = createTamagui({
   media,
 })
 
-// @ts-ignore - doing this directly breaks the types
 config.mediaQueryDefaultActive = mediaQueryDefaultActive
 
 export { config }
