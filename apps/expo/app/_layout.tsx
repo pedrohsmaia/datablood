@@ -1,6 +1,6 @@
 import { Session } from '@supabase/supabase-js'
 import { Provider } from 'app/provider'
-import { supabase } from 'app/utils/supabase/client'
+import { supabase } from 'app/utils/supabase/client.native'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'

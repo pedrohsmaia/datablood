@@ -7,13 +7,19 @@ if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
   throw new Error(`NEXT_PUBLIC_SUPABASE_URL is not set. Please update the root .env.local and restart the server.`)
 }
 
+if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  throw new Error(
+    `NEXT_PUBLIC_SUPABASE_ANON_KEY is not set. Please update the root .env.local and restart the server.`
+  )
+}
+
 const hostname = NativeModules.SourceCode.scriptURL
   .split('://')[1] // Remove the scheme
   .split('/')[0] // Remove the path
   .split(':')[0] // Remove the port
 
 // replace localhost with the hostname - this will not do anything if using a production / remote URL, as they don't contain `localhost`
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!.replace(
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL.replace(
   '://localhost:',
   `://${hostname}:`
 )
@@ -32,7 +38,7 @@ const ExpoSecureStoreAdapter = {
 
 export const supabase = createClient<Database>(
   supabaseUrl,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   {
     auth: {
       storage: ExpoSecureStoreAdapter,
