@@ -50,7 +50,13 @@ export const SelectField = ({
           </Label>
         )}
         <Shake shakeKey={error?.errorMessage}>
-          <Select native={native} id={id} value={field.value} onValueChange={field.onChange} {...props}>
+          <Select
+            native={native}
+            id={id}
+            value={field.value}
+            onValueChange={field.onChange}
+            {...props}
+          >
             <Select.Trigger width={180} iconAfter={ChevronDown}>
               <Select.Value placeholder="Something" />
             </Select.Trigger>
@@ -89,7 +95,7 @@ export const SelectField = ({
               <Select.Viewport minWidth={200}>
                 <XStack als="flex-start">
                   <Select.Group disabled={disabled} space="$0">
-                    <Select.Label>Fruits</Select.Label>
+                    {/* <Select.Label>{label}</Select.Label> */}
                     {options.map((item, i) => {
                       return (
                         <Select.Item index={i} key={item.name} value={item.name.toLowerCase()}>
