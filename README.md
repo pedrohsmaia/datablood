@@ -41,6 +41,12 @@ Storybook scripts:
 - Storybook Android: `yarn storybook:android`
 - Publish to Chromatic: `yarn chromatic` (Need to set your token first in `apps/storybook/package.json -> scripts -> chromatic`)
 
+Code generation script:
+
+- Component: `yarn gen component`
+- Screen: `yarn gen screen`
+- tRPC Router: `yarn gen router`
+
 ## Folder layout
 
 The main apps are:
