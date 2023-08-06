@@ -40,11 +40,11 @@ export const AchievementCard = ({
           </H4>
           <SizableText mt="$2">
             <SizableText size="$4" theme="alt1" fontWeight="900">
-              {progress.current.toLocaleString()}
+              {progress.current}
             </SizableText>
             <SizableText size="$2" theme="alt1">
               {' '}
-              / {progress.full.toLocaleString()} {progress.label}
+              / {progress.full} {progress.label}
             </SizableText>
           </SizableText>
 
