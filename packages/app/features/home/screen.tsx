@@ -50,7 +50,7 @@ export function HomeScreen() {
       </ScrollView>
 
       <Separator vertical />
-
+      {/* eslint-disable react-hooks/rules-of-hooks */}
       {isWeb && (
         <ScrollView f={1} fb={0} $md={{ display: 'none' }}>
           <YStack separator={<Separator />}>
@@ -114,6 +114,7 @@ export function HomeScreen() {
           </YStack>
         </ScrollView>
       )}
+      {/* eslint-enable react-hooks/rules-of-hooks */}
     </XStack>
   )
 }

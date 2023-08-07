@@ -7,14 +7,14 @@ import {
   BooleanField,
   BooleanSwitchField,
   FieldError,
+  Form,
+  FormProps,
   FormWrapper,
   NumberField,
   SelectField,
+  TamaguiComponent,
   TextAreaField,
   TextField,
-  TamaguiComponent,
-  Form,
-  FormProps,
   Theme,
 } from '@my/ui'
 import { forwardRef } from 'react'
@@ -77,8 +77,8 @@ const _SchemaForm = createTsForm(mapping, {
   FormComponent: FormComponent,
 })
 
-export const SchemaForm = forwardRef<any, React.ComponentProps<typeof _SchemaForm>>(
-  ({ schema, renderAfter, ...props }, ref) => {
+export const SchemaForm = forwardRef<TamaguiComponent, React.ComponentProps<typeof _SchemaForm>>(
+  function SchemaFormComponent({ schema, renderAfter, ...props }) {
     return (
       <_SchemaForm
         formProps={{

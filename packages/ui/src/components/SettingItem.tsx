@@ -14,7 +14,6 @@ export type SettingItemProps = {
 export const SettingItem = ({
   icon: Icon,
   children,
-  accentColor,
   rightLabel,
   isActive,
   ...props

@@ -31,10 +31,10 @@ const conf = {
     size,
   }),
   media,
-
 } satisfies Parameters<typeof createTamagui>['0']
 
-// @ts-ignore - passing this directly breaks TS
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - passing this directly breaks TS types
 conf.mediaQueryDefaultActive = mediaQueryDefaultActive
 
 export const config = createTamagui(conf)

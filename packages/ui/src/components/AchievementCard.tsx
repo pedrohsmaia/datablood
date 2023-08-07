@@ -3,13 +3,11 @@ import { LinearGradient } from '@tamagui/linear-gradient'
 import { ChevronRight } from '@tamagui/lucide-icons'
 import React from 'react'
 import { useLink } from 'solito/link'
-
-import { Button, Card, CardProps, Circle, H4, H6, Progress, SizableText, YStack } from 'tamagui'
+import { Button, Card, CardProps, H4, Progress, SizableText, YStack } from 'tamagui'
 
 export type AchievementCardProps = {
   icon: React.FC<IconProps>
   title?: string
-  subtitle?: string
   progress: {
     current: number
     full: number
@@ -23,7 +21,6 @@ export type AchievementCardProps = {
 
 export const AchievementCard = ({
   title,
-  subtitle,
   icon: Icon,
   progress,
   action,

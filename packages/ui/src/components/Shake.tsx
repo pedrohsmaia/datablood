@@ -45,7 +45,7 @@ export const Shake = ({
         }
       }
     }
-  }, [shakeKey])
+  }, [animatedNumber, shakeDistance, shakeKey, shakeTimes])
 
   const animatedStyle = useAnimatedNumberStyle(animatedNumber, (val) => {
     'worklet'

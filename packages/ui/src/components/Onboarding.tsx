@@ -1,6 +1,6 @@
 import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
-import React, { useEffect, useState } from 'react'
-import { Animated, PanResponder } from 'react-native'
+import React, { useEffect, useState, useCallback } from 'react'
+import { PanResponder } from 'react-native'
 import {
   AnimatePresence,
   Circle,
@@ -14,7 +14,7 @@ import { OnboardingControls } from './OnboardingControls'
 
 export type OnboardingStepInfo = {
   theme: ThemeName
-  Content: React.FC<{}>
+  Content: React.FC
 }
 
 export type OnboardingProps = {
@@ -38,12 +38,15 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
   const currentStep = steps[stepIdx]!
   const stepsCount = steps.length
 
-  const setStepIdx = (newIdx: number) => {
-    if (stepIdx !== newIdx) {
-      _setStepIdx(newIdx)
-      setKey(key + 1)
-    }
-  }
+  const setStepIdx = useCallback(
+    (newIdx: number) => {
+      if (stepIdx !== newIdx) {
+        _setStepIdx(newIdx)
+        setKey(key + 1)
+      }
+    },
+    [key, stepIdx]
+  )
 
   useEffect(() => {
     if (autoSwipe) {
@@ -56,7 +59,7 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
       }, AUTO_SWIPE_THRESHOLD)
       return () => clearTimeout(interval)
     }
-  }, [stepIdx, autoSwipe])
+  }, [stepIdx, autoSwipe, stepsCount, setStepIdx])
 
   const panResponder = React.useMemo(() => {
     return PanResponder.create({
@@ -72,7 +75,7 @@ export const Onboarding = ({ onOnboarded, autoSwipe, steps }: OnboardingProps) =
         return false
       },
     })
-  }, [stepIdx])
+  }, [setStepIdx, stepIdx, stepsCount])
 
   const safeAreaInsets = useSafeAreaInsets()
 

@@ -1,6 +1,6 @@
-import { Avatar, Button, FullscreenSpinner, SubmitButton, Theme, YStack, useToastController } from '@my/ui'
-import { SchemaForm, formFields } from 'app/utils/SchemaForm'
+import { Avatar, FullscreenSpinner, SubmitButton, Theme, YStack, useToastController } from '@my/ui'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { createParam } from 'solito'

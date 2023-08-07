@@ -74,6 +74,8 @@ export const SettingsScreen = () => {
               </Settings.Item>
               {/* removing about from web since landing pages are more common on web - feel free to add back if needed */}
               {!isWeb && (
+                // isWeb is a constant so this isn't really a conditional hook
+                // eslint-disable-next-line react-hooks/rules-of-hooks
                 <Settings.Item icon={Info} {...useLink({ href: '/about' })} accentColor="$blue9">
                   About
                 </Settings.Item>

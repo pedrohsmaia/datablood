@@ -7,7 +7,7 @@ const meta: Meta<typeof SubmitButton> = {
   title: 'ui/SubmitButton',
   parameters: { layout: 'centered' },
   component: SubmitButton,
-  render: (props) => {
+  render: function WrappedInForm(props) {
     const form = useForm({})
     return (
       <FormProvider {...form}>

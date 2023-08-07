@@ -6,7 +6,7 @@ import { Button, XStack } from 'tamagui'
 const meta: Meta<typeof CustomToast> = {
   title: 'ui/Toast',
   parameters: { layout: 'fullscreen' },
-  component: () => {
+  component: function ToastTrigger() {
     const toastController = useToastController()
     return (
       <XStack gap="$2" jc="center" my="$20">

@@ -25,4 +25,4 @@ export const space: {
 } = {
   ...Object.fromEntries(spaces),
   ...Object.fromEntries(spacesNegative),
-} as any
+}
