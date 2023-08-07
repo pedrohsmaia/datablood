@@ -22,7 +22,7 @@ export const ResetPasswordScreen = () => {
     if (params?.email) {
       updateParams({ email: undefined }, { web: { replace: true } })
     }
-  }, [])
+  }, [params?.email, updateParams])
 
   const form = useForm<z.infer<typeof ResetPasswordSchema>>()
 
@@ -69,7 +69,7 @@ export const ResetPasswordScreen = () => {
               <YStack gap="$3" mb="$4">
                 <H2 $sm={{ size: '$8' }}>Reset your password</H2>
                 <Paragraph theme="alt1">
-                  Type in your email and we'll send you a link to reset your password
+                  Type in your email and we&aps;ll send you a link to reset your password
                 </Paragraph>
               </YStack>
               {Object.values(fields)}
@@ -91,7 +91,7 @@ const CheckYourEmail = () => {
         <YStack gap="$3">
           <H2>Check Your Email</H2>
           <Paragraph theme="alt1">
-            We've sent you a reset link. Please check your email ({email}) and confirm it.
+            We&apos;ve sent you a reset link. Please check your email ({email}) and confirm it.
           </Paragraph>
         </YStack>
       </FormWrapper.Body>

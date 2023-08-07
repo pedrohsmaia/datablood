@@ -1,4 +1,4 @@
-import { Button, H2, Paragraph, SubmitButton, Theme, YStack, isWeb } from '@my/ui'
+import { H2, Paragraph, SubmitButton, Theme, YStack, isWeb } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { z } from 'zod'
 

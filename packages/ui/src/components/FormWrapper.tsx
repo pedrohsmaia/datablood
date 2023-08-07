@@ -4,7 +4,7 @@ import { ScrollView, TamaguiElement, YStack, YStackProps, withStaticProperties }
 /**
  * this is pretty straightforward on web - check FormWrapper.native
  */
-const Wrapper = forwardRef<TamaguiElement, YStackProps>((props, ref) => {
+const Wrapper = forwardRef<TamaguiElement, YStackProps>(function Wrapper(props, ref) {
   return (
     <YStack
       ref={ref}
@@ -23,13 +23,15 @@ const Wrapper = forwardRef<TamaguiElement, YStackProps>((props, ref) => {
   )
 })
 
-const Body = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
-  <ScrollView>
-    <YStack p="$4" ref={ref} gap="$2" pb="$8" {...props} />
-  </ScrollView>
-))
+const Body = forwardRef<TamaguiElement, YStackProps>(function Body(props, ref) {
+  return (
+    <ScrollView>
+      <YStack p="$4" ref={ref} gap="$2" pb="$8" {...props} />
+    </ScrollView>
+  )
+})
 
-const Footer = forwardRef<TamaguiElement, YStackProps>((props, ref) => {
+const Footer = forwardRef<TamaguiElement, YStackProps>(function Footer(props, ref) {
   return <YStack ref={ref} pb="$4" px="$4" gap="$4" {...props} />
 })
 

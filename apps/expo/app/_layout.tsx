@@ -35,7 +35,7 @@ export default function HomeLayout() {
     if (fontLoaded && sessionLoadAttempted) {
       await SplashScreen.hideAsync()
     }
-  }, [fontLoaded])
+  }, [fontLoaded, sessionLoadAttempted])
 
   if (!fontLoaded || !sessionLoadAttempted) {
     return null

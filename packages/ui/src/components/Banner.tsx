@@ -1,15 +1,13 @@
-import { ChevronRight } from '@tamagui/lucide-icons'
 import { LinearGradient } from '@tamagui/linear-gradient'
-import { AnimatePresence, Card, CardProps, ColorTokens, YStack } from 'tamagui'
+import { ChevronRight } from '@tamagui/lucide-icons'
 import { useState } from 'react'
+import { AnimatePresence, Card, CardProps, ColorTokens, YStack } from 'tamagui'
 
 export const Banner = ({
-  dismissable,
   children,
   colors = ['$color4', '$color4', '$color6'],
   ...props
 }: {
-  dismissable?: boolean
   colors?: ColorTokens[]
 } & CardProps) => {
   const [hover, setHover] = useState(false)

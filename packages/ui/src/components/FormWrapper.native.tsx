@@ -28,7 +28,7 @@ const FormWrapperContext = createContext<{ height: number } | null>(null)
  *
  * you may use asChild on the wrapper as well
  */
-const Wrapper = forwardRef<TamaguiElement, YStackProps>((props, ref) => {
+const Wrapper = forwardRef<TamaguiElement, YStackProps>(function Wrapper(props, ref) {
   const [height, setHeight] = useState(0)
 
   return (
@@ -54,16 +54,18 @@ const Wrapper = forwardRef<TamaguiElement, YStackProps>((props, ref) => {
   )
 })
 
-const Body = forwardRef<TamaguiElement, YStackProps>((props, ref) => (
-  <ScrollView>
-    <YStack p="$4" ref={ref} gap="$2" pb="$8" {...props} />
-  </ScrollView>
-))
+const Body = forwardRef<TamaguiElement, YStackProps>(function Body(props, ref) {
+  return (
+    <ScrollView>
+      <YStack p="$4" ref={ref} gap="$2" pb="$8" {...props} />
+    </ScrollView>
+  )
+})
 
 /**
  * on native, this will be pushed to the bottom of the screen
  */
-const Footer = forwardRef<TamaguiElement, YStackProps>((props, ref) => {
+const Footer = forwardRef<TamaguiElement, YStackProps>(function Footer(props, ref) {
   const dimensions = useWindowDimensions()
   const headerHeight = useHeaderHeight()
   const formWrapperContext = useContext(FormWrapperContext)

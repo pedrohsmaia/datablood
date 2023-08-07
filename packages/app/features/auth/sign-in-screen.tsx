@@ -25,7 +25,7 @@ export const SignInScreen = () => {
     if (params?.email) {
       updateParams({ email: undefined }, { web: { replace: true } })
     }
-  }, [])
+  }, [params?.email, updateParams])
   const form = useForm<z.infer<typeof SignInSchema>>()
 
   async function signInWithEmail({ email, password }: z.infer<typeof SignInSchema>) {
@@ -101,7 +101,7 @@ const SignUpLink = () => {
   return (
     <Link href={`/sign-up?${new URLSearchParams(email ? { email } : undefined).toString()}`}>
       <Paragraph textAlign="center" theme="alt1">
-        Don't have an account? <Text textDecorationLine="underline">Sign up</Text>
+        Don&apos;t have an account? <Text textDecorationLine="underline">Sign up</Text>
       </Paragraph>
     </Link>
   )

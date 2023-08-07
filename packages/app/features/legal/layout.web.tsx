@@ -29,6 +29,8 @@ export const LegalLayout = ({ children }: LegalLayoutProps) => {
                 mt="$4"
                 ml="$4"
                 als="flex-start"
+                // isWeb is a constant so this isn't really a conditional hook
+                // eslint-disable-next-line react-hooks/rules-of-hooks
                 {...useLink({ href: '/' })}
                 icon={ChevronLeft}
               >

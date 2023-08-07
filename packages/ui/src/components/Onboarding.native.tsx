@@ -1,6 +1,6 @@
 import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import { useRef, useState } from 'react'
-import { Animated, Dimensions, ScrollView as RNScrollView } from 'react-native'
+import { ScrollView as RNScrollView } from 'react-native'
 import {
   Circle,
   ScrollView,
@@ -80,12 +80,14 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
               )
             })}
           </ScrollView>
-          {<XStack gap={10} jc="center" my="$4">
-            {Array.from(Array(stepsCount)).map((_, idx) => {
-              const isActive = idx === stepIdx
-              return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
-            })}
-          </XStack>}
+          {
+            <XStack gap={10} jc="center" my="$4">
+              {Array.from(Array(stepsCount)).map((_, idx) => {
+                const isActive = idx === stepIdx
+                return <Point key={idx} active={isActive} onPress={() => setStepIdx(idx)} />
+              })}
+            </XStack>
+          }
         </YStack>
         <OnboardingControls
           currentIdx={stepIdx}

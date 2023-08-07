@@ -1,5 +1,5 @@
-import { Button, Theme, XStack } from 'tamagui'
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
+import { Button, XStack } from 'tamagui'
 
 export type OnboardingControlsProps = {
   currentIdx: number

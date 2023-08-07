@@ -22,17 +22,16 @@ export function Provider({
 }
 
 const compose = (providers: React.FC<{ children: React.ReactNode }>[]) =>
-  providers.reduce(
-    (Prev, Curr) =>
-      ({ children }) =>
-        Prev ? (
-          <Prev>
-            <Curr>{children}</Curr>
-          </Prev>
-        ) : (
-          <Curr>{children}</Curr>
-        )
-  )
+  providers.reduce((Prev, Curr) => ({ children }) => {
+    const Provider = Prev ? (
+      <Prev>
+        <Curr>{children}</Curr>
+      </Prev>
+    ) : (
+      <Curr>{children}</Curr>
+    )
+    return Provider
+  })
 
 const Providers = compose([
   UniversalThemeProvider,

@@ -29,7 +29,7 @@ export const SignUpScreen = () => {
     if (params?.email) {
       updateParams({ email: undefined }, { web: { replace: true } })
     }
-  }, [])
+  }, [params?.email, updateParams])
 
   const form = useForm<z.infer<typeof SignUpSchema>>()
 
@@ -133,7 +133,8 @@ const CheckYourEmail = () => {
         <YStack gap="$3">
           <H2>Check Your Email</H2>
           <Paragraph theme="alt1">
-            We've sent you a confirmation link. Please check your email ({email}) and confirm it.
+            We&apos;ve sent you a confirmation link. Please check your email ({email}) and confirm
+            it.
           </Paragraph>
         </YStack>
       </FormWrapper.Body>

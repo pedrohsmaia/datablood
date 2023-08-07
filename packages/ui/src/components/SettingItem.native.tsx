@@ -3,7 +3,6 @@ import { ListItem, SizableText, YGroup, YStack } from 'tamagui'
 import { SettingItemProps } from './SettingItem'
 
 export const SettingItem = ({
-  href,
   icon: Icon,
   children,
   accentColor,
@@ -19,7 +18,7 @@ export const SettingItem = ({
         <SizableText color="$color" fontSize={18} flex={1}>
           {children}
         </SizableText>
-        {!!rightLabel ? (
+        {rightLabel ? (
           <SizableText color="$color11" textTransform="capitalize">
             {rightLabel}
           </SizableText>

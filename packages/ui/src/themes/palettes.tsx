@@ -8,14 +8,11 @@ export const palettes = (() => {
   const transparent = (hsl: string, opacity = 0) =>
     hsl.replace(`%)`, `%, ${opacity})`).replace(`hsl(`, `hsla(`)
 
-  const getColorPalette = (colors: Object, color = colors[0]): string[] => {
+  const getColorPalette = (colors: object, color = colors[0]): string[] => {
     const colorPalette = Object.values(colors)
 
     // were re-ordering these
-    const [head, tail] = [
-      colorPalette.slice(0, 6),
-      colorPalette.slice(colorPalette.length - 5),
-    ]
+    const [head, tail] = [colorPalette.slice(0, 6), colorPalette.slice(colorPalette.length - 5)]
 
     // add our transparent colors first/last
     // and make sure the last (foreground) color is white/black rather than colorful
@@ -67,8 +64,7 @@ export const palettes = (() => {
 
   const lightPalettes = objectFromEntries(
     objectKeys(colorTokens.light).map(
-      (key) =>
-        [`light_${key}`, getColorPalette(colorTokens.light[key], lightColor)] as const
+      (key) => [`light_${key}`, getColorPalette(colorTokens.light[key], lightColor)] as const
     )
   )
 

@@ -31,6 +31,8 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
     main()
   }, [current])
 
+  const forceUpdate = useForceUpdate()
+
   useEffect(() => {
     const disposer = Appearance.addChangeListener(() => {
       forceUpdate()
@@ -38,9 +40,8 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
     return () => {
       disposer.remove()
     }
-  }, [current])
+  }, [current, forceUpdate])
 
-  const forceUpdate = useForceUpdate()
   const systemTheme = Appearance.getColorScheme() as string
 
   const themeContext = useMemo(() => {
@@ -51,14 +52,14 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
     return {
       set,
       themes: ['light', 'dark'],
-      onChangeTheme: (next) => {
-        setCurrent(next as any)
+      onChangeTheme: (next: ThemeName) => {
+        setCurrent(next)
         forceUpdate()
       },
       current,
       systemTheme,
     }
-  }, [current, systemTheme])
+  }, [current, forceUpdate, systemTheme])
 
   return (
     <ThemeContext.Provider value={themeContext}>

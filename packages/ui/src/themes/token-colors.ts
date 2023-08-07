@@ -22,7 +22,7 @@ export {
   darkColor,
   darkPalette,
   darkTransparent,
-  lightColor, 
+  lightColor,
   lightPalette,
   lightTransparent,
 } from './colors'
@@ -83,5 +83,5 @@ function postfixObjKeys<A extends { [key: string]: Variable<string> | string }, 
 ): {
   [Key in `${keyof A extends string ? keyof A : never}${B}`]: Variable<string> | string
 } {
-  return Object.fromEntries(Object.entries(obj).map(([k, v]) => [`${k}${postfix}`, v])) as any
+  return Object.fromEntries(Object.entries(obj).map(([k, v]) => [`${k}${postfix}`, v])) as never
 }

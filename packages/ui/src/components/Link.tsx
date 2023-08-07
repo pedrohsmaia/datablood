@@ -3,9 +3,9 @@ import { SizableText, TextProps } from 'tamagui'
 
 export type LinkProps = Omit<SolitoLinkProps, 'passHref' | 'as'> &
   TextProps & {
-    target?: any
-    rel?: any
-    title?: any
+    target?: string
+    rel?: string
+    title?: string
   }
 
 export const Link = ({

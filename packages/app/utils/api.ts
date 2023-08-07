@@ -5,7 +5,7 @@ import SuperJSON from 'superjson'
 import { getBaseUrl } from './getBaseUrl'
 
 export const api = createTRPCNext<AppRouter>({
-  config(opts) {
+  config() {
     return {
       transformer: SuperJSON,
       links: [
