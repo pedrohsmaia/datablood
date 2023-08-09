@@ -4,6 +4,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "clean": "react-native-clean-project",
     "start": "TAMAGUI_TARGET=native expo start --dev-client",
     "android": "TAMAGUI_TARGET=native yarn expo run:android",
     "ios": "TAMAGUI_TARGET=native yarn expo run:ios",
@@ -56,6 +57,7 @@
     "eslint": "^8.46.0",
     "eslint-config-universe": "^11.3.0",
     "metro-minify-terser": "^0.74.1",
+    "react-native-clean-project": "^4.0.1",
     "typescript": "^5.1.3"
   }
 }
