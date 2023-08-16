@@ -37,7 +37,6 @@
     "gen": "yarn generate"
   },
   "resolutions": {
-    "@types/react-native": "^0.71.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-refresh": "^0.14.0",

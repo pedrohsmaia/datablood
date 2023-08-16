@@ -10618,26 +10618,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.71.3":
-  version: 0.71.6
-  resolution: "@types/react-native@npm:0.71.6"
-  dependencies:
-    "@types/react": "*"
-  checksum: 067325c549e7181c73cdf8da1cb7bdef226124d91c3f72fcc2fb8b3c98a2d184f74a16ba627e3192253103bd651e8238d0e722b93f762b3f1a3f5b96773ec7a5
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:*, @types/react@npm:^18.0.15, @types/react@npm:^18.0.27":
-  version: 18.2.0
-  resolution: "@types/react@npm:18.2.0"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: db3d92b423150222a666329f7aa3023e3e942044700557b8a7d161530847e621aec9f56c9e7f71761b06dd164c8a7b17ad52355863efe80963dffa5537e8e5fd
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:>=16":
   version: 18.2.16
   resolution: "@types/react@npm:18.2.16"
@@ -10646,6 +10626,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 3d4fdc12509e0098e0dbb4bacdea53e8ccc6632e9df63d9f2711c77aa81ce3b2bb9c76d087f284034b25fd7245680167f4832bf6e4df960c5af2634b52adfd0c
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.0.15, @types/react@npm:^18.0.27":
+  version: 18.2.0
+  resolution: "@types/react@npm:18.2.0"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: db3d92b423150222a666329f7aa3023e3e942044700557b8a7d161530847e621aec9f56c9e7f71761b06dd164c8a7b17ad52355863efe80963dffa5537e8e5fd
   languageName: node
   linkType: hard
 
@@ -12251,7 +12242,6 @@ __metadata:
     "@tanstack/react-query": 4.18.0
     "@trpc/client": ^10.36.0
     "@types/react": ^18.0.27
-    "@types/react-native": ^0.71.3
     base64-arraybuffer: ^1.0.2
     burnt: ^0.10.0
     eslint: ^8.46.0
@@ -17777,7 +17767,6 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.18.2
     "@react-native-community/netinfo": ^9.3.10
     "@tamagui/babel-plugin": latest
-    "@types/react-native": ^0.71.3
     add: ^2.0.6
     app: "*"
     babel-plugin-module-resolver: ^4.1.0
