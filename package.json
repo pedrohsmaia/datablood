@@ -48,6 +48,7 @@
   "dependencies": {
     "@babel/runtime": "^7.18.9",
     "@manypkg/cli": "^0.19.1",
+    "@nderscore/tamagui-typescript-plugin": "^0.5.1",
     "@tamagui/cli": "latest",
     "check-dependency-version-consistency": "^3.0.3",
     "dotenv": "^16.0.3",

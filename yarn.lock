@@ -5307,6 +5307,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nderscore/tamagui-typescript-plugin@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "@nderscore/tamagui-typescript-plugin@npm:0.5.1"
+  dependencies:
+    color: 4.2.3
+  peerDependencies:
+    "@tamagui/core": "*"
+    "@tamagui/helpers": "*"
+    typescript: ">=4.8"
+  checksum: dae68962e5a4a950ff8d612ee6da91d2f155120bf0cf5e6f2d35cec92cef59ab13633daca0d6b46ed85a6f278c107edc589943aea80dbe4e720525fa2980fa2d
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:13.3.1":
   version: 13.3.1
   resolution: "@next/env@npm:13.3.1"
@@ -14377,7 +14390,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color@npm:^4.2.3":
+"color@npm:4.2.3, color@npm:^4.2.3":
   version: 4.2.3
   resolution: "color@npm:4.2.3"
   dependencies:
@@ -31214,6 +31227,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.18.9
     "@manypkg/cli": ^0.19.1
+    "@nderscore/tamagui-typescript-plugin": ^0.5.1
     "@tamagui/cli": latest
     "@turbo/gen": ^1.10.12
     change-case: ^4.1.2
