@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/your-project-id"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -26,7 +27,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.acme.myapp"
+      "package": "com.acme.myapp",
+      "permissions": ["android.permission.RECORD_AUDIO"]
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -40,6 +42,17 @@
         }
       ],
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   }
 }
