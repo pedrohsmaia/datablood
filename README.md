@@ -108,6 +108,10 @@ export default Page
 
 ### Native
 
+## Expo EAS Update
+
+[EAS update](https://docs.expo.dev/eas-update/getting-started) makes updating and publishing your app's runtime js easy.
+
 We use `expo-router` for the native side, so simply create `_layout.tsx` files inside `apps/expo` like you would normally do with an `expo-router` project.
 
 ## How Authentication is Handled
