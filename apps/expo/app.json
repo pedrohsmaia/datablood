@@ -46,10 +46,11 @@
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "your-project-id"
       }
+      // "eas": {
+      //   TODO: Add your project ID here
+      //   "projectId": "your-project-id"
+      // }
     },
     "runtimeVersion": {
       "policy": "appVersion"
