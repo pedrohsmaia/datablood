@@ -1,10 +1,10 @@
 import { useForceUpdate } from '@my/ui'
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { ThemeProviderProps, useThemeSetting as next_useThemeSetting } from '@tamagui/next-theme'
-import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import { Appearance } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
+import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import { AppState, ColorSchemeName, useColorScheme } from 'react-native'
 export const ThemeContext = createContext<
   (ThemeProviderProps & { current?: string | null }) | null
 >(null)
@@ -13,6 +13,7 @@ type ThemeName = 'light' | 'dark' | 'system'
 
 export const UniversalThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [current, setCurrent] = useState<ThemeName>('system')
+  const systemTheme = useNonFlickeringColorScheme()
 
   useLayoutEffect(() => {
     async function main() {
@@ -32,17 +33,6 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
   }, [current])
 
   const forceUpdate = useForceUpdate()
-
-  useEffect(() => {
-    const disposer = Appearance.addChangeListener(() => {
-      forceUpdate()
-    })
-    return () => {
-      disposer.remove()
-    }
-  }, [current, forceUpdate])
-
-  const systemTheme = Appearance.getColorScheme() as string
 
   const themeContext = useMemo(() => {
     const set = (val: string) => {
@@ -110,6 +100,28 @@ export const useThemeSetting: typeof next_useThemeSetting = () => {
 
 export const useRootTheme = () => {
   const context = useThemeSetting()
-
   return [context.current === 'system' ? context.systemTheme : context.current, context.set]
+}
+
+// fix flash of wrong theme on iOS:
+// https://github.com/bluesky-social/social-app/pull/1417
+// wait on merge from react-native to remove:
+// https://github.com/facebook/react-native/pull/39439
+function useNonFlickeringColorScheme() {
+  const colorSchemeFromRN = useColorScheme()
+  const [nonFlickerScheme, setNonFlickerScheme] = useState<ColorSchemeName>(colorSchemeFromRN)
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (state) => {
+      const isActive = state === 'active'
+      if (!isActive) return
+      setNonFlickerScheme(colorSchemeFromRN)
+    })
+
+    return () => {
+      subscription.remove()
+    }
+  }, [colorSchemeFromRN])
+
+  return nonFlickerScheme || 'system'
 }
