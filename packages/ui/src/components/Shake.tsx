@@ -26,6 +26,7 @@ export const Shake = ({
   if (!animationDriver) throw new Error('No animation driver found.')
   const { useAnimatedNumber, useAnimatedNumberStyle, View: AnimatedView } = animationDriver
   const animatedNumber = useAnimatedNumber(0)
+
   useEffect(() => {
     if (!shakeKey) {
       animatedNumber.setValue(0)
