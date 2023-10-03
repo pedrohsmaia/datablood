@@ -93,7 +93,6 @@ module.exports = function () {
       */
     experimental: {
       scrollRestoration: true,
-      appDir: false,
       // optimizeCss: true,
     },
   }
