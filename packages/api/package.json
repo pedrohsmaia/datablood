@@ -3,6 +3,14 @@
   "name": "@my/api",
   "main": "src/index.ts",
   "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.46.0",
+    "eslint-config-custom": "*"
+  },
   "dependencies": {
     "@my/supabase": "*",
     "@tanstack/react-query": "4.18.0",
@@ -12,6 +20,6 @@
     "@trpc/server": "^10.38.2",
     "app": "*",
     "superjson": "^1.13.1",
-    "zod": "^3.21.4"
+    "zod": "^3.22.2"
   }
 }

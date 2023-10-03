@@ -1,3 +1,7 @@
+⚠️
+
+Please note: we've had a number of people create public repos on accident with Takeout. This isn't allowed per the license! Please be careful to keep the source private.
+
 # Tamagui's Takeout Starter
 
 A good tutorial showing building a real app using Tamagui Takeout can be seen on the [notjust.dev YouTube stream](https://www.youtube.com/watch?v=d32F7crxXsY).
@@ -108,11 +112,31 @@ export default Page
 
 ### Native
 
+To run an expo app on your machine locally:
+
+- `yarn native` from the root of the project
+
+## Native Builds
+
+Native builds are needed if you're using custom native code in your project. More documentation can be found here in Expo's docs: [Adding Custom Native Code](https://docs.expo.dev/workflow/customizing/#adding-custom-native-code-with-development-builds)
+
+To run a [native build](https://docs.expo.dev/develop/development-builds/introduction):
+
+- `npx expo install expo-dev-client`
+- in `apps/expo/package.json` update script `"start": "TAMAGUI_ENV=dev expo start --dev-client"`
+- `yarn ios` or `yarn android`
+
 ## Expo EAS Update
 
 [EAS update](https://docs.expo.dev/eas-update/getting-started) makes updating and publishing your app's runtime js easy.
 
 We use `expo-router` for the native side, so simply create `_layout.tsx` files inside `apps/expo` like you would normally do with an `expo-router` project.
+
+- create an expo account and create an expo project.
+
+- add your project id to `apps/expo/app.json` where it says `your-project-id`
+
+![expo project id](https://github.com/tamagui/unistack/assets/2502947/8a4d3663-9eb2-4cb1-926f-0476a00ab078)
 
 ## How Authentication is Handled
 
@@ -124,7 +148,15 @@ You can use standard Next.js server side functions. So far we've used getServerS
 
 ### Guarding Screens on Native
 
-We use a hook to check for auth and then redirect the user to auth pages, and also not let the authenticated users see auth pages. See `apps/expo/utils/useProtectedRoute.ts`.
+We use a hook to check for auth and then redirect the user to auth pages, and also not let the authenticated users see auth pages. See `apps/expo/app/provider/auth/AuthProvider.native.ts`.
+
+### Apple Sign In
+
+You can use Sign in with Apple on native for iOS. Configuration on the Supabase side is straightforward as long as you have an Apple Developer account and an app ID. See this [article](https://supabase.com/docs/guides/auth/social-login/auth-apple#configuration-native-app) for more info. If you plan to use Sign in with Apple on the web, there are a few more steps which are explained in the article.
+
+### Google Sign In
+
+Sign in with Google is supported on iOS via in app web browser, and on Android native with via Google One Tap. To use Google One Tap on Android, you'll need to do a few more steps (see comments in the code). See [this article](https://supabase.com/docs/guides/auth/social-login/auth-google#configuration-native-app) for more info, as well as [this issue](https://github.com/react-native-google-signin/google-signin/issues/1176#issuecomment-1674385846).
 
 ## How Authorization is Handled
 

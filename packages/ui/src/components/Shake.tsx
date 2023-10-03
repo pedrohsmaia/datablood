@@ -1,4 +1,4 @@
-import { useAnimationDriver } from '@tamagui/web'
+import { useConfiguration } from '@tamagui/web'
 import { useEffect } from 'react'
 
 export const Shake = ({
@@ -22,10 +22,11 @@ export const Shake = ({
   shakeDistance?: number
   children: React.ReactNode
 }) => {
-  const driver = useAnimationDriver()
-  if (!driver) throw new Error('No driver found.')
-  const { useAnimatedNumber, useAnimatedNumberStyle, View: AnimatedView } = driver
+  const { animationDriver } = useConfiguration()
+  if (!animationDriver) throw new Error('No animation driver found.')
+  const { useAnimatedNumber, useAnimatedNumberStyle, View: AnimatedView } = animationDriver
   const animatedNumber = useAnimatedNumber(0)
+
   useEffect(() => {
     if (!shakeKey) {
       animatedNumber.setValue(0)
@@ -53,5 +54,6 @@ export const Shake = ({
       transform: [{ translateX: val }],
     }
   })
+
   return <AnimatedView style={animatedStyle}>{children}</AnimatedView>
 }
