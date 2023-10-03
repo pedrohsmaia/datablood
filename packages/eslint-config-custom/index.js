@@ -6,12 +6,14 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
   ],
-  overrides: {
-    files: ['*.config.js'],
-    rules: {
-      '@typescript-eslint/no-var-requires': 'off',
+  overrides: [
+    {
+      files: ['*.config.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
     },
-  },
+  ],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
