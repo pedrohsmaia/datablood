@@ -16,7 +16,7 @@ import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
 const ChangeEmailSchema = z.object({
-  email: formFields.text.email().describe('New Email // email@adderss.com'),
+  email: formFields.text.email().describe('New Email // email@address.com'),
 })
 
 export const ChangeEmailScreen = () => {
