@@ -112,10 +112,6 @@ export default Page
 
 ### Native
 
-## Expo Go
-
-The easiest way to get a project running on native devices is to use [Expo Go](https://expo.dev/client). You can download it from the App Store or Google Play.
-
 To run an expo app on your machine locally:
 
 - `yarn native` from the root of the project
