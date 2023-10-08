@@ -10,7 +10,13 @@ Please remember that Takeout is closed source and you should not make this code 
 
 ## Getting Started
 
-If you want to clone this starter, you can run `yarn create tamagui --template takeout-starter`. Otherwise, ignore this section. If you're getting authentication issues with `yarn create tamagui`, clone the template (using `gh` or just `git`), cd into the project and run `yarn install`, and then `yarn setup`.
+If you want to clone this starter, you can run
+
+ ```bash 
+ yarn create tamagui --template takeout-starter
+ ``` 
+ 
+ Otherwise, ignore this section. If you're getting authentication issues with `yarn create tamagui`, clone the template (using `gh` or just `git`), cd into the project and run `yarn install`, and then `yarn setup`.
 
 To rename the project you can search the workspace for the word `myapp` and replace with your name.
 If you prefer, you may also run [react-native-rename](https://github.com/junedomingo/react-native-rename) from `/apps/expo` to rename the react-native references.
