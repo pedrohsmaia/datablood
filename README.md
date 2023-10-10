@@ -38,6 +38,9 @@ Note that you don't need to do this if you've already cloned this using `create 
 
 To configure the project, `cd` into the root of the project and run `yarn setup`.
 
+[Docker](https://www.docker.com) based workflow is recommended if your takeout project is using Supabase as a dependency.
+
+Please reference [Supabase's documentation](https://supabase.com/docs/guides/self-hosting/docker) for docker configuration instructions.
 ## Development
 
 Development scripts:
