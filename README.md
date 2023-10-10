@@ -112,9 +112,14 @@ export default Page
 
 ### Native
 
+#### First-time Setup
+
+- run a build for either native platform `yarn ios` or `yarn android`
+
 To run an expo app on your machine locally:
 
 - `yarn native` from the root of the project
+- select `development` from the cli menu
 
 ## Native Builds
 
@@ -250,3 +255,13 @@ EAS has already been configured for you, but you still need to do the following:
 - `npm install --global eas-cli`
 - `cd apps/expo`
 - `eas build` - This will also add your EAS project ID to app.json
+
+## FAQs
+
+- I get the error `network request failed` when trying to signin or signup for the app
+
+This error is likely caused my not having Supabase setup correctly and running in docker.
+
+- I'm trying to run my project with `expo go`
+
+`takeout` is not compatible with `expo go` at this time. You'll need to run the project with a local development build, outlined above.
