@@ -130,7 +130,16 @@ export default Page
 
 ### Native
 
-#### First-time Setup
+#### React Native Setup Expo
+The simplest way to run a native project. A iOS or Android physical device is needed
+- [Expo CLI Setup](https://docs.expo.dev/get-started/installation/)
+
+
+#### Emulator Setup Expo
+- [Android](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS](https://docs.expo.dev/workflow/ios-simulator/)
+
+#### First-time Takeout Setup
 
 - run a build for either native platform `yarn ios` or `yarn android`
 
