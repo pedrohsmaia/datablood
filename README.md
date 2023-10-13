@@ -141,6 +141,7 @@ The simplest way to run a native project. A iOS or Android physical device is ne
 
 #### First-time Takeout Setup
 
+
 - run a build for either native platform `yarn ios` or `yarn android`
 
 To run an expo app on your machine locally:
