@@ -44,6 +44,10 @@ Generates types from your remote Supabase instance using your project ID specifi
 yarn generate:remote
 ```
 
+### Type Helpers
+
+`supabase/helpers` file has additional type definition helpers as shown in Supabase's [documentation](https://www.supabase.com/docs/reference/javascript/typescript-support) that can be imported through out the project.
+
 #### New Migration
 
 Generates a new migration by diffing against the db.
