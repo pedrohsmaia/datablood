@@ -49,9 +49,8 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ],
-      "expo-router",
       "expo-apple-authentication",
-      "@vonovak/react-native-theme-control"
+      "expo-router"
     ],
     "extra": {
       "router": {
