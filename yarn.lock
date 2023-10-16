@@ -9542,20 +9542,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vonovak/react-native-theme-control@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "@vonovak/react-native-theme-control@npm:5.0.1"
-  peerDependencies:
-    expo: ">=49.0.0"
-    react: "*"
-    react-native: ">=0.72.0"
-  peerDependenciesMeta:
-    expo:
-      optional: true
-  checksum: 34bf42030844b745fad6d57e021f57e4adb766f4ff060101a3cb335db32c8dc6627ca6c67e934e7b828f6f24c4cbc0b6579f2201df7f7ed6cb7d616733b6d090
-  languageName: node
-  linkType: hard
-
 "@webassemblyjs/ast@npm:1.11.6, @webassemblyjs/ast@npm:^1.11.5":
   version: 1.11.6
   resolution: "@webassemblyjs/ast@npm:1.11.6"
@@ -10407,7 +10393,6 @@ __metadata:
     "@tanstack/react-query": 4.18.0
     "@trpc/client": ^10.38.2
     "@types/react": ^18.0.27
-    "@vonovak/react-native-theme-control": ^5.0.1
     base64-arraybuffer: ^1.0.2
     burnt: ^0.11.7
     eslint: ^8.46.0
@@ -15397,7 +15382,6 @@ __metadata:
     expo-secure-store: ~12.3.1
     expo-splash-screen: ~0.20.4
     expo-status-bar: ~1.6.0
-    expo-system-ui: ~2.4.0
     expo-updates: ~0.18.13
     expo-web-browser: ^12.5.0
     metro-minify-terser: ^0.74.1
@@ -15766,18 +15750,6 @@ __metadata:
   version: 3.3.0
   resolution: "expo-structured-headers@npm:3.3.0"
   checksum: f7416c20fb36039ceda93666a42a57533753db9102dc04b601ee0aff76b39d77a19cded988ef5f56ff2d1b0498330506c2cbb3699aec485dcc42c7ad505b2a69
-  languageName: node
-  linkType: hard
-
-"expo-system-ui@npm:~2.4.0":
-  version: 2.4.0
-  resolution: "expo-system-ui@npm:2.4.0"
-  dependencies:
-    "@react-native/normalize-color": ^2.0.0
-    debug: ^4.3.2
-  peerDependencies:
-    expo: "*"
-  checksum: bf95f865785e3a79e5de5770484cf510bec7838945025e6efce69476cb6d6f56d3b532b47853ffc329c5e93c5f1d68a2ed50ac0b50cc3e82f9b36c679a0a9efc
   languageName: node
   linkType: hard
 
