@@ -50,16 +50,13 @@
         }
       ],
       "expo-apple-authentication",
-      "expo-router"
+      "expo-router",
+      "expo-build-properties"
     ],
     "extra": {
       "router": {
         "origin": false
       }
-      // "eas": {
-      //   TODO: Add your project ID here
-      //   "projectId": "your-project-id"
-      // }
     },
     "runtimeVersion": {
       "policy": "appVersion"
