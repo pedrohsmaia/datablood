@@ -15364,7 +15364,6 @@ __metadata:
     "@react-native-async-storage/async-storage": 1.18.2
     "@react-native-community/netinfo": 9.3.10
     "@tamagui/babel-plugin": ^1.74.8
-    "@vonovak/react-native-theme-control": ^5.0.1
     app: "*"
     babel-plugin-module-resolver: ^4.1.0
     babel-plugin-transform-inline-environment-variables: ^0.4.4
