@@ -280,7 +280,13 @@ You may potentially want to have the native module transpiled for the next app. 
 ## Deploying to Vercel
 
 - Root: `apps/next`
-- Install command to be `yarn set version berry && yarn install`
+- Install command to be `yarn set version 3.6 && yarn install` in `vercel.json`.
+  Note: currently there's a bug where `takeout` Vercel builds break using `yarn 4`
+  ```json
+  {
+    "installCommand": "yarn set version 3.6 && yarn install"
+  }
+  ```
 - Build command: leave default setting
 - Output dir: leave default setting
 
