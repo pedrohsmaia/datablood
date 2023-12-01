@@ -173,6 +173,8 @@ We use `expo-router` for the native side, so simply create `_layout.tsx` files i
 
 - add your project id to `apps/expo/app.json` where it says `your-project-id`
 
+- ensure that the `projectId`, `slug`, and `owner` values in `apps/expo/app.json` all have the same value as the name of your project, ie the name in `apps/expo/package.json`
+
 ![expo project id](https://github.com/tamagui/unistack/assets/2502947/8a4d3663-9eb2-4cb1-926f-0476a00ab078)
 
 ## Icon Pack (Additional Purchase)
