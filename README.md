@@ -10,14 +10,13 @@ Please remember that Takeout is closed source and you should not make this code 
 
 A good tutorial showing building a real app using Tamagui Takeout can be seen on the [notjust.dev YouTube stream](https://www.youtube.com/watch?v=XbKkKXH-dfc).
 
-
 ## Getting Started
 
 If you want to clone this starter, you can run
 
- ```bash 
- yarn create tamagui --template takeout-starter
- ``` 
+```bash
+yarn create tamagui --template takeout-starter
+```
 
 the `yarn create tamagui --template takeout-starter` command has a requirement on `gh`
 
@@ -27,8 +26,7 @@ the `yarn create tamagui --template takeout-starter` command has a requirement o
 1. select ` https` from the menu
 1. authenticate
 
- 
- Otherwise, ignore this section. If you're getting authentication issues with `yarn create tamagui`, clone the template (using `gh` or just `git`), cd into the project and run `yarn install`, and then `yarn setup`.
+Otherwise, ignore this section. If you're getting authentication issues with `yarn create tamagui`, clone the template (using `gh` or just `git`), cd into the project and run `yarn install`, and then `yarn setup`.
 
 To rename the project you can search the workspace for the word `myapp` and replace with your name.
 If you prefer, you may also run [react-native-rename](https://github.com/junedomingo/react-native-rename) from `/apps/expo` to rename the react-native references.
@@ -53,6 +51,7 @@ To configure the project, `cd` into the root of the project and run `yarn setup`
 [Docker](https://www.docker.com) based workflow is recommended if your takeout project is using Supabase as a dependency.
 
 Please reference [Supabase's documentation](https://supabase.com/docs/guides/self-hosting/docker) for docker configuration instructions.
+
 ## Development
 
 Development scripts:
@@ -134,16 +133,17 @@ export default Page
 ### Native
 
 #### React Native Setup Expo
+
 The simplest way to run a native project. A iOS or Android physical device is needed
+
 - [Expo CLI Setup](https://docs.expo.dev/get-started/installation/)
 
-
 #### Emulator Setup Expo
+
 - [Android](https://docs.expo.dev/workflow/android-studio-emulator/)
 - [iOS](https://docs.expo.dev/workflow/ios-simulator/)
 
 #### First-time Takeout Setup
-
 
 - run a build for either native platform `yarn ios` or `yarn android`
 
@@ -172,7 +172,13 @@ We use `expo-router` for the native side, so simply create `_layout.tsx` files i
 
 - add your project id to `apps/expo/app.json` where it says `your-project-id`
 
+- ensure that the `projectId`, `slug`, and `owner` values in `apps/expo/app.json` all have the same value as the name of your project, ie the name in `apps/expo/package.json`
+
 ![expo project id](https://github.com/tamagui/unistack/assets/2502947/8a4d3663-9eb2-4cb1-926f-0476a00ab078)
+
+## Icon Pack (Additional Purchase)
+
+Icons are populated from [icones](https://icones.js.org)
 
 ## How Authentication is Handled
 
@@ -275,7 +281,13 @@ You may potentially want to have the native module transpiled for the next app. 
 ## Deploying to Vercel
 
 - Root: `apps/next`
-- Install command to be `yarn set version berry && yarn install`
+- Install command to be `yarn set version 3.6 && yarn install` in `vercel.json`.
+  Note: currently there's a bug where `takeout` Vercel builds break using `yarn 4`
+  ```json
+  {
+    "installCommand": "yarn set version 3.6 && yarn install"
+  }
+  ```
 - Build command: leave default setting
 - Output dir: leave default setting
 
@@ -286,6 +298,12 @@ EAS has already been configured for you, but you still need to do the following:
 - `npm install --global eas-cli`
 - `cd apps/expo`
 - `eas build` - This will also add your EAS project ID to app.json
+
+### Initial EAS Setup
+
+1. edit `apps/expo/app.json` update:
+   1. `owner`
+   1. `projectId`
 
 ## FAQs
 
