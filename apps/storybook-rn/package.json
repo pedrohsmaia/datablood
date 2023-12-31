@@ -6,9 +6,9 @@
   "scripts": {
     "generate": " sb-rn-get-stories",
     "watch": " sb-rn-watcher",
-    "start": " sb-rn-get-stories && cross-env TAMAGUI_TARGET=native expo start",
-    "ios": " sb-rn-get-stories && cross-env TAMAGUI_TARGET=native expo start --ios -c",
-    "android": " sb-rn-get-stories && cross-env TAMAGUI_TARGET=native expo start --android -c"
+    "start": " sb-rn-get-stories && cross-env expo start",
+    "ios": " sb-rn-get-stories && cross-env expo start --ios -c",
+    "android": " sb-rn-get-stories && cross-env expo start --android -c"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
