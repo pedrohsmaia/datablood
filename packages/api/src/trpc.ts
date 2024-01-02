@@ -36,7 +36,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
         },
         global: {
           headers: {
-            // pass the authorization header though to Supabase
+            // pass the authorization header through to Supabase
             Authorization: opts.req.headers.authorization,
           },
         },
