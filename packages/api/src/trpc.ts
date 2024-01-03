@@ -11,6 +11,15 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   let supabase = createPagesServerClient<Database>(opts)
   let userId = (await supabase.auth.getUser()).data.user?.id
 
+  if (!process.env.SUPABASE_JWT_SECRET) {
+    throw new Error('the `SUPABASE_JWT_SECRET` env variable is not set.')
+  }
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    throw new Error('the `NEXT_PUBLIC_SUPABASE_URL` env variable is not set.')
+  }
+  if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    throw new Error('the `NEXT_PUBLIC_SUPABASE_ANON_KEY` env variable is not set.')
+  }
   // Native clients pass an access token in the authorization header
   if (opts.req.headers.authorization) {
     const accessToken = opts.req.headers.authorization.split('Bearer ').pop()
@@ -21,7 +30,9 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
       } catch (error) {
         // Leaves userId undefined, which will eventually fail the enforceUserIsAuthed check
         // Might want to log this out for debugging, etc.
-        console.log('Error parsing JWT', error.message)
+        if (error instanceof Error) {
+          console.log('Error parsing JWT', error.message)
+        }
       }
     }
 
