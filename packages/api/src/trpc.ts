@@ -31,7 +31,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
         // Leaves userId undefined, which will eventually fail the enforceUserIsAuthed check
         // Might want to log this out for debugging, etc.
         if (error instanceof Error) {
-          console.log('Error parsing JWT', error.message)
+          console.error('Error parsing JWT', error.message)
         }
       }
     }
