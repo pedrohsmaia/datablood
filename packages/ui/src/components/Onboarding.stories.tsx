@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Star } from '@tamagui/lucide-icons'
 import { YStack } from 'tamagui'
+
 import { Onboarding } from './Onboarding'
 import { StepContent } from './OnboardingStepContent'
 

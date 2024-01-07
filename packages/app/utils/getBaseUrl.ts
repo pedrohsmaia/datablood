@@ -1,4 +1,5 @@
 import { isWeb } from '@my/ui'
+
 import { replaceLocalhost } from './getLocalhost.native'
 
 export function _getBaseUrl() {

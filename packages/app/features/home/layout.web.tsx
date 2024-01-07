@@ -19,6 +19,7 @@ import { useRouter as useNextRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { SolitoImage } from 'solito/image'
 import { Link, useLink } from 'solito/link'
+
 import { NavTabs } from './components/nav-tabs.web'
 
 export type HomeLayoutProps = {
