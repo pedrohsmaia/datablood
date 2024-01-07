@@ -5,7 +5,7 @@ name: Push Updates
 on:
   push:
     branches:
-      - push-updates
+      - main
   workflow_dispatch:
 jobs:
   push-updates:
