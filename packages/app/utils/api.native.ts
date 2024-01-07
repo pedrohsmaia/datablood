@@ -1,8 +1,8 @@
-import { createTRPCReact } from '@trpc/react-query'
-
 import type { AppRouter } from '@my/api'
 import { httpBatchLink } from '@trpc/client'
+import { createTRPCReact } from '@trpc/react-query'
 import SuperJSON from 'superjson'
+
 import { getBaseUrl } from './getBaseUrl'
 import { supabase } from './supabase/client.native'
 

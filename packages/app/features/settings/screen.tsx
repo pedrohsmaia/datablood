@@ -5,6 +5,7 @@ import { redirect } from 'app/utils/redirect'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { usePathname } from 'app/utils/usePathname'
 import { useLink } from 'solito/link'
+
 import rootPackageJson from '../../../../package.json'
 import packageJson from '../../package.json'
 

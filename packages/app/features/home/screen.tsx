@@ -113,7 +113,7 @@ const EventCards = () => {
         </YStack>
         <YStack>
           <TodoCard label="Contribute to OSS" checked={false} />
-          <TodoCard label="Learn about Tamagui's latest features" checked={true} />
+          <TodoCard label="Learn about Tamagui's latest features" checked />
           <TodoCard label="Upgrade to the new Expo version" checked={false} />
           <TodoCard label="Do the dishes" checked={false} />
         </YStack>
