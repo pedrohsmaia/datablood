@@ -1,10 +1,10 @@
 import { Database } from '@my/supabase/types'
 import { createPagesServerClient } from '@supabase/auth-helpers-nextjs'
+import { createClient } from '@supabase/supabase-js'
 import { TRPCError, initTRPC } from '@trpc/server'
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
-import superJson from 'superjson'
-import { createClient } from '@supabase/supabase-js'
 import jwt from 'jsonwebtoken'
+import superJson from 'superjson'
 
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   // if there's auth cookie it'll be authenticated by this helper
