@@ -26,7 +26,6 @@ export const UploadAvatar = ({ children }: { children: React.ReactNode }) => {
     try {
       if (pickerResult.canceled) {
         // upload canceled
-        return
       } else {
         if (!user) return
         const image = pickerResult.assets[0]
