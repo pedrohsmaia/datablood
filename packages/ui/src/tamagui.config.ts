@@ -45,3 +45,5 @@ export const config = createTamagui({
     fastSchemeChange: true,
   },
 })
+
+export default config
