@@ -2,7 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
-    "noUncheckedIndexedAccess": true,
+    "paths": {
+      "@my/*": ["packages/*"]
+    },
     "importHelpers": true,
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
