@@ -36,7 +36,7 @@ export const TextAreaField = (props: Pick<TextAreaProps, 'size' | 'autoFocus'>) 
             id={id}
             rows={5}
             // temp fix
-            height={150}
+            h={150}
             {...props}
           />
         </Shake>

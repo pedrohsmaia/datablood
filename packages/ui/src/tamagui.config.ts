@@ -18,12 +18,14 @@ import { zIndex } from './themes/token-z-index'
 const themes =
   process.env.TAMAGUI_IS_SERVER || process.env.STORYBOOK ? themesIn : ({} as typeof themesIn)
 
-const conf = {
+export const config = createTamagui({
   themes,
   defaultFont: 'body',
   animations,
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,
+  mediaQueryDefaultActive,
+  onlyAllowShorthands: true,
   shorthands,
   fonts: {
     heading: headingFont,
@@ -37,10 +39,9 @@ const conf = {
     size,
   }),
   media,
-} satisfies Parameters<typeof createTamagui>['0']
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore - passing this directly breaks TS types
-conf.mediaQueryDefaultActive = mediaQueryDefaultActive
-
-export const config = createTamagui(conf)
+  settings: {
+    allowedStyleValues: 'somewhat-strict',
+    autocompleteSpecificTokens: 'except-special',
+    fastSchemeChange: true,
+  },
+})
