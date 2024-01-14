@@ -31,7 +31,7 @@
     "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary",
     "check-deps": "check-dependency-version-consistency .",
     "supa": "yarn workspace @my/supabase",
-    "typecheck": "yarn workspaces foreach -pi --all run check:type",
+    "typecheck": "yarn workspaces foreach -pti --all run check:type",
     "typecheck:watch": "yarn workspaces foreach -pi --all run check:type:watch",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
