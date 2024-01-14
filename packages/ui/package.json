@@ -17,7 +17,9 @@
     "watch": "tamagui-build --skip-types --watch",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "generate-theme": "tamagui generate-themes ./src/themes/theme.ts ./src/themes/theme-generated.ts"
+    "generate-theme": "tamagui generate-themes ./src/themes/theme.ts ./src/themes/theme-generated.ts",
+    "check:type": "tsc --outDir /tmp",
+    "check:type:watch": "yarn check:type -w"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",

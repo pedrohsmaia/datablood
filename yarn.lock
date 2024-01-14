@@ -4689,6 +4689,7 @@ __metadata:
     eslint-config-custom: "npm:*"
     jsonwebtoken: "npm:^9.0.2"
     superjson: "npm:^1.13.1"
+    typescript: "npm:^5.2.2"
     zod: "npm:^3.22.2"
   languageName: unknown
   linkType: soft
@@ -11511,6 +11512,7 @@ __metadata:
     react-native-safe-area-context: "npm:4.6.3"
     solito: "npm:^4.0.1"
     superjson: "npm:^1.13.1"
+    typescript: "npm:^5.2.2"
     zod: "npm:^3.22.2"
   languageName: unknown
   linkType: soft
@@ -21145,7 +21147,6 @@ __metadata:
     react-native: "npm:0.72.5"
     react-native-reanimated: "npm:~3.3.0"
     react-native-web: "npm:~0.19.6"
-    react-native-web-lite: "npm:1.85.2"
     vercel: "npm:latest"
     zod: "npm:^3.22.2"
   languageName: unknown

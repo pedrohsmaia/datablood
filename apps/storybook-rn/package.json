@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "generate": " sb-rn-get-stories",
+    "generate": "sb-rn-get-stories",
     "watch": " sb-rn-watcher",
     "start": " sb-rn-get-stories && cross-env expo start",
     "ios": " sb-rn-get-stories && cross-env expo start --ios -c",
