@@ -25,8 +25,8 @@ export default function Layout() {
         />
         <Tabs.Screen
           name="_create"
-          listeners={({ navigation }) => ({
-            tabPress: (event) => {
+          listeners={({ navigation }: any) => ({
+            tabPress: (event: any) => {
               event.preventDefault()
               navigation.navigate('create')
             },

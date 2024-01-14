@@ -2,9 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
-    "paths": {
-      "@my/*": ["packages/*"]
-    },
     "importHelpers": true,
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
@@ -31,11 +28,12 @@
     "sourceMap": false,
     "target": "ESNext",
     "types": ["node"],
+    "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "jsx": "react-native",
     "resolveJsonModule": true,
     "paths": {
-      "react-native": ["react-native-web"]
+      "react-native": ["react-native-web"],
+      "@my/*": ["packages/*"]
     },
     "plugins": [
       {
