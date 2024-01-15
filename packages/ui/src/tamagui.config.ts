@@ -17,7 +17,6 @@ import { zIndex } from './themes/token-z-index'
  */
 
 const themes =
-  // process.env.NODE_ENV === 'development' ||
   process.env.TAMAGUI_IS_SERVER || process.env.STORYBOOK ? themesIn : ({} as typeof themesIn)
 
 export const config = createTamagui({
