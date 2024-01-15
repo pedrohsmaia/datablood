@@ -8,10 +8,10 @@
     "noEmit": true
   },
   "references": [
-    { "path": "apps/expo" },
-    { "path": "apps/next" },
-    { "path": "packages/app" },
-    { "path": "packages/ui" },
-    { "path": "packages/api" }
+    // { "path": "apps/expo" }
+    // { "path": "apps/next" },
+    // { "path": "packages/app" },
+    { "path": "./packages/ui" }
+    // { "path": "packages/api" }
   ]
 }
