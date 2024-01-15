@@ -36,6 +36,6 @@
     "cross-env": "^7.0.3",
     "react-native-safe-area-context": "4.6.3",
     "storybook": "^7.0.26",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   }
 }
