@@ -3690,9 +3690,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/cli@npm:0.10.12":
-  version: 0.10.12
-  resolution: "@expo/cli@npm:0.10.12"
+"@expo/cli@npm:0.10.16":
+  version: 0.10.16
+  resolution: "@expo/cli@npm:0.10.16"
   dependencies:
     "@babel/runtime": "npm:^7.20.0"
     "@expo/code-signing-certificates": "npm:0.0.5"
@@ -3758,7 +3758,7 @@ __metadata:
     ws: "npm:^8.12.1"
   bin:
     expo-internal: build/bin/cli
-  checksum: bfbb58e80433609956468f1ec8d6982b500ea6fd2d806e6c3ffb487b3c2464a45d85e52d1fc606dcbb1c8c95643eda05add7ba297ecac05d2d851ed5efb9a5ac
+  checksum: ffc7f2d11247c4e7bdcb9c09284aecb4b320fbfebcf2e6eacc8f4b01f0ad8039da170fc72587c89275aa3ccd501e67ce2bf1b64435f579e6a5f2d5b7f762a349
   languageName: node
   linkType: hard
 
@@ -15954,7 +15954,7 @@ __metadata:
     burnt: "npm:^0.12.1"
     cross-env: "npm:^7.0.3"
     eslint-plugin-import: "npm:^2.28.0"
-    expo: "npm:^49.0.0"
+    expo: "npm:^49.0.21"
     expo-apple-authentication: "npm:~6.1.0"
     expo-build-properties: "npm:~0.8.3"
     expo-constants: "npm:~14.4.2"
@@ -16126,7 +16126,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-file-system@npm:~15.4.0, expo-file-system@npm:~15.4.4":
+"expo-file-system@npm:~15.4.0":
   version: 15.4.4
   resolution: "expo-file-system@npm:15.4.4"
   dependencies:
@@ -16134,6 +16134,17 @@ __metadata:
   peerDependencies:
     expo: "*"
   checksum: 510a77fa1a6e61ab67ac690e1acdcd65bfc058624e4e446e7539768cfb5361aa334f6ca0bd949b4e6ea7d42c18ef39246b3b9fd57c22b2f5aba2bc95e34cd267
+  languageName: node
+  linkType: hard
+
+"expo-file-system@npm:~15.4.5":
+  version: 15.4.5
+  resolution: "expo-file-system@npm:15.4.5"
+  dependencies:
+    uuid: "npm:^3.4.0"
+  peerDependencies:
+    expo: "*"
+  checksum: 9d70e161fccf3ec1eaa6d2367b616882cfbe2d015f7d7a84c9153e8f57f99eecc1af59e470091faba77ed42e45bcb04970d29e8ab1d9fb6d48a87f5151961ec3
   languageName: node
   linkType: hard
 
@@ -16254,13 +16265,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-modules-core@npm:1.5.11":
-  version: 1.5.11
-  resolution: "expo-modules-core@npm:1.5.11"
+"expo-modules-core@npm:1.5.13":
+  version: 1.5.13
+  resolution: "expo-modules-core@npm:1.5.13"
   dependencies:
     compare-versions: "npm:^3.4.0"
     invariant: "npm:^2.2.4"
-  checksum: 73d8f6420a8529ca5c4c34373f0fcff90912148bc4bd7812c637c7d1e91b0e6f67373717ab5d8dc67c334bd6aae15d64eaff7001eb00bc5bfe01dede3d1aaba9
+  checksum: 4c014be4e8c67bfa7f435ecc777271454ede9818c5baa8afa5dc9f960267278cce4b2cd72851484328f1a20db815da1c47a46de4393be8f8500fca2a5be61d97
   languageName: node
   linkType: hard
 
@@ -16411,12 +16422,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:^49.0.0":
-  version: 49.0.10
-  resolution: "expo@npm:49.0.10"
+"expo@npm:^49.0.21":
+  version: 49.0.22
+  resolution: "expo@npm:49.0.22"
   dependencies:
     "@babel/runtime": "npm:^7.20.0"
-    "@expo/cli": "npm:0.10.12"
+    "@expo/cli": "npm:0.10.16"
     "@expo/config": "npm:8.1.2"
     "@expo/config-plugins": "npm:7.2.5"
     "@expo/vector-icons": "npm:^13.0.0"
@@ -16424,11 +16435,11 @@ __metadata:
     expo-application: "npm:~5.3.0"
     expo-asset: "npm:~8.10.1"
     expo-constants: "npm:~14.4.2"
-    expo-file-system: "npm:~15.4.4"
+    expo-file-system: "npm:~15.4.5"
     expo-font: "npm:~11.4.0"
     expo-keep-awake: "npm:~12.3.0"
     expo-modules-autolinking: "npm:1.5.1"
-    expo-modules-core: "npm:1.5.11"
+    expo-modules-core: "npm:1.5.13"
     fbemitter: "npm:^3.0.0"
     invariant: "npm:^2.2.4"
     md5-file: "npm:^3.2.3"
@@ -16437,7 +16448,7 @@ __metadata:
     uuid: "npm:^3.4.0"
   bin:
     expo: bin/cli
-  checksum: 324ec2dd18f15baabef0ee66e934c28f3c945616bab13e166f78848e8af3162c39bcfe47581a3518ca882606a82ed469ec5086d1b2ebab8804de8d902b3aa3a1
+  checksum: 16a259f54cde2f4ebe37d883a7d0c171de7ab15b68ab3b2314f33a67e8856d9e296ca39002b3ee1c0572690f82108f26e37f17b558d07c28cb76ecc0b9e19b20
   languageName: node
   linkType: hard
 
@@ -25262,7 +25273,7 @@ __metadata:
     app: "npm:*"
     babel-loader: "npm:^8.3.0"
     cross-env: "npm:^7.0.3"
-    expo: "npm:^49.0.0"
+    expo: "npm:^49.0.21"
     expo-constants: "npm:~14.4.2"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
