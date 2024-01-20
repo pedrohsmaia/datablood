@@ -186,7 +186,11 @@ Icons are populated from [icones](https://icones.js.org)
 
 ## How Authentication is Handled
 
-Authentication is handled by Supabase Auth. Email and password auth is included in the starter but you can get OAuth to work too. Getting OAuth to work on web is as easy as it gets but on native, you will need to manually get the OAuth credentials, and then feed them to the Supabase session. See [this article](https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf) for more info on how to handle native OAuth with Supabase.
+Authentication is handled by Supabase Auth. Email and password auth is included in the starter but you can get OAuth to work too.
+
+Check emails that are sent to you locally like the auth confirmation using InBucket at http://localhost:54324 once your Supabase is running.
+
+Getting OAuth to work on web is as easy as it gets but on native, you will need to manually get the OAuth credentials, and then feed them to the Supabase session. See [this article](https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf) for more info on how to handle native OAuth with Supabase.
 
 ### Guarding Pages on Web
 
