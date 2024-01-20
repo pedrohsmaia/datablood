@@ -15,23 +15,19 @@ export const StepContent = ({
     <YStack
       ai="center"
       p="$8"
-      pos="absolute"
+      fullscreen
       mx="auto"
-      left={0}
-      right={0}
-      top={0}
-      bottom={0}
       jc="center"
       animation="100ms"
-      exitStyle={{ opacity: 0 }}
-      opacity={1}
+      exitStyle={{ o: 0 }}
+      o={1}
     >
       <YStack
         animation="lazy"
         y={0}
-        enterStyle={{ scale: 0.8, y: -10, opacity: 0 }}
-        exitStyle={{ scale: 0.8, y: -10, opacity: 0 }}
-        opacity={1}
+        enterStyle={{ scale: 0.8, y: -10, o: 0 }}
+        exitStyle={{ scale: 0.8, y: -10, o: 0 }}
+        o={1}
         scale={1}
       >
         <Icon color="$color9" size={96} />
@@ -40,14 +36,14 @@ export const StepContent = ({
         mt="$5"
         animation="bouncy"
         y={0}
-        enterStyle={{ scale: 0.95, y: 4, opacity: 0 }}
-        exitStyle={{ scale: 0.95, y: 4, opacity: 0 }}
-        opacity={1}
+        enterStyle={{ scale: 0.95, y: 4, o: 0 }}
+        exitStyle={{ scale: 0.95, y: 4, o: 0 }}
+        o={1}
         scale={1}
         size="$10"
-        color="$color9"
+        col="$color9"
         selectable={false}
-        textAlign="center"
+        ta="center"
         $md={{
           size: '$10',
           mt: '$4',
@@ -57,18 +53,18 @@ export const StepContent = ({
       </H2>
       <Paragraph
         mt="$4"
-        maxWidth={520}
+        maw={520}
         mx="auto"
         animation="bouncy"
         y={0}
-        enterStyle={{ scale: 0.95, y: -2, opacity: 0 }}
-        exitStyle={{ scale: 0.95, y: -2, opacity: 0 }}
-        opacity={1}
+        enterStyle={{ scale: 0.95, y: -2, o: 0 }}
+        exitStyle={{ scale: 0.95, y: -2, o: 0 }}
+        o={1}
         scale={1}
         size="$6"
-        lineHeight="$8"
-        textAlign="center"
-        color="$color9"
+        lh="$8"
+        ta="center"
+        col="$color9"
         selectable={false}
         $md={{
           mt: '$3',

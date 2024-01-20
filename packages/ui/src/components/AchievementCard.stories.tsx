@@ -13,7 +13,7 @@ type Story = StoryObj<typeof AchievementCard>
 
 export const Basic: Story = {
   args: {
-    width: 320,
+    w: 320,
     icon: User,
     title: 'Get New Users',
     progress: {

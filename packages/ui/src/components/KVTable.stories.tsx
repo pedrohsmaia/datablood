@@ -14,14 +14,14 @@ type Story = StoryObj<typeof KVTable>
 export const Basic: Story = {
   render: () => {
     return (
-      <KVTable width={500}>
+      <KVTable w={500}>
         <YStack gap="$4">
           <H4>Profile Data</H4>
           <Separator />
         </YStack>
         <KVTable.Row>
           <KVTable.Key>
-            <SizableText fontWeight="900">Name</SizableText>
+            <SizableText fow="900">Name</SizableText>
           </KVTable.Key>
           <KVTable.Value gap="$4">
             <SizableText>Nate</SizableText>
@@ -32,7 +32,7 @@ export const Basic: Story = {
 
         <KVTable.Row>
           <KVTable.Key>
-            <SizableText fontWeight="900">Twitter</SizableText>
+            <SizableText fow="900">Twitter</SizableText>
           </KVTable.Key>
           <KVTable.Value gap="$4">
             <SizableText textDecorationLine="underline">@natebirdman</SizableText>
@@ -41,7 +41,7 @@ export const Basic: Story = {
 
         <KVTable.Row>
           <KVTable.Key>
-            <SizableText fontWeight="900">GitHub</SizableText>
+            <SizableText fow="900">GitHub</SizableText>
           </KVTable.Key>
           <KVTable.Value gap="$4">
             <SizableText textDecorationLine="underline">@natew</SizableText>

@@ -57,7 +57,7 @@ export const SettingsScreen = () => {
                 Notifications
               </Settings.Item> */}
             </Settings.Group>
-            <Separator borderColor="$color3" mx="$-4" borderWidth="$0.25" />
+            <Separator boc="$color3" mx="$-4" bw="$0.25" />
             <Settings.Group>
               <Settings.Item
                 icon={Book}
@@ -84,7 +84,7 @@ export const SettingsScreen = () => {
                 </Settings.Item>
               )}
             </Settings.Group>
-            <Separator borderColor="$color3" mx="$-4" borderWidth="$0.25" />
+            <Separator boc="$color3" mx="$-4" bw="$0.25" />
             <Settings.Group>
               <Settings.Item
                 icon={Twitter}
@@ -94,7 +94,7 @@ export const SettingsScreen = () => {
                 Our Twitter
               </Settings.Item>
             </Settings.Group>
-            <Separator borderColor="$color3" mx="$-4" borderWidth="$0.25" />
+            <Separator boc="$color3" mx="$-4" bw="$0.25" />
             <Settings.Group>
               <SettingsThemeAction />
               <SettingsItemLogoutAction />

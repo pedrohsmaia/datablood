@@ -7,7 +7,7 @@ export type SettingItemProps = {
   /**
    * native only - not showing colors on native
    */
-  accentColor?: ListItemProps['backgroundColor']
+  accentColor?: ListItemProps['bg']
   /**
    * web only - to indicate the current page
    */
@@ -27,19 +27,19 @@ export const SettingItem = ({
     <YGroup.Item>
       <ListItem
         hoverTheme
-        cursor="pointer"
+        cur="pointer"
         gap="$2"
-        borderRadius="$10"
-        backgroundColor={isActive ? '$backgroundFocus' : 'transparent'}
+        br="$10"
+        bg={isActive ? '$backgroundFocus' : 'transparent'}
         {...props}
       >
-        <YStack padding="$2" borderRadius="$3">
+        <YStack p="$2" br="$3">
           <Icon opacity={0.6} size={18} />
         </YStack>
-        <SizableText flex={1}>{children}</SizableText>
+        <SizableText f={1}>{children}</SizableText>
         {!!rightLabel && (
-          <XStack borderRadius="$10" backgroundColor="$backgroundPress" px="$3" py="$1.5">
-            <SizableText size="$1" textTransform="capitalize">
+          <XStack br="$10" bg="$backgroundPress" px="$3" py="$1.5">
+            <SizableText size="$1" tt="capitalize">
               {rightLabel}
             </SizableText>
           </XStack>

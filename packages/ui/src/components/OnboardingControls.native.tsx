@@ -27,9 +27,9 @@ export const OnboardingControls = ({
         chromeless
         color="$color"
         pressStyle={{
-          backgroundColor: '$color6',
+          bg: '$color6',
         }}
-        borderRadius="$10"
+        br="$10"
         onPress={() => handleSkip()}
       >
         Skip
@@ -37,14 +37,14 @@ export const OnboardingControls = ({
 
       <Button
         pressStyle={{
-          backgroundColor: '$color6',
-          borderColor: '$color6',
+          bg: '$color6',
+          boc: '$color6',
         }}
         chromeless
         bordered
-        borderColor="$color"
+        boc="$color"
         f={1}
-        borderRadius="$10"
+        br="$10"
         color="$color"
         onPress={() => handleGoNext()}
         iconAfter={ChevronRight}

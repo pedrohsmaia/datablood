@@ -9,7 +9,7 @@ const meta: Meta<typeof Shake> = {
   component: Shake,
   render: (props) => (
     <Shake {...props}>
-      <Circle backgroundColor="red" width={24} height={24} />
+      <Circle bg="red" w={24} h={24} />
     </Shake>
   ),
 }

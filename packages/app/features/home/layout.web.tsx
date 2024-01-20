@@ -34,25 +34,25 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
     <YStack f={1}>
       <YStack
         gap="$4"
-        borderWidth="$0"
-        borderBottomColor="$borderColor"
-        borderStyle="solid"
-        borderBottomWidth="$0.5"
+        bw="$0"
+        bbc="$borderColor"
+        bs="solid"
+        bbw="$0.5"
         jc="center"
         px="$4"
-        backgroundColor="$color1"
+        bg="$color1"
       >
         <XStack jc="space-between" $sm={{ ai: 'center' }} ai="flex-end">
-          <YStack $sm={{ display: 'none' }}>
+          <YStack $sm={{ dsp: 'none' }}>
             <NavTabs orientation="horizontal" size="$4" />
           </YStack>
-          <YStack $gtSm={{ display: 'none' }}>
+          <YStack $gtSm={{ dsp: 'none' }}>
             <MobileNavbar>
-              <YStack gap="$5" width="100%" alignItems="flex-end">
-                <NavTabs orientation="vertical" f={1} width="100%" size="$3" />
-                <Separator width="100%" />
-                <CtaButton width="100%" />
-                <Separator width="100%" />
+              <YStack gap="$5" w="100%" ai="flex-end">
+                <NavTabs orientation="vertical" f={1} w="100%" size="$3" />
+                <Separator w="100%" />
+                <CtaButton w="100%" />
+                <Separator w="100%" />
                 <WithUserDetail ai="center" gap="$4">
                   <ProfileButton />
                 </WithUserDetail>
@@ -69,10 +69,10 @@ export const HomeLayout = ({ children, fullPage = false, padded = false }: HomeL
       <YStack
         {...(fullPage && { flex: 1 })}
         {...(padded && {
-          maxWidth: 800,
+          maw: 800,
           mx: 'auto',
           px: '$2',
-          width: '100%',
+          w: '100%',
         })}
       >
         {children}
@@ -128,7 +128,7 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
               <Adapt.Contents />
             </Popover.Sheet.ScrollView>
           </Popover.Sheet.Frame>
-          <Popover.Sheet.Overlay zIndex={100} />
+          <Popover.Sheet.Overlay zi={100} />
         </Popover.Sheet>
       </Adapt>
 
@@ -149,19 +149,14 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
           },
         ]}
         p={0}
-        mah={validToken("80vh")}
+        mah={validToken('80vh')}
         elevate
-        zIndex={100000000}
+        zi={100000000}
       >
-        <Popover.Arrow borderWidth={1} boc="$borderColor" />
+        <Popover.Arrow bw={1} boc="$borderColor" />
 
         <Popover.ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
-          <YStack
-            miw={230}
-            p="$3"
-            ai="flex-end"
-          // display={open ? 'flex' : 'none'}
-          >
+          <YStack miw={230} p="$3" ai="flex-end">
             {children}
           </YStack>
         </Popover.ScrollView>

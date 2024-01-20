@@ -28,7 +28,7 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
         {label}
       </Label>
 
-      <XStack $sm={{ flexDirection: 'column' }} $gtSm={{ flexWrap: 'wrap' }} gap="$4">
+      <XStack $sm={{ fd: 'column' }} $gtSm={{ fw: 'wrap' }} gap="$4">
         <Theme name={error?.street ? 'red' : themeName} forceClassName>
           <Fieldset $gtSm={{ fb: 0 }} f={1}>
             <Label theme="alt1" size={props.size || '$3'} htmlFor={`${id}-street`}>

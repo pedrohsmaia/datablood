@@ -16,7 +16,7 @@ export const EventCard = ({ title, description, action, tags = [], ...props }: E
   return (
     <Card gap="$2" padded borderRadius="$0" chromeless {...props}>
       <XStack gap="$2">
-        <H6 size="$5" textTransform="capitalize">
+        <H6 size="$5" tt="capitalize">
           {title}
         </H6>
         {tags.map((tag) => (

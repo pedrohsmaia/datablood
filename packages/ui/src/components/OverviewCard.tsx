@@ -19,7 +19,7 @@ export const OverviewCard = ({
   return (
     <Card borderRadius="$0" backgroundColor="transparent" {...props}>
       <Card.Header f={1} jc="space-between">
-        <H6 fontWeight="400" size="$4" theme="alt2">
+        <H6 fow="400" size="$4" theme="alt2">
           {title}
         </H6>
         <H2 mt="$2">{value}</H2>

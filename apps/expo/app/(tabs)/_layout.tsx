@@ -53,7 +53,7 @@ type TabBarIconProps = Parameters<Exclude<BottomTabNavigationOptions['tabBarIcon
 const ProfileTabIcon = ({ color, size }: TabBarIconProps) => {
   const { avatarUrl } = useUser()
   return (
-    <YStack borderWidth="$1" borderColor={validToken(color)} borderRadius="$10">
+    <YStack bw="$1" boc={validToken(color)} br="$10">
       <Avatar circular p="$1" size={size}>
         <SolitoImage src={avatarUrl} alt="your avatar" width={size} height={size} />
       </Avatar>
@@ -70,40 +70,40 @@ const PlusButton = ({ size }: TabBarIconProps) => {
     <Theme inverse>
       <Circle
         pos="absolute"
-        bottom={5}
-        backgroundColor="$color1"
-        shadowColor="black"
-        shadowOpacity={isDark ? 0.7 : 1}
-        shadowRadius={isDark ? 3 : 10}
-        shadowOffset={{
+        b={5}
+        bg="$color1"
+        shac="black"
+        shop={isDark ? 0.7 : 1}
+        shar={isDark ? 3 : 10}
+        shof={{
           height: 0,
           width: 5,
         }}
-        width={size + 34}
-        height={size + 34}
+        w={size + 34}
+        h={size + 34}
       />
       <LinearGradient
         onPress={() => router.push('/create')}
         colors={['$gray6', '$gray7']}
         start={[1, 1]}
         end={[0.8, 0]}
-        width={size + 34}
-        height={size + 34}
-        borderRadius="$10"
+        w={size + 34}
+        h={size + 34}
+        br="$10"
         pos="absolute"
-        bottom={5}
+        b={5}
         pressStyle={{
           rotate: '20deg',
         }}
       />
       <YStack
         pos="absolute"
-        bottom={5}
+        b={5}
         jc="center"
         ai="center"
         animation="quick"
-        pointerEvents="none"
-        height={size + 34}
+        pe="none"
+        h={size + 34}
       >
         <Plus color="$color" size={size + 20} />
       </YStack>

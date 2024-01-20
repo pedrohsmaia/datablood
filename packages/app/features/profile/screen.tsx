@@ -12,7 +12,6 @@ import {
 import { Box, Cog, Milestone, ShoppingCart, Users } from '@tamagui/lucide-icons'
 import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import { useUser } from 'app/utils/useUser'
-import React from 'react'
 import { SolitoImage } from 'solito/image'
 import { Link, useLink } from 'solito/link'
 
@@ -25,9 +24,9 @@ export function ProfileScreen() {
   return (
     <ScrollView>
       <YStack
-        maxWidth={600}
+        maw={600}
         mx="auto"
-        width="100%"
+        w="100%"
         f={1}
         gap="$4"
         pb={insets.bottom + 20}

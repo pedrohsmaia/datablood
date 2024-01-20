@@ -50,17 +50,17 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
   return (
     <Theme name={currentStep.theme as ThemeName}>
       <YStack
-        flex={1}
-        backgroundColor="$color3"
-        overflow="hidden"
-        paddingBottom={safeAreaInsets.bottom}
-        paddingRight={safeAreaInsets.right}
-        paddingTop={safeAreaInsets.top}
-        paddingLeft={safeAreaInsets.left}
+        f={1}
+        bg="$color3"
+        ov="hidden"
+        pb={safeAreaInsets.bottom}
+        pr={safeAreaInsets.right}
+        pt={safeAreaInsets.top}
+        pl={safeAreaInsets.left}
       >
         <Background />
 
-        <YStack flex={1}>
+        <YStack f={1}>
           <ScrollView
             ref={scrollRef}
             horizontal
@@ -74,7 +74,7 @@ export const Onboarding = ({ onOnboarded, steps }: OnboardingProps) => {
               return (
                 <YStack
                   key={idx}
-                  width={dimensions.width - (safeAreaInsets.left + safeAreaInsets.right)}
+                  w={dimensions.width - (safeAreaInsets.left + safeAreaInsets.right)}
                 >
                   {isActive && <step.Content key={idx} />}
                 </YStack>
@@ -103,10 +103,10 @@ const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) =>
   return (
     <YStack
       br="$10"
-      width={active ? 30 : 10}
-      height={10}
+      w={active ? 30 : 10}
+      h={10}
       onPress={onPress}
-      backgroundColor={active ? '$color7' : '$color6'}
+      bg={active ? '$color7' : '$color6'}
     />
   )
 }
@@ -114,23 +114,23 @@ const Point = ({ active, onPress }: { active: boolean; onPress: () => void }) =>
 export const Background = () => {
   const { height } = useWindowDimensions()
   return (
-    <YStack pos="absolute" left={0} right={0} top={0} bottom={0} jc="center" ai="center">
+    <YStack fullscreen jc="center" ai="center">
       <Circle
         animation="lazy"
         x={0}
         y={0}
-        opacity={1}
+        o={1}
         scale={1}
-        backgroundColor="$color3"
+        bg="$color3"
         enterStyle={{
           scale: 0,
         }}
         exitStyle={{
           scale: 10,
-          opacity: 0,
+          o: 0,
         }}
-        width={height * 3}
-        height={height * 3}
+        w={height * 3}
+        h={height * 3}
       />
     </YStack>
   )

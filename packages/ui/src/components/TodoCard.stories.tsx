@@ -8,7 +8,7 @@ const meta: Meta<typeof TodoCard> = {
   parameters: { layout: 'centered' },
   component: TodoCard,
   render: (props) => (
-    <YStack width={400}>
+    <YStack w={400}>
       <TodoCard {...props} />
     </YStack>
   ),

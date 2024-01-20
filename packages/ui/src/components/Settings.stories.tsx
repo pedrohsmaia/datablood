@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Settings>
 
 export const Basic: Story = {
   render: (props) => (
-    <Settings {...props} width={500}>
+    <Settings {...props} w={500}>
       <Settings.Items>
         <Settings.Group>
           <Settings.Item icon={Box} accentColor="$green9">

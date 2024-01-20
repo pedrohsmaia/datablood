@@ -32,11 +32,11 @@ export const AchievementCard = ({
         <Icon size="$2" opacity={0.6} />
         <YStack gap="$2">
           {/* <H6 theme="alt2">{subtitle}</H6> */}
-          <H4 size="$5" textTransform="capitalize" mt="$2">
+          <H4 size="$5" tt="capitalize" mt="$2">
             {title}
           </H4>
           <SizableText mt="$2">
-            <SizableText size="$4" theme="alt1" fontWeight="900">
+            <SizableText size="$4" theme="alt1">
               {progress.current}
             </SizableText>
             <SizableText size="$2" theme="alt1">
@@ -53,7 +53,7 @@ export const AchievementCard = ({
             borderColor="$color5"
             borderWidth={1}
           >
-            <Progress.Indicator backgroundColor="$color7" animation="bouncy" />
+            <Progress.Indicator bc="$color7" animation="bouncy" />
           </Progress>
 
           {!!action && (
@@ -65,9 +65,9 @@ export const AchievementCard = ({
       </Card.Header>
       <Card.Background>
         <LinearGradient
-          borderRadius="$6"
-          width="100%"
-          height="100%"
+          br="$6"
+          w="100%"
+          h="100%"
           colors={['$color1', '$color2', '$color1']}
           start={[1, 1]}
           end={[0.85, 0]}
