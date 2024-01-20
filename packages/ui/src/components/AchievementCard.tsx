@@ -3,7 +3,7 @@ import { LinearGradient } from '@tamagui/linear-gradient'
 import { ChevronRight } from '@tamagui/lucide-icons'
 import React from 'react'
 import { useLink } from 'solito/link'
-import { Button, Card, CardProps, H4, Progress, SizableText, YStack } from 'tamagui'
+import { Button, Card, CardProps, H4, Progress, SizableText, XStack, YStack } from 'tamagui'
 
 export type AchievementCardProps = {
   icon: React.FC<IconProps>
@@ -27,15 +27,16 @@ export const AchievementCard = ({
   ...props
 }: AchievementCardProps) => {
   return (
-    <Card borderRadius="$0" chromeless {...props}>
+    <Card br="$0" chromeless {...props}>
       <Card.Header my="auto" padded gap="$3">
-        <Icon size="$2" opacity={0.6} />
+        <Icon size="$3" opacity={0.6} />
         <YStack gap="$2">
           {/* <H6 theme="alt2">{subtitle}</H6> */}
           <H4 size="$5" tt="capitalize" mt="$2">
             {title}
           </H4>
-          <SizableText mt="$2">
+
+          <XStack ai="center">
             <SizableText size="$4" theme="alt1">
               {progress.current}
             </SizableText>
@@ -43,7 +44,7 @@ export const AchievementCard = ({
               {' '}
               / {progress.full} {progress.label}
             </SizableText>
-          </SizableText>
+          </XStack>
 
           <Progress
             mt="$2"
@@ -68,7 +69,7 @@ export const AchievementCard = ({
           br="$6"
           w="100%"
           h="100%"
-          colors={['$color1', '$color2', '$color1']}
+          colors={['$color2', '$color3', '$color2']}
           start={[1, 1]}
           end={[0.85, 0]}
         />

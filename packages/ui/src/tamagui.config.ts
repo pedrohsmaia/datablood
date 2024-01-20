@@ -1,6 +1,6 @@
 import { shorthands } from '@tamagui/shorthands'
 import { createTokens } from '@tamagui/web'
-import { createTamagui } from 'tamagui'
+import { createTamagui, setupDev } from 'tamagui'
 
 import { animations } from './config/animations'
 import { bodyFont, headingFont } from './config/fonts'
@@ -11,6 +11,11 @@ import { radius } from './themes/token-radius'
 import { size } from './themes/token-size'
 import { space } from './themes/token-space'
 import { zIndex } from './themes/token-z-index'
+
+// Hold down Option for a second to see some helpful visuals
+setupDev({
+  visualizer: true,
+})
 
 /**
  * This avoids shipping themes as JS. Instead, Tamagui will hydrate them from CSS.

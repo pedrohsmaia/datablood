@@ -5,16 +5,16 @@ import { createTRPCRouter, protectedProcedure } from '../trpc'
 function getTimeOfDay() {
   const today = new Date()
   const curHr = today.getHours()
-
   if (curHr < 4) {
     return 'night'
-  } else if (curHr < 12) {
-    return 'morning'
-  } else if (curHr < 18) {
-    return 'afternoon'
-  } else {
-    return 'night'
   }
+  if (curHr < 12) {
+    return 'morning'
+  }
+  if (curHr < 18) {
+    return 'afternoon'
+  }
+  return 'night'
 }
 
 export const greetingRouter = createTRPCRouter({

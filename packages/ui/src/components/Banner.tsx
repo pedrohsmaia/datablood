@@ -13,7 +13,7 @@ export const Banner = ({
   const [hover, setHover] = useState(false)
   return (
     <Card {...props} br="$4" onHoverIn={() => setHover(true)} onHoverOut={() => setHover(false)}>
-      <Card.Header padded scale={hover ? 1.01 : 1} animation="bouncy">
+      <Card.Header padded scale={hover ? 1.01 : 1} animation="bouncy" gap="$2">
         {children}
       </Card.Header>
       <Card.Background>

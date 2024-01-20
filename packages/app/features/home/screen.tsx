@@ -44,9 +44,9 @@ export function HomeScreen() {
   return (
     <XStack maw={1480} als="center" f={1}>
       <ScrollView f={3} fb={0}>
-        <YStack gap="$6" pt="$5" pb="$8">
+        <YStack gap="$3" pt="$5" pb="$8">
           <Greetings />
-          <YStack gap="$8">
+          <YStack gap="$6">
             <AchievementsSection />
             <OverviewSection />
             <PostsSection />
@@ -145,7 +145,9 @@ const AchievementsSection = () => {
   return (
     <YStack gap="$4">
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
-        <H4 fow="400">Getting Started</H4>
+        <H4 theme="alt1" fow="400">
+          Getting Started
+        </H4>
         <Theme name="alt2">
           <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
             All Achievements
@@ -247,27 +249,11 @@ const OverviewSection = () => {
 
       <ScrollAdapt>
         <XStack fw="wrap" ai="flex-start" jc="flex-start" px="$4" gap="$8" mb="$4">
-          <OverviewCard
-            $gtMd={{ miw: 200, f: 1, fb: 0 }}
-            $md={{ w: 150 }}
-            title="MRR"
-            value="$18,908"
-            badgeText="+0.5%"
-            badgeState="success"
-          />
+          <OverviewCard title="MRR" value="$18,908" badgeText="+0.5%" badgeState="success" />
+
+          <OverviewCard title="ARR" value="$204,010" badgeText="+40.5%" badgeState="success" />
 
           <OverviewCard
-            $gtMd={{ miw: 200, f: 1, fb: 0 }}
-            $md={{ w: 150 }}
-            title="ARR"
-            value="$204,010"
-            badgeText="+40.5%"
-            badgeState="success"
-          />
-
-          <OverviewCard
-            $gtMd={{ miw: 200, f: 1, fb: 0 }}
-            $md={{ w: 150 }}
             title="Today's new users"
             value="4 Users"
             badgeText="+25%"
@@ -275,31 +261,11 @@ const OverviewSection = () => {
           />
 
           <OverviewCard
-            $gtMd={{ miw: 200, f: 1, fb: 0 }}
-            $md={{ w: 150 }}
             title="Weekly Post Views"
             value="30,104"
             badgeText="-2%"
             badgeState="failure"
           />
-
-          {/* <OverviewCard
-            $gtMd={{ miw: 200, f: 1, fb: 0 }}
-            $md={{ w: 150 }}
-            title="This week's new users"
-            value="14 Users"
-            badgeText="-2%"
-            badgeState="failure"
-          />
-
-          <OverviewCard
-            $gtMd={{ miw: 200, f: 1, fb: 0 }}
-            $md={{ w: 150 }}
-            title="Monthly Post Views"
-            value="150,104"
-            badgeText="+1%"
-            badgeState="success"
-          /> */}
         </XStack>
       </ScrollAdapt>
     </YStack>
@@ -404,10 +370,8 @@ function ScrollAdapt({ children }: { children: React.ReactNode }) {
 const Greetings = () => {
   const greetingQuery = api.greeting.greet.useQuery()
   return (
-    <YStack gap="$2">
-      <H2 px="$4" my="$2">
-        {greetingQuery.data}
-      </H2>
-    </YStack>
+    <H2 px="$4" my="$2">
+      {greetingQuery.data}
+    </H2>
   )
 }
