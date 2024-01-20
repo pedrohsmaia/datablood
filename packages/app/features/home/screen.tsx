@@ -17,12 +17,15 @@ import {
   isWeb,
   useMedia,
   validToken,
+  TamaguiConfig,
 } from '@my/ui'
 import { Platform } from 'react-native'
-import { ArrowRight, DollarSign, Edit2, User, Users } from '@tamagui/lucide-icons'
+import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
 import { api } from 'app/utils/api'
 import React from 'react'
 import { useLink } from 'solito/link'
+
+type x = TamaguiConfig['onlyAllowShorthands']
 
 const defaultAuthors = [
   {
@@ -197,7 +200,7 @@ const AchievementsSection = () => {
               $gtLg={{
                 width: quarterMinusSpace,
               }}
-              icon={Edit2}
+              icon={Pencil}
               title="Set up your profile"
               progress={{ current: 2, full: 3, label: 'steps completed' }}
               action={{
