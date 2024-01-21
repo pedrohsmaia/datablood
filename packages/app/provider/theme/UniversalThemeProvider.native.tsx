@@ -1,4 +1,3 @@
-import { useForceUpdate } from '@my/ui'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { ThemeProviderProps, useThemeSetting as next_useThemeSetting } from '@tamagui/next-theme'
@@ -32,19 +31,16 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
     main()
   }, [current])
 
-  const forceUpdate = useForceUpdate()
-
   const themeContext = useMemo(() => {
     return {
       themes: ['light', 'dark'],
       onChangeTheme: (next: string) => {
         setCurrent(next as ThemeName)
-        forceUpdate()
       },
       current,
       systemTheme,
     } satisfies ThemeContextValue
-  }, [current, forceUpdate, systemTheme])
+  }, [current, systemTheme])
 
   return (
     <ThemeContext.Provider value={themeContext}>

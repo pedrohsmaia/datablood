@@ -1,15 +1,17 @@
-import { config, TamaguiProvider as TamaguiProviderOG } from '@my/ui'
-import { useRootTheme } from '../theme/UniversalThemeProvider'
+import { config, TamaguiProvider as TamaguiProviderOG, useDidFinishSSR } from '@my/ui'
+import { useRootTheme, useThemeSetting } from '../theme/UniversalThemeProvider'
 
 export const TamaguiProvider = ({ children }: { children: React.ReactNode }) => {
   const [rootTheme] = useRootTheme()
+  const themeSetting = useThemeSetting()
+  const isHydrated = useDidFinishSSR()
 
   return (
     <TamaguiProviderOG
       config={config}
       disableInjectCSS
       disableRootThemeClass
-      defaultTheme={rootTheme}
+      defaultTheme={isHydrated ? themeSetting.current : rootTheme}
     >
       {children}
     </TamaguiProviderOG>
