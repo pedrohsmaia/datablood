@@ -1,10 +1,20 @@
-import { Paragraph, ScrollView, Separator, Settings, YStack, isWeb, useMedia, validToken } from '@my/ui'
+import {
+  Paragraph,
+  ScrollView,
+  Separator,
+  Settings,
+  YStack,
+  isWeb,
+  useMedia,
+  validToken,
+} from '@my/ui'
 import { Book, Cog, Info, Lock, LogOut, Mail, Moon, Twitter } from '@tamagui/lucide-icons'
 import { useThemeSetting } from 'app/provider/theme'
 import { redirect } from 'app/utils/redirect'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { usePathname } from 'app/utils/usePathname'
 import { useLink } from 'solito/link'
+
 // @ts-ignore
 import rootPackageJson from '../../../../package.json'
 // @ts-ignore
@@ -48,14 +58,6 @@ export const SettingsScreen = () => {
               >
                 Change Email
               </Settings.Item>
-              {/* <Settings.Item
-                icon={Bell}
-                isActive={pathname === '/settings/notifications'}
-                {...useLink({ href: '/settings/notifications' })}
-                accentColor="$orange9"
-              >
-                Notifications
-              </Settings.Item> */}
             </Settings.Group>
             <Separator boc="$color3" mx="$-4" bw="$0.25" />
             <Settings.Group>
@@ -117,12 +119,7 @@ const SettingsThemeAction = () => {
   const { toggle, current } = useThemeSetting()
 
   return (
-    <Settings.Item
-      icon={Moon}
-      accentColor="$blue9"
-      onPress={toggle}
-      rightLabel={current}
-    >
+    <Settings.Item icon={Moon} accentColor="$blue9" onPress={toggle} rightLabel={current}>
       Theme
     </Settings.Item>
   )

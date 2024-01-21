@@ -1,6 +1,5 @@
 import { shorthands } from '@tamagui/shorthands'
-import { createTokens } from '@tamagui/web'
-import { createTamagui, setupDev } from 'tamagui'
+import { createTokens, createTamagui, setupDev } from 'tamagui'
 
 import { animations } from './config/animations'
 import { bodyFont, headingFont } from './config/fonts'
