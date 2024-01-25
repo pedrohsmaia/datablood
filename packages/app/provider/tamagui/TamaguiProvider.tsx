@@ -6,13 +6,14 @@ export const TamaguiProvider = ({ children }: { children: React.ReactNode }) => 
   const [rootTheme] = useRootTheme()
   const themeSetting = useThemeSetting()
   const isHydrated = useDidFinishSSR()
+  const defaultTheme = isHydrated && isWeb ? themeSetting.resolvedTheme : rootTheme
 
   return (
     <TamaguiProviderOG
       config={config}
       disableInjectCSS
       disableRootThemeClass
-      defaultTheme={isHydrated && isWeb ? themeSetting.current : rootTheme}
+      defaultTheme={defaultTheme}
     >
       {children}
     </TamaguiProviderOG>
