@@ -50,9 +50,9 @@ export const AchievementCard = ({
             mt="$2"
             theme="alt2"
             value={(progress.current / progress.full) * 100}
-            backgroundColor="$color2"
-            borderColor="$color5"
-            borderWidth={1}
+            bg="$color2"
+            boc="$color5"
+            bw={1}
           >
             <Progress.Indicator bc="$color7" animation="bouncy" />
           </Progress>

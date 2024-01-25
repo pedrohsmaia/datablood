@@ -2,6 +2,7 @@ import {
   Avatar,
   Button,
   H1,
+  H2,
   Paragraph,
   ScrollView,
   Settings,
@@ -48,9 +49,7 @@ export function ProfileScreen() {
               <H1 ta="center">{name}</H1>
             ) : (
               <Link href="/profile/edit?edit_name=1">
-                <H1 ta="center" textDecorationLine="underline">
-                  No Name
-                </H1>
+                <H2 ta="center">No Name</H2>
               </Link>
             )}
 

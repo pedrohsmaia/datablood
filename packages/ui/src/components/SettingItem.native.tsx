@@ -14,7 +14,7 @@ export const SettingItem = ({
 }: SettingItemProps) => {
   return (
     <YGroup.Item>
-      <ListItem cursor="pointer" gap="$4" hoverTheme pressTheme {...props}>
+      <ListItem cur="pointer" gap="$4" hoverTheme pressTheme {...props}>
         <YStack bg={accentColor} p="$2" br="$3">
           <Icon color="white" size={18} />
         </YStack>

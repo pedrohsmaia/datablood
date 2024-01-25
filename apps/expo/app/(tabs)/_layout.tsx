@@ -72,12 +72,11 @@ const PlusButton = ({ size }: TabBarIconProps) => {
         pos="absolute"
         b={5}
         bg="$color1"
-        shac="black"
-        shop={isDark ? 0.7 : 1}
-        shar={isDark ? 3 : 10}
+        shac="$shadowColor"
+        shar={10}
         shof={{
-          height: 0,
-          width: 5,
+          height: -5,
+          width: 0,
         }}
         w={size + 34}
         h={size + 34}
