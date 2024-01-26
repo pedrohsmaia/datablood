@@ -1,18 +1,18 @@
 import { IconProps } from '@tamagui/helpers-icon'
-import { ListItem, ListItemProps, SizableText, XStack, YGroup, YStack } from 'tamagui'
+import { SizableText, XStack, YGroup, YStack, YStackProps, styled } from 'tamagui'
 
-export type SettingItemProps = {
+export type SettingItemProps = YStackProps & {
   icon: React.FC<IconProps>
   rightLabel?: string
   /**
    * native only - not showing colors on native
    */
-  accentColor?: ListItemProps['bg']
+  accentColor?: YStackProps['bg']
   /**
    * web only - to indicate the current page
    */
   isActive?: boolean
-} & ListItemProps
+}
 
 export const SettingItem = ({
   icon: Icon,
@@ -25,14 +25,7 @@ export const SettingItem = ({
 }: SettingItemProps) => {
   return (
     <YGroup.Item>
-      <ListItem
-        hoverTheme
-        cur="pointer"
-        gap="$2"
-        br="$10"
-        bg={isActive ? '$backgroundFocus' : 'transparent'}
-        {...props}
-      >
+      <SettingItemFrame isActive={!!isActive} {...props}>
         <YStack p="$2" br="$3">
           <Icon opacity={0.6} size={18} />
         </YStack>
@@ -44,7 +37,30 @@ export const SettingItem = ({
             </SizableText>
           </XStack>
         )}
-      </ListItem>
+      </SettingItemFrame>
     </YGroup.Item>
   )
 }
+
+const SettingItemFrame = styled(XStack, {
+  bg: '$color1',
+  ai: 'center',
+  jc: 'center',
+  p: '$2.5',
+  cur: 'pointer',
+  gap: '$2',
+  br: '$10',
+
+  variants: {
+    isActive: {
+      true: {
+        bg: '$backgroundFocus',
+      },
+      false: {
+        hoverStyle: {
+          bg: '$backgroundHover',
+        },
+      },
+    },
+  } as const,
+})
