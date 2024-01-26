@@ -1,34 +1,68 @@
-import { ChevronRight } from '@tamagui/lucide-icons'
-import { ListItem, SizableText, YGroup, YStack } from 'tamagui'
+import { IconProps } from '@tamagui/helpers-icon'
+import { SizableText, ThemeName, XStack, YGroup, YStack, YStackProps, styled } from 'tamagui'
 
-import { SettingItemProps } from './SettingItem'
+export type SettingItemProps = YStackProps & {
+  icon: React.FC<IconProps>
+  rightLabel?: string
+  /**
+   * native only - not showing colors on native
+   */
+  accentTheme?: ThemeName
+  /**
+   * web only - to indicate the current page
+   */
+  isActive?: boolean
+}
 
 export const SettingItem = ({
   icon: Icon,
   children,
-  accentColor,
   rightLabel,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  isActive: _, // not used on native - destructuring to avoid passing it through props
+  isActive,
+  accentTheme,
   ...props
 }: SettingItemProps) => {
   return (
     <YGroup.Item>
-      <ListItem cur="pointer" gap="$4" hoverTheme pressTheme {...props}>
-        <YStack bg={accentColor} p="$2" br="$3">
-          <Icon color="white" size={18} />
+      <SettingItemFrame isActive={!!isActive} {...props}>
+        <YStack theme={accentTheme} bg="$color6" p="$1.5" br="$3">
+          <Icon opacity={0.6} size={16} />
         </YStack>
-        <SizableText col="$color" fos={18} f={1}>
-          {children}
-        </SizableText>
-        {rightLabel ? (
-          <SizableText col="$color11" tt="capitalize">
-            {rightLabel}
-          </SizableText>
-        ) : (
-          <ChevronRight size={20} color="$color9" />
+        <SizableText f={1}>{children}</SizableText>
+        {!!rightLabel && (
+          <XStack br="$10" bg="$backgroundPress" px="$3" py="$1.5">
+            <SizableText size="$1" tt="capitalize">
+              {rightLabel}
+            </SizableText>
+          </XStack>
         )}
-      </ListItem>
+      </SettingItemFrame>
     </YGroup.Item>
   )
 }
+
+const SettingItemFrame = styled(XStack, {
+  bg: '$color2',
+  ai: 'center',
+  jc: 'center',
+  p: '$3',
+  cur: 'pointer',
+  gap: '$3',
+  br: '$10',
+
+  variants: {
+    isActive: {
+      true: {
+        bg: '$backgroundFocus',
+      },
+      false: {
+        hoverStyle: {
+          bg: '$backgroundHover',
+        },
+        pressStyle: {
+          bg: '$backgroundPress',
+        },
+      },
+    },
+  } as const,
+})

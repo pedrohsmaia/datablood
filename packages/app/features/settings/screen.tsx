@@ -36,9 +36,9 @@ export const SettingsScreen = () => {
             <Settings.Group $gtSm={{ space: '$2' }}>
               <Settings.Item
                 icon={Cog}
-                isActive={pathname === '/settings' || pathname === 'settings/general'}
+                isActive={pathname === 'settings/general'}
                 {...useLink({ href: media.sm ? '/settings/general' : '/settings' })}
-                accentColor="$green9"
+                accentTheme="green"
               >
                 General
               </Settings.Item>
@@ -46,7 +46,7 @@ export const SettingsScreen = () => {
                 icon={Lock}
                 isActive={pathname === '/settings/change-password'}
                 {...useLink({ href: '/settings/change-password' })}
-                accentColor="$green9"
+                accentTheme="green"
               >
                 Change Password
               </Settings.Item>
@@ -54,7 +54,7 @@ export const SettingsScreen = () => {
                 icon={Mail}
                 isActive={pathname === '/settings/change-email'}
                 {...useLink({ href: '/settings/change-email' })}
-                accentColor="$green9"
+                accentTheme="green"
               >
                 Change Email
               </Settings.Item>
@@ -65,7 +65,7 @@ export const SettingsScreen = () => {
                 icon={Book}
                 isActive={pathname === '/privacy-policy'}
                 {...useLink({ href: '/privacy-policy' })}
-                accentColor="$purple9"
+                accentTheme="purple"
               >
                 Privacy Policy
               </Settings.Item>
@@ -73,7 +73,7 @@ export const SettingsScreen = () => {
                 icon={Book}
                 isActive={pathname === '/terms-of-service'}
                 {...useLink({ href: '/terms-of-service' })}
-                accentColor="$purple9"
+                accentTheme="purple"
               >
                 Terms Of Service
               </Settings.Item>
@@ -81,7 +81,7 @@ export const SettingsScreen = () => {
               {!isWeb && (
                 // isWeb is a constant so this isn't really a conditional hook
                 // eslint-disable-next-line react-hooks/rules-of-hooks
-                <Settings.Item icon={Info} {...useLink({ href: '/about' })} accentColor="$blue9">
+                <Settings.Item icon={Info} {...useLink({ href: '/about' })} accentTheme="blue">
                   About
                 </Settings.Item>
               )}
@@ -91,7 +91,7 @@ export const SettingsScreen = () => {
               <Settings.Item
                 icon={Twitter}
                 onPress={() => redirect('https://twitter.com/tamagui_js')}
-                accentColor={validToken(brandColors.twitter)}
+                accentTheme="blue"
               >
                 Our Twitter
               </Settings.Item>
@@ -119,7 +119,7 @@ const SettingsThemeAction = () => {
   const { toggle, current } = useThemeSetting()
 
   return (
-    <Settings.Item icon={Moon} accentColor="$blue9" onPress={toggle} rightLabel={current}>
+    <Settings.Item icon={Moon} accentTheme="blue" onPress={toggle} rightLabel={current}>
       Theme
     </Settings.Item>
   )
@@ -129,7 +129,7 @@ const SettingsItemLogoutAction = () => {
   const supabase = useSupabase()
 
   return (
-    <Settings.Item icon={LogOut} accentColor="$red9" onPress={() => supabase.auth.signOut()}>
+    <Settings.Item icon={LogOut} accentTheme="red" onPress={() => supabase.auth.signOut()}>
       Log Out
     </Settings.Item>
   )

@@ -1,5 +1,5 @@
 import { IconProps } from '@tamagui/helpers-icon'
-import { SizableText, XStack, YGroup, YStack, YStackProps, styled } from 'tamagui'
+import { SizableText, ThemeName, XStack, YGroup, YStack, YStackProps, styled } from 'tamagui'
 
 export type SettingItemProps = YStackProps & {
   icon: React.FC<IconProps>
@@ -7,7 +7,7 @@ export type SettingItemProps = YStackProps & {
   /**
    * native only - not showing colors on native
    */
-  accentColor?: YStackProps['bg']
+  accentTheme?: ThemeName
   /**
    * web only - to indicate the current page
    */
@@ -19,15 +19,14 @@ export const SettingItem = ({
   children,
   rightLabel,
   isActive,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  accentColor: _, // not used on web - destructuring to avoid passing it through props
+  accentTheme,
   ...props
 }: SettingItemProps) => {
   return (
     <YGroup.Item>
       <SettingItemFrame isActive={!!isActive} {...props}>
-        <YStack p="$2" br="$3">
-          <Icon opacity={0.6} size={18} />
+        <YStack theme={accentTheme} bg="$background" p="$1.5" br="$3">
+          <Icon opacity={0.6} size={16} />
         </YStack>
         <SizableText f={1}>{children}</SizableText>
         {!!rightLabel && (
@@ -46,9 +45,9 @@ const SettingItemFrame = styled(XStack, {
   bg: '$color1',
   ai: 'center',
   jc: 'center',
-  p: '$2.5',
+  p: '$3',
   cur: 'pointer',
-  gap: '$2',
+  gap: '$3',
   br: '$10',
 
   variants: {
@@ -59,6 +58,9 @@ const SettingItemFrame = styled(XStack, {
       false: {
         hoverStyle: {
           bg: '$backgroundHover',
+        },
+        pressStyle: {
+          bg: '$backgroundPress',
         },
       },
     },

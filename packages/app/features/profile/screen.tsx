@@ -68,22 +68,22 @@ export function ProfileScreen() {
           <Settings.Items>
             <Settings.Group>
               {/* dummy item - doesn't lead anywhere */}
-              <Settings.Item icon={Box} accentColor="$green9">
+              <Settings.Item icon={Box} accentTheme="green">
                 My Items
               </Settings.Item>
               {/* dummy item - doesn't lead anywhere */}
-              <Settings.Item icon={Users} accentColor="$orange9">
+              <Settings.Item icon={Users} accentTheme="orange">
                 Refer Your Friends
               </Settings.Item>
               {/* dummy item - doesn't lead anywhere */}
-              <Settings.Item icon={Milestone} accentColor="$blue9">
+              <Settings.Item icon={Milestone} accentTheme="blue">
                 Address Info
               </Settings.Item>
               {/* dummy item - doesn't lead anywhere */}
-              <Settings.Item icon={ShoppingCart} accentColor="$blue9">
+              <Settings.Item icon={ShoppingCart} accentTheme="blue">
                 Purchase History
               </Settings.Item>
-              <Settings.Item {...useLink({ href: '/settings' })} icon={Cog} accentColor="$gray9">
+              <Settings.Item {...useLink({ href: '/settings' })} icon={Cog} accentTheme="gray">
                 Settings
               </Settings.Item>
             </Settings.Group>
