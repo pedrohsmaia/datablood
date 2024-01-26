@@ -8,6 +8,8 @@ import { TamaguiProvider } from './tamagui'
 import { UniversalThemeProvider } from './theme'
 import { ToastProvider } from './toast'
 
+export { loadThemePromise } from './theme/UniversalThemeProvider'
+
 export function Provider({
   initialSession,
   children,

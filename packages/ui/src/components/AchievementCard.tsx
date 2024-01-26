@@ -31,7 +31,6 @@ export const AchievementCard = ({
       <Card.Header my="auto" padded gap="$3">
         <Icon size="$3" opacity={0.6} />
         <YStack gap="$2">
-          {/* <H6 theme="alt2">{subtitle}</H6> */}
           <H4 size="$5" tt="capitalize" mt="$2">
             {title}
           </H4>

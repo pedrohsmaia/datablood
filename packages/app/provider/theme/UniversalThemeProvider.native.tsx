@@ -10,25 +10,27 @@ export const ThemeContext = createContext<ThemeContextValue>(null)
 
 type ThemeName = 'light' | 'dark' | 'system'
 
+// start early
+let persistedTheme: ThemeName | null = null
+export const loadThemePromise = AsyncStorage.getItem('@preferred_theme')
+loadThemePromise.then((val) => {
+  persistedTheme = val as ThemeName
+})
+
 export const UniversalThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [current, setCurrent] = useState<ThemeName>('system')
+  const [current, setCurrent] = useState<ThemeName>(persistedTheme ?? 'system')
   const systemTheme = useNonFlickeringColorScheme()
 
   useLayoutEffect(() => {
     async function main() {
-      const persistedTheme = await AsyncStorage.getItem('@preferred_theme')
-      if (persistedTheme) {
-        setCurrent(persistedTheme as ThemeName)
-      }
+      await loadThemePromise
+      setCurrent(persistedTheme as ThemeName)
     }
     main()
   }, [])
 
   useEffect(() => {
-    async function main() {
-      await AsyncStorage.setItem('@preferred_theme', current)
-    }
-    main()
+    AsyncStorage.setItem('@preferred_theme', current)
   }, [current])
 
   const themeContext = useMemo(() => {
@@ -67,12 +69,15 @@ export const useThemeSetting: typeof next_useThemeSetting = () => {
     throw new Error('useThemeSetting should be used within the context provider.')
   }
 
+  const resolvedTheme =
+    context.current === 'system' ? context.systemTheme : context.current ?? 'system'
+
   const outputContext: ReturnType<typeof next_useThemeSetting> = {
     ...context,
     systemTheme: context.systemTheme as 'light' | 'dark',
     themes: context.themes!,
     current: context.current ?? 'system',
-    resolvedTheme: context.current === 'system' ? context.systemTheme : context.current ?? 'system',
+    resolvedTheme,
     set: (value) => {
       context.onChangeTheme?.(value)
     },

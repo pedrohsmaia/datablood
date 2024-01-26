@@ -63,8 +63,6 @@ const ProfileTabIcon = ({ color, size }: TabBarIconProps) => {
 
 const PlusButton = ({ size }: TabBarIconProps) => {
   const router = useRouter()
-  const theme = useThemeName()
-  const isDark = theme.startsWith('dark')
 
   return (
     <Theme inverse>
