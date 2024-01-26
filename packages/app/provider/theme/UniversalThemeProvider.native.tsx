@@ -3,7 +3,7 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { ThemeProviderProps, useThemeSetting as next_useThemeSetting } from '@tamagui/next-theme'
 import { StatusBar } from 'expo-status-bar'
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import { AppState, ColorSchemeName, useColorScheme } from 'react-native'
+import { AppState, Appearance, ColorSchemeName, useColorScheme } from 'react-native'
 
 type ThemeContextValue = (ThemeProviderProps & { current?: string | null }) | null
 export const ThemeContext = createContext<ThemeContextValue>(null)
@@ -53,6 +53,13 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
 
 const InnerProvider = ({ children }: { children: React.ReactNode }) => {
   const { resolvedTheme } = useThemeSetting()
+
+  // ensure we set color scheme as soon as possible
+  if (resolvedTheme !== Appearance.getColorScheme()) {
+    if (resolvedTheme === 'light' || resolvedTheme === 'dark') {
+      Appearance.setColorScheme(resolvedTheme)
+    }
+  }
 
   return (
     <ThemeProvider value={resolvedTheme === 'dark' ? DarkTheme : DefaultTheme}>
