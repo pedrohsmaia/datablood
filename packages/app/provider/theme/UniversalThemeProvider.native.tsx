@@ -30,7 +30,9 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
   }, [])
 
   useEffect(() => {
-    AsyncStorage.setItem('@preferred_theme', current)
+    if (current) {
+      AsyncStorage.setItem('@preferred_theme', current)
+    }
   }, [current])
 
   const themeContext = useMemo(() => {
