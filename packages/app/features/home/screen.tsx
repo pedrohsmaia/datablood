@@ -371,7 +371,7 @@ const Greetings = () => {
   const greetingQuery = api.greeting.greet.useQuery()
   return (
     <H2 px="$4" my="$2">
-      {greetingQuery.data}
+      {greetingQuery.data || '-'}
     </H2>
   )
 }

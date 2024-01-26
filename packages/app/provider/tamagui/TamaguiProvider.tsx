@@ -6,7 +6,7 @@ export const TamaguiProvider = ({ children }: { children: React.ReactNode }) => 
   const [rootTheme] = useRootTheme()
   const themeSetting = useThemeSetting()
   const isHydrated = useDidFinishSSR()
-  const defaultTheme = isHydrated && isWeb ? themeSetting.resolvedTheme : rootTheme
+  const defaultTheme = isHydrated && isWeb ? themeSetting.resolvedTheme || 'light' : rootTheme
 
   return (
     <TamaguiProviderOG
