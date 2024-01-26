@@ -53,7 +53,6 @@ export const config = createTamagui({
   settings: {
     allowedStyleValues: 'somewhat-strict',
     autocompleteSpecificTokens: 'except-special',
-    fastSchemeChange: true,
   },
 })
 
