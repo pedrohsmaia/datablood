@@ -1,13 +1,4 @@
-import {
-  Paragraph,
-  ScrollView,
-  Separator,
-  Settings,
-  YStack,
-  isWeb,
-  useMedia,
-  validToken,
-} from '@my/ui'
+import { Paragraph, ScrollView, Separator, Settings, YStack, isWeb, useMedia } from '@my/ui'
 import { Book, Cog, Info, Lock, LogOut, Mail, Moon, Twitter } from '@tamagui/lucide-icons'
 import { useThemeSetting } from 'app/provider/theme'
 import { redirect } from 'app/utils/redirect'
@@ -15,14 +6,8 @@ import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { usePathname } from 'app/utils/usePathname'
 import { useLink } from 'solito/link'
 
-// @ts-ignore
 import rootPackageJson from '../../../../package.json'
-// @ts-ignore
 import packageJson from '../../package.json'
-
-const brandColors = {
-  twitter: '#1DA1F2',
-}
 
 export const SettingsScreen = () => {
   const media = useMedia()
@@ -59,7 +44,7 @@ export const SettingsScreen = () => {
                 Change Email
               </Settings.Item>
             </Settings.Group>
-            <Separator boc="$color3" mx="$-4" bw="$0.25" />
+            {isWeb && <Separator boc="$color3" mx="$-4" bw="$0.25" />}
             <Settings.Group>
               <Settings.Item
                 icon={Book}
@@ -86,7 +71,7 @@ export const SettingsScreen = () => {
                 </Settings.Item>
               )}
             </Settings.Group>
-            <Separator boc="$color3" mx="$-4" bw="$0.25" />
+            {isWeb && <Separator boc="$color3" mx="$-4" bw="$0.25" />}
             <Settings.Group>
               <Settings.Item
                 icon={Twitter}
@@ -96,7 +81,7 @@ export const SettingsScreen = () => {
                 Our Twitter
               </Settings.Item>
             </Settings.Group>
-            <Separator boc="$color3" mx="$-4" bw="$0.25" />
+            {isWeb && <Separator boc="$color3" mx="$-4" bw="$0.25" />}
             <Settings.Group>
               <SettingsThemeAction />
               <SettingsItemLogoutAction />

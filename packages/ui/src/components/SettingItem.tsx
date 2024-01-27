@@ -4,13 +4,7 @@ import { SizableText, ThemeName, XStack, YGroup, YStack, YStackProps, styled } f
 export type SettingItemProps = YStackProps & {
   icon: React.FC<IconProps>
   rightLabel?: string
-  /**
-   * native only - not showing colors on native
-   */
   accentTheme?: ThemeName
-  /**
-   * web only - to indicate the current page
-   */
   isActive?: boolean
 }
 
