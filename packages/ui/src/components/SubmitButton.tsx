@@ -25,15 +25,15 @@ export const SubmitButton = (props: ButtonProps) => {
             <Spinner
               color="$color"
               key="loading-spinner"
-              opacity={1}
+              o={1}
               y={0}
               animation="quick"
               enterStyle={{
-                opacity: 0,
+                o: 0,
                 y: 4,
               }}
               exitStyle={{
-                opacity: 0,
+                o: 0,
                 y: 4,
               }}
             />

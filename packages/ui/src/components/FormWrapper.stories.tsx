@@ -14,7 +14,7 @@ type Story = StoryObj<typeof FormWrapper>
 export const Basic: Story = {
   render: () => {
     return (
-      <YStack flex={1} $gtMd={{ width: 300 }}>
+      <YStack f={1} $gtMd={{ w: 300 }}>
         <FormWrapper>
           <FormWrapper.Body>
             <Fieldset gap="$2">
@@ -25,7 +25,7 @@ export const Basic: Story = {
 
           {/* the footer will be pushed to the bottom */}
           <FormWrapper.Footer>
-            <Button themeInverse borderRadius="$10">
+            <Button themeInverse br="$10">
               Submit
             </Button>
           </FormWrapper.Footer>
