@@ -36,7 +36,7 @@
     "check:type:watch": "yarn check:type -w",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
-    "setup": "yarn create tamagui --template takeout-starter --skip-cloning",
+    "setup": "yarn create tamagui --template takeout-starter --info",
     "generate": "turbo gen",
     "gen": "yarn generate"
   },
