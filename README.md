@@ -59,6 +59,9 @@ NOTE: When using tRPC, even if you just want to develop on native, you need to h
 
 ### EAS dev builds
 
+> [!IMPORTANT]  
+> You need to update your `owner` inside `apps/expo/app.json` to your own username
+
 In the apps/expo folder you can use EAS and a few helpful scripts:
 
 - `yarn eas:build:dev:simulator:android` for android
