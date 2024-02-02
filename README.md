@@ -28,6 +28,10 @@ If you prefer, you may also run [react-native-rename](https://github.com/junedom
 
 If you're getting issues with the /android or /ios directories when setting up the starter, you can safely remove them and re-generate them using `yarn ios` and `yarn android`.
 
+## Environment
+
+Note that Cocoapods 1.15 has a [breaking bug](https://github.com/CocoaPods/CocoaPods/issues/12226). We recommend using version 1.14.3.
+
 ## Included packages
 
 - [Tamagui](https://tamagui.dev)
