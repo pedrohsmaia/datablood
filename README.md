@@ -309,16 +309,12 @@ EAS has already been configured for you, but you still need to do the following:
 
 ### Initial EAS Setup
 
-1. edit `apps/expo/app.json` update:
+1. edit `apps/expo/app.json` and update:
    1. `owner`
    1. `projectId`
 
-## FAQs
+## FAQ
 
 - I get the error `network request failed` when trying to signin or signup for the app
 
 This error is likely caused my not having Supabase setup correctly and running in docker.
-
-- I'm trying to run my project with `expo go`
-
-`takeout` is not compatible with `expo go` at this time. You'll need to run the project with a local development build, outlined above.
