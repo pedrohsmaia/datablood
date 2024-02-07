@@ -102,7 +102,7 @@ const PlusButton = ({ size }: TabBarIconProps) => {
         pe="none"
         h={size + 34}
       >
-        <Plus color="$color" size={size + 20} />
+        <Plus col="$color" size={size + 20} />
       </YStack>
     </Theme>
   )

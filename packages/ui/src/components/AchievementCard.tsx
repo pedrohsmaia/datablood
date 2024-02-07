@@ -29,7 +29,7 @@ export const AchievementCard = ({
   return (
     <Card br="$0" chromeless {...props}>
       <Card.Header my="auto" padded gap="$3">
-        <Icon size="$3" opacity={0.6} />
+        <Icon size="$3" o={0.6} />
         <YStack gap="$2">
           <H4 size="$5" tt="capitalize" mt="$2">
             {title}
