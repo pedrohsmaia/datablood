@@ -23,6 +23,7 @@
     "check-circular-deps": "../../scripts/check-circular-deps.sh ./src/index.tsx"
   },
   "dependencies": {
+    "@babel/runtime": "^7.18.9",
     "@hookform/resolvers": "^3.1.0",
     "@tamagui/animations-moti": "^1.89.15",
     "@tamagui/animations-react-native": "^1.89.15",
