@@ -15,6 +15,7 @@
     "lint:fix": {},
     "clean": {
       "cache": false
-    }
+    },
+    "check-circular-deps": {}
   }
 }
