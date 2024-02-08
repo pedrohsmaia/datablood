@@ -20,7 +20,7 @@ export const SettingItem = ({
     <YGroup.Item>
       <SettingItemFrame isActive={!!isActive} {...props}>
         <YStack theme={accentTheme} bg="$background" p="$1.5" br="$3">
-          <Icon opacity={0.6} size={16} />
+          <Icon o={0.6} size={16} />
         </YStack>
         <SizableText f={1}>{children}</SizableText>
         {!!rightLabel && (

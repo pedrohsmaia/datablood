@@ -73,37 +73,22 @@ export const UploadAvatar = ({ children }: { children: React.ReactNode }) => {
       console.error(e)
 
       alert(
-        'Upload failed.' +
-          (process.env.NODE_ENV !== 'production'
+        `Upload failed.${
+          process.env.NODE_ENV !== 'production'
             ? ' NOTE: Make sure you have created a public bucket with name `avatars`. You can do it either from your Supabase dashboard (http://localhost:54323/project/default/storage/buckets/avatars) or using the seed.sql file.'
-            : '')
+            : ''
+        }`
       )
     }
   }
 
   return (
-    <YStack
-      pos="relative"
-      als="flex-start"
-      fs={1}
-      onPress={() => pickImage()}
-      cur="pointer"
-    >
+    <YStack pos="relative" als="flex-start" fs={1} onPress={() => pickImage()} cur="pointer">
       {children}
-      <YStack
-        fullscreen
-        jc="center"
-        ai="center"
-        zi={100}
-      >
-        <YStack
-          bg="black"
-          o={0.3}
-          br="$10"
-          fullscreen
-        />
+      <YStack fullscreen jc="center" ai="center" zi={100}>
+        <YStack bg="black" o={0.3} br="$10" fullscreen />
         <YStack fullscreen jc="center" ai="center">
-          <Upload color="white" />
+          <Upload col="white" />
         </YStack>
       </YStack>
     </YStack>

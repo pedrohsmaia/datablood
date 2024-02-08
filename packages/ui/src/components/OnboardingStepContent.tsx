@@ -30,7 +30,7 @@ export const StepContent = ({
         o={1}
         scale={1}
       >
-        <Icon color="$color9" size={96} />
+        <Icon col="$color9" size={96} />
       </YStack>
       <H2
         mt="$5"
@@ -41,12 +41,13 @@ export const StepContent = ({
         o={1}
         scale={1}
         size="$10"
-        col="$color9"
+        col="$color10"
         selectable={false}
         ta="center"
         $md={{
           size: '$10',
           mt: '$4',
+          col: '$color10',
         }}
       >
         {title}
@@ -68,6 +69,7 @@ export const StepContent = ({
         selectable={false}
         $md={{
           mt: '$3',
+          col: '$color9',
         }}
       >
         {description}

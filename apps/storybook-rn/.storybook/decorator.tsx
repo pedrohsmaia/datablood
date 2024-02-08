@@ -10,7 +10,7 @@ export const StorybookDecorator: Decorator = (Story, args: any) => {
     <UniversalThemeProvider>
       <TamaguiProvider config={config} defaultTheme="light">
         <ToastProvider noSafeArea>
-          <YStack backgroundColor="$background" f={1}>
+          <YStack bc="$background" f={1}>
             <Story />
           </YStack>
         </ToastProvider>

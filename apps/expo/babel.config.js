@@ -1,7 +1,7 @@
 // temp: ignore bundle error
 process.env.TAMAGUI_IGNORE_BUNDLE_ERRORS = 'solito/link,moti'
 
-module.exports = function (api) {
+module.exports = (api) => {
   api.cache(false)
   return {
     presets: [['babel-preset-expo', { jsxRuntime: 'automatic' }]],
@@ -19,7 +19,6 @@ module.exports = function (api) {
           verbose: false,
         },
       ],
-      require.resolve('expo-router/babel'),
       [
         require.resolve('babel-plugin-module-resolver'),
         {
@@ -36,15 +35,15 @@ module.exports = function (api) {
       ...(process.env.EAS_BUILD_PLATFORM === 'android'
         ? []
         : [
-          [
-            '@tamagui/babel-plugin',
-            {
-              components: ['@my/ui', 'tamagui'],
-              config: '../../packages/ui/src/tamagui.config.ts',
-              disable: true,
-            },
-          ],
-        ]),
+            [
+              '@tamagui/babel-plugin',
+              {
+                components: ['@my/ui', 'tamagui'],
+                config: '../../packages/ui/src/tamagui.config.ts',
+                disable: true,
+              },
+            ],
+          ]),
       ['transform-inline-environment-variables', {}],
     ],
   }
