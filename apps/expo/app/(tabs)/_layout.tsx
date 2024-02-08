@@ -1,4 +1,4 @@
-import { Avatar, Circle, Theme, YStack, useThemeName, validToken } from '@my/ui'
+import { Avatar, Circle, ColorTokens, Theme, YStack, validToken } from '@my/ui'
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus } from '@tamagui/lucide-icons'
@@ -20,7 +20,7 @@ export default function Layout() {
           name="index"
           options={{
             title: 'Home',
-            tabBarIcon: ({ size, color }) => <Home color={color} size={size} />,
+            tabBarIcon: ({ size, color }) => <Home col={color as ColorTokens} size={size} />,
           }}
         />
         <Tabs.Screen

@@ -25,14 +25,13 @@ export const OnboardingControls = ({
     <XStack jc="space-between" ai="center" p="$5" gap="$5">
       <Button
         chromeless
-        col="$color"
         pressStyle={{
           bg: '$color6',
         }}
         br="$10"
         onPress={() => handleSkip()}
       >
-        Skip
+        <Button.Text col="$color">Skip</Button.Text>
       </Button>
 
       <Button
@@ -45,11 +44,10 @@ export const OnboardingControls = ({
         boc="$color"
         f={1}
         br="$10"
-        col="$color"
         onPress={() => handleGoNext()}
         iconAfter={ChevronRight}
       >
-        Continue
+        <Button.Text col="$color">Continue</Button.Text>
       </Button>
     </XStack>
   )

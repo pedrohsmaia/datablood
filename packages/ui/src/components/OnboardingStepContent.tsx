@@ -47,6 +47,7 @@ export const StepContent = ({
         $md={{
           size: '$10',
           mt: '$4',
+          col: '$color10',
         }}
       >
         {title}
@@ -68,6 +69,7 @@ export const StepContent = ({
         selectable={false}
         $md={{
           mt: '$3',
+          col: '$color9',
         }}
       >
         {description}
