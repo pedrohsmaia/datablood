@@ -30,13 +30,14 @@
     "upgrade:tamagui": "yarn up '*tamagui*' '@tamagui/*'",
     "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary",
     "check-deps": "check-dependency-version-consistency . --ignore-dep react-native-reanimated",
+    "check-circular-deps": "yarn turbo check-circular-deps",
     "supa": "yarn workspace @my/supabase",
     "typecheck": "turbo check:type",
     "check:type": "tsc -b --preserveWatchOutput tsconfig.json",
     "check:type:watch": "yarn check:type -w",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
-    "setup": "yarn create tamagui --template takeout-starter --skip-cloning",
+    "setup": "yarn create tamagui --template takeout-starter --info",
     "generate": "turbo gen",
     "gen": "yarn generate"
   },
@@ -44,8 +45,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-refresh": "^0.14.0",
-    "react-native-svg": "13.9.0",
-    "react-native-web": "~0.19.6",
+    "react-native-svg": "14.1.0",
+    "react-native-web": "~0.19.10",
     "@babel/core": "^7.20.2",
     "babel-loader": "^8.3.0"
   },
@@ -53,7 +54,7 @@
     "@babel/runtime": "^7.18.9",
     "@manypkg/cli": "^0.19.1",
     "@nderscore/tamagui-typescript-plugin": "^0.6.0",
-    "@tamagui/cli": "^1.88.13",
+    "@tamagui/cli": "^1.89.15",
     "@turbo/gen": "^1.10.12",
     "change-case": "^4.1.2",
     "check-dependency-version-consistency": "^3.0.3",
@@ -65,5 +66,5 @@
     "turbo": "^1.10.14",
     "typescript": "^5.3.3"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.1.0"
 }

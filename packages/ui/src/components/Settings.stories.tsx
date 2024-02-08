@@ -31,9 +31,7 @@ export const Basic: Story = {
           <Settings.Item icon={ShoppingCart} accentTheme="blue">
             Purchase History
           </Settings.Item>
-          <Settings.Item icon={Cog} accentTheme="gray">
-            Settings
-          </Settings.Item>
+          <Settings.Item icon={Cog}>Settings</Settings.Item>
         </Settings.Group>
       </Settings.Items>
     </Settings>

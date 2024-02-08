@@ -28,6 +28,10 @@ If you prefer, you may also run [react-native-rename](https://github.com/junedom
 
 If you're getting issues with the /android or /ios directories when setting up the starter, you can safely remove them and re-generate them using `yarn ios` and `yarn android`.
 
+## Environment
+
+Note that Cocoapods 1.15 has a [breaking bug](https://github.com/CocoaPods/CocoaPods/issues/12226). We recommend using version 1.14.3.
+
 ## Included packages
 
 - [Tamagui](https://tamagui.dev)
@@ -58,6 +62,9 @@ Please reference [Supabase's documentation](https://supabase.com/docs/guides/sel
 NOTE: When using tRPC, even if you just want to develop on native, you need to have the web server running to be able to make tRPC requests.
 
 ### EAS dev builds
+
+> [!IMPORTANT]  
+> You need to update your `owner` inside `apps/expo/app.json` to your own username
 
 In the apps/expo folder you can use EAS and a few helpful scripts:
 
@@ -302,16 +309,12 @@ EAS has already been configured for you, but you still need to do the following:
 
 ### Initial EAS Setup
 
-1. edit `apps/expo/app.json` update:
+1. edit `apps/expo/app.json` and update:
    1. `owner`
    1. `projectId`
 
-## FAQs
+## FAQ
 
 - I get the error `network request failed` when trying to signin or signup for the app
 
 This error is likely caused my not having Supabase setup correctly and running in docker.
-
-- I'm trying to run my project with `expo go`
-
-`takeout` is not compatible with `expo go` at this time. You'll need to run the project with a local development build, outlined above.
