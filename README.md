@@ -2,7 +2,9 @@
 
 # Tamagui's Takeout Starter
 
-A good tutorial showing building a real app using Tamagui Takeout can be seen on the [notjust.dev YouTube stream](https://www.youtube.com/watch?v=XbKkKXH-dfc).
+A good but long tutorial showing building a real app using Tamagui Takeout can be seen on the [notjust.dev YouTube stream](https://www.youtube.com/watch?v=XbKkKXH-dfc).
+
+For a more edited, paid (but cheap) course covering all the basics of Tamagui, a few Tamagui users have said they found [this course by Simon very helpful](https://galaxies.dev/course/react-native-tamagui/1-1).
 
 ## Getting Started
 
