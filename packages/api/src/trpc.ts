@@ -3,7 +3,7 @@ import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { createClient } from '@supabase/supabase-js'
 import { TRPCError, initTRPC } from '@trpc/server'
 import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
-import jwt from 'jsonwebtoken'
+import * as jose from 'jose'
 import { cookies } from 'next/headers'
 import superJson from 'superjson'
 
@@ -28,8 +28,11 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
     const accessToken = opts.req.headers.get('authorization')!.split('Bearer ').pop()
     if (accessToken) {
       try {
-        const decoded = jwt.verify(accessToken, process.env.SUPABASE_JWT_SECRET) as { sub: string }
-        userId = decoded.sub
+        const { payload } = await jose.jwtVerify(
+          accessToken,
+          new TextEncoder().encode(process.env.SUPABASE_JWT_SECRET)
+        )
+        userId = payload.sub
       } catch (error) {
         // Leaves userId undefined, which will eventually fail the enforceUserIsAuthed check
         // Might want to log this out for debugging, etc.
