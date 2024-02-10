@@ -3269,14 +3269,13 @@ __metadata:
     "@supabase/auth-helpers-react": "npm:^0.4.2"
     "@supabase/supabase-js": "npm:^2.39.3"
     "@tanstack/react-query": "npm:4.18.0"
-    "@trpc/client": "npm:^10.38.2"
-    "@trpc/next": "npm:^10.38.2"
-    "@trpc/react-query": "npm:^10.38.2"
-    "@trpc/server": "npm:^10.38.2"
+    "@trpc/next": "npm:^10.45.1"
+    "@trpc/server": "npm:^10.45.1"
     "@types/jsonwebtoken": "npm:^9.0.5"
     app: "npm:*"
     eslint-config-custom: "npm:*"
-    jsonwebtoken: "npm:^9.0.2"
+    jose: "npm:^5.2.1"
+    next: "npm:^14.0.4"
     superjson: "npm:^1.13.1"
     typescript: "npm:^5.3.3"
     zod: "npm:^3.22.2"
@@ -8471,49 +8470,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/client@npm:^10.38.2":
-  version: 10.38.2
-  resolution: "@trpc/client@npm:10.38.2"
+"@trpc/client@npm:^10.45.1":
+  version: 10.45.1
+  resolution: "@trpc/client@npm:10.45.1"
   peerDependencies:
-    "@trpc/server": 10.38.2
-  checksum: 10/ee80ee75b1bf6e673adf75dd7b3848d5bf5bc0ca447909cdfa434be41b13ed5b918ce20a7d6c70f9cabe196b4ec79e5c33d99aa1985648617eceb3126f612847
+    "@trpc/server": 10.45.1
+  checksum: 10/eaaf4df3696277bff4cddd4dd8b65ecc1dbe06aaa50030e485f36e3a84725c853a41b64304b8d470078f71728b58da4fce2f361bd121c8777f4daf14dcacc8e8
   languageName: node
   linkType: hard
 
-"@trpc/next@npm:^10.38.2":
-  version: 10.38.2
-  resolution: "@trpc/next@npm:10.38.2"
-  dependencies:
-    react-ssr-prepass: "npm:^1.5.0"
+"@trpc/next@npm:^10.45.1":
+  version: 10.45.1
+  resolution: "@trpc/next@npm:10.45.1"
   peerDependencies:
     "@tanstack/react-query": ^4.18.0
-    "@trpc/client": 10.38.2
-    "@trpc/react-query": 10.38.2
-    "@trpc/server": 10.38.2
+    "@trpc/client": 10.45.1
+    "@trpc/react-query": 10.45.1
+    "@trpc/server": 10.45.1
     next: "*"
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10/8a8d56aab5ead4e1e45fcf58f1b0b7e03969255ced7b290769aed2efac7615ab26b0ffcded1487202cac15876237860392cbd2f26392536d037c788aa0034d61
+  checksum: 10/13eab1e10cd5c9de6d77aa869f9ddfd96ba2fe0c395b81fdef1aeceee4487011525649b74fac7d935d92f3856cb8de8af6af5d44bf3160a9b5322e7883aea165
   languageName: node
   linkType: hard
 
-"@trpc/react-query@npm:^10.38.2":
-  version: 10.38.2
-  resolution: "@trpc/react-query@npm:10.38.2"
+"@trpc/react-query@npm:^10.45.1":
+  version: 10.45.1
+  resolution: "@trpc/react-query@npm:10.45.1"
   peerDependencies:
     "@tanstack/react-query": ^4.18.0
-    "@trpc/client": 10.38.2
-    "@trpc/server": 10.38.2
+    "@trpc/client": 10.45.1
+    "@trpc/server": 10.45.1
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10/a86ba750e2bd00111ebb60084d89392efeac2a456acf4436e546eee04aa7d686db76ee508b315693f0f840687b903eeea1b202d576fa21be0bd3bef8335373ff
+  checksum: 10/ca7d638c386ff03e51e3a73df1ed64bb46d56994ff405a0b58bee7123f802566d6192519e7f410572ba3fa96bc302e8bb13b875343469ac26e21d2653067fd10
   languageName: node
   linkType: hard
 
-"@trpc/server@npm:^10.38.2":
-  version: 10.38.2
-  resolution: "@trpc/server@npm:10.38.2"
-  checksum: 10/74810dd7ac09e5af43ab9f017b83fdf8de1c08040fd1739e5442150fad2afcb79a9232d20eb6e331728b9c8744204fddfdf7e3f7878a9d24664ac21821a7373c
+"@trpc/server@npm:^10.45.1":
+  version: 10.45.1
+  resolution: "@trpc/server@npm:10.45.1"
+  checksum: 10/f502705c65e9b2a47cfecad72e091dcd27873af0ba61d0de1f0c335ef398da142e8647ae220100c568450c0a306c07258842797db9fc819ca66174ea4ddf8cbb
   languageName: node
   linkType: hard
 
@@ -10391,7 +10388,8 @@ __metadata:
     "@tamagui/shorthands": "npm:^1.89.20"
     "@tamagui/themes": "npm:^1.89.20"
     "@tanstack/react-query": "npm:4.18.0"
-    "@trpc/client": "npm:^10.38.2"
+    "@trpc/client": "npm:^10.45.1"
+    "@trpc/react-query": "npm:^10.45.1"
     "@types/react": "npm:^18.0.27"
     base64-arraybuffer: "npm:^1.0.2"
     burnt: "npm:^0.12.1"
@@ -11328,13 +11326,6 @@ __metadata:
   version: 0.2.13
   resolution: "buffer-crc32@npm:0.2.13"
   checksum: 10/06252347ae6daca3453b94e4b2f1d3754a3b146a111d81c68924c22d91889a40623264e95e67955b1cb4a68cbedf317abeabb5140a9766ed248973096db5ce1c
-  languageName: node
-  linkType: hard
-
-"buffer-equal-constant-time@npm:1.0.1":
-  version: 1.0.1
-  resolution: "buffer-equal-constant-time@npm:1.0.1"
-  checksum: 10/80bb945f5d782a56f374b292770901065bad21420e34936ecbe949e57724b4a13874f735850dd1cc61f078773c4fb5493a41391e7bda40d1fa388d6bd80daaab
   languageName: node
   linkType: hard
 
@@ -13282,15 +13273,6 @@ __metadata:
   version: 0.2.0
   resolution: "eastasianwidth@npm:0.2.0"
   checksum: 10/9b1d3e1baefeaf7d70799db8774149cef33b97183a6addceeba0cf6b85ba23ee2686f302f14482006df32df75d32b17c509c143a3689627929e4a8efaf483952
-  languageName: node
-  linkType: hard
-
-"ecdsa-sig-formatter@npm:1.0.11":
-  version: 1.0.11
-  resolution: "ecdsa-sig-formatter@npm:1.0.11"
-  dependencies:
-    safe-buffer: "npm:^5.0.1"
-  checksum: 10/878e1aab8a42773320bc04c6de420bee21aebd71810e40b1799880a8a1c4594bcd6adc3d4213a0fb8147d4c3f529d8f9a618d7f59ad5a9a41b142058aceda23f
   languageName: node
   linkType: hard
 
@@ -17795,6 +17777,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jose@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "jose@npm:5.2.1"
+  checksum: 10/a3526af02f1ea713b48743aadb4198080c8eb3281d53907224e70021d8c02e69ae43e27ace4ef9a196fec8fa6fa22272e2a6aa035cba16adf631af36564a07d2
+  languageName: node
+  linkType: hard
+
 "jotai@npm:^2.0.2":
   version: 2.4.2
   resolution: "jotai@npm:2.4.2"
@@ -18032,24 +18021,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonwebtoken@npm:^9.0.2":
-  version: 9.0.2
-  resolution: "jsonwebtoken@npm:9.0.2"
-  dependencies:
-    jws: "npm:^3.2.2"
-    lodash.includes: "npm:^4.3.0"
-    lodash.isboolean: "npm:^3.0.3"
-    lodash.isinteger: "npm:^4.0.4"
-    lodash.isnumber: "npm:^3.0.3"
-    lodash.isplainobject: "npm:^4.0.6"
-    lodash.isstring: "npm:^4.0.1"
-    lodash.once: "npm:^4.0.0"
-    ms: "npm:^2.1.1"
-    semver: "npm:^7.5.4"
-  checksum: 10/6e9b6d879cec2b27f2f3a88a0c0973edc7ba956a5d9356b2626c4fddfda969e34a3832deaf79c3e1c6c9a525bc2c4f2c2447fa477f8ac660f0017c31a59ae96b
-  languageName: node
-  linkType: hard
-
 "jsx-ast-utils@npm:^2.4.1 || ^3.0.0":
   version: 3.3.5
   resolution: "jsx-ast-utils@npm:3.3.5"
@@ -18059,27 +18030,6 @@ __metadata:
     object.assign: "npm:^4.1.4"
     object.values: "npm:^1.1.6"
   checksum: 10/b61d44613687dfe4cc8ad4b4fbf3711bf26c60b8d5ed1f494d723e0808415c59b24a7c0ed8ab10736a40ff84eef38cbbfb68b395e05d31117b44ffc59d31edfc
-  languageName: node
-  linkType: hard
-
-"jwa@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "jwa@npm:1.4.1"
-  dependencies:
-    buffer-equal-constant-time: "npm:1.0.1"
-    ecdsa-sig-formatter: "npm:1.0.11"
-    safe-buffer: "npm:^5.0.1"
-  checksum: 10/0bc002b71dd70480fedc7d442a4d2b9185a9947352a027dcb4935864ad2323c57b5d391adf968a3622b61e940cef4f3484d5813b95864539272d41cac145d6f3
-  languageName: node
-  linkType: hard
-
-"jws@npm:^3.2.2":
-  version: 3.2.2
-  resolution: "jws@npm:3.2.2"
-  dependencies:
-    jwa: "npm:^1.4.1"
-    safe-buffer: "npm:^5.0.1"
-  checksum: 10/70b016974af8a76d25030c80a0097b24ed5b17a9cf10f43b163c11cb4eb248d5d04a3fe48c0d724d2884c32879d878ccad7be0663720f46b464f662f7ed778fe
   languageName: node
   linkType: hard
 
@@ -18446,59 +18396,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.includes@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "lodash.includes@npm:4.3.0"
-  checksum: 10/45e0a7c7838c931732cbfede6327da321b2b10482d5063ed21c020fa72b09ca3a4aa3bda4073906ab3f436cf36eb85a52ea3f08b7bab1e0baca8235b0e08fe51
-  languageName: node
-  linkType: hard
-
-"lodash.isboolean@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "lodash.isboolean@npm:3.0.3"
-  checksum: 10/b70068b4a8b8837912b54052557b21fc4774174e3512ed3c5b94621e5aff5eb6c68089d0a386b7e801d679cd105d2e35417978a5e99071750aa2ed90bffd0250
-  languageName: node
-  linkType: hard
-
-"lodash.isinteger@npm:^4.0.4":
-  version: 4.0.4
-  resolution: "lodash.isinteger@npm:4.0.4"
-  checksum: 10/c971f5a2d67384f429892715550c67bac9f285604a0dd79275fd19fef7717aec7f2a6a33d60769686e436ceb9771fd95fe7fcb68ad030fc907d568d5a3b65f70
-  languageName: node
-  linkType: hard
-
-"lodash.isnumber@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "lodash.isnumber@npm:3.0.3"
-  checksum: 10/913784275b565346255e6ae6a6e30b760a0da70abc29f3e1f409081585875105138cda4a429ff02577e1bc0a7ae2a90e0a3079a37f3a04c3d6c5aaa532f4cab2
-  languageName: node
-  linkType: hard
-
-"lodash.isplainobject@npm:^4.0.6":
-  version: 4.0.6
-  resolution: "lodash.isplainobject@npm:4.0.6"
-  checksum: 10/29c6351f281e0d9a1d58f1a4c8f4400924b4c79f18dfc4613624d7d54784df07efaff97c1ff2659f3e085ecf4fff493300adc4837553104cef2634110b0d5337
-  languageName: node
-  linkType: hard
-
-"lodash.isstring@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "lodash.isstring@npm:4.0.1"
-  checksum: 10/eaac87ae9636848af08021083d796e2eea3d02e80082ab8a9955309569cb3a463ce97fd281d7dc119e402b2e7d8c54a23914b15d2fc7fff56461511dc8937ba0
-  languageName: node
-  linkType: hard
-
 "lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: 10/d0ea2dd0097e6201be083865d50c3fb54fbfbdb247d9cc5950e086c991f448b7ab0cdab0d57eacccb43473d3f2acd21e134db39f22dac2d6c9ba6bf26978e3d6
-  languageName: node
-  linkType: hard
-
-"lodash.once@npm:^4.0.0":
-  version: 4.1.1
-  resolution: "lodash.once@npm:4.1.1"
-  checksum: 10/202f2c8c3d45e401b148a96de228e50ea6951ee5a9315ca5e15733d5a07a6b1a02d9da1e7fdf6950679e17e8ca8f7190ec33cae47beb249b0c50019d753f38f3
   languageName: node
   linkType: hard
 
@@ -19653,10 +19554,7 @@ __metadata:
     "@tamagui/next-plugin": "npm:^1.89.20"
     "@tamagui/next-theme": "npm:^1.89.20"
     "@tanstack/react-query": "npm:4.18.0"
-    "@trpc/client": "npm:^10.38.2"
-    "@trpc/next": "npm:^10.38.2"
-    "@trpc/react-query": "npm:^10.38.2"
-    "@trpc/server": "npm:^10.38.2"
+    "@trpc/server": "npm:^10.45.1"
     "@types/node": "npm:^18.6.4"
     app: "npm:*"
     dotenv-cli: "npm:^6.0.0"
@@ -22046,15 +21944,6 @@ __metadata:
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18.0.0
   checksum: 10/06457fe5bcaa44aeca998905b6849304742ea1cc2d3841e4a0964c745ff392bc4dec07f8c779f317faacce3a0bf6f84e15020ac0fa81adb931067dbb0baf707b
-  languageName: node
-  linkType: hard
-
-"react-ssr-prepass@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "react-ssr-prepass@npm:1.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/a8477b0f2508bebdd7b6a202de55eb5306b5e6179da6f01dc51f45d86aae2775815641cbce78ce6c4ac820b332fc47d5c0c8b85b18131495f37d94fbf6418c09
   languageName: node
   linkType: hard
 
