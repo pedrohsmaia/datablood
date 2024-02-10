@@ -3269,10 +3269,8 @@ __metadata:
     "@supabase/auth-helpers-react": "npm:^0.4.2"
     "@supabase/supabase-js": "npm:^2.39.3"
     "@tanstack/react-query": "npm:4.18.0"
-    "@trpc/client": "npm:^10.38.2"
-    "@trpc/next": "npm:^10.38.2"
-    "@trpc/react-query": "npm:^10.38.2"
-    "@trpc/server": "npm:^10.38.2"
+    "@trpc/next": "npm:^10.45.1"
+    "@trpc/server": "npm:^10.45.1"
     "@types/jsonwebtoken": "npm:^9.0.5"
     app: "npm:*"
     eslint-config-custom: "npm:*"
@@ -8471,49 +8469,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/client@npm:^10.38.2":
-  version: 10.38.2
-  resolution: "@trpc/client@npm:10.38.2"
+"@trpc/client@npm:^10.45.1":
+  version: 10.45.1
+  resolution: "@trpc/client@npm:10.45.1"
   peerDependencies:
-    "@trpc/server": 10.38.2
-  checksum: 10/ee80ee75b1bf6e673adf75dd7b3848d5bf5bc0ca447909cdfa434be41b13ed5b918ce20a7d6c70f9cabe196b4ec79e5c33d99aa1985648617eceb3126f612847
+    "@trpc/server": 10.45.1
+  checksum: 10/eaaf4df3696277bff4cddd4dd8b65ecc1dbe06aaa50030e485f36e3a84725c853a41b64304b8d470078f71728b58da4fce2f361bd121c8777f4daf14dcacc8e8
   languageName: node
   linkType: hard
 
-"@trpc/next@npm:^10.38.2":
-  version: 10.38.2
-  resolution: "@trpc/next@npm:10.38.2"
-  dependencies:
-    react-ssr-prepass: "npm:^1.5.0"
+"@trpc/next@npm:^10.45.1":
+  version: 10.45.1
+  resolution: "@trpc/next@npm:10.45.1"
   peerDependencies:
     "@tanstack/react-query": ^4.18.0
-    "@trpc/client": 10.38.2
-    "@trpc/react-query": 10.38.2
-    "@trpc/server": 10.38.2
+    "@trpc/client": 10.45.1
+    "@trpc/react-query": 10.45.1
+    "@trpc/server": 10.45.1
     next: "*"
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10/8a8d56aab5ead4e1e45fcf58f1b0b7e03969255ced7b290769aed2efac7615ab26b0ffcded1487202cac15876237860392cbd2f26392536d037c788aa0034d61
+  checksum: 10/13eab1e10cd5c9de6d77aa869f9ddfd96ba2fe0c395b81fdef1aeceee4487011525649b74fac7d935d92f3856cb8de8af6af5d44bf3160a9b5322e7883aea165
   languageName: node
   linkType: hard
 
-"@trpc/react-query@npm:^10.38.2":
-  version: 10.38.2
-  resolution: "@trpc/react-query@npm:10.38.2"
+"@trpc/react-query@npm:^10.45.1":
+  version: 10.45.1
+  resolution: "@trpc/react-query@npm:10.45.1"
   peerDependencies:
     "@tanstack/react-query": ^4.18.0
-    "@trpc/client": 10.38.2
-    "@trpc/server": 10.38.2
+    "@trpc/client": 10.45.1
+    "@trpc/server": 10.45.1
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10/a86ba750e2bd00111ebb60084d89392efeac2a456acf4436e546eee04aa7d686db76ee508b315693f0f840687b903eeea1b202d576fa21be0bd3bef8335373ff
+  checksum: 10/ca7d638c386ff03e51e3a73df1ed64bb46d56994ff405a0b58bee7123f802566d6192519e7f410572ba3fa96bc302e8bb13b875343469ac26e21d2653067fd10
   languageName: node
   linkType: hard
 
-"@trpc/server@npm:^10.38.2":
-  version: 10.38.2
-  resolution: "@trpc/server@npm:10.38.2"
-  checksum: 10/74810dd7ac09e5af43ab9f017b83fdf8de1c08040fd1739e5442150fad2afcb79a9232d20eb6e331728b9c8744204fddfdf7e3f7878a9d24664ac21821a7373c
+"@trpc/server@npm:^10.45.1":
+  version: 10.45.1
+  resolution: "@trpc/server@npm:10.45.1"
+  checksum: 10/f502705c65e9b2a47cfecad72e091dcd27873af0ba61d0de1f0c335ef398da142e8647ae220100c568450c0a306c07258842797db9fc819ca66174ea4ddf8cbb
   languageName: node
   linkType: hard
 
@@ -10391,7 +10387,8 @@ __metadata:
     "@tamagui/shorthands": "npm:^1.89.20"
     "@tamagui/themes": "npm:^1.89.20"
     "@tanstack/react-query": "npm:4.18.0"
-    "@trpc/client": "npm:^10.38.2"
+    "@trpc/client": "npm:^10.45.1"
+    "@trpc/react-query": "npm:^10.45.1"
     "@types/react": "npm:^18.0.27"
     base64-arraybuffer: "npm:^1.0.2"
     burnt: "npm:^0.12.1"
@@ -19653,10 +19650,7 @@ __metadata:
     "@tamagui/next-plugin": "npm:^1.89.20"
     "@tamagui/next-theme": "npm:^1.89.20"
     "@tanstack/react-query": "npm:4.18.0"
-    "@trpc/client": "npm:^10.38.2"
-    "@trpc/next": "npm:^10.38.2"
-    "@trpc/react-query": "npm:^10.38.2"
-    "@trpc/server": "npm:^10.38.2"
+    "@trpc/server": "npm:^10.45.1"
     "@types/node": "npm:^18.6.4"
     app: "npm:*"
     dotenv-cli: "npm:^6.0.0"
@@ -22046,15 +22040,6 @@ __metadata:
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18.0.0
   checksum: 10/06457fe5bcaa44aeca998905b6849304742ea1cc2d3841e4a0964c745ff392bc4dec07f8c779f317faacce3a0bf6f84e15020ac0fa81adb931067dbb0baf707b
-  languageName: node
-  linkType: hard
-
-"react-ssr-prepass@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "react-ssr-prepass@npm:1.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/a8477b0f2508bebdd7b6a202de55eb5306b5e6179da6f01dc51f45d86aae2775815641cbce78ce6c4ac820b332fc47d5c0c8b85b18131495f37d94fbf6418c09
   languageName: node
   linkType: hard
 
