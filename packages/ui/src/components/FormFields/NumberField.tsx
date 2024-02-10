@@ -28,7 +28,7 @@ export const NumberField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
           <Input
             disabled={disabled}
             placeholderTextColor="$color10"
-            keyboardType="number-pad"
+            inputMode="numeric"
             value={field.value?.toString() || '0'}
             onChangeText={(text) => {
               const num = Number(text)

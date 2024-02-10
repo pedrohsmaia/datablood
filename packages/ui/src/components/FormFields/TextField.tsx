@@ -31,7 +31,7 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secure
             placeholderTextColor="$color10"
             spellCheck={isEmail ? false : undefined}
             autoCapitalize={isEmail ? 'none' : undefined}
-            keyboardType={isEmail ? 'email-address' : undefined}
+            inputMode={isEmail ? 'email' : undefined}
             value={field.value}
             onChangeText={(text) => field.onChange(text)}
             onBlur={field.onBlur}

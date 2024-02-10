@@ -74,7 +74,7 @@ export const ChangeEmailScreen = () => {
               id="current-email"
               autoComplete="email"
               value={user?.email}
-              keyboardType="email-address"
+              inputMode="email"
               autoCapitalize="none"
             />
           </Fieldset>
