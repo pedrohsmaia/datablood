@@ -1,4 +1,4 @@
-import { guestOnlyGetSSP } from 'utils/guestOnly'
+import type { GetServerSideProps } from 'next'
 
 /**
  * this page exists to keep it 1-1 with native
@@ -8,11 +8,11 @@ export default function Page() {
   return null
 }
 
-export const getServerSideProps = guestOnlyGetSSP(async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
       destination: '/sign-in',
       permanent: false,
     },
   }
-})
+}
