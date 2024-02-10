@@ -40,7 +40,7 @@ Note that Cocoapods 1.15 has a [breaking bug](https://github.com/CocoaPods/Cocoa
 - [solito](https://solito.dev)
 - [Expo SDK](https://expo.dev)
 - [Next.js](https://nextjs.org)
-- [Expo Router](https://expo.github.io/router/docs)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
 - [Supabase](https://supabase.com)
 
 ## First-time Configuration
@@ -320,3 +320,7 @@ EAS has already been configured for you, but you still need to do the following:
 - I get the error `network request failed` when trying to signin or signup for the app
 
 This error is likely caused my not having Supabase setup correctly and running in docker.
+
+- Where is the initial page that gets rendered on the Expo app?
+
+We recommend you familiarize yourself with how Expo Router handles routing on [their docs](https://docs.expo.dev/router/introduction/). In a fresh Takeout project, the initial page would be on `apps/expo/app/(tabs)/index.tsx`.
