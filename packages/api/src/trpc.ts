@@ -1,14 +1,17 @@
 import { Database } from '@my/supabase/types'
-import { createPagesServerClient } from '@supabase/auth-helpers-nextjs'
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { createClient } from '@supabase/supabase-js'
 import { TRPCError, initTRPC } from '@trpc/server'
-import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
+import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import jwt from 'jsonwebtoken'
+import { cookies } from 'next/headers'
 import superJson from 'superjson'
 
-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
   // if there's auth cookie it'll be authenticated by this helper
-  let supabase = createPagesServerClient<Database>(opts)
+  const cookiesStore = cookies()
+
+  let supabase = createRouteHandlerClient<Database>({ cookies: () => cookiesStore })
   let userId = (await supabase.auth.getUser()).data.user?.id
 
   if (!process.env.SUPABASE_JWT_SECRET) {
@@ -21,8 +24,8 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
     throw new Error('the `NEXT_PUBLIC_SUPABASE_ANON_KEY` env variable is not set.')
   }
   // Native clients pass an access token in the authorization header
-  if (opts.req.headers.authorization) {
-    const accessToken = opts.req.headers.authorization.split('Bearer ').pop()
+  if (opts.req.headers.has('authorization')) {
+    const accessToken = opts.req.headers.get('authorization')!.split('Bearer ').pop()
     if (accessToken) {
       try {
         const decoded = jwt.verify(accessToken, process.env.SUPABASE_JWT_SECRET) as { sub: string }
@@ -48,7 +51,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
         global: {
           headers: {
             // pass the authorization header through to Supabase
-            Authorization: opts.req.headers.authorization,
+            Authorization: opts.req.headers.get('authorization')!,
           },
         },
       }
@@ -56,7 +59,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   }
 
   return {
-    requestOrigin: opts.req.headers.origin,
+    requestOrigin: opts.req.headers.get('origin'),
 
     /**
      * The Supabase user
