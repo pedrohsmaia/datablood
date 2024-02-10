@@ -1,6 +1,6 @@
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
-import { Label, TextArea, TextAreaProps, Theme, Fieldset, useThemeName } from 'tamagui'
+import { Fieldset, Label, TextArea, TextAreaProps, Theme } from 'tamagui'
 
 import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
@@ -12,12 +12,11 @@ export const TextAreaField = (props: Pick<TextAreaProps, 'size' | 'autoFocus'>) 
     formState: { isSubmitting },
   } = useTsController<string>()
   const { label, isOptional, placeholder } = useFieldInfo()
-  const themeName = useThemeName()
   const id = useId()
   const disabled = isSubmitting
 
   return (
-    <Theme name={error ? 'red' : themeName} forceClassName>
+    <Theme name={error ? 'red' : null} forceClassName>
       <Fieldset>
         {!!label && (
           <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>

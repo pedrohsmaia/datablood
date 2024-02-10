@@ -14,7 +14,6 @@ import {
   YStack,
   getFontSize,
   isWeb,
-  useThemeName,
 } from 'tamagui'
 
 import { FieldError } from '../FieldError'
@@ -38,12 +37,11 @@ export const SelectField = ({
     formState: { isSubmitting },
   } = useTsController<string>()
   const { label, isOptional } = useFieldInfo()
-  const themeName = useThemeName()
   const id = useId()
   const disabled = isSubmitting
 
   return (
-    <Theme name={error ? 'red' : themeName} forceClassName>
+    <Theme name={error ? 'red' : null} forceClassName>
       <Fieldset>
         {!!label && (
           <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>

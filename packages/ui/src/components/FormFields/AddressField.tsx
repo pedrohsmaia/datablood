@@ -1,6 +1,6 @@
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
-import { Fieldset, Input, InputProps, Label, Theme, XStack, useThemeName } from 'tamagui'
+import { Fieldset, Input, InputProps, Label, Theme, XStack } from 'tamagui'
 import { z } from 'zod'
 
 import { FieldError } from '../FieldError'
@@ -19,7 +19,6 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
   } = useTsController<z.infer<typeof AddressSchema>>()
   const { label } = useFieldInfo()
   const id = useId()
-  const themeName = useThemeName()
   const disabled = isSubmitting
 
   return (
@@ -29,7 +28,7 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
       </Label>
 
       <XStack $sm={{ fd: 'column' }} $gtSm={{ fw: 'wrap' }} gap="$4">
-        <Theme name={error?.street ? 'red' : themeName} forceClassName>
+        <Theme name={error?.street ? 'red' : null} forceClassName>
           <Fieldset $gtSm={{ fb: 0 }} f={1}>
             <Label theme="alt1" size={props.size || '$3'} htmlFor={`${id}-street`}>
               Street
@@ -51,7 +50,7 @@ export const AddressField = (props: Pick<InputProps, 'size'>) => {
           </Fieldset>
         </Theme>
 
-        <Theme name={error?.zipCode ? 'red' : themeName} forceClassName>
+        <Theme name={error?.zipCode ? 'red' : null} forceClassName>
           <Fieldset $gtSm={{ fb: 0 }} f={1}>
             <Label theme="alt1" size={props.size || '$3'} htmlFor={`${id}-zip-code`}>
               US ZIP Code
