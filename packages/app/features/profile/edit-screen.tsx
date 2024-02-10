@@ -8,6 +8,7 @@ import { SolitoImage } from 'solito/image'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
+import { api } from '../../utils/api'
 import { UploadAvatar } from '../settings/components/upload-avatar'
 
 const { useParams } = createParam<{ edit_name?: '1'; edit_about?: '1' }>()
@@ -37,6 +38,7 @@ const EditProfileForm = ({
   const toast = useToastController()
   const queryClient = useQueryClient()
   const router = useRouter()
+  const apiUtils = api.useUtils()
   const mutation = useMutation({
     async mutationFn(data: z.infer<typeof ProfileSchema>) {
       await supabase
@@ -44,9 +46,11 @@ const EditProfileForm = ({
         .update({ name: data.name, about: data.about })
         .eq('id', userId)
     },
+
     async onSuccess() {
       toast.show('Successfully updated!')
       await queryClient.invalidateQueries(['profile', userId])
+      await apiUtils.greeting.invalidate()
       router.back()
     },
   })
