@@ -29,7 +29,7 @@
     "chromatic": "yarn build && cd apps/storybook && yarn chromatic",
     "upgrade:tamagui": "yarn up '*tamagui*' '@tamagui/*'",
     "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary",
-    "check-deps": "check-dependency-version-consistency . --ignore-dep react-native-reanimated",
+    "check-deps": "check-dependency-version-consistency .",
     "check-circular-deps": "yarn turbo check-circular-deps",
     "supa": "yarn workspace @my/supabase",
     "typecheck": "turbo check:type",
