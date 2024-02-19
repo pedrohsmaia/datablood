@@ -32,8 +32,7 @@ jobs:
       - name: Check for conflicting dependency versions across the monorepo
         run: yarn check-deps
 
-      - name: Set execute permission for the check-circular-deps script
-        run: chmod +x ./scripts/check-circular-deps.sh
-
       - name: Check for circular imports across the monorepo
-        run: yarn check-circular-deps
+        run: |
+          chmod +x ./scripts/check-circular-deps.sh 
+          yarn check-circular-deps
