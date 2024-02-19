@@ -37,6 +37,7 @@
     "check:type:watch": "yarn check:type -w",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
+    "lint-sherif": "npx --yes sherif@latest",
     "setup": "yarn create tamagui --template takeout-starter --info",
     "generate": "turbo gen",
     "gen": "yarn generate"
