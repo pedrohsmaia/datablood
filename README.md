@@ -108,9 +108,11 @@ The main apps are:
 - `packages` Shared packages across apps
   - `ui` Includes your custom UI kit that will be optimized by Tamagui
   - `app` You'll be importing most files from `app/`
-    - `features` (Don't use a `screens` folder. organize by feature.)
-    - `provider` (All the providers that wrap the app, and some no-ops for native or web.)
+    - `features` Where most of your code lives.
+    - `provider` All providers that wrap the app, sometimes forked by platform.
 - `supabase` Supabase files, migrations, types, etc. + [scripts](/supabase/README.md)
+
+Note that the main entry point for the Expo app is at `apps/expo/app/(tabs)/index.tsx`. This is because folders in parenthesis are flattened and Expo Router finds the first index.tsx file. For more on how Expo Router works, [check out their docs](https://docs.expo.dev/router/create-pages/).
 
 ## Layouts
 
