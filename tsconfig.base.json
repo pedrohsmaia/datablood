@@ -3,7 +3,9 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "@my/*": ["packages/*"]
+      "@my/*": ["packages/*"],
+      "app/*": ["packages/app/*"],
+      "ui/*": ["packages/ui/*"]
     },
     "importHelpers": true,
     "allowJs": false,
