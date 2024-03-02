@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "generate": "sb-rn-get-stories",
-    "watch": " sb-rn-watcher",
+    "sb:watch": " sb-rn-watcher",
     "start": " sb-rn-get-stories && cross-env expo start",
     "ios": " sb-rn-get-stories && cross-env expo start --ios -c",
     "android": " sb-rn-get-stories && cross-env expo start --android -c"
