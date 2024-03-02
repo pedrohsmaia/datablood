@@ -3260,7 +3260,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@my/api@workspace:packages/api":
+"@my/api@npm:*, @my/api@workspace:packages/api":
   version: 0.0.0-use.local
   resolution: "@my/api@workspace:packages/api"
   dependencies:
@@ -10374,6 +10374,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "app@workspace:packages/app"
   dependencies:
+    "@my/api": "npm:*"
     "@my/supabase": "npm:*"
     "@my/ui": "npm:*"
     "@react-native-async-storage/async-storage": "npm:1.21.0"
