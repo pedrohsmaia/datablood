@@ -73,7 +73,7 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
     /**
      * The Supabase instance with the authenticated session on it (RLS works)
      *
-     * You should import `supabaseAdmin` from packages/app/utils/supabase/admin  in case you want to
+     * You should import `supabaseAdmin` here in case you want to
      * do anything on behalf of the service role (RLS doesn't work - you're admin)
      */
     supabase,
