@@ -203,11 +203,11 @@ Check emails that are sent to you locally like the auth confirmation using InBuc
 
 Getting OAuth to work on web is as easy as it gets but on native, you will need to manually get the OAuth credentials, and then feed them to the Supabase session. See [this article](https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf) for more info on how to handle native OAuth with Supabase.
 
-### Guarding Pages on Web
+### Protecting Pages on Web
 
-You can use standard Next.js server side functions. So far we've used getServerSideProps to protect routes (see `apps/next/utils/userProtected.ts` and `apps/next/utils/guestOnly.ts`) but you can also use middleware if you see fit.
+We use middlewares to protect routes on the web. See `apps/next/middleware.ts`.
 
-### Guarding Screens on Native
+### Protecting Screens on Native
 
 We use a hook to check for auth and then redirect the user to auth pages, and also not let the authenticated users see auth pages. See `apps/expo/app/provider/auth/AuthProvider.native.ts`.
 
