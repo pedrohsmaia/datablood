@@ -38,7 +38,7 @@ export const NumberField = (props: Pick<InputProps, 'size' | 'autoFocus'>) => {
                 return
               }
               if (typeof maxValue !== 'undefined' && num > maxValue) {
-                field.onChange(minValue)
+                field.onChange(maxValue)
                 return
               }
               if (typeof minValue !== 'undefined' && num < minValue) {
