@@ -4,9 +4,11 @@ import { supabase } from 'app/utils/supabase/client.native'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { useCallback, useEffect, useState } from 'react'
-import { View } from 'react-native'
+import { LogBox, View } from 'react-native'
 
 SplashScreen.preventAutoHideAsync()
+
+LogBox.ignoreLogs(['Cannot update a component'])
 
 export default function HomeLayout() {
   const [fontLoaded] = useFonts({
