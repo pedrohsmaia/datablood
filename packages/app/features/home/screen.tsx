@@ -17,15 +17,12 @@ import {
   isWeb,
   useMedia,
   validToken,
-  TamaguiConfig,
 } from '@my/ui'
 import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
 import { api } from 'app/utils/api'
 import React from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
-
-type x = TamaguiConfig['onlyAllowShorthands']
 
 const defaultAuthors = [
   {
