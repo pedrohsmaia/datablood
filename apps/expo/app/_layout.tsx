@@ -8,7 +8,7 @@ import { LogBox, View } from 'react-native'
 
 SplashScreen.preventAutoHideAsync()
 
-LogBox.ignoreLogs(['Cannot update a component'])
+LogBox.ignoreLogs(['Cannot update a component', 'You are setting the style'])
 
 export default function HomeLayout() {
   const [fontLoaded] = useFonts({
