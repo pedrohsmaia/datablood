@@ -90,11 +90,13 @@ Add `--local` to build locally.
 
 ### Signup Flow
 
-Supabase PKCE flow requires email confirmation on sign up. You accept an email locally:
+Supabase PKCE flow requires email confirmation on sign up. You fill in the sign up form with email and password. Local setup will let you confirm the email by:
+1. Navigating to `http://localhost:54324`
+2. Filling in the email on the top right corner
+3. Clicking email
+4. Clicking 'confirm your email address' link
 
-- `http://localhost:54324`
-- Find the email account you signed up with
-- Click the confirm link
+![local development email confirmation](https://i.imgur.com/3r7TGfu.png)
 
 ## Folder layout
 
@@ -199,9 +201,12 @@ Icons are populated from [icones](https://icones.js.org)
 
 Authentication is handled by Supabase Auth. Email and password auth is included in the starter but you can get OAuth to work too.
 
-Check emails that are sent to you locally like the auth confirmation using InBucket at http://localhost:54324 once your Supabase is running.
+Check emails that are sent to you locally like the auth confirmation using InBucket at http://localhost:54324 once your Supabase is running `yarn supa start` from the root of the project.
 
 Getting OAuth to work on web is as easy as it gets but on native, you will need to manually get the OAuth credentials, and then feed them to the Supabase session. See [this article](https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf) for more info on how to handle native OAuth with Supabase.
+
+For a detailed guide about Supabase on Takeout and all available script commands see [Supabase README](/supabase/README.md)
+
 
 ### Protecting Pages on Web
 
