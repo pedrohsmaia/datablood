@@ -55,6 +55,8 @@ Please reference [Supabase's documentation](https://supabase.com/docs/guides/sel
 
 ## Development
 
+NOTE: Expo Go is currently not working with out setup. Just use the development builds for now.
+
 ### Development scripts
 
 - Web: `yarn web`
