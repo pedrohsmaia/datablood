@@ -93,6 +93,7 @@ Add `--local` to build locally.
 ### Signup Flow
 
 Supabase PKCE flow requires email confirmation on sign up. You fill in the sign up form with email and password. Local setup will let you confirm the email by:
+
 1. Navigating to `http://localhost:54324`
 2. Filling in the email on the top right corner
 3. Clicking email
@@ -173,9 +174,12 @@ To run an expo app on your machine locally:
 
 ## Native Builds
 
-Native builds are needed if you're using custom native code in your project. More documentation can be found here in Expo's docs: [Adding Custom Native Code](https://docs.expo.dev/workflow/customizing/#adding-custom-native-code-with-development-builds)
+Native builds are needed if you're using custom native code in your project. Takeout does have some libraries that require it, so we don't guarantee Expo Go
+works for your initial build, but it can be useful to quickly check the app is working. Android for example does run more successfully in Go than iOS because we have fewer native dependencies.
 
-To run a [native build](https://docs.expo.dev/develop/development-builds/introduction):
+More documentation on adding your own native code can be found here in Expo's docs: [Adding Custom Native Code](https://docs.expo.dev/workflow/customizing/#adding-custom-native-code-with-development-builds)
+
+To run a [native build](https://docs.expo.dev/develop/development-builds/introduction) of your application, which we recommend:
 
 - `npx expo install expo-dev-client`
 - in `apps/expo/package.json` update script `"start": "TAMAGUI_ENV=dev expo start --dev-client"`
@@ -208,7 +212,6 @@ Check emails that are sent to you locally like the auth confirmation using InBuc
 Getting OAuth to work on web is as easy as it gets but on native, you will need to manually get the OAuth credentials, and then feed them to the Supabase session. See [this article](https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf) for more info on how to handle native OAuth with Supabase.
 
 For a detailed guide about Supabase on Takeout and all available script commands see [Supabase README](/supabase/README.md)
-
 
 ### Protecting Pages on Web
 
