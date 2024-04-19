@@ -17,7 +17,9 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/your-project-id"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.acme.myapp"
@@ -29,7 +31,9 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.acme.myapp",
-      "permissions": ["android.permission.RECORD_AUDIO"]
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -51,7 +55,8 @@
       ],
       "expo-apple-authentication",
       "expo-router",
-      "expo-build-properties"
+      "expo-build-properties",
+      "expo-font"
     ],
     "extra": {
       "router": {
