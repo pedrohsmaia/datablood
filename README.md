@@ -55,8 +55,6 @@ Please reference [Supabase's documentation](https://supabase.com/docs/guides/sel
 
 ## Development
 
-NOTE: Expo Go is currently not working with out setup. Just use the development builds for now.
-
 ### Development scripts
 
 - Web: `yarn web`
@@ -174,8 +172,7 @@ To run an expo app on your machine locally:
 
 ## Native Builds
 
-Native builds are needed if you're using custom native code in your project. Takeout does have some libraries that require it, so we don't guarantee Expo Go
-works for your initial build, but it can be useful to quickly check the app is working. Android for example does run more successfully in Go than iOS because we have fewer native dependencies.
+Native builds are needed if you're using custom native code in your project.
 
 More documentation on adding your own native code can be found here in Expo's docs: [Adding Custom Native Code](https://docs.expo.dev/workflow/customizing/#adding-custom-native-code-with-development-builds)
 
@@ -184,6 +181,10 @@ To run a [native build](https://docs.expo.dev/develop/development-builds/introdu
 - `npx expo install expo-dev-client`
 - in `apps/expo/package.json` update script `"start": "TAMAGUI_ENV=dev expo start --dev-client"`
 - `yarn ios` or `yarn android`
+
+## Expo Go
+
+Expo Go works in Takeout, but you may need to replace the imports from `@tamagui/animations-moti` to `@tamagui/animations-react-native`.
 
 ## Expo EAS Update
 
