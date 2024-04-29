@@ -24,7 +24,6 @@
     "ios": "yarn expo run:ios",
     "lint": "eslint ./app",
     "lint:fix": "eslint ./app --fix",
-    "eject": "expo eject",
     "check:type": "tsc --outDir /tmp",
     "check:type:watch": "yarn check:type -w"
   },
