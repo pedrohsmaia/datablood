@@ -70,7 +70,7 @@
     "react-native-web": "~0.19.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
+    "@babel/core": "^7.24",
     "@expo/metro-config": "~0.18.1",
     "@tamagui/babel-plugin": "^1.98.1",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
