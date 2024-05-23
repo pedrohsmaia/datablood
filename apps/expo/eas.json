@@ -32,6 +32,9 @@
     "staging": {
       "distribution": "store",
       "channel": "staging",
+      "android": {
+        "buildType": "apk"
+      },
       "env": {
         "APP_ENV": "staging"
       },

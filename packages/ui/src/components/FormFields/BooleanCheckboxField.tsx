@@ -1,16 +1,7 @@
 import { Check } from '@tamagui/lucide-icons'
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
-import {
-  Checkbox,
-  CheckboxProps,
-  CheckedState,
-  Fieldset,
-  Label,
-  Theme,
-  XStack,
-  useThemeName,
-} from 'tamagui'
+import { Checkbox, CheckboxProps, CheckedState, Fieldset, Label, Theme, XStack } from 'tamagui'
 
 import { FieldError } from '../FieldError'
 
@@ -22,11 +13,10 @@ export const BooleanCheckboxField = (props: Pick<CheckboxProps, 'size' | 'native
   } = useTsController<CheckedState>()
   const { label, isOptional } = useFieldInfo()
   const id = useId()
-  const themeName = useThemeName()
   const disabled = isSubmitting
 
   return (
-    <Theme name={error ? 'red' : themeName} forceClassName>
+    <Theme name={error ? 'red' : null} forceClassName>
       <Fieldset>
         <XStack gap="$4">
           {!!label && (

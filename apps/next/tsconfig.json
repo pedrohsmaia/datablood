@@ -2,6 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "baseUrl": ".",
+    "paths": {
+      "app/*": ["../../packages/app/*"],
+      "ui/*": ["../../packages/ui/*"]
+    },
     "allowJs": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -15,7 +19,8 @@
         "name": "@nderscore/tamagui-typescript-plugin",
         "pathToApp": "."
       }
-    ]
+    ],
+    "strictNullChecks": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"],

@@ -1,6 +1,6 @@
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
-import { Fieldset, Label, Switch, SwitchProps, Theme, useThemeName } from 'tamagui'
+import { Fieldset, Label, Switch, SwitchProps, Theme } from 'tamagui'
 
 import { FieldError } from '../FieldError'
 
@@ -12,11 +12,10 @@ export const BooleanSwitchField = (props: Pick<SwitchProps, 'size' | 'native'>) 
   } = useTsController<boolean>()
   const { label, isOptional } = useFieldInfo()
   const id = useId()
-  const themeName = useThemeName()
   const disabled = isSubmitting
 
   return (
-    <Theme name={error ? 'red' : themeName} forceClassName>
+    <Theme name={error ? 'red' : null} forceClassName>
       <Fieldset ai="flex-start">
         {!!label && (
           <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>

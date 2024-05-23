@@ -33,4 +33,9 @@ jobs:
         run: yarn check-deps
 
       - name: Check for circular imports across the monorepo
-        run: yarn check-circular-deps
+        run: |
+          chmod +x ./scripts/check-circular-deps.sh 
+          yarn check-circular-deps
+
+      - name: Check the linting using `sherif`
+        run: yarn lint-sherif

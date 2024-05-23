@@ -3,7 +3,7 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { ThemeProviderProps, useThemeSetting as next_useThemeSetting } from '@tamagui/next-theme'
 import { StatusBar } from 'expo-status-bar'
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import { AppState, Appearance, ColorSchemeName, useColorScheme } from 'react-native'
+import { Appearance, useColorScheme } from 'react-native'
 
 type ThemeContextValue = (ThemeProviderProps & { current?: string | null }) | null
 export const ThemeContext = createContext<ThemeContextValue>(null)
@@ -19,7 +19,7 @@ loadThemePromise.then((val) => {
 
 export const UniversalThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [current, setCurrent] = useState<ThemeName>(persistedTheme ?? 'system')
-  const systemTheme = useNonFlickeringColorScheme()
+  const systemTheme = useColorScheme() || 'system'
 
   useLayoutEffect(() => {
     async function main() {
@@ -106,27 +106,4 @@ export const useThemeSetting: typeof next_useThemeSetting = () => {
 export const useRootTheme = () => {
   const context = useThemeSetting()
   return [context.current === 'system' ? context.systemTheme : context.current, context.set]
-}
-
-// fix flash of wrong theme on iOS:
-// https://github.com/bluesky-social/social-app/pull/1417
-// wait on merge from react-native to remove:
-// https://github.com/facebook/react-native/pull/39439
-function useNonFlickeringColorScheme() {
-  const colorSchemeFromRN = useColorScheme()
-  const [nonFlickerScheme, setNonFlickerScheme] = useState<ColorSchemeName>(colorSchemeFromRN)
-
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', (state) => {
-      const isActive = state === 'active'
-      if (!isActive) return
-      setNonFlickerScheme(colorSchemeFromRN)
-    })
-
-    return () => {
-      subscription.remove()
-    }
-  }, [colorSchemeFromRN])
-
-  return nonFlickerScheme || 'system'
 }

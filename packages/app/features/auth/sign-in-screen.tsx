@@ -1,6 +1,7 @@
-import { H2, Paragraph, SubmitButton, Text, Theme, YStack, isWeb } from '@my/ui'
+import { H2, LoadingOverlay, Paragraph, SubmitButton, Text, Theme, YStack, isWeb } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
+import { useUser } from 'app/utils/useUser'
 import { useEffect } from 'react'
 import { FormProvider, useForm, useWatch } from 'react-hook-form'
 import { createParam } from 'solito'
@@ -22,6 +23,8 @@ export const SignInScreen = () => {
   const router = useRouter()
   const { params } = useParams()
   const updateParams = useUpdateParams()
+  useRedirectAfterSignIn()
+  const { isLoadingSession } = useUser()
   useEffect(() => {
     // remove the persisted email from the url, mostly to not leak user's email in case they share it
     if (params?.email) {
@@ -95,6 +98,8 @@ export const SignInScreen = () => {
           </>
         )}
       </SchemaForm>
+      {/* this is displayed when the session is being updated - usually when the user is redirected back from an auth provider */}
+      {isLoadingSession && <LoadingOverlay />}
     </FormProvider>
   )
 }
@@ -120,4 +125,21 @@ const ForgotPasswordLink = () => {
       </Paragraph>
     </Link>
   )
+}
+
+// we use this hook here because this is the page we redirect unauthenticated users to
+// if they authenticate on this page, this will redirect them to the home page
+function useRedirectAfterSignIn() {
+  const supabase = useSupabase()
+  const router = useRouter()
+  useEffect(() => {
+    const signOutListener = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_IN') {
+        router.replace('/')
+      }
+    })
+    return () => {
+      signOutListener.data.subscription.unsubscribe()
+    }
+  }, [supabase, router])
 }

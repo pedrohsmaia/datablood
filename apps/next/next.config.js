@@ -44,9 +44,23 @@ const plugins = [
       'Modal',
     ],
   }),
+  (nextConfig) => {
+    return {
+      webpack: (webpackConfig, options) => {
+        webpackConfig.resolve.alias = {
+          ...webpackConfig.resolve.alias,
+          'react-native-svg': '@tamagui/react-native-svg',
+        }
+        if (typeof nextConfig.webpack === 'function') {
+          return nextConfig.webpack(webpackConfig, options)
+        }
+        return webpackConfig
+      },
+    }
+  },
 ]
 
-module.exports = function () {
+module.exports = () => {
   /** @type {import('next').NextConfig} */
   let config = {
     images: {
@@ -62,15 +76,14 @@ module.exports = function () {
         },
       ],
     },
-    // typescript: {
-    //   ignoreBuildErrors: true,
-    // },
+
     modularizeImports: {
       '@tamagui/lucide-icons': {
         transform: `@tamagui/lucide-icons/dist/esm/icons/{{kebabCase member}}`,
         skipDefaultConversion: true,
       },
     },
+
     transpilePackages: [
       'solito',
       'react-native-web',
@@ -85,7 +98,6 @@ module.exports = function () {
        A few notes before enabling app directory:
 
        - Usage of app directory for production apps is discouraged.
-       - Tamagui doesn't support usage in React Server Components yet (usage with 'use client' is supported).
        - Solito doesn't support app dir at the moment - You'll have to remove Solito.
        - The `/app` in this starter has the same routes as the `/pages` directory. You should probably remove `/pages` after enabling this.
       */
@@ -93,6 +105,15 @@ module.exports = function () {
       scrollRestoration: true,
       // optimizeCss: true,
     },
+    redirects: async () => [
+      // we have /onboarding on native but don't have a standalone page for /onboarding on web
+      // it's included as a sidebar of auth pages, so we just redirect the user there
+      {
+        source: '/onboarding',
+        destination: '/sign-in',
+        permanent: false,
+      },
+    ],
   }
 
   for (const plugin of plugins) {

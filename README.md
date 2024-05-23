@@ -2,7 +2,9 @@
 
 # Tamagui's Takeout Starter
 
-A good tutorial showing building a real app using Tamagui Takeout can be seen on the [notjust.dev YouTube stream](https://www.youtube.com/watch?v=XbKkKXH-dfc).
+A good but long tutorial showing building a real app using Tamagui Takeout can be seen on the [notjust.dev YouTube stream](https://www.youtube.com/watch?v=XbKkKXH-dfc).
+
+For a more edited, paid (but cheap) course covering all the basics of Tamagui, a few Tamagui users have said they found [this course by Simon very helpful](https://galaxies.dev/course/react-native-tamagui/1-1).
 
 ## Getting Started
 
@@ -38,7 +40,7 @@ Note that Cocoapods 1.15 has a [breaking bug](https://github.com/CocoaPods/Cocoa
 - [solito](https://solito.dev)
 - [Expo SDK](https://expo.dev)
 - [Next.js](https://nextjs.org)
-- [Expo Router](https://expo.github.io/router/docs)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
 - [Supabase](https://supabase.com)
 
 ## First-time Configuration
@@ -88,11 +90,14 @@ Add `--local` to build locally.
 
 ### Signup Flow
 
-Supabase PKCE flow requires email confirmation on sign up. You accept an email locally:
+Supabase PKCE flow requires email confirmation on sign up. You fill in the sign up form with email and password. Local setup will let you confirm the email by:
 
-- `http://localhost:54324`
-- Find the email account you signed up with
-- Click the confirm link
+1. Navigating to `http://localhost:54324`
+2. Filling in the email on the top right corner
+3. Clicking email
+4. Clicking 'confirm your email address' link
+
+![local development email confirmation](https://i.imgur.com/3r7TGfu.png)
 
 ## Folder layout
 
@@ -106,9 +111,11 @@ The main apps are:
 - `packages` Shared packages across apps
   - `ui` Includes your custom UI kit that will be optimized by Tamagui
   - `app` You'll be importing most files from `app/`
-    - `features` (Don't use a `screens` folder. organize by feature.)
-    - `provider` (All the providers that wrap the app, and some no-ops for native or web.)
+    - `features` Where most of your code lives.
+    - `provider` All providers that wrap the app, sometimes forked by platform.
 - `supabase` Supabase files, migrations, types, etc. + [scripts](/supabase/README.md)
+
+Note that the main entry point for the Expo app is at `apps/expo/app/(tabs)/index.tsx`. This is because folders in parenthesis are flattened and Expo Router finds the first index.tsx file. For more on how Expo Router works, [check out their docs](https://docs.expo.dev/router/create-pages/).
 
 ## Layouts
 
@@ -165,13 +172,19 @@ To run an expo app on your machine locally:
 
 ## Native Builds
 
-Native builds are needed if you're using custom native code in your project. More documentation can be found here in Expo's docs: [Adding Custom Native Code](https://docs.expo.dev/workflow/customizing/#adding-custom-native-code-with-development-builds)
+Native builds are needed if you're using custom native code in your project.
 
-To run a [native build](https://docs.expo.dev/develop/development-builds/introduction):
+More documentation on adding your own native code can be found here in Expo's docs: [Adding Custom Native Code](https://docs.expo.dev/workflow/customizing/#adding-custom-native-code-with-development-builds)
+
+To run a [native build](https://docs.expo.dev/develop/development-builds/introduction) of your application, which we recommend:
 
 - `npx expo install expo-dev-client`
 - in `apps/expo/package.json` update script `"start": "TAMAGUI_ENV=dev expo start --dev-client"`
 - `yarn ios` or `yarn android`
+
+## Expo Go
+
+Expo Go works in Takeout, but you may need to replace the imports from `@tamagui/animations-moti` to `@tamagui/animations-react-native`.
 
 ## Expo EAS Update
 
@@ -195,15 +208,17 @@ Icons are populated from [icones](https://icones.js.org)
 
 Authentication is handled by Supabase Auth. Email and password auth is included in the starter but you can get OAuth to work too.
 
-Check emails that are sent to you locally like the auth confirmation using InBucket at http://localhost:54324 once your Supabase is running.
+Check emails that are sent to you locally like the auth confirmation using InBucket at http://localhost:54324 once your Supabase is running `yarn supa start` from the root of the project.
 
 Getting OAuth to work on web is as easy as it gets but on native, you will need to manually get the OAuth credentials, and then feed them to the Supabase session. See [this article](https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf) for more info on how to handle native OAuth with Supabase.
 
-### Guarding Pages on Web
+For a detailed guide about Supabase on Takeout and all available script commands see [Supabase README](/supabase/README.md)
 
-You can use standard Next.js server side functions. So far we've used getServerSideProps to protect routes (see `apps/next/utils/userProtected.ts` and `apps/next/utils/guestOnly.ts`) but you can also use middleware if you see fit.
+### Protecting Pages on Web
 
-### Guarding Screens on Native
+We use middlewares to protect routes on the web. See `apps/next/middleware.ts`.
+
+### Protecting Screens on Native
 
 We use a hook to check for auth and then redirect the user to auth pages, and also not let the authenticated users see auth pages. See `apps/expo/app/provider/auth/AuthProvider.native.ts`.
 
@@ -318,3 +333,7 @@ EAS has already been configured for you, but you still need to do the following:
 - I get the error `network request failed` when trying to signin or signup for the app
 
 This error is likely caused my not having Supabase setup correctly and running in docker.
+
+- Where is the initial page that gets rendered on the Expo app?
+
+We recommend you familiarize yourself with how Expo Router handles routing on [their docs](https://docs.expo.dev/router/introduction/). In a fresh Takeout project, the initial page would be on `apps/expo/app/(tabs)/index.tsx`.

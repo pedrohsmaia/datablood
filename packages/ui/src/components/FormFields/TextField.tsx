@@ -1,6 +1,6 @@
 import { useStringFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
-import { Fieldset, Input, InputProps, Label, Theme, useThemeName } from 'tamagui'
+import { Fieldset, Input, InputProps, Label, Theme } from 'tamagui'
 
 import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
@@ -12,12 +12,11 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secure
     formState: { isSubmitting },
   } = useTsController<string>()
   const { label, placeholder, isOptional, maxLength, isEmail } = useStringFieldInfo()
-  const themeName = useThemeName()
   const id = useId()
   const disabled = isSubmitting
 
   return (
-    <Theme name={error ? 'red' : themeName} forceClassName>
+    <Theme name={error ? 'red' : null} forceClassName>
       <Fieldset>
         {!!label && (
           <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
@@ -31,7 +30,7 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secure
             placeholderTextColor="$color10"
             spellCheck={isEmail ? false : undefined}
             autoCapitalize={isEmail ? 'none' : undefined}
-            keyboardType={isEmail ? 'email-address' : undefined}
+            inputMode={isEmail ? 'email' : undefined}
             value={field.value}
             onChangeText={(text) => field.onChange(text)}
             onBlur={field.onBlur}

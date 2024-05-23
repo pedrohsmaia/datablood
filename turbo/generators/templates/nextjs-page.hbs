@@ -1,6 +1,6 @@
 import { {{ pascalCase screenName }}Screen } from 'app/features/{{ dashCase featureName }}/{{ dashCase screenName }}-screen'
 import Head from 'next/head'
-import { userProtectedGetSSP } from 'utils/userProtected'
+
 import { NextPageWithLayout } from 'pages/_app'
 
 export const Page: NextPageWithLayout = () => {
@@ -16,6 +16,6 @@ export const Page: NextPageWithLayout = () => {
 
 // Page.getLayout = (page) => <YourLayout>{page}</YourLayout>
 
-export const getServerSideProps = userProtectedGetSSP()
+
 
 export default Page
