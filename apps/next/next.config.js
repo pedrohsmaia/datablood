@@ -63,6 +63,7 @@ const plugins = [
 module.exports = () => {
   /** @type {import('next').NextConfig} */
   let config = {
+    output: 'export',
     images: {
       remotePatterns: [
         {
