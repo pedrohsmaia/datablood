@@ -255,7 +255,7 @@ const OverviewSection = () => {
         <RightSubheaderButton href="/">View All Stats</RightSubheaderButton>
       </XStack>
 
-      <ScrollAdapt itemWidth={200} withSnap>
+      <ScrollAdapt itemWidth={180} withSnap>
         <OverviewCard title="MRR" value="$18,908" badgeText="+0.5%" badgeState="success" />
 
         <OverviewCard title="ARR" value="$204,010" badgeText="+40.5%" badgeState="success" />
@@ -302,6 +302,16 @@ const cardsData = [
         name: 'Jane Doe',
         id: 2,
       },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=68/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=8/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
     ],
   },
   {
@@ -311,14 +321,19 @@ const cardsData = [
     tag: 'React',
     authors: [
       {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        avatar: 'https://i.pravatar.cc/150?img=32?ca=1',
         name: 'John Doe',
         id: 1,
       },
       {
-        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        avatar: 'https://i.pravatar.cc/150?img=30?ca=1',
         name: 'Jane Doe',
         id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=31?ca=1',
+        name: 'Jane Doe',
+        id: 3,
       },
     ],
   },
@@ -350,7 +365,22 @@ const cardsData = [
         id: 1,
       },
       {
-        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        avatar: 'https://i.pravatar.cc/150?img=11?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=2?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=3?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=4?ca=1',
         name: 'Jane Doe',
         id: 2,
       },
@@ -362,12 +392,17 @@ const cardsData = [
     tag: 'React',
     authors: [
       {
+        avatar: 'https://i.pravatar.cc/150?img=32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
         avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
         name: 'John Doe',
         id: 1,
       },
       {
-        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        avatar: 'https://i.pravatar.cc/150?img=7?ca=1',
         name: 'Jane Doe',
         id: 2,
       },

@@ -28,7 +28,7 @@ export const FeedCard = ({
   withImages?: boolean
 } & CardProps) => {
   return (
-    <Card br="$4" bordered overflow="hidden" {...props}>
+    <Card br="$3" bordered overflow="hidden" {...props}>
       <Card.Header p="$0">
         {withImages && (
           <Image

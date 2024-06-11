@@ -20,11 +20,11 @@ export const OverviewCard = ({
     <Card
       br="$0"
       backgroundColor="transparent"
-      miw={200}
+      miw={180}
       $gtMd={{ miw: 220, f: 1, fb: 0 }}
       {...props}
     >
-      <Card.Header f={1} jc="space-between" pl="$0" pt="$1">
+      <Card.Header f={1} jc="space-between" pl="$0" pt="$1" $platform-native={{ pb: '$0' }}>
         <H6 size="$4" fow="$1" theme="alt2">
           {title}
         </H6>
