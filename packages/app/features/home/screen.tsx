@@ -142,7 +142,7 @@ const quarterMinusSpace = validToken(
 const AchievementsSection = () => {
   return (
     <YStack gap="$2" $platform-native={{ gap: '$0' }}>
-      <XStack ai="center" gap="$2" jc="space-between" mb="$3">
+      <XStack ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fow="400">Getting Started</H4>
         <RightSubheaderButton href="/"> All Achievements</RightSubheaderButton>
       </XStack>
@@ -376,12 +376,20 @@ const cardsData = [
 ]
 const PostsSection = () => {
   return (
-    <View gap="$4" flexDirection="row" $platform-native={{ flexDirection: 'column' }}>
-      <XStack ai="center" gap="$2" jc="space-between" mb="$4">
+    <View gap="$2" flexDirection="row" $platform-native={{ flexDirection: 'column' }}>
+      <XStack ai="center" gap="$2" jc="space-between" mb="$3">
         <H4 fow="400">Latest Posts</H4>
         <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
       </XStack>
-      <YStack gap="$3" mb="$4" jc="flex-start" fw="wrap" maxWidth="100%" mr="$2">
+      <YStack
+        gap="$3"
+        mb="$4"
+        $platform-native={{ mb: '$0' }}
+        jc="flex-start"
+        fw="wrap"
+        maxWidth="100%"
+        mr="$2"
+      >
         {cardsData.map((card) => (
           <FeedCard
             key={card.title}

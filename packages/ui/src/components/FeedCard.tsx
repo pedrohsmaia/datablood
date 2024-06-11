@@ -29,19 +29,16 @@ export const FeedCard = ({
 } & CardProps) => {
   return (
     <Card br="$4" bordered overflow="hidden" {...props}>
-      <Card.Header>
+      <Card.Header p="$0">
         {withImages && (
           <Image
             source={{
               uri: `https://picsum.photos/seed/${title}/1000/500`,
             }}
             h={150}
-            $sm={{
-              h: 100,
-            }}
           />
         )}
-        <YStack px="$4" pt="$4" gap="$2">
+        <YStack p="$2" gap="$2">
           {!!tag && (
             <H6 size="$2" theme="alt2" mb="$1">
               {tag}
