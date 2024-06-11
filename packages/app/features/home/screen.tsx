@@ -39,7 +39,7 @@ const defaultAuthors = [
 
 export function HomeScreen() {
   return (
-    <XStack maw={1480} als="center" f={1}>
+    <XStack maw={1480} als="center" f={1} marginLeft="$2">
       <ScrollView f={3} fb={0}>
         <YStack gap="$3" pt="$5" pb="$8">
           <Greetings />
@@ -141,7 +141,7 @@ const quarterMinusSpace = validToken(
 const AchievementsSection = () => {
   return (
     <YStack gap="$4">
-      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
+      <XStack ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 theme="alt1" fow="400">
           Getting Started
         </H4>
@@ -149,7 +149,7 @@ const AchievementsSection = () => {
       </XStack>
 
       <ScrollAdapt>
-        <XStack px="$4" fw="wrap" f={1} gap="$3">
+        <XStack fw="wrap" f={1} gap="$3">
           <Theme name="green">
             <AchievementCard
               w={300}
@@ -240,7 +240,7 @@ const RightSubheaderButton = ({ href, children }: { href: string; children: Reac
         chromeless
         {...useLink({ href: '/' })}
         iconAfter={ArrowRight}
-        $platform-native={{ paddingRight: 0, pressStyle: { borderWidth: 0 } }}
+        $platform-native={{ paddingRight: '$2', pressStyle: { borderWidth: 0 } }}
       >
         {children}
       </Button>
@@ -251,7 +251,7 @@ const RightSubheaderButton = ({ href, children }: { href: string; children: Reac
 const OverviewSection = () => {
   return (
     <YStack>
-      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
+      <XStack ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fow="400">Overview</H4>
         <RightSubheaderButton href="/">View All Stats</RightSubheaderButton>
       </XStack>
@@ -289,12 +289,12 @@ const feedCardWidthMd = validToken(
 const PostsSection = () => {
   return (
     <YStack gap="$4">
-      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
+      <XStack ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fow="400">Latest Posts</H4>
         <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
       </XStack>
       <ScrollAdapt>
-        <XStack px="$4" gap="$4" mb="$4" jc="flex-start" fw="wrap">
+        <XStack gap="$3" mb="$4" jc="flex-start" fw="wrap">
           <FeedCard
             withImages
             w={300}
@@ -387,7 +387,7 @@ function ScrollAdapt({
 const Greetings = () => {
   const greetingQuery = api.greeting.greet.useQuery()
   return (
-    <H2 px="$4" my="$2">
+    <H2 my="$2" mr="$4">
       {greetingQuery.data || '-'}
     </H2>
   )

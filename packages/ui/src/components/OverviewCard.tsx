@@ -1,4 +1,4 @@
-import { CardProps, Card, H6, H2, Paragraph, Button, XStack, Theme } from 'tamagui'
+import { type CardProps, Card, H6, H2, Paragraph, Button, XStack, Theme } from 'tamagui'
 
 export type OverviewCardTypes = {
   title: string
@@ -17,8 +17,14 @@ export const OverviewCard = ({
   ...props
 }: OverviewCardTypes) => {
   return (
-    <Card br="$0" bg="transparent" miw={200} $gtMd={{ miw: 220, f: 1, fb: 0 }} {...props}>
-      <Card.Header f={1} jc="space-between">
+    <Card
+      br="$0"
+      backgroundColor="transparent"
+      miw={200}
+      $gtMd={{ miw: 220, f: 1, fb: 0 }}
+      {...props}
+    >
+      <Card.Header f={1} jc="space-between" pl="$0">
         <H6 size="$4" fow="$1" theme="alt2">
           {title}
         </H6>
