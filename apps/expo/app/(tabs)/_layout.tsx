@@ -1,7 +1,7 @@
-import { Avatar, Circle, ColorTokens, Theme, YStack, validToken } from '@my/ui'
-import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
+import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken } from '@my/ui'
+import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { LinearGradient } from '@tamagui/linear-gradient'
-import { Home, Plus } from '@tamagui/lucide-icons'
+import { Home, Plus, Settings } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
 import { Stack, Tabs } from 'expo-router'
 import { SolitoImage } from 'solito/image'
@@ -24,6 +24,13 @@ export default function Layout() {
           }}
         />
         <Tabs.Screen
+          name="settings"
+          options={{
+            title: 'Settings',
+            tabBarIcon: ({ size, color }) => <Settings col={color as ColorTokens} size={size} />,
+          }}
+        />
+        {/* <Tabs.Screen
           name="_create"
           listeners={({ navigation }: any) => ({
             tabPress: (event: any) => {
@@ -35,12 +42,12 @@ export default function Layout() {
             title: 'New',
             tabBarIcon: PlusButton,
           }}
-        />
+        /> */}
         <Tabs.Screen
           name="profile"
           options={{
             title: 'Profile',
-            tabBarIcon: ProfileTabIcon,
+            tabBarIcon: ({ size, color }) => <Settings col={color as ColorTokens} size={size} />,
           }}
         />
       </Tabs>
