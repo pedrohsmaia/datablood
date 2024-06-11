@@ -236,16 +236,29 @@ const AchievementsSection = () => {
   )
 }
 
+const RightSubheaderButton = ({ href }: { href: string }) => {
+  return (
+    <Theme name="alt2">
+      <Button
+        size="$2"
+        chromeless
+        {...useLink({ href: '/' })}
+        iconAfter={ArrowRight}
+        style={{ paddingRight: 0 }}
+        $platform-native={{ pressStyle: { borderWidth: 0 } }}
+      >
+        View All Stats
+      </Button>
+    </Theme>
+  )
+}
+
 const OverviewSection = () => {
   return (
-    <YStack gap="$4">
+    <YStack>
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fow="400">Overview</H4>
-        <Theme name="alt2">
-          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-            View All Stats
-          </Button>
-        </Theme>
+        <RightSubheaderButton href="/" />
       </XStack>
 
       <ScrollAdapt itemWidth={200} withSnap>
