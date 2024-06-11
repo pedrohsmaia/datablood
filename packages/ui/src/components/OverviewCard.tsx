@@ -24,7 +24,7 @@ export const OverviewCard = ({
       $gtMd={{ miw: 220, f: 1, fb: 0 }}
       {...props}
     >
-      <Card.Header f={1} jc="space-between" pl="$0">
+      <Card.Header f={1} jc="space-between" pl="$0" pt="$1">
         <H6 size="$4" fow="$1" theme="alt2">
           {title}
         </H6>

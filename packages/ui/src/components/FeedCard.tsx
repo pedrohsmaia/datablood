@@ -2,7 +2,7 @@ import { LinearGradient } from '@tamagui/linear-gradient'
 import {
   Avatar,
   Card,
-  CardProps,
+  type CardProps,
   H4,
   H6,
   Image,

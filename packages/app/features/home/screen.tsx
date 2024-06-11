@@ -12,6 +12,7 @@ import {
   Separator,
   Theme,
   TodoCard,
+  View,
   XStack,
   YStack,
   isWeb,
@@ -43,7 +44,7 @@ export function HomeScreen() {
       <ScrollView f={3} fb={0}>
         <YStack gap="$3" pt="$5" pb="$8">
           <Greetings />
-          <YStack gap="$6">
+          <YStack gap="$8" mt="$2">
             <AchievementsSection />
             <OverviewSection />
             <PostsSection />
@@ -140,11 +141,9 @@ const quarterMinusSpace = validToken(
 
 const AchievementsSection = () => {
   return (
-    <YStack gap="$4">
-      <XStack ai="center" gap="$2" jc="space-between" mb="$4">
-        <H4 theme="alt1" fow="400">
-          Getting Started
-        </H4>
+    <YStack gap="$2" $platform-native={{ gap: '$0' }}>
+      <XStack ai="center" gap="$2" jc="space-between" mb="$3">
+        <H4 fow="400">Getting Started</H4>
         <RightSubheaderButton href="/"> All Achievements</RightSubheaderButton>
       </XStack>
 
@@ -250,8 +249,8 @@ const RightSubheaderButton = ({ href, children }: { href: string; children: Reac
 
 const OverviewSection = () => {
   return (
-    <YStack>
-      <XStack ai="center" gap="$2" jc="space-between" mb="$4">
+    <YStack gap="$2" $platform-native={{ gap: '$0' }}>
+      <XStack ai="center" gap="$2" jc="space-between" mb="$3">
         <H4 fow="400">Overview</H4>
         <RightSubheaderButton href="/">View All Stats</RightSubheaderButton>
       </XStack>
@@ -286,76 +285,119 @@ const feedCardWidthMd = validToken(
   })
 )
 
+const cardsData = [
+  {
+    title: 'Why lorem ipsum look bad',
+    description:
+      "Maybe it's just me - I'll just write out some dummy text just ignore the text tyvm...",
+    tag: 'Design',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+    ],
+  },
+  {
+    title: 'Why you should use Tamagui',
+    description:
+      'Tamagui is the best way to develop performant cross-platform apps with one codebase...',
+    tag: 'React',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+    ],
+  },
+  {
+    title: 'Merits of functional programming',
+    description: "What is FP anyways? let's talk about it and learn about it's pros and cons...",
+    tag: 'Programming',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+    ],
+  },
+  {
+    title: 'Different React paradigms',
+    description: "We're gonna talk about different react paradigm and jargons...",
+    tag: 'React',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+    ],
+  },
+  {
+    title: 'Another Post',
+    description: "Hey this is yet another post I'm putting here for demo purposes...",
+    tag: 'React',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+    ],
+  },
+]
 const PostsSection = () => {
   return (
-    <YStack gap="$4">
+    <View gap="$4" flexDirection="row" $platform-native={{ flexDirection: 'column' }}>
       <XStack ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fow="400">Latest Posts</H4>
         <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
       </XStack>
-      <ScrollAdapt>
-        <XStack gap="$3" mb="$4" jc="flex-start" fw="wrap">
+      <YStack gap="$3" mb="$4" jc="flex-start" fw="wrap" maxWidth="100%" mr="$2">
+        {cardsData.map((card) => (
           <FeedCard
+            key={card.title}
             withImages
             w={300}
             $gtMd={{ w: feedCardWidthMd }}
-            title="Why lorem ipsum look bad"
-            description="Maybe it's just me - I'll just write out some dummy text just ignore the text tyvm..."
-            tag="Design"
-            authors={defaultAuthors}
+            title={card.title}
+            description={card.description}
+            tag={card.tag}
+            authors={card.authors}
+            $platform-web={{ maxWidth: 300 }}
+            $platform-native={{ minWidth: '100%', maxWidth: '100%' }}
           />
-
-          <FeedCard
-            withImages
-            w={300}
-            $gtMd={{ w: feedCardWidthMd }}
-            title="Why you should use Tamagui"
-            description="Tamagui is the best way to develop performant cross-platform apps with one codebase..."
-            tag="React"
-            authors={defaultAuthors}
-          />
-
-          <FeedCard
-            withImages
-            w={300}
-            $gtMd={{ w: feedCardWidthMd }}
-            title="Merits of functional programming"
-            description="What is FP anyways? let's talk about it and learn about it's pros and cons..."
-            tag="Programming"
-            authors={defaultAuthors}
-          />
-
-          <FeedCard
-            withImages
-            w={300}
-            $gtMd={{ w: feedCardWidthMd }}
-            title="Different React paradigms"
-            description="We're gonna talk about different react paradigm and jargons..."
-            tag="React"
-            authors={defaultAuthors}
-          />
-
-          <FeedCard
-            withImages
-            w={300}
-            $gtMd={{ w: feedCardWidthMd }}
-            title="Another Post"
-            description="Hey this is yet another post I'm putting here for demo purposes..."
-            tag="React"
-            authors={defaultAuthors}
-          />
-          <FeedCard
-            withImages
-            w={300}
-            $gtMd={{ w: feedCardWidthMd }}
-            title="And Another Post"
-            description="I'm out of ideas for dummy posts, Sint labore sit magna ea proident aute..."
-            tag="React"
-            authors={defaultAuthors}
-          />
-        </XStack>
-      </ScrollAdapt>
-    </YStack>
+        ))}
+      </YStack>
+    </View>
   )
 }
 
