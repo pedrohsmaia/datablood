@@ -10,11 +10,7 @@ import { useRouter } from 'solito/router'
 export default function Layout() {
   return (
     <>
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Stack.Screen options={{ title: 'Home' }} />
       <Tabs screenOptions={{ headerShown: false, tabBarShowLabel: false }}>
         <Tabs.Screen
           name="index"

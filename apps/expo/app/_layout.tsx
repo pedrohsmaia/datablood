@@ -1,10 +1,14 @@
-import { Session } from '@supabase/supabase-js'
+import { ProfileScreen } from '@my/app/features/profile/screen'
+import { SettingsScreen } from '@my/app/features/settings/screen'
+import type { Session } from '@supabase/supabase-js'
 import { Provider, loadThemePromise } from 'app/provider'
 import { supabase } from 'app/utils/supabase/client.native'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
+import { Drawer } from 'expo-router/drawer'
 import { useCallback, useEffect, useState } from 'react'
 import { LogBox, View } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -49,10 +53,12 @@ export default function HomeLayout() {
   }
 
   return (
-    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <Provider initialSession={initialSession}>
-        <Stack />
-      </Provider>
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <Provider initialSession={initialSession}>
+          <Drawer drawerContent={ProfileScreen} />
+        </Provider>
+      </View>
+    </GestureHandlerRootView>
   )
 }

@@ -42,7 +42,7 @@ export function HomeScreen() {
   return (
     <XStack maw={1480} als="center" f={1} marginLeft="$2">
       <ScrollView f={3} fb={0}>
-        <YStack gap="$3" pt="$5" pb="$8">
+        <YStack gap="$3" pt="$2" pb="$8">
           <Greetings />
           <YStack gap="$8" mt="$2">
             <AchievementsSection />

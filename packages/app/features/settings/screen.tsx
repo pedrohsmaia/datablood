@@ -14,11 +14,11 @@ export const SettingsScreen = () => {
   const pathname = usePathname()
 
   return (
-    <YStack f={1} gap="$2" jc="space-between">
+    <YStack f={1} gap="$1" jc="space-between">
       <ScrollView>
-        <Settings mt="$6">
+        <Settings mt="$4">
           <Settings.Items>
-            <Settings.Group $gtSm={{ space: '$2' }}>
+            <Settings.Group $gtSm={{ space: '$1' }}>
               <Settings.Item
                 icon={Cog}
                 isActive={pathname === 'settings/general'}

@@ -3,6 +3,8 @@ import {
   Button,
   H1,
   H2,
+  H3,
+  H4,
   Paragraph,
   ScrollView,
   Settings,
@@ -10,43 +12,36 @@ import {
   YStack,
   getTokens,
 } from '@my/ui'
-import { Box, Cog, Milestone, ShoppingCart, Users } from '@tamagui/lucide-icons'
+import { DrawerContentScrollView } from '@react-navigation/drawer'
+import { Box, Cog, Milestone, ShoppingCart, Users, User } from '@tamagui/lucide-icons'
 import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import { useUser } from 'app/utils/useUser'
 import { SolitoImage } from 'solito/image'
 import { Link, useLink } from 'solito/link'
 
-export function ProfileScreen() {
+export function ProfileScreen(props) {
   const { profile, avatarUrl } = useUser()
   const name = profile?.name
   const about = profile?.about
 
   const insets = useSafeAreaInsets()
   return (
-    <ScrollView>
-      <YStack
-        maw={600}
-        mx="auto"
-        w="100%"
-        f={1}
-        gap="$4"
-        pb={insets.bottom + 20}
-        pt={insets.top + 10}
-      >
-        <YStack gap="$8">
-          <XStack gap="$2" jc="center" $sm={{ mt: '$8' }}>
-            <Avatar circular size="$14">
+    <DrawerContentScrollView {...props}>
+      <YStack maw={600} mx="auto" w="100%" f={1}>
+        <YStack gap="$4" mb="$4">
+          <XStack gap="$2" jc="center" $sm={{ mt: '$4' }}>
+            <Avatar circular size="$7">
               <SolitoImage
                 src={avatarUrl}
                 alt="your avatar"
-                width={getTokens().size['14'].val}
-                height={getTokens().size['14'].val}
+                width={getTokens().size['7'].val}
+                height={getTokens().size['7'].val}
               />
             </Avatar>
           </XStack>
           <YStack gap="$2">
             {name ? (
-              <H1 ta="center">{name}</H1>
+              <H4 ta="center">{name}</H4>
             ) : (
               <Link href="/profile/edit?edit_name=1">
                 <H2 ta="center">No Name</H2>
@@ -54,19 +49,18 @@ export function ProfileScreen() {
             )}
 
             {!!about && (
-              <Paragraph theme="alt1" ta="center" size="$6">
+              <Paragraph theme="alt1" ta="center" size="$4">
                 {about}
               </Paragraph>
             )}
           </YStack>
         </YStack>
-        <Button mx="$4" {...useLink({ href: '/profile/edit' })} themeInverse>
-          Edit Profile
-        </Button>
-
         <Settings>
           <Settings.Items>
             <Settings.Group>
+              <Settings.Item icon={User} {...useLink({ href: '/profile/edit' })} accentTheme="pink">
+                Edit profile
+              </Settings.Item>
               {/* dummy item - doesn't lead anywhere */}
               <Settings.Item icon={Box} accentTheme="green">
                 My Items
@@ -76,7 +70,7 @@ export function ProfileScreen() {
                 Refer Your Friends
               </Settings.Item>
               {/* dummy item - doesn't lead anywhere */}
-              <Settings.Item icon={Milestone} accentTheme="blue">
+              <Settings.Item icon={Milestone} accentTheme="gray">
                 Address Info
               </Settings.Item>
               {/* dummy item - doesn't lead anywhere */}
@@ -90,6 +84,6 @@ export function ProfileScreen() {
           </Settings.Items>
         </Settings>
       </YStack>
-    </ScrollView>
+    </DrawerContentScrollView>
   )
 }
