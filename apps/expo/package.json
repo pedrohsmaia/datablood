@@ -16,6 +16,8 @@
     "eas:update:staging:android": "cross-env NODE_ENV=staging APP_ENV=staging eas update --channel staging --platform android",
     "eas:build:dev:simulator:ios": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development:simulator --platform ios",
     "eas:build:dev:ios": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development --platform ios",
+    "eas:build:dev:device:ios": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development:device --platform ios",
+    "eas:build:dev:device:android": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development:device --platform android",
     "eas:submit:dev:ios": "cross-env NODE_ENV=development APP_ENV=development eas submit --profile staging --platform ios",
     "eas:update:dev:ios": "cross-env NODE_ENV=development APP_ENV=development eas update --channel staging --platform ios",
     "eas:build:staging:ios": "cross-env NODE_ENV=staging APP_ENV=staging eas build --profile staging --platform ios",

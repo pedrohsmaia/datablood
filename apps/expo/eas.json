@@ -15,6 +15,17 @@
         "image": "latest"
       }
     },
+    "development:device": {
+      "distribution": "internal",
+      "developmentClient": true,
+      "channel": "development",
+      "env": {
+        "APP_ENV": "development"
+      },
+      "ios": {
+        "image": "latest"
+      }
+    },
     "development": {
       "distribution": "internal",
       "channel": "development",
