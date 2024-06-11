@@ -145,11 +145,7 @@ const AchievementsSection = () => {
         <H4 theme="alt1" fow="400">
           Getting Started
         </H4>
-        <Theme name="alt2">
-          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-            All Achievements
-          </Button>
-        </Theme>
+        <RightSubheaderButton href="/"> All Achievements</RightSubheaderButton>
       </XStack>
 
       <ScrollAdapt>
@@ -236,7 +232,7 @@ const AchievementsSection = () => {
   )
 }
 
-const RightSubheaderButton = ({ href }: { href: string }) => {
+const RightSubheaderButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
   return (
     <Theme name="alt2">
       <Button
@@ -244,10 +240,9 @@ const RightSubheaderButton = ({ href }: { href: string }) => {
         chromeless
         {...useLink({ href: '/' })}
         iconAfter={ArrowRight}
-        style={{ paddingRight: 0 }}
-        $platform-native={{ pressStyle: { borderWidth: 0 } }}
+        $platform-native={{ paddingRight: 0, pressStyle: { borderWidth: 0 } }}
       >
-        View All Stats
+        {children}
       </Button>
     </Theme>
   )
@@ -258,7 +253,7 @@ const OverviewSection = () => {
     <YStack>
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fow="400">Overview</H4>
-        <RightSubheaderButton href="/" />
+        <RightSubheaderButton href="/">View All Stats</RightSubheaderButton>
       </XStack>
 
       <ScrollAdapt itemWidth={200} withSnap>
@@ -296,11 +291,7 @@ const PostsSection = () => {
     <YStack gap="$4">
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 fow="400">Latest Posts</H4>
-        <Theme name="alt2">
-          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
-            View All Posts
-          </Button>
-        </Theme>
+        <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
       </XStack>
       <ScrollAdapt>
         <XStack px="$4" gap="$4" mb="$4" jc="flex-start" fw="wrap">
