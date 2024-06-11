@@ -20,7 +20,7 @@ import {
 } from '@my/ui'
 import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
 import { api } from 'app/utils/api'
-import React from 'react'
+import type React from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
 
@@ -165,7 +165,11 @@ const AchievementsSection = () => {
               }}
               icon={DollarSign}
               title="Make your first 100K"
-              progress={{ current: 81_500, full: 100_000, label: 'dollars made' }}
+              progress={{
+                current: 81_500,
+                full: 100_000,
+                label: 'dollars made',
+              }}
               action={{
                 text: 'Boost your sales',
                 props: useLink({ href: '#' }),
@@ -244,26 +248,24 @@ const OverviewSection = () => {
         </Theme>
       </XStack>
 
-      <ScrollAdapt>
-        <XStack fw="wrap" ai="flex-start" jc="flex-start" px="$4" gap="$8" mb="$4">
-          <OverviewCard title="MRR" value="$18,908" badgeText="+0.5%" badgeState="success" />
+      <ScrollAdapt itemWidth={200} withSnap>
+        <OverviewCard title="MRR" value="$18,908" badgeText="+0.5%" badgeState="success" />
 
-          <OverviewCard title="ARR" value="$204,010" badgeText="+40.5%" badgeState="success" />
+        <OverviewCard title="ARR" value="$204,010" badgeText="+40.5%" badgeState="success" />
 
-          <OverviewCard
-            title="Today's new users"
-            value="4 Users"
-            badgeText="+25%"
-            badgeState="success"
-          />
+        <OverviewCard
+          title="Today's new users"
+          value="4 Users"
+          badgeText="+25%"
+          badgeState="success"
+        />
 
-          <OverviewCard
-            title="Weekly Post Views"
-            value="30,104"
-            badgeText="-2%"
-            badgeState="failure"
-          />
-        </XStack>
+        <OverviewCard
+          title="Weekly Post Views"
+          value="30,104"
+          badgeText="-2%"
+          badgeState="failure"
+        />
       </ScrollAdapt>
     </YStack>
   )
@@ -353,10 +355,24 @@ const PostsSection = () => {
   )
 }
 
-function ScrollAdapt({ children }: { children: React.ReactNode }) {
+function ScrollAdapt({
+  children,
+  withSnap = false,
+  itemWidth,
+}: {
+  children: React.ReactNode
+  withSnap?: boolean
+  itemWidth?: number
+}) {
   const { md } = useMedia()
   return md ? (
-    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      {...(itemWidth && { snapToInterval: itemWidth })}
+      snapToAlignment="start"
+      {...(withSnap && { decelerationRate: 0.9 })}
+    >
       {children}
     </ScrollView>
   ) : (
