@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "myapp",
-    "slug": "myapp",
+    "name": "takeout demo",
+    "slug": "takeout-demo",
     "jsEngine": "hermes",
     "scheme": "myapp",
     "version": "1.0.0",
@@ -22,7 +22,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.acme.myapp"
+      "bundleIdentifier": "dev.tamagui.takeoutdemo"
     },
     "android": {
       "softwareKeyboardLayoutMode": "pan",
@@ -30,7 +30,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.acme.myapp",
+      "package": "dev.tamagui.takeoutdemo",
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ]
