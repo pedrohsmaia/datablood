@@ -41,7 +41,6 @@ export default function Layout() {
         <Tabs.Screen
           name="index"
           options={{
-            // tabBarBadge: 4,
             title: 'Home',
             tabBarIcon: ({ size, color, focused }) => (
               <Home col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
