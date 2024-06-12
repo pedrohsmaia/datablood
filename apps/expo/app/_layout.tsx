@@ -56,24 +56,7 @@ export default function HomeLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
         <Provider initialSession={initialSession}>
-          <Stack>
-            <Stack.Screen
-              name="create"
-              options={{
-                headerShown: false,
-                presentation: 'modal',
-              }}
-            />
-            {/* <Stack.Screen
-              name="index"
-              options={
-                {
-                  // presentation: 'modal',
-                }
-              }
-            /> */}
-            {/* <Drawer drawerContent={ProfileScreen} /> */}
-          </Stack>
+          <Drawer drawerContent={ProfileScreen} />
         </Provider>
       </View>
     </GestureHandlerRootView>
