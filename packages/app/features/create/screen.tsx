@@ -47,15 +47,14 @@ export const CreateScreen = () => {
       }}
       renderAfter={({ submit }) => (
         <Theme inverse>
-          <SubmitButton onPress={() => submit()}>Submit</SubmitButton>
+          <SubmitButton onPress={() => submit()}>Create</SubmitButton>
         </Theme>
       )}
     >
       {(fields) => (
         <>
-          <YStack gap="$2" py="$4" pb="$8">
+          <YStack gap="$2" py="$4" pb="$0" pt="$0">
             {isWeb && <H2 ta="center">New Project</H2>}
-            <Paragraph ta="center">Dummy page showing a form</Paragraph>
           </YStack>
           {Object.values(fields)}
         </>
