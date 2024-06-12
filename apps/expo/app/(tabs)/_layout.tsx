@@ -19,7 +19,7 @@ export default function Layout() {
           headerTintColor: accentColor.val,
           headerRight: ({}) => (
             <Pressable
-              marginRight={10}
+              marginRight={12}
               onPress={() => {
                 navigation.navigate('create')
               }}
@@ -53,19 +53,6 @@ export default function Layout() {
             tabBarIcon: ({ size, color }) => <Settings col={color as ColorTokens} size={size} />,
           }}
         />
-        {/* <Tabs.Screen
-          name="_create"
-          listeners={({ navigation }: any) => ({
-            tabPress: (event: any) => {
-              event.preventDefault()
-              navigation.navigate('create')
-            },
-          })}
-          options={{
-            title: 'New',
-            tabBarIcon: PlusButton,
-          }}
-        /> */}
         <Tabs.Screen
           name="profile"
           options={{

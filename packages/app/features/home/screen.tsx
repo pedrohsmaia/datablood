@@ -19,9 +19,11 @@ import {
   useMedia,
   validToken,
 } from '@my/ui'
+import { useScrollToTop } from '@react-navigation/native'
 import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
 import { api } from 'app/utils/api'
 import type React from 'react'
+import { useRef } from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
 
@@ -37,11 +39,13 @@ const defaultAuthors = [
     avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
   },
 ]
-
 export function HomeScreen() {
+  const ref = useRef(null)
+  useScrollToTop(ref)
+
   return (
     <XStack maw={1480} als="center" f={1} marginLeft="$2">
-      <ScrollView f={3} fb={0}>
+      <ScrollView f={3} fb={0} ref={ref}>
         <YStack gap="$3" pt="$2" pb="$3">
           <Greetings />
           <YStack gap="$8" mt="$2">
