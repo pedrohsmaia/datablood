@@ -1,4 +1,4 @@
-import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken } from '@my/ui'
+import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken, useTheme } from '@my/ui'
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus, Settings } from '@tamagui/lucide-icons'
@@ -9,12 +9,14 @@ import { SolitoImage } from 'solito/image'
 import { useRouter } from 'solito/router'
 
 export default function Layout() {
+  const { accentColor } = useTheme()
   const navigation = useNavigation()
   return (
     <>
       <Stack.Screen
         options={{
           title: 'Home',
+          headerTintColor: accentColor.val,
           headerRight: ({}) => (
             <Pressable
               marginRight={10}
@@ -27,10 +29,19 @@ export default function Layout() {
           ),
         }}
       />
-      <Tabs screenOptions={{ headerShown: false, tabBarShowLabel: false }}>
+      <Tabs
+        screenOptions={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          headerTintColor: accentColor.val,
+          tabBarActiveTintColor: accentColor.val,
+          tabBarInactiveTintColor: accentColor.val,
+        }}
+      >
         <Tabs.Screen
           name="index"
           options={{
+            // tabBarBadge: 4,
             title: 'Home',
             tabBarIcon: ({ size, color }) => <Home col={color as ColorTokens} size={size} />,
           }}

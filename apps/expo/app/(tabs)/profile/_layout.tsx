@@ -6,9 +6,11 @@ export default function Layout() {
       <Stack.Screen name="index" />
       <Stack.Screen
         name="edit"
-        options={{
-          presentation: 'modal',
-        }}
+        options={
+          {
+            // presentation: 'modal',
+          }
+        }
       />
     </Stack>
   )

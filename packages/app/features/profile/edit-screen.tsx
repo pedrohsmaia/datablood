@@ -79,7 +79,7 @@ const EditProfileForm = ({
     >
       {(fields) => (
         <>
-          <YStack mb="$10">
+          <YStack mb="$4" ai="center" background="$red10">
             <UploadAvatar>
               <UserAvatar />
             </UploadAvatar>

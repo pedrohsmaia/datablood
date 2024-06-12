@@ -14,9 +14,10 @@ const SettingsItems = styled(YStack, {
     // separator: <Separator boc="$color3" mx="$-4" borderWidth="$0.25" />,
     gap: '$4',
     m: '$4',
+    mx: '$3',
   },
   gap: '$4',
-  m: '$4',
+  mx: '$3',
 })
 
 const SettingsGroup = styled(YGroup, {
