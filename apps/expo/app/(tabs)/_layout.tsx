@@ -3,14 +3,30 @@ import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus, Settings } from '@tamagui/lucide-icons'
 import { useUser } from 'app/utils/useUser'
-import { Stack, Tabs } from 'expo-router'
+import { Stack, Tabs, useNavigation } from 'expo-router'
+import { Pressable } from 'react-native'
 import { SolitoImage } from 'solito/image'
 import { useRouter } from 'solito/router'
 
 export default function Layout() {
+  const navigation = useNavigation()
   return (
     <>
-      <Stack.Screen options={{ title: 'Home' }} />
+      <Stack.Screen
+        options={{
+          title: 'Home',
+          headerRight: ({}) => (
+            <Pressable
+              marginRight={10}
+              onPress={() => {
+                navigation.navigate('create')
+              }}
+            >
+              <Plus size={24} />
+            </Pressable>
+          ),
+        }}
+      />
       <Tabs screenOptions={{ headerShown: false, tabBarShowLabel: false }}>
         <Tabs.Screen
           name="index"
