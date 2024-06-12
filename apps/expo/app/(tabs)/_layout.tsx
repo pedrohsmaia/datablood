@@ -43,21 +43,27 @@ export default function Layout() {
           options={{
             // tabBarBadge: 4,
             title: 'Home',
-            tabBarIcon: ({ size, color }) => <Home col={color as ColorTokens} size={size} />,
+            tabBarIcon: ({ size, color, focused }) => (
+              <Home col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
+            ),
           }}
         />
         <Tabs.Screen
           name="settings"
           options={{
             title: 'Settings',
-            tabBarIcon: ({ size, color }) => <Settings col={color as ColorTokens} size={size} />,
+            tabBarIcon: ({ size, color, focused }) => (
+              <Settings col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
+            ),
           }}
         />
         <Tabs.Screen
           name="profile"
           options={{
             title: 'Profile',
-            tabBarIcon: ({ size, color }) => <Settings col={color as ColorTokens} size={size} />,
+            tabBarIcon: ({ size, color, focused }) => (
+              <Settings col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
+            ),
           }}
         />
       </Tabs>
