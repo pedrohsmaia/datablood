@@ -20,8 +20,9 @@ import {
   validToken,
 } from '@my/ui'
 import { useScrollToTop } from '@react-navigation/native'
-import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
+import { ArrowRight, DollarSign, Pencil, SquareStack, User, Users } from '@tamagui/lucide-icons'
 import { api } from 'app/utils/api'
+import { Stack } from 'expo-router'
 import type React from 'react'
 import { useRef } from 'react'
 import { Platform } from 'react-native'
@@ -45,6 +46,11 @@ export function HomeScreen() {
 
   return (
     <XStack maw={1480} als="center" f={1} marginLeft="$2">
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+      />
       <ScrollView f={3} fb={0} ref={ref}>
         <YStack gap="$3" pt="$2" pb="$3">
           <Greetings />
