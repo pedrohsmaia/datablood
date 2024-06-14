@@ -200,10 +200,6 @@ We use `expo-router` for the native side, so simply create `_layout.tsx` files i
 
 ![expo project id](https://github.com/tamagui/unistack/assets/2502947/8a4d3663-9eb2-4cb1-926f-0476a00ab078)
 
-## Icon Pack (Additional Purchase)
-
-Icons are populated from [icones](https://icones.js.org)
-
 ## How Authentication is Handled
 
 Authentication is handled by Supabase Auth. Email and password auth is included in the starter but you can get OAuth to work too.
@@ -247,14 +243,12 @@ Follows [how Next.js handles env variables](https://nextjs.org/docs/pages/buildi
 
 ## Installing icons and fonts
 
-If you have access to font and icon packages, simply run:
+To add an icon or font, use:
 
 ```sh
 yarn tamagui add font
 yarn tamagui add icon
 ```
-
-and choose the package you want.
 
 The package will be cloned into `packages/package-name`. After that's done, run `yarn install` and `yarn build` and follow the instructions in the package's `README.md`
 
