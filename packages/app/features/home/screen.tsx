@@ -152,7 +152,7 @@ const AchievementsSection = () => {
   return (
     <YStack gap="$2" $platform-native={{ gap: '$0' }}>
       <XStack ai="center" gap="$2" jc="space-between" mb="$4">
-        <H4 fow="400">Getting Started</H4>
+        <Paragraph>Getting Started</Paragraph>
         <RightSubheaderButton href="/"> All Achievements</RightSubheaderButton>
       </XStack>
 
@@ -244,7 +244,7 @@ const RightSubheaderButton = ({ href, children }: { href: string; children: Reac
   return (
     <Theme name="alt2">
       <Button
-        size="$2"
+        size="$3"
         chromeless
         {...useLink({ href: '/' })}
         iconAfter={ArrowRight}
@@ -260,7 +260,7 @@ const OverviewSection = () => {
   return (
     <YStack gap="$2" $platform-native={{ gap: '$0' }}>
       <XStack ai="center" gap="$2" jc="space-between" mb="$3">
-        <H4 fow="400">Overview</H4>
+        <Paragraph>Overview</Paragraph>
         <RightSubheaderButton href="/">View All Stats</RightSubheaderButton>
       </XStack>
 
@@ -422,7 +422,7 @@ const PostsSection = () => {
   return (
     <View gap="$2" flexDirection="row" $platform-native={{ flexDirection: 'column' }}>
       <XStack ai="center" gap="$2" jc="space-between" mb="$3">
-        <H4 fow="400">Latest Posts</H4>
+        <Paragraph>Latest Posts</Paragraph>
         <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
       </XStack>
       <YStack
