@@ -1,14 +1,14 @@
 import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken, useTheme } from '@my/ui'
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { LinearGradient } from '@tamagui/linear-gradient'
-import { Home, Plus, Settings } from '@tamagui/lucide-icons'
+import { Home, Plus, Settings, Menu } from '@tamagui/lucide-icons'
+import { IconHouse, IconHouseFill, IconGear, IconGearFill } from '@tamagui-icons/icon-ph'
 import { useUser } from 'app/utils/useUser'
 import { Stack, Tabs, router, useNavigation } from 'expo-router'
 import { Drawer } from 'expo-router/drawer'
 import { Pressable } from 'react-native'
 import { SolitoImage } from 'solito/image'
 import { useRouter } from 'solito/router'
-import { Menu } from '@tamagui/lucide-icons'
 
 export default function Layout() {
   const { accentColor } = useTheme()
@@ -53,27 +53,36 @@ export default function Layout() {
           name="index"
           options={{
             title: 'Home test',
-            tabBarIcon: ({ size, color, focused }) => (
-              <Home col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
-            ),
+            tabBarIcon: ({ size, color, focused }) =>
+              focused ? (
+                <IconHouseFill color={color as ColorTokens} size={size} />
+              ) : (
+                <IconHouse color={color as ColorTokens} size={size} />
+              ),
           }}
         />
         <Tabs.Screen
           name="settings"
           options={{
             title: 'Settings',
-            tabBarIcon: ({ size, color, focused }) => (
-              <Settings col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
-            ),
+            tabBarIcon: ({ size, color, focused }) =>
+              focused ? (
+                <IconGearFill color={color as ColorTokens} size={size} />
+              ) : (
+                <IconGear color="$gray10" size={size} />
+              ),
           }}
         />
         <Tabs.Screen
           name="profile"
           options={{
             title: 'Profile',
-            tabBarIcon: ({ size, color, focused }) => (
-              <Settings col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
-            ),
+            tabBarIcon: ({ size, color, focused }) =>
+              focused ? (
+                <IconGearFill color={color as ColorTokens} size={size} />
+              ) : (
+                <IconGear color={color as ColorTokens} size={size} />
+              ),
           }}
         />
       </Tabs>
