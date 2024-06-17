@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconMicrosoftPowerpointLogoBold = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M96 92H80a12 12 0 0 0-12 12v48a12 12 0 0 0 24 0v-4h4a28 28 0 0 0 0-56m0 32h-4v-8h4a4 4 0 0 1 0 8m40-104a107.49 107.49 0 0 0-80.5 36H36a20 20 0 0 0-20 20v104a20 20 0 0 0 20 20h19.5A108 108 0 1 0 136 20m0 24a84.12 84.12 0 0 1 83.13 72H168V76a20 20 0 0 0-20-20H92.68A83.67 83.67 0 0 1 136 44M40 80h104v96H40Zm96 132a83.67 83.67 0 0 1-43.32-12H148a20 20 0 0 0 20-20v-40h51.13A84.12 84.12 0 0 1 136 212"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconMicrosoftPowerpointLogoBold))
+export { Memo as IconMicrosoftPowerpointLogoBold }

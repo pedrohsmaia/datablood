@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconBasketballBold = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M128 20a108 108 0 1 0 108 108A108.12 108.12 0 0 0 128 20M60 177.28A83.59 83.59 0 0 1 44.87 140h30.27A83.1 83.1 0 0 1 60 177.28M44.87 116A83.59 83.59 0 0 1 60 78.72 83.1 83.1 0 0 1 75.14 116ZM116 211.13a83.63 83.63 0 0 1-39-16.46A106.94 106.94 0 0 0 99.34 140H116Zm0-95.13H99.34A106.94 106.94 0 0 0 77 61.33a83.63 83.63 0 0 1 39-16.46Zm80-37.28A83.59 83.59 0 0 1 211.13 116h-30.27A83.1 83.1 0 0 1 196 78.72m-56 132.41V140h16.66A106.94 106.94 0 0 0 179 194.67a83.63 83.63 0 0 1-39 16.46M156.66 116H140V44.87a83.63 83.63 0 0 1 39 16.46A106.94 106.94 0 0 0 156.66 116M196 177.28A83.1 83.1 0 0 1 180.86 140h30.27A83.59 83.59 0 0 1 196 177.28"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconBasketballBold))
+export { Memo as IconBasketballBold }

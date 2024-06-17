@@ -1,0 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, G, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconYinYangDuotone = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <G fill="currentColor">
+        <Path
+          d="M224 128a96 96 0 0 1-96 96 48 48 0 0 1 0-96 48 48 0 0 0 0-96 96 96 0 0 1 96 96"
+          opacity={0.2}
+        />
+        <Path d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24M40 128a88.1 88.1 0 0 1 88-88 40 40 0 0 1 0 80 56 56 0 0 0-50.61 80A88 88 0 0 1 40 128m88 88a40 40 0 0 1 0-80 56 56 0 0 0 50.61-79.95A88 88 0 0 1 128 216m12-40a12 12 0 1 1-12-12 12 12 0 0 1 12 12m-24-96a12 12 0 1 1 12 12 12 12 0 0 1-12-12" />
+      </G>
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconYinYangDuotone))
+export { Memo as IconYinYangDuotone }

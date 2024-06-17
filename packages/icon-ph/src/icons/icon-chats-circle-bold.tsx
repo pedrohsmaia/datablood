@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconChatsCircleBold = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M236.06 187.69A84 84 0 0 0 172.29 68.9a84 84 0 1 0-152.35 70.79l-7.24 25.36A18 18 0 0 0 35 187.3l25.36-7.24a84.27 84.27 0 0 0 23.36 7 84.05 84.05 0 0 0 112 41l25.36 7.24a18 18 0 0 0 22.25-22.25ZM61.53 155.22a12 12 0 0 0-3.3.46l-19.49 5.57 5.57-19.49a12 12 0 0 0-1-9.05 60 60 0 1 1 24 24 11.91 11.91 0 0 0-5.78-1.48Zm150.16 34.54 5.57 19.49-19.49-5.57a12 12 0 0 0-9.05 1A60.06 60.06 0 0 1 111 186.63a83.93 83.93 0 0 0 68.55-91.37 60 60 0 0 1 33.16 85.46 12 12 0 0 0-1.02 9.05Z"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconChatsCircleBold))
+export { Memo as IconChatsCircleBold }
