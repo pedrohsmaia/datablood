@@ -10,6 +10,7 @@ import {
   Paragraph,
   ScrollView,
   Separator,
+  Stack,
   Theme,
   TodoCard,
   View,
@@ -26,6 +27,131 @@ import type React from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
 
+const cardsData = [
+  {
+    title: 'Why lorem ipsum look bad',
+    description:
+      "Maybe it's just me - I'll just write out some dummy text just ignore the text tyvm...",
+    tag: 'Design',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=68/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=8/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+    ],
+  },
+  {
+    title: 'Why you should use Tamagui',
+    description:
+      'Tamagui is the best way to develop performant cross-platform apps with one codebase...',
+    tag: 'React',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=30?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=31?ca=1',
+        name: 'Jane Doe',
+        id: 3,
+      },
+    ],
+  },
+  {
+    title: 'Merits of functional programming',
+    description: "What is FP anyways? let's talk about it and learn about it's pros and cons...",
+    tag: 'Programming',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+    ],
+  },
+  {
+    title: 'Different React paradigms',
+    description: "We're gonna talk about different react paradigm and jargons...",
+    tag: 'React',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=11?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=2?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=3?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=4?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+    ],
+  },
+  {
+    title: 'Another Post',
+    description: "Hey this is yet another post I'm putting here for demo purposes...",
+    tag: 'React',
+    authors: [
+      {
+        avatar: 'https://i.pravatar.cc/150?img=32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
+        name: 'John Doe',
+        id: 1,
+      },
+      {
+        avatar: 'https://i.pravatar.cc/150?img=7?ca=1',
+        name: 'Jane Doe',
+        id: 2,
+      },
+    ],
+  },
+]
+
 const defaultAuthors = [
   {
     id: 1,
@@ -38,6 +164,7 @@ const defaultAuthors = [
     avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
   },
 ]
+
 export function HomeScreen() {
   return (
     <XStack maw={1480} als="center" f={1} marginLeft="$2">
@@ -47,7 +174,7 @@ export function HomeScreen() {
           <YStack gap="$8" mt="$2">
             <AchievementsSection />
             <OverviewSection />
-            <PostsSection />
+            {/* <PostsSection />  */}
           </YStack>
         </YStack>
       </ScrollToTopTabBarContainer>
@@ -284,130 +411,6 @@ const feedCardWidthMd = validToken(
   })
 )
 
-const cardsData = [
-  {
-    title: 'Why lorem ipsum look bad',
-    description:
-      "Maybe it's just me - I'll just write out some dummy text just ignore the text tyvm...",
-    tag: 'Design',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=68/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=8/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-    ],
-  },
-  {
-    title: 'Why you should use Tamagui',
-    description:
-      'Tamagui is the best way to develop performant cross-platform apps with one codebase...',
-    tag: 'React',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=30?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=31?ca=1',
-        name: 'Jane Doe',
-        id: 3,
-      },
-    ],
-  },
-  {
-    title: 'Merits of functional programming',
-    description: "What is FP anyways? let's talk about it and learn about it's pros and cons...",
-    tag: 'Programming',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-    ],
-  },
-  {
-    title: 'Different React paradigms',
-    description: "We're gonna talk about different react paradigm and jargons...",
-    tag: 'React',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=11?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=2?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=3?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=4?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-    ],
-  },
-  {
-    title: 'Another Post',
-    description: "Hey this is yet another post I'm putting here for demo purposes...",
-    tag: 'React',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=7?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-    ],
-  },
-]
 const PostsSection = () => {
   return (
     <View gap="$2" flexDirection="row" $platform-native={{ flexDirection: 'column' }}>
@@ -415,14 +418,14 @@ const PostsSection = () => {
         <Paragraph>Latest Posts</Paragraph>
         <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
       </XStack>
-      <YStack
+      <Stack
         gap="$3"
         mb="$4"
         $platform-native={{ mb: '$0' }}
         jc="flex-start"
         fw="wrap"
-        maxWidth="100%"
         mr="$2"
+        flexDirection={isWeb ? 'row' : 'column'}
       >
         {cardsData.map((card) => (
           <FeedCard
@@ -438,7 +441,7 @@ const PostsSection = () => {
             $platform-native={{ minWidth: '100%', maxWidth: '100%' }}
           />
         ))}
-      </YStack>
+      </Stack>
     </View>
   )
 }
@@ -464,7 +467,7 @@ function ScrollAdapt({
       {children}
     </ScrollView>
   ) : (
-    <>{children}</>
+    <ScrollView horizontal>{children}</ScrollView>
   )
 }
 
