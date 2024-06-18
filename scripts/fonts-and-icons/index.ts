@@ -47,7 +47,7 @@ export const installGeneratedPackage = async (type: string, packagesPath?: strin
         `git clone -n --depth=1  --branch generated --filter=tree:0 git@github.com:tamagui/${repoName}.git`
       )
     } catch (error) {
-      console.info('SSH failed - Attempting to c  lone with HTTPS')
+      console.info('SSH failed - Attempting to clone with HTTPS')
       execSync(
         `git clone -n --depth=1 --branch generated --filter=tree:0 https://github.com/tamagui/${repoName}`
       )
@@ -118,7 +118,12 @@ export const installGeneratedPackage = async (type: string, packagesPath?: strin
 }
 
 async function run() {
-  await installGeneratedPackage('font')
+  const type = process.argv[2]
+  if (type === 'font' || type === 'icon') {
+    await installGeneratedPackage(type)
+  } else {
+    console.error('Invalid argument. Please provide "font" or "icon".')
+  }
 }
 
 run()
