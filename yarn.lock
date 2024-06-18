@@ -7125,20 +7125,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui-icons/icon-ph@workspace:packages/icon-ph":
-  version: 0.0.0-use.local
-  resolution: "@tamagui-icons/icon-ph@workspace:packages/icon-ph"
-  dependencies:
-    "@tamagui/build": "npm:^1.100.6"
-    "@tamagui/helpers-icon": "npm:^1.100.6"
-    "@types/react": "npm:*"
-    react-native-svg: "npm:13.4.0"
-  peerDependencies:
-    react: "*"
-    react-native-svg: ">=12"
-  languageName: unknown
-  linkType: soft
-
 "@tamagui/accordion@npm:1.100.6":
   version: 1.100.6
   resolution: "@tamagui/accordion@npm:1.100.6"
@@ -9296,7 +9282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.0.27":
+"@types/react@npm:>=16, @types/react@npm:^18.0.27":
   version: 18.3.3
   resolution: "@types/react@npm:18.3.3"
   dependencies:
