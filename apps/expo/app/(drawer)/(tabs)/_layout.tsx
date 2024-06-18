@@ -62,18 +62,6 @@ export default function Layout() {
           }}
         />
         <Tabs.Screen
-          name="settings"
-          options={{
-            title: 'Settings',
-            tabBarIcon: ({ size, color, focused }) =>
-              focused ? (
-                <IconGearFill color={color as ColorTokens} size={size} />
-              ) : (
-                <IconGear color="$gray10" size={size} />
-              ),
-          }}
-        />
-        <Tabs.Screen
           name="profile"
           options={{
             title: 'Profile',
