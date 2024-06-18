@@ -2,6 +2,7 @@ import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken, useTheme }
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus, Settings, Menu } from '@tamagui/lucide-icons'
+import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
 import { useUser } from 'app/utils/useUser'
 import { Stack, Tabs, router, useNavigation } from 'expo-router'
 import { Drawer } from 'expo-router/drawer'
@@ -20,7 +21,7 @@ export default function Layout() {
           headerTintColor: accentColor.val,
           headerLeft: ({}) => (
             <Pressable
-              marginLeft={12}
+              style={{ marginLeft: 12 }}
               onPress={() => {
                 navigation.openDrawer()
               }}
@@ -30,7 +31,7 @@ export default function Layout() {
           ),
           headerRight: ({}) => (
             <Pressable
-              marginRight={12}
+              style={{ marginLeft: 12 }}
               onPress={() => {
                 navigation.navigate('create')
               }}
@@ -53,19 +54,12 @@ export default function Layout() {
           options={{
             headerShown: false,
             title: 'Home test',
-            tabBarIcon: ({ size, color, focused }) => (
-              <Home col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="settings"
-          options={{
-            title: 'Settings',
-            headerShown: false,
-            tabBarIcon: ({ size, color, focused }) => (
-              <Settings col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
-            ),
+            tabBarIcon: ({ size, color, focused }) =>
+              focused ? (
+                <IconHouseFill color={color as ColorTokens} size={size} />
+              ) : (
+                <IconHouse color={color as ColorTokens} size={size} />
+              ),
           }}
         />
         <Tabs.Screen
@@ -73,9 +67,12 @@ export default function Layout() {
           options={{
             headerShown: false,
             title: 'Profile',
-            tabBarIcon: ({ size, color, focused }) => (
-              <Settings col={focused ? '$gray10' : (color as ColorTokens)} size={size} />
-            ),
+            tabBarIcon: ({ size, color, focused }) =>
+              focused ? (
+                <IconGearFill color={color as ColorTokens} size={size} />
+              ) : (
+                <IconGear color={color as ColorTokens} size={size} />
+              ),
           }}
         />
       </Tabs>
