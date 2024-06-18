@@ -174,7 +174,7 @@ export function HomeScreen() {
           <YStack gap="$8" mt="$2">
             <AchievementsSection />
             <OverviewSection />
-            {/* <PostsSection />  */}
+            <PostsSection />
           </YStack>
         </YStack>
       </ScrollToTopTabBarContainer>
@@ -413,26 +413,26 @@ const feedCardWidthMd = validToken(
 
 const PostsSection = () => {
   return (
-    <View gap="$2" flexDirection="row" $platform-native={{ flexDirection: 'column' }}>
+    <View gap="$2" flexDirection="column" maxWidth="100%">
       <XStack ai="center" gap="$2" jc="space-between" mb="$3">
         <Paragraph>Latest Posts</Paragraph>
         <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
       </XStack>
       <Stack
-        gap="$3"
-        mb="$4"
+        maxWidth={1070}
+        gap="1%"
         $platform-native={{ mb: '$0' }}
         jc="flex-start"
         fw="wrap"
-        mr="$2"
+        // mr="$2"
         flexDirection={isWeb ? 'row' : 'column'}
       >
         {cardsData.map((card) => (
           <FeedCard
             key={card.title}
             withImages
-            w={300}
-            $gtMd={{ w: feedCardWidthMd }}
+            minWidth="32.333%"
+            $gtMd={{ w: feedCardWidthMd, mb: '1%' }}
             title={card.title}
             description={card.description}
             tag={card.tag}
