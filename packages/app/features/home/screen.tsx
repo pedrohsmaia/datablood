@@ -421,18 +421,17 @@ const PostsSection = () => {
       <Stack
         maxWidth={1070}
         gap="1%"
-        $platform-native={{ mb: '$0' }}
+        $platform-native={{ mb: '$0', ml: '$1', mr: '$2.5' }}
         jc="flex-start"
         fw="wrap"
-        // mr="$2"
         flexDirection={isWeb ? 'row' : 'column'}
       >
         {cardsData.map((card) => (
           <FeedCard
             key={card.title}
             withImages
-            minWidth="32.333%"
-            $gtMd={{ w: feedCardWidthMd, mb: '1%' }}
+            mb="$3"
+            $gtMd={{ w: feedCardWidthMd, mb: '1%', miw: '32.333%' }}
             title={card.title}
             description={card.description}
             tag={card.tag}
