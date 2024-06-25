@@ -246,11 +246,11 @@ Follows [how Next.js handles env variables](https://nextjs.org/docs/pages/buildi
 To add an icon or font, use:
 
 ```sh
-yarn tamagui add font
-yarn tamagui add icon
+yarn add:font
+yarn add:icon
 ```
 
-The package will be cloned into `packages/package-name`. After that's done, run `yarn install` and `yarn build` and follow the instructions in the package's `README.md`
+The package is included in the `packages` workspace in this repo. You can tweak and adjust the icon and font usage and logic to your linking.
 
 ## Sync With The Starter
 
