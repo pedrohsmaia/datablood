@@ -64,6 +64,7 @@
     "@tamagui/cli": "^1.100.6",
     "@turbo/gen": "^1.10.12",
     "@types/fs-extra": "^11",
+    "axios": "^1.7.2",
     "chalk": "^5.3.0",
     "change-case": "^4.1.2",
     "check-dependency-version-consistency": "^3.0.3",
@@ -75,8 +76,7 @@
     "prettier": "^2.7.1",
     "promise-throttle-all": "^1.1.1",
     "turbo": "^1.10.14",
-    "typescript": "^5.3.3",
-    "axios": "^1.7.2"
+    "typescript": "^5.3.3"
   },
   "packageManager": "yarn@4.1.0",
   "dependencies": {

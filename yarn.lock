@@ -7302,20 +7302,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui-icons/icon-clarity@workspace:packages/icon-clarity":
-  version: 0.0.0-use.local
-  resolution: "@tamagui-icons/icon-clarity@workspace:packages/icon-clarity"
-  dependencies:
-    "@tamagui/build": "npm:*"
-    "@tamagui/helpers-icon": "npm:*"
-    "@types/react": "npm:*"
-    react-native-svg: "npm:13.4.0"
-  peerDependencies:
-    react: "*"
-    react-native-svg: ">=12"
-  languageName: unknown
-  linkType: soft
-
 "@tamagui-icons/icon-ph@workspace:packages/icon-ph":
   version: 0.0.0-use.local
   resolution: "@tamagui-icons/icon-ph@workspace:packages/icon-ph"
@@ -7484,7 +7470,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/build@npm:*, @tamagui/build@npm:1.100.6, @tamagui/build@npm:^1.100.6":
+"@tamagui/build@npm:1.100.6, @tamagui/build@npm:^1.100.6":
   version: 1.100.6
   resolution: "@tamagui/build@npm:1.100.6"
   dependencies:
@@ -7905,7 +7891,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/helpers-icon@npm:*, @tamagui/helpers-icon@npm:1.100.6, @tamagui/helpers-icon@npm:^1.100.6":
+"@tamagui/helpers-icon@npm:1.100.6, @tamagui/helpers-icon@npm:^1.100.6":
   version: 1.100.6
   resolution: "@tamagui/helpers-icon@npm:1.100.6"
   dependencies:
