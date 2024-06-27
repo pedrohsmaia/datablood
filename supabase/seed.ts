@@ -2,9 +2,7 @@ import { createSeedClient } from '@snaplet/seed'
 import { copycat } from '@snaplet/copycat'
 
 async function fetchRandomPhoto() {
-  const response = await fetch(
-    'https://api.unsplash.com/photos/random?client_id=wTDGrKaB-pCXK7cA9EXZmUjGVckX78rAOO7tA9MnG04'
-  )
+  const response = await fetch('https://api.unsplash.com/photos/random?client_id=')
   const data = await response.json()
   return data
 }
@@ -31,6 +29,7 @@ async function run() {
       profile_id: '6b8df928-aa94-453f-9f94-109013405cab',
     },
   ])
+  process.exit()
 }
 
 run()

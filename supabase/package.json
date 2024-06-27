@@ -18,7 +18,9 @@
     "reset": "npx supabase db reset && npx supabase start",
     "status": "npx supabase status",
     "_deploy": "yarn link-project && npx supabase db push",
-    "deploy": "yarn _with-env yarn _deploy"
+    "deploy": "yarn _with-env yarn _deploy",
+    "seed:init": "npx @snaplet/seed init",
+    "seed:post": "npx tsx seed.ts > seed.sql"
   },
   "devDependencies": {
     "@snaplet/copycat": "^5.0.0",
