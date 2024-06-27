@@ -56,15 +56,6 @@ CREATE TABLE user_stats (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- Community table
-CREATE TABLE communities (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  profile_id UUID REFERENCES auth.users(id),
-  members_count INTEGER DEFAULT 0,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
 -- Referrals table
 CREATE TABLE referrals (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -90,13 +81,12 @@ CREATE TABLE projects (
 );
 
 -- Create indexes
-CREATE INDEX idx_achievements_profile_id ON achievements(profile_id);
-CREATE INDEX idx_posts_profile_id ON posts(profile_id);
-CREATE INDEX idx_posts_category_id ON posts(category_id);
-CREATE INDEX idx_user_stats_profile_id ON user_stats(profile_id);
-CREATE INDEX idx_communities_profile_id ON communities(profile_id);
-CREATE INDEX idx_referrals_referrer_id ON referrals(referrer_id);
-CREATE INDEX idx_referrals_referred_id ON referrals(referred_id);
+-- CREATE INDEX idx_achievements_profile_id ON achievements(profile_id);
+-- CREATE INDEX idx_posts_profile_id ON posts(profile_id);
+-- CREATE INDEX idx_posts_category_id ON posts(category_id);
+-- CREATE INDEX idx_user_stats_profile_id ON user_stats(profile_id);
+-- CREATE INDEX idx_referrals_referrer_id ON referrals(referrer_id);
+-- CREATE INDEX idx_referrals_referred_id ON referrals(referred_id);
 
 -- Create function for updating 'updated_at' column
 CREATE OR REPLACE FUNCTION update_modified_column()
@@ -108,37 +98,33 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Create triggers for updating 'updated_at' columns
-CREATE TRIGGER update_achievements_modtime
-    BEFORE UPDATE ON achievements
-    FOR EACH ROW
-    EXECUTE FUNCTION update_modified_column();
+-- CREATE TRIGGER update_achievements_modtime
+--     BEFORE UPDATE ON achievements
+--     FOR EACH ROW
+--     EXECUTE FUNCTION update_modified_column();
 
-CREATE TRIGGER update_events_modtime
-    BEFORE UPDATE ON events
-    FOR EACH ROW
-    EXECUTE FUNCTION update_modified_column();
+-- CREATE TRIGGER update_events_modtime
+--     BEFORE UPDATE ON events
+--     FOR EACH ROW
+--     EXECUTE FUNCTION update_modified_column();
 
-CREATE TRIGGER update_categories_modtime
-    BEFORE UPDATE ON categories
-    FOR EACH ROW
-    EXECUTE FUNCTION update_modified_column();
+-- CREATE TRIGGER update_categories_modtime
+--     BEFORE UPDATE ON categories
+--     FOR EACH ROW
+--     EXECUTE FUNCTION update_modified_column();
 
-CREATE TRIGGER update_posts_modtime
-    BEFORE UPDATE ON posts
-    FOR EACH ROW
-    EXECUTE FUNCTION update_modified_column();
+-- CREATE TRIGGER update_posts_modtime
+--     BEFORE UPDATE ON posts
+--     FOR EACH ROW
+--     EXECUTE FUNCTION update_modified_column();
 
-CREATE TRIGGER update_user_stats_modtime
-    BEFORE UPDATE ON user_stats
-    FOR EACH ROW
-    EXECUTE FUNCTION update_modified_column();
+-- CREATE TRIGGER update_user_stats_modtime
+--     BEFORE UPDATE ON user_stats
+--     FOR EACH ROW
+--     EXECUTE FUNCTION update_modified_column();
 
-CREATE TRIGGER update_communities_modtime
-    BEFORE UPDATE ON communities
-    FOR EACH ROW
-    EXECUTE FUNCTION update_modified_column();
 
-CREATE TRIGGER update_referrals_modtime
-    BEFORE UPDATE ON referrals
-    FOR EACH ROW
-    EXECUTE FUNCTION update_modified_column();
+-- CREATE TRIGGER update_referrals_modtime
+--     BEFORE UPDATE ON referrals
+--     FOR EACH ROW
+--     EXECUTE FUNCTION update_modified_column();
