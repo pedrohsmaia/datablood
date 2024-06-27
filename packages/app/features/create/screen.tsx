@@ -37,17 +37,26 @@ export const CreateScreen = () => {
   const supabase = useSupabase()
   const queryClient = useQueryClient()
   const mutation = useMutation({
+    async onError(error) {
+      console.log('error', error)
+    },
     async mutationFn(data: z.infer<typeof CreateTaskSchema>) {
-      await supabase
-        .from('posts')
-        .insert([{ title: data.title, description: data.description, userId: user?.id }])
+      await supabase.from('projects').insert({
+        name: data.title,
+        number_of_days: data.numOfDays,
+        description: data.description,
+        paid_project: data.paidProject,
+        project_type: data.type,
+        profile_id: user?.id,
+      })
     },
 
     async onSuccess() {
+      console.log('success')
       toast.show('Successfully created!')
       // await queryClient.invalidateQueries(['profile', user.id])
       // await apiUtils.greeting.invalidate()
-      router.back()
+      // router.back()
     },
   })
 
