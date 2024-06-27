@@ -89,13 +89,13 @@ CREATE TABLE projects (
 -- CREATE INDEX idx_referrals_referred_id ON referrals(referred_id);
 
 -- Create function for updating 'updated_at' column
-CREATE OR REPLACE FUNCTION update_modified_column()
-RETURNS TRIGGER AS $$
-BEGIN
-    NEW.updated_at = now();
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+-- CREATE OR REPLACE FUNCTION update_modified_column()
+-- RETURNS TRIGGER AS $$
+-- BEGIN
+--     NEW.updated_at = now();
+--     RETURN NEW;
+-- END;
+-- $$ LANGUAGE plpgsql;
 
 -- Create triggers for updating 'updated_at' columns
 -- CREATE TRIGGER update_achievements_modtime
