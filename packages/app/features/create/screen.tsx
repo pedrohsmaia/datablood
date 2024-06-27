@@ -1,9 +1,23 @@
-import { H2, Paragraph, SubmitButton, Theme, YStack, isWeb } from '@my/ui'
-import { useMutation } from '@tanstack/react-query'
+import {
+  FullscreenSpinner,
+  H2,
+  Paragraph,
+  SubmitButton,
+  Theme,
+  Toast,
+  YStack,
+  isWeb,
+  useToastController,
+} from '@my/ui'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
+import { toast } from 'burnt'
+import { useRouter } from 'solito/router'
 import { z } from 'zod'
+
+import { api } from '../../utils/api'
 
 const CreateTaskSchema = z.object({
   title: formFields.text.min(10).describe("Name // Your project's name"),
@@ -16,22 +30,30 @@ const CreateTaskSchema = z.object({
   type: formFields.select.describe('Project Type'),
 })
 export const CreateScreen = () => {
+  const toast = useToastController()
+  const router = useRouter()
+  const apiUtils = api.useUtils()
   const { profile, user } = useUser()
   const supabase = useSupabase()
+  const queryClient = useQueryClient()
   const mutation = useMutation({
     async mutationFn(data: z.infer<typeof CreateTaskSchema>) {
       await supabase
         .from('posts')
-        .create({ title: data.title, description: data.description, userId })
+        .insert([{ title: data.title, description: data.description, userId: user?.id }])
     },
 
     async onSuccess() {
-      toast.show('Successfully updated!')
-      await queryClient.invalidateQueries(['profile', userId])
-      await apiUtils.greeting.invalidate()
+      toast.show('Successfully created!')
+      // await queryClient.invalidateQueries(['profile', user.id])
+      // await apiUtils.greeting.invalidate()
       router.back()
     },
   })
+
+  if (!profile || !user?.id) {
+    return <FullscreenSpinner />
+  }
 
   return (
     <SchemaForm
