@@ -2,7 +2,7 @@ import { HomeLayout } from 'app/features/home/layout.web'
 import { ProfileScreen } from 'app/features/profile/screen'
 import Head from 'next/head'
 
-import { NextPageWithLayout } from '../_app'
+import type { NextPageWithLayout } from '../_app'
 
 const Page: NextPageWithLayout = () => {
   return (
