@@ -7,7 +7,13 @@ import { H5, Separator, Tabs, Text, View, debounce, useEvent, useTheme } from 't
 const tabs = ['Create Project', 'New Post', 'Add Event']
 
 /** ------ EXAMPLE ------ */
-export const TabbarSwippable = ({ CreateProjectForm }: { CreateProjectForm: any }) => {
+export const TabbarSwippable = ({
+  CreateProjectForm,
+  CreatePostForm,
+}: {
+  CreateProjectForm: any
+  CreatePostForm: any
+}) => {
   const boxHPosition = useRef(new Animated.Value(0)).current
   const [activeTabIndex, _setActiveTabIndex] = React.useState(0)
   const setActiveTabIndex = debounce(_setActiveTabIndex, 100)
@@ -152,8 +158,8 @@ export const TabbarSwippable = ({ CreateProjectForm }: { CreateProjectForm: any 
         <CreateProjectForm />
       </TabsContent>
 
-      <TabsContent value="Tab 2">
-        <H5>Content 2</H5>
+      <TabsContent value="New Post">
+        <CreatePostForm />
       </TabsContent>
 
       <TabsContent value="Tab 3">
@@ -166,7 +172,6 @@ export const TabbarSwippable = ({ CreateProjectForm }: { CreateProjectForm: any 
 const TabsContent = (props: TabsContentProps) => {
   return (
     <Tabs.Content
-      backgroundColor="$background"
       key="tab3"
       padding="$2"
       alignItems="center"

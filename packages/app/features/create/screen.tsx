@@ -18,6 +18,7 @@ import { toast } from 'burnt'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
+import { CreatePostForm } from './createPostForm'
 import { api } from '../../utils/api'
 
 const CreateTaskSchema = z.object({
@@ -102,7 +103,7 @@ const CreateProjectForm = () => {
         }}
         renderAfter={({ submit }) => (
           <Theme inverse>
-            <SubmitButton onPress={() => submit()}>Create</SubmitButton>
+            <SubmitButton onPress={() => submit()}>Create Project</SubmitButton>
           </Theme>
         )}
       >
@@ -118,5 +119,5 @@ const CreateProjectForm = () => {
 }
 
 export const CreateScreen = () => {
-  return <TabbarSwippable CreateProjectForm={CreateProjectForm} />
+  return <TabbarSwippable CreateProjectForm={CreateProjectForm} CreatePostForm={CreatePostForm} />
 }
