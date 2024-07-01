@@ -18,6 +18,7 @@ import { toast } from 'burnt'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
+import { CreateEventForm } from './CreateEventForm'
 import { CreatePostForm } from './createPostForm'
 import { api } from '../../utils/api'
 
@@ -119,5 +120,11 @@ const CreateProjectForm = () => {
 }
 
 export const CreateScreen = () => {
-  return <TabbarSwippable CreateProjectForm={CreateProjectForm} CreatePostForm={CreatePostForm} />
+  return (
+    <TabbarSwippable
+      CreateProjectForm={CreateProjectForm}
+      CreatePostForm={CreatePostForm}
+      CreateEventForm={CreateEventForm}
+    />
+  )
 }

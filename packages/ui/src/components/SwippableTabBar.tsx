@@ -10,9 +10,11 @@ const tabs = ['Create Project', 'New Post', 'Add Event']
 export const TabbarSwippable = ({
   CreateProjectForm,
   CreatePostForm,
+  CreateEventForm,
 }: {
   CreateProjectForm: any
   CreatePostForm: any
+  CreateEventForm: any
 }) => {
   const boxHPosition = useRef(new Animated.Value(0)).current
   const [activeTabIndex, _setActiveTabIndex] = React.useState(0)
@@ -162,8 +164,8 @@ export const TabbarSwippable = ({
         <CreatePostForm />
       </TabsContent>
 
-      <TabsContent value="Tab 3">
-        <H5>Content 3</H5>
+      <TabsContent value="Add Event">
+        <CreateEventForm />
       </TabsContent>
     </Tabs>
   )
