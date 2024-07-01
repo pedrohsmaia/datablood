@@ -291,7 +291,7 @@ export function DatePickerExample({
         selectedDates,
         onDatesChange: (dates) => {
           onDatesChange(dates)
-          onChangeText(dates[0]?.toDateString().split('T')[0] || '')
+          onChangeText(dates[0]?.toISOString().split('T')[0] || '')
         },
         calendar: {
           startDay: 1,
