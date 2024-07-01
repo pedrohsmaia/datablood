@@ -14,6 +14,7 @@ import {
   TextField,
   Theme,
 } from '@my/ui'
+import { DateField, DateSchema } from '@my/ui/src/components/FormFields/DateField'
 import { createTsForm, createUniqueFieldSchema } from '@ts-react/form'
 import type { ComponentProps } from 'react'
 import { useFormContext } from 'react-hook-form'
@@ -46,6 +47,7 @@ export const formFields = {
    * example of how to handle more complex fields
    */
   address: createUniqueFieldSchema(AddressSchema, 'address'),
+  date: createUniqueFieldSchema(DateSchema, 'date'),
 }
 
 // function createFormSchema<T extends ZodRawShape>(getData: (fields: typeof formFields) => T) {
@@ -61,6 +63,7 @@ const mapping = [
   [formFields.boolean_checkbox, BooleanCheckboxField] as const,
   [formFields.select, SelectField] as const,
   [formFields.address, AddressField] as const,
+  [formFields.date, DateField] as const,
 ] as const
 
 const FormComponent = (props: FormProps) => {

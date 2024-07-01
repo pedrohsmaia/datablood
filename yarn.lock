@@ -5683,6 +5683,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rehookify/datepicker@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "@rehookify/datepicker@npm:6.6.1"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: 10/f3709dde061589c65fb297f4922162c0900b1ed1f66800e212fd018eb5fb4fbb28f430c75e96c8d3d6c8c91b6635b8005447a1768f4c1949d5b7cb2b37bddae1
+  languageName: node
+  linkType: hard
+
 "@remix-run/node@npm:^2.7.2":
   version: 2.10.0
   resolution: "@remix-run/node@npm:2.10.0"
@@ -11494,6 +11503,7 @@ __metadata:
     "@my/supabase": "npm:*"
     "@my/ui": "npm:*"
     "@react-native-async-storage/async-storage": "npm:1.23.1"
+    "@rehookify/datepicker": "npm:^6.6.1"
     "@supabase/auth-helpers-nextjs": "npm:^0.9.0"
     "@supabase/auth-helpers-react": "npm:^0.4.2"
     "@supabase/supabase-js": "npm:^2.39.3"
