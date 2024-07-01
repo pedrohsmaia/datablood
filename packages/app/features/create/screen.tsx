@@ -9,6 +9,7 @@ import {
   isWeb,
   useToastController,
 } from '@my/ui'
+import { TabbarSwippable } from '@my/ui/src/components/SwippableTabBar'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
@@ -29,7 +30,8 @@ const CreateTaskSchema = z.object({
   billingAddress: formFields.address.describe('Billing Address'),
   type: formFields.select.describe('Project Type'),
 })
-export const CreateScreen = () => {
+
+const CreateProjectForm = () => {
   const toast = useToastController()
   const router = useRouter()
   const apiUtils = api.useUtils()
@@ -65,52 +67,56 @@ export const CreateScreen = () => {
   }
 
   return (
-    <SchemaForm
-      onSubmit={(values) => mutation.mutate(values)}
-      schema={CreateTaskSchema}
-      defaultValues={{
-        title: '',
-        description: '',
-        numOfDays: 10,
-        paidProject: false,
-        billingAddress: {
-          street: '',
-          zipCode: '',
-        },
-        type: 'code',
-      }}
-      props={{
-        type: {
-          options: [
-            {
-              name: 'Code',
-              value: 'code',
-            },
-            {
-              name: 'Design',
-              value: 'design',
-            },
-            {
-              name: 'Consulting',
-              value: 'consulting',
-            },
-          ],
-        },
-      }}
-      renderAfter={({ submit }) => (
-        <Theme inverse>
-          <SubmitButton onPress={() => submit()}>Create</SubmitButton>
-        </Theme>
-      )}
-    >
-      {(fields) => (
-        <>
-          <YStack gap="$2" py="$4" pb="$0" pt="$0">
-            {isWeb && <H2 ta="center">New Project</H2>}
-          </YStack>
-          {Object.values(fields)}
-        </>
-      )}
-    </SchemaForm>
+    <>
+      <SchemaForm
+        onSubmit={(values) => mutation.mutate(values)}
+        schema={CreateTaskSchema}
+        defaultValues={{
+          title: '',
+          description: '',
+          numOfDays: 10,
+          paidProject: false,
+          billingAddress: {
+            street: '',
+            zipCode: '',
+          },
+          type: 'code',
+        }}
+        props={{
+          type: {
+            options: [
+              {
+                name: 'Code',
+                value: 'code',
+              },
+              {
+                name: 'Design',
+                value: 'design',
+              },
+              {
+                name: 'Consulting',
+                value: 'consulting',
+              },
+            ],
+          },
+        }}
+        renderAfter={({ submit }) => (
+          <Theme inverse>
+            <SubmitButton onPress={() => submit()}>Create</SubmitButton>
+          </Theme>
+        )}
+      >
+        {(fields) => (
+          <>
+            <YStack gap="$2" py="$4" pb="$0" pt="$0" />
+            {Object.values(fields)}
+          </>
+        )}
+      </SchemaForm>
+    </>
   )
+}
+
+export const CreateScreen = () => {
+  return <TabbarSwippable CreateProjectForm={CreateProjectForm} />
 }
