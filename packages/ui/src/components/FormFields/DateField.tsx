@@ -8,7 +8,7 @@ import { Shake } from '../Shake'
 import { DatePickerExample } from '../elements/datepicker/DatePicker'
 
 export const DateSchema = z.object({
-  dateValue: z.string().date(),
+  dateValue: z.coerce.date(),
 })
 
 export const DateField = (props: Pick<InputProps, 'size'>) => {

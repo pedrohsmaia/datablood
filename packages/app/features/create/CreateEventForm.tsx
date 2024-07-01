@@ -31,8 +31,8 @@ export const CreateEventForm = () => {
       await supabase.from('events').insert({
         name: data.name.trim(),
         description: data.description,
-        start_time: data.startTime,
-        end_time: data.endTime,
+        start_time: data.startTime.dateValue,
+        end_time: data.endTime.dateValue,
         status: 'upcoming',
       })
     },
