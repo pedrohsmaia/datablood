@@ -5,9 +5,10 @@ import { z } from 'zod'
 
 import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
+import { DatePickerExample } from '../elements/datepicker/DatePicker'
 
 export const DateSchema = z.object({
-  dateValue: z.string().datetime(),
+  dateValue: z.string().date(),
 })
 
 export const DateField = (props: Pick<InputProps, 'size'>) => {
@@ -29,18 +30,15 @@ export const DateField = (props: Pick<InputProps, 'size'>) => {
       <XStack $sm={{ fd: 'column' }} $gtSm={{ fw: 'wrap' }} gap="$4">
         <Theme name={error?.dateValue ? 'red' : null} forceClassName>
           <Fieldset $gtSm={{ fb: 0 }} f={1}>
-            <Label theme="alt1" size={props.size || '$3'} htmlFor={`${id}-street`}>
-              Street
-            </Label>
             <Shake shakeKey={error?.dateValue?.errorMessage}>
-              <Input
+              <DatePickerExample
                 disabled={disabled}
                 placeholderTextColor="$color10"
                 value={field.value?.dateValue}
                 onChangeText={(dateValue) => field.onChange({ ...field.value, dateValue })}
                 onBlur={field.onBlur}
                 ref={field.ref}
-                placeholder="e.g. 4116 Pretty View Lane"
+                placeholder=""
                 id={`${id}-date-value`}
                 {...props}
               />

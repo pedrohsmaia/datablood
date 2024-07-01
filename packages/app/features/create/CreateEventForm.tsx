@@ -12,8 +12,8 @@ import { api } from '../../utils/api'
 const CreateEventSchema = z.object({
   name: formFields.text.min(10).describe('Name // Your post title'),
   description: formFields.textarea.describe('Description // Content of your post'),
-  startTime: formFields.text.describe('Start Time // Start time of your event'),
-  endTime: formFields.text.describe('End Time // End time of your event'),
+  startTime: formFields.date.describe('Start Time // Start time of your event'),
+  endTime: formFields.date.describe('End Time // End time of your event'),
 })
 
 export const CreateEventForm = () => {
@@ -29,7 +29,7 @@ export const CreateEventForm = () => {
     },
     async mutationFn(data: z.infer<typeof CreateEventSchema>) {
       await supabase.from('events').insert({
-        name: data.name,
+        name: data.name.trim(),
         description: data.description,
         start_time: data.startTime,
         end_time: data.endTime,
