@@ -12,9 +12,9 @@ export const TabbarSwippable = ({
   CreatePostForm,
   CreateEventForm,
 }: {
-  CreateProjectForm: any
-  CreatePostForm: any
-  CreateEventForm: any
+  CreateProjectForm: React.ComponentType<unknown>
+  CreatePostForm: React.ComponentType<unknown>
+  CreateEventForm: React.ComponentType<unknown>
 }) => {
   const boxHPosition = useRef(new Animated.Value(0)).current
   const [activeTabIndex, _setActiveTabIndex] = React.useState(0)
