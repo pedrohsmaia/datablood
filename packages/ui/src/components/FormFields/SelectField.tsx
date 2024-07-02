@@ -7,7 +7,7 @@ import {
   Fieldset,
   Label,
   Select,
-  SelectProps,
+  type SelectProps,
   Sheet,
   Theme,
   XStack,
@@ -85,29 +85,24 @@ export const SelectField = ({
                 />
               </Select.ScrollUpButton>
 
-              <Select.Viewport miw={200}>
-                <XStack als="flex-start">
-                  <Select.Group disabled={disabled} space="$0">
-                    {/* <Select.Label>{label}</Select.Label> */}
-                    {options.map((item, i) => {
-                      return (
-                        <Select.Item index={i} key={item.name} value={item.value}>
-                          <Select.ItemText>{item.name}</Select.ItemText>
-                          <Select.ItemIndicator marginLeft="auto">
+              <Select.Group disabled={disabled} space="$0" miw={400}>
+                {options.map((item, i) => {
+                  return (
+                    <Select.Item pl="$2" index={i} key={item.name} value={item.value} miw={400}>
+                      <Select.ItemText>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.name}</Select.ItemText>
+                      {/* <Select.ItemIndicator marginRight="auto">
                             <Check size={16} />
-                          </Select.ItemIndicator>
-                        </Select.Item>
-                      )
-                    })}
-                  </Select.Group>
-                  {/* special icon treatment for native */}
-                  {native && isWeb && (
-                    <YStack fullscreen ai="center" jc="center" w="$4" pe="none">
-                      <ChevronDown size={getFontSize((props.size ?? '$true') as number)} />
-                    </YStack>
-                  )}
-                </XStack>
-              </Select.Viewport>
+                          </Select.ItemIndicator> */}
+                    </Select.Item>
+                  )
+                })}
+              </Select.Group>
+              {/* special icon treatment for native */}
+              {native && isWeb && (
+                <YStack fullscreen ai="center" jc="center" w="$4" pe="none">
+                  <ChevronDown size={getFontSize((props.size ?? '$true') as number)} />
+                </YStack>
+              )}
 
               <Select.ScrollDownButton ai="center" jc="center" pos="relative" w="100%" h="$3">
                 <YStack zi={10}>
