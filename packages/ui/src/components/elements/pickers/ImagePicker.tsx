@@ -6,7 +6,23 @@ import { useFilePicker } from './hooks/useFilePicker'
 import { MediaTypeOptions } from './types'
 
 /** ------ EXAMPLE ------ */
-export function ImagePicker() {
+export function ImagePicker({
+  disabled,
+  value,
+  onChangeText,
+  onBlur,
+  ref,
+  placeholder,
+  ...props
+}: {
+  disabled: boolean
+  value: { imageSource: string } | undefined
+  onChangeText: (imageSource: string) => void
+  onBlur: () => void
+  ref: React.RefObject<HTMLInputElement>
+  placeholder?: string
+  [key: string]: any
+}) {
   const id = useId()
   const [images, setImages] = useState<string[]>([])
   const { open, getInputProps, getRootProps, dragStatus } = useFilePicker({
@@ -17,6 +33,7 @@ export function ImagePicker() {
     onPick: ({ webFiles, nativeFiles }) => {
       if (webFiles?.length) {
         const pickedImages = webFiles?.map((file) => URL.createObjectURL(file))
+        onChangeText(pickedImages[0])
         setImages((images) => [...images, ...pickedImages])
       } else if (nativeFiles?.length) {
         setImages((images) => [...images, ...nativeFiles.map((file) => file.uri)])
@@ -112,5 +129,3 @@ export function ImagePicker() {
     </View>
   )
 }
-
-
