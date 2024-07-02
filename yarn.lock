@@ -11523,9 +11523,11 @@ __metadata:
     eslint-config-custom: "npm:*"
     expo-constants: "npm:~16.0.1"
     expo-device: "npm:~6.0.2"
-    expo-image-picker: "npm:~15.0.5"
+    expo-document-picker: "npm:^12.0.2"
+    expo-image-picker: "npm:^15.0.6"
     expo-linking: "npm:~6.3.1"
     expo-secure-store: "npm:~13.0.1"
+    react-dropzone: "npm:^14.2.3"
     react-hook-form: "npm:^7.46.1"
     react-native: "npm:0.74.1"
     react-native-safe-area-context: "npm:4.10.1"
@@ -11949,6 +11951,13 @@ __metadata:
   version: 1.0.0
   resolution: "at-least-node@npm:1.0.0"
   checksum: 10/463e2f8e43384f1afb54bc68485c436d7622acec08b6fad269b421cb1d29cebb5af751426793d0961ed243146fe4dc983402f6d5a51b720b277818dbf6f2e49e
+  languageName: node
+  linkType: hard
+
+"attr-accept@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "attr-accept@npm:2.2.2"
+  checksum: 10/c867ed41ed749988ad2a6fc70eb2498b9c3c2d58aaad2a8d05422a383058f9d29e50c4bca363c5ee7433df738a7920cc95377bbce8678e817fb498299dd82010
   languageName: node
   linkType: hard
 
@@ -16368,9 +16377,10 @@ __metadata:
     expo-crypto: "npm:~13.0.2"
     expo-dev-client: "npm:~4.0.14"
     expo-device: "npm:~6.0.2"
+    expo-document-picker: "npm:^12.0.2"
     expo-font: "npm:~12.0.5"
     expo-image: "npm:~1.12.9"
-    expo-image-picker: "npm:~15.0.5"
+    expo-image-picker: "npm:^15.0.6"
     expo-linear-gradient: "npm:~13.0.2"
     expo-linking: "npm:~6.3.1"
     expo-notifications: "npm:~0.28.3"
@@ -16526,6 +16536,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-document-picker@npm:^12.0.2":
+  version: 12.0.2
+  resolution: "expo-document-picker@npm:12.0.2"
+  peerDependencies:
+    expo: "*"
+  checksum: 10/4eb929c6751ed6f82f2f521a4c8a9e10fdfe6f3e9fd44c4f18c6103db09a84697fb923993d3d658b6560ba20ffac276a166d59822575d70d4706057c0d0a291f
+  languageName: node
+  linkType: hard
+
 "expo-eas-client@npm:~0.12.0":
   version: 0.12.0
   resolution: "expo-eas-client@npm:0.12.0"
@@ -16562,7 +16581,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-image-picker@npm:~15.0.5":
+"expo-image-picker@npm:^15.0.6":
   version: 15.0.6
   resolution: "expo-image-picker@npm:15.0.6"
   dependencies:
@@ -17122,6 +17141,15 @@ __metadata:
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
   checksum: 10/3a854be3a7501bdb0fd8a1c0d45c156c0dc8f0afced07cbdac0b13a79c2f2a03f7770d68cb555ff30b5ea7c20719df34e1b2bd896c93e3138ee31f0bdc560310
+  languageName: node
+  linkType: hard
+
+"file-selector@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "file-selector@npm:0.6.0"
+  dependencies:
+    tslib: "npm:^2.4.0"
+  checksum: 10/6add4098ae07fd1e9050b1e8d3fd9f128680c1d6648c0676af54ace4586e6e5bfcb8fdfa45b69e9131ffd8175bf630d54a445a5facf9be244f85b99ce309183e
   languageName: node
   linkType: hard
 
@@ -24401,6 +24429,19 @@ __metadata:
   peerDependencies:
     react: ^18.3.1
   checksum: 10/3f4b73a3aa083091173b29812b10394dd06f4ac06aff410b74702cfb3aa29d7b0ced208aab92d5272919b612e5cda21aeb1d54191848cf6e46e9e354f3541f81
+  languageName: node
+  linkType: hard
+
+"react-dropzone@npm:^14.2.3":
+  version: 14.2.3
+  resolution: "react-dropzone@npm:14.2.3"
+  dependencies:
+    attr-accept: "npm:^2.2.2"
+    file-selector: "npm:^0.6.0"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    react: ">= 16.8 || 18.0.0"
+  checksum: 10/34cf1758a896795b579adab5f9cdc144330577ab1826a0b66ff9daa8c60a80ed6b31b8f989647664f2548cfe00b336e9c31a2f3dd8de43111c8318fcc89b279c
   languageName: node
   linkType: hard
 

@@ -15,6 +15,10 @@ import {
   Theme,
 } from '@my/ui'
 import { DateField, DateSchema } from '@my/ui/src/components/FormFields/DateField'
+import {
+  ImagePickerField,
+  ImagePickerSchema,
+} from '@my/ui/src/components/FormFields/ImagePickerField'
 import { createTsForm, createUniqueFieldSchema } from '@ts-react/form'
 import type { ComponentProps } from 'react'
 import { useFormContext } from 'react-hook-form'
@@ -48,6 +52,7 @@ export const formFields = {
    */
   address: createUniqueFieldSchema(AddressSchema, 'address'),
   date: createUniqueFieldSchema(DateSchema, 'date'),
+  image: createUniqueFieldSchema(ImagePickerSchema, 'image'),
 }
 
 // function createFormSchema<T extends ZodRawShape>(getData: (fields: typeof formFields) => T) {
@@ -64,6 +69,7 @@ const mapping = [
   [formFields.select, SelectField] as const,
   [formFields.address, AddressField] as const,
   [formFields.date, DateField] as const,
+  [formFields.image, ImagePickerField] as const,
 ] as const
 
 const FormComponent = (props: FormProps) => {
