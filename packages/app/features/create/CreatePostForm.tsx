@@ -12,6 +12,7 @@ const CreatePostSchema = z.object({
   title: formFields.text.min(10).describe('Name // Your post title'),
   content: formFields.textarea.describe('Description // Content of your post'),
   category_id: formFields.select.describe('Category // Category of your post'),
+  image_url: formFields.image.describe('Image URL // Image URL of your post'),
 })
 
 export const CreatePostForm = () => {
@@ -30,6 +31,7 @@ export const CreatePostForm = () => {
         title: data.title,
         content: data.content,
         category_id: data.category_id,
+        image_url: data.image_url.imageSource,
         profile_id: user?.id,
       })
     },
