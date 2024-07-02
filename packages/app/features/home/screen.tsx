@@ -21,9 +21,13 @@ import {
   validToken,
 } from '@my/ui'
 import { ArrowRight, DollarSign, Pencil, SquareStack, User, Users } from '@tamagui/lucide-icons'
+import { useQueryClient } from '@tanstack/react-query'
 import ScrollToTopTabBarContainer from 'app/utils/NativeScreenContainer'
 import { api } from 'app/utils/api'
+import useEventsQuery from 'app/utils/react-query/useEventQuery'
+import { useSupabase } from 'app/utils/supabase/useSupabase'
 import type React from 'react'
+import { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
 
@@ -186,11 +190,15 @@ export function HomeScreen() {
 }
 
 const EventCards = () => {
+  const { data, isLoading, isError } = useEventsQuery()
+
+  if (isLoading) return null
+  // console.log('data', data)
   return (
     <ScrollView f={1} fb={0} $md={{ dsp: 'none' }}>
       <YStack separator={<Separator />}>
         <YStack>
-          <EventCard
+          {/* <EventCard
             title="Event #1"
             description="Lorem ipsum dolor sit, amet."
             action={{
@@ -201,43 +209,34 @@ const EventCards = () => {
               { text: 'New', theme: 'green_alt2' },
               { text: 'Hot', theme: 'orange_alt2' },
             ]}
-          />
-          <EventCard
-            title="Event #2"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[{ text: '1 Day Remaining', theme: 'blue_alt2' }]}
-          />
-          <EventCard
-            title="Event #3"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[{ text: 'Ongoing', theme: 'alt1' }]}
-          />
-          <EventCard
-            title="Event #4"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[{ text: 'Finished', theme: 'alt2' }]}
-          />
+          /> */}
+          {data?.map((event) => (
+            <EventCard
+              key={event.id}
+              title={event.name}
+              description={event.description}
+              action={{
+                text: 'Show Event',
+                props: { href: `/event/${event.id}` },
+              }}
+              tags={[
+                { text: event.status, theme: 'green_alt2' },
+                {
+                  text: `${new Date(event.end_time).toLocaleDateString()} Remaining`,
+                  theme: 'blue_alt2',
+                },
+              ]}
+            />
+          ))}
         </YStack>
         <YStack p="$3">
           <Theme name="blue_alt1">
-            <Banner {...useLink({ href: '/' })} cur="pointer">
+            {/* <Banner {...useLink({ href: '/' })} cur="pointer">
               <H4>Upgrade Now!</H4>
               <Paragraph size="$2" mt="$1">
                 Upgrade to access exclusive features and more!
               </Paragraph>
-            </Banner>
+            </Banner> */}
           </Theme>
         </YStack>
         <YStack>
