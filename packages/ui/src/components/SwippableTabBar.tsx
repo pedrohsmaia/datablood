@@ -122,7 +122,7 @@ export const TabbarSwippable = ({
         paddingHorizontal="$2"
       >
         <Tabs.List
-          width="100%"
+          minWidth="100%"
           userSelect="none"
           flexDirection="row"
           alignItems="center"

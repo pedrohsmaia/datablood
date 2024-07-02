@@ -78,10 +78,9 @@ export const CreatePostForm = () => {
         )}
       >
         {(fields) => (
-          <>
-            <YStack gap="$2" py="$4" pb="$0" pt="$0" />
+          <YStack gap="$2" py="$4" pb="$0" pt="$0" minWidth={400} maxWidth={400}>
             {Object.values(fields)}
-          </>
+          </YStack>
         )}
       </SchemaForm>
     </>
