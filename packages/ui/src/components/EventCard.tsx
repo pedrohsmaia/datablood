@@ -36,11 +36,11 @@ export const EventCard = ({ title, description, action, tags = [], ...props }: E
         </Paragraph>
       </XStack>
 
-      {action && (
+      {/* {action && (
         <Button iconAfter={ArrowUpRight} size="$2" als="flex-end" {...action.props}>
           {action?.text}
         </Button>
-      )}
+      )} */}
     </Card>
   )
 }
