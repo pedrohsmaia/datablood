@@ -79,7 +79,7 @@ export const TabbarSwippable = ({
     () =>
       ({
         position: 'absolute',
-        height: '70%',
+        height: '10%',
         flexShrink: 0,
         backgroundColor: theme.color1.val,
         width: pointerWidth,
@@ -109,8 +109,8 @@ export const TabbarSwippable = ({
       justifyContent="center"
       alignItems="center"
       alignSelf="center"
-      maxWidth={1024}
-      minWidth={1024}
+      maxWidth="80%"
+      minWidth="80%"
       marginTop="$4"
     >
       <View
