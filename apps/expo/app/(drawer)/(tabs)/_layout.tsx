@@ -2,7 +2,7 @@ import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken, useTheme }
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus, Settings, Menu } from '@tamagui/lucide-icons'
-import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
+// import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
 import { useUser } from 'app/utils/useUser'
 import { Stack, Tabs, router, useNavigation } from 'expo-router'
 import { Drawer } from 'expo-router/drawer'
@@ -56,9 +56,9 @@ export default function Layout() {
             title: 'Home test',
             tabBarIcon: ({ size, color, focused }) =>
               focused ? (
-                <IconHouseFill color={color as ColorTokens} size={size} />
+                <Home color={color as ColorTokens} size={size} />
               ) : (
-                <IconHouse color={color as ColorTokens} size={size} />
+                <Home color={color as ColorTokens} size={size} />
               ),
           }}
         />
@@ -69,9 +69,9 @@ export default function Layout() {
             title: 'Profile',
             tabBarIcon: ({ size, color, focused }) =>
               focused ? (
-                <IconGearFill color={color as ColorTokens} size={size} />
+                <Home color={color as ColorTokens} size={size} />
               ) : (
-                <IconGear color={color as ColorTokens} size={size} />
+                <Home color={color as ColorTokens} size={size} />
               ),
           }}
         />
