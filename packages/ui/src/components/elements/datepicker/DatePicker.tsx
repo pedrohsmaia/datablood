@@ -1,9 +1,3 @@
-import { useDatePickerContext } from '@rehookify/datepicker'
-import type { DPDay } from '@rehookify/datepicker'
-import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
-import { useEffect, useMemo, useState } from 'react'
-import { AnimatePresence, Button, View } from 'tamagui'
-
 import {
   DatePicker,
   DatePickerInput,
@@ -14,7 +8,12 @@ import {
   useHeaderType,
   HeaderTypeProvider,
   MonthPicker,
-} from './common/dateParts'
+} from '@my/ui/src/components/elements/datepicker/common/dateParts'
+import { useDatePickerContext } from '@rehookify/datepicker'
+import type { DPDay } from '@rehookify/datepicker'
+import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
+import { useEffect, useMemo, useState } from 'react'
+import { AnimatePresence, Button, View } from 'tamagui'
 
 function CalendarHeader() {
   const {
