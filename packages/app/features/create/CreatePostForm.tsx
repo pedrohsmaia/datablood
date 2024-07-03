@@ -22,16 +22,38 @@ export const CreatePostForm = () => {
   const { profile, user } = useUser()
   const supabase = useSupabase()
   const queryClient = useQueryClient()
+
+  const uploadImageAndGetUrl = async (imageSource: string) => {
+    console.log('imageSource', imageSource)
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from('post-images')
+      .upload(`public/${Date.now()}_image`, imageSource)
+
+    console.log('uploadData', uploadData)
+    if (uploadError) {
+      // throw uploadError
+      console.log('error', uploadError)
+    }
+
+    const { data: publicUrlData } = supabase.storage
+      .from('post-images')
+      .getPublicUrl(uploadData?.path)
+    return publicUrlData.publicUrl
+  }
+
   const mutation = useMutation({
     async onError(error) {
       console.log('error', error)
     },
     async mutationFn(data: z.infer<typeof CreatePostSchema>) {
+      const imageUrl = await uploadImageAndGetUrl(data.image_url.imageSource)
+
+      // Insert post with the image URL
       await supabase.from('posts').insert({
         title: data.title,
         content: data.content,
         category_id: data.category_id,
-        image_url: data.image_url.imageSource,
+        image_url: imageUrl,
         profile_id: user?.id,
       })
     },

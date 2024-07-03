@@ -32,9 +32,15 @@ export function ImagePicker({
 
     onPick: ({ webFiles, nativeFiles }) => {
       if (webFiles?.length) {
-        const pickedImages = webFiles?.map((file) => URL.createObjectURL(file))
-        onChangeText(pickedImages[0])
-        setImages((images) => [...images, ...pickedImages])
+        console.log('webFiles', webFiles)
+        const pickedImages = webFiles?.map((file) => {
+          return {
+            fileURL: URL.createObjectURL(file),
+            ...file,
+          }
+        })
+        onChangeText(JSON.stringify(pickedImages[0]))
+        setImages((images) => [...images, pickedImages[0].fileURL])
       } else if (nativeFiles?.length) {
         setImages((images) => [...images, ...nativeFiles.map((file) => file.uri)])
       }
