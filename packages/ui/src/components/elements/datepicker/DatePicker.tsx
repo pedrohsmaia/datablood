@@ -14,7 +14,7 @@ import {
   useHeaderType,
   HeaderTypeProvider,
   MonthPicker,
-} from './common/date-parts'
+} from './common/dateParts'
 
 function CalendarHeader() {
   const {
