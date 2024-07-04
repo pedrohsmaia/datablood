@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconArrowLineDownRightFill = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M224 40a8 8 0 0 1-8 8H40a8 8 0 0 1 0-16h176a8 8 0 0 1 8 8m-28.94 56.61a8 8 0 0 0-8.72 1.73L144 140.69 85.66 82.34a8 8 0 0 0-11.32 11.32L132.69 152l-42.35 42.34A8 8 0 0 0 96 208h96a8 8 0 0 0 8-8v-96a8 8 0 0 0-4.94-7.39"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconArrowLineDownRightFill))
+export { Memo as IconArrowLineDownRightFill }

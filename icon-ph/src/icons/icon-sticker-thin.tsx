@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconStickerThin = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M168 36H88a52.06 52.06 0 0 0-52 52v80a52.06 52.06 0 0 0 52 52h48a3.83 3.83 0 0 0 1.26-.21c25.46-8.48 74.05-57.07 82.53-82.53A3.83 3.83 0 0 0 220 136V88a52.06 52.06 0 0 0-52-52M44 168V88a44.05 44.05 0 0 1 44-44h80a44.05 44.05 0 0 1 44 44v44h-28a52.06 52.06 0 0 0-52 52v28H88a44.05 44.05 0 0 1-44-44m96 42v-26a44.05 44.05 0 0 1 44-44h26c-11.1 22.23-47.77 58.9-70 70"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconStickerThin))
+export { Memo as IconStickerThin }

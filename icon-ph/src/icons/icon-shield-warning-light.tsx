@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconShieldWarningLight = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M208 42H48a14 14 0 0 0-14 14v58.77c0 88.25 74.68 117.52 89.65 122.49a13.5 13.5 0 0 0 8.7 0c15-5 89.65-34.24 89.65-122.49V56a14 14 0 0 0-14-14m2 72.79c0 80-67.84 106.59-81.44 111.1a1.57 1.57 0 0 1-1.13 0C113.84 221.38 46 194.8 46 114.79V56a2 2 0 0 1 2-2h160a2 2 0 0 1 2 2ZM122 136V96a6 6 0 0 1 12 0v40a6 6 0 0 1-12 0m16 36a10 10 0 1 1-10-10 10 10 0 0 1 10 10"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconShieldWarningLight))
+export { Memo as IconShieldWarningLight }

@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconCurrencyInrBold = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M212 80a12 12 0 0 1-12 12h-28a64.07 64.07 0 0 1-64 64h-5l65 59.12a12 12 0 1 1-16.14 17.76l-88-80A12 12 0 0 1 72 132h36a40 40 0 0 0 40-40H72a12 12 0 0 1 0-24h68a40 40 0 0 0-32-16H72a12 12 0 0 1 0-24h128a12 12 0 0 1 0 24h-42.09a64 64 0 0 1 9.4 16H200a12 12 0 0 1 12 12"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconCurrencyInrBold))
+export { Memo as IconCurrencyInrBold }

@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconBookOpenTextThin = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M224 52h-64a36 36 0 0 0-32 19.54A36 36 0 0 0 96 52H32a12 12 0 0 0-12 12v128a12 12 0 0 0 12 12h64a28 28 0 0 1 28 28 4 4 0 0 0 8 0 28 28 0 0 1 28-28h64a12 12 0 0 0 12-12V64a12 12 0 0 0-12-12M96 196H32a4 4 0 0 1-4-4V64a4 4 0 0 1 4-4h64a28 28 0 0 1 28 28v121.4A35.94 35.94 0 0 0 96 196m132-4a4 4 0 0 1-4 4h-64a35.94 35.94 0 0 0-28 13.41V88a28 28 0 0 1 28-28h64a4 4 0 0 1 4 4Zm-24-96a4 4 0 0 1-4 4h-40a4 4 0 0 1 0-8h40a4 4 0 0 1 4 4m0 32a4 4 0 0 1-4 4h-40a4 4 0 0 1 0-8h40a4 4 0 0 1 4 4m0 32a4 4 0 0 1-4 4h-40a4 4 0 0 1 0-8h40a4 4 0 0 1 4 4"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconBookOpenTextThin))
+export { Memo as IconBookOpenTextThin }

@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconCodaLogoLight = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M176 86a41.82 41.82 0 0 1 22.61 6.41A10 10 0 0 0 214 84V48a14 14 0 0 0-14-14H56a14 14 0 0 0-14 14v160a14 14 0 0 0 14 14h144a14 14 0 0 0 14-14v-36a10 10 0 0 0-15.36-8.43c-7.63 4.89-14.11 6.76-22.4 6.42H176a42 42 0 0 1 0-84Zm-54 42a54.06 54.06 0 0 0 53.88 54 46.36 46.36 0 0 0 26.12-6.43V208a2 2 0 0 1-2 2H56a2 2 0 0 1-2-2V48a2 2 0 0 1 2-2h144a2 2 0 0 1 2 2v32.48A54.28 54.28 0 0 0 122 128"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconCodaLogoLight))
+export { Memo as IconCodaLogoLight }

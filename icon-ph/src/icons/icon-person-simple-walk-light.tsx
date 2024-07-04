@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { themed } from '@tamagui/helpers-icon'
+import type { IconProps } from '@tamagui/helpers-icon'
+import * as React from 'react'
+import { Svg, Path } from 'react-native-svg'
+import type { SvgProps } from 'react-native-svg'
+import { memo } from 'react'
+const IconPersonSimpleWalkLight = (_props: any) => {
+  const { size = 24, ...props } = _props
+  return (
+    <Svg width={size} height={size} viewBox="0 0 256 256" {...props}>
+      <Path
+        fill="currentColor"
+        d="M152 78a30 30 0 1 0-30-30 30 30 0 0 0 30 30m0-48a18 18 0 1 1-18 18 18 18 0 0 1 18-18m62 114a6 6 0 0 1-6 6c-34.48 0-51.06-16.75-65.7-31.52-3.47-3.51-6.75-6.82-10.15-9.78L117 143.61l38.52 27.51A6 6 0 0 1 158 176v56a6 6 0 0 1-12 0v-52.91l-33.92-24.23-34.58 79.53a6 6 0 0 1-11-4.78l55-126.61c-10.18-2.75-23.07 0-38.51 8.29a165.76 165.76 0 0 0-30.92 22 6 6 0 0 1-8.22-8.74 175.4 175.4 0 0 1 33.27-23.77c25.93-14 47.64-14.39 62.77-1.26 3.77 3.27 7.4 6.93 10.9 10.47 13.62 13.75 27.69 28 57.17 28A6 6 0 0 1 214 144"
+      />
+    </Svg>
+  )
+}
+const Memo = memo(themed(IconPersonSimpleWalkLight))
+export { Memo as IconPersonSimpleWalkLight }
