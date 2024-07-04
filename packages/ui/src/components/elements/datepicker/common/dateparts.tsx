@@ -44,7 +44,7 @@ const DatePickerImpl = (props: DatePickerProps) => {
       <Popover keepChildrenMounted size="$5" allowFlip {...rest}>
         <Adapt when="sm" platform="touch">
           <Popover.Sheet modal dismissOnSnapToBottom snapPointsMode="fit">
-            <Popover.Sheet.Frame padding="$8" alignItems="center">
+            <Popover.Sheet.Frame style={{ padding: '$8', alignItems: 'center' }}>
               <Adapt.Contents />
             </Popover.Sheet.Frame>
             <Popover.Sheet.Overlay
