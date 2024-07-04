@@ -31,7 +31,7 @@ export const DateField = (props: Pick<InputProps, 'size'>) => {
         <Theme name={error?.dateValue ? 'red' : null} forceClassName>
           <Fieldset $gtSm={{ fb: 0 }} f={1}>
             <Shake shakeKey={error?.dateValue?.errorMessage}>
-              <DatePickerExample
+              {/* <DatePickerExample
                 disabled={disabled}
                 placeholderTextColor="$color10"
                 value={field.value?.dateValue}
@@ -41,7 +41,7 @@ export const DateField = (props: Pick<InputProps, 'size'>) => {
                 placeholder=""
                 id={`${id}-date-value`}
                 {...props}
-              />
+              /> */}
             </Shake>
             <FieldError message={error?.dateValue?.errorMessage} />
           </Fieldset>
