@@ -17,6 +17,7 @@ const plugins = [
     openAnalyzer: process.env.ANALYZE === 'true',
   }),
   withTamagui({
+    disable: true,
     themeBuilder: {
       input: '../../packages/ui/src/themes/theme.ts',
       output: '../../packages/ui/src/themes/theme-generated.ts',
