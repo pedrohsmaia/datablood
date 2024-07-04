@@ -1,4 +1,12 @@
-import { Avatar, FullscreenSpinner, SubmitButton, Theme, YStack, useToastController } from '@my/ui'
+import {
+  Avatar,
+  FullscreenSpinner,
+  SubmitButton,
+  Theme,
+  View,
+  YStack,
+  useToastController,
+} from '@my/ui'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
@@ -80,9 +88,11 @@ const EditProfileForm = ({
       {(fields) => (
         <>
           <YStack mb="$4" ai="center">
-            <UploadAvatar>
-              <UserAvatar />
-            </UploadAvatar>
+            <View>
+              <UploadAvatar>
+                <UserAvatar />
+              </UploadAvatar>
+            </View>
           </YStack>
           {Object.values(fields)}
         </>
