@@ -20,6 +20,7 @@
     "fix": "manypkg fix",
     "postinstall": "yarn check-deps && yarn build",
     "build": "yarn workspaces foreach --all --exclude next-app --exclude storybook-app run build",
+    "build:ci": "yarn workspaces next-app run next:build",
     "storybook": "yarn storybook:web",
     "sb": "yarn storybook:web",
     "storybook:web": "yarn build && cd apps/storybook && yarn dev",
