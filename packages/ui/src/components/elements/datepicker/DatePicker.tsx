@@ -1,3 +1,4 @@
+// tamagui-ignore
 import { useDatePickerContext } from '@rehookify/datepicker'
 import type { DPDay } from '@rehookify/datepicker'
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
