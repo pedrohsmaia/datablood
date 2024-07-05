@@ -58,6 +58,16 @@ yarn migration:diff <MIGRATION_NAME>
 
 - [Reference](https://supabase.com/docs/reference/cli/supabase-db-diff)
 
+#### Push local migrations to remote
+
+Generates a new migration by diffing against the db.
+
+```shell
+yarn deploy
+```
+
+- [Reference](https://supabase.com/docs/reference/cli/supabase-db-push)
+
 #### Start
 
 Start local Supabase instance.
