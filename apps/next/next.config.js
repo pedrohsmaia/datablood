@@ -128,5 +128,5 @@ module.exports = () => {
     }
   }
 
-  return { ...config, typescript: { ignoreBuildErrors: true } }
+  return { ...config, typescript: { ignoreBuildErrors: true }, images: { unoptimized: true } }
 }
