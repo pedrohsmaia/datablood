@@ -27,7 +27,10 @@ export const CreatePostForm = () => {
     console.log('imageSource', imageSource)
     const { data: uploadData, error: uploadError } = await supabase.storage
       .from('post-images')
-      .upload(`public/${Date.now()}_image${imageSource.path}`, imageSource.fileURL)
+      .upload(
+        `public/${Date.now()}_image${imageSource.path}`,
+        await fetch(imageSource.fileURL).then((res) => res.blob())
+      )
 
     console.log('uploadData', uploadData)
     if (uploadError) {
