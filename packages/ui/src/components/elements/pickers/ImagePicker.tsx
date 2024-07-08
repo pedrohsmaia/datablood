@@ -24,7 +24,7 @@ export function ImagePicker({
   [key: string]: any
 }) {
   const id = useId()
-  const [images, setImages] = useState<{ fileURL: string; path: string }[]>([])
+  const [images, setImages] = useState<string[]>([])
   const { open, getInputProps, getRootProps, dragStatus } = useFilePicker({
     typeOfPicker: 'image',
     mediaTypes: [MediaTypeOptions.Images],
@@ -33,14 +33,13 @@ export function ImagePicker({
     onPick: ({ webFiles, nativeFiles }) => {
       if (webFiles?.length) {
         const pickedImages = webFiles?.map((file: File) => {
-          console.log('file', file)
           return {
             fileURL: URL.createObjectURL(file),
             path: (file as any)?.path, // Type assertion to bypass the TypeScript error
           }
         })
         onChangeText(pickedImages[0])
-        setImages((images) => [...images, pickedImages[0]])
+        setImages((images) => [...images, pickedImages[0].fileURL])
       } else if (nativeFiles?.length) {
         // setImages((images) => [...images, pickedImages[0]])
       }
