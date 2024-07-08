@@ -25,10 +25,11 @@ the `yarn create tamagui --template takeout-starter` command has a requirement o
 
 Otherwise, ignore this section. If you're getting authentication issues with `yarn create tamagui`, clone the template (using `gh` or just `git`), cd into the project and run `yarn install`, and then `yarn setup`.
 
-To rename the project you can search the workspace for the word `myapp` and replace with your name.
-If you prefer, you may also run [react-native-rename](https://github.com/junedomingo/react-native-rename) from `/apps/expo` to rename the react-native references.
+To rename the project recommended way is to change the `yourprojectsname` in `apps/expo/app.json`. This will update the name in the Expo app and when building the native apps.
 
 If you're getting issues with the /android or /ios directories when setting up the starter, you can safely remove them and re-generate them using `yarn ios` and `yarn android`.
+
+You can also run the `yarn start:dev-client` command which will start the dev client for you with a pre-built step that will re generate the native apps (recreate the ios and android folders) on the fly.
 
 ## Environment
 
