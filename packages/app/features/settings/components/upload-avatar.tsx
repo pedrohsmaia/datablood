@@ -4,7 +4,7 @@ import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { decode } from 'base64-arraybuffer'
 import * as ImagePicker from 'expo-image-picker'
-import React from 'react'
+import type React from 'react'
 
 export const UploadAvatar = ({ children }: { children: React.ReactNode }) => {
   const { user, updateProfile } = useUser()
