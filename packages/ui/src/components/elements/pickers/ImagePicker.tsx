@@ -16,15 +16,15 @@ export function ImagePicker({
   ...props
 }: {
   disabled: boolean
-  value: { imageSource: string } | undefined
-  onChangeText: (imageSource: string) => void
+  value: { fileURL: string; path: string } | undefined
+  onChangeText: (imageSource: { fileURL: string; path: string }) => void
   onBlur: () => void
   ref: React.RefObject<HTMLInputElement>
   placeholder?: string
   [key: string]: any
 }) {
   const id = useId()
-  const [images, setImages] = useState<string[]>([])
+  const [images, setImages] = useState<{ fileURL: string; path: string }[]>([])
   const { open, getInputProps, getRootProps, dragStatus } = useFilePicker({
     typeOfPicker: 'image',
     mediaTypes: [MediaTypeOptions.Images],
@@ -32,17 +32,17 @@ export function ImagePicker({
 
     onPick: ({ webFiles, nativeFiles }) => {
       if (webFiles?.length) {
-        console.log('webFiles', webFiles)
-        const pickedImages = webFiles?.map((file) => {
+        const pickedImages = webFiles?.map((file: File) => {
+          console.log('file', file)
           return {
             fileURL: URL.createObjectURL(file),
-            ...file,
+            path: (file as any)?.path, // Type assertion to bypass the TypeScript error
           }
         })
-        onChangeText(JSON.stringify(pickedImages[0]))
-        setImages((images) => [...images, pickedImages[0].fileURL])
+        onChangeText(pickedImages[0])
+        setImages((images) => [...images, pickedImages[0]])
       } else if (nativeFiles?.length) {
-        setImages((images) => [...images, ...nativeFiles.map((file) => file.uri)])
+        // setImages((images) => [...images, pickedImages[0]])
       }
     },
   })

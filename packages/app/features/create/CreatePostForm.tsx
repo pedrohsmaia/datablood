@@ -23,11 +23,11 @@ export const CreatePostForm = () => {
   const supabase = useSupabase()
   const queryClient = useQueryClient()
 
-  const uploadImageAndGetUrl = async (imageSource: string) => {
+  const uploadImageAndGetUrl = async (imageSource: { fileURL: string; path: string }) => {
     console.log('imageSource', imageSource)
     const { data: uploadData, error: uploadError } = await supabase.storage
       .from('post-images')
-      .upload(`public/${Date.now()}_image`, imageSource)
+      .upload(`public/${Date.now()}_image${imageSource.path}`, imageSource.fileURL)
 
     console.log('uploadData', uploadData)
     if (uploadError) {
@@ -46,7 +46,8 @@ export const CreatePostForm = () => {
       console.log('error', error)
     },
     async mutationFn(data: z.infer<typeof CreatePostSchema>) {
-      const imageUrl = await uploadImageAndGetUrl(data.image_url.imageSource)
+      console.log('here data', data)
+      const imageUrl = await uploadImageAndGetUrl(data.image_url)
 
       // Insert post with the image URL
       await supabase.from('posts').insert({
