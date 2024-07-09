@@ -48,6 +48,7 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
       process.env.NEXT_PUBLIC_SUPABASE_URL,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       {
+        //TODO: remove this options from takout starter
         // auth: {
         // autoRefreshToken: false,
         // detectSessionInUrl: false,

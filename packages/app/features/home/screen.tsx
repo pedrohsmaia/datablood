@@ -267,8 +267,8 @@ const quarterMinusSpace = validToken(
 const AchievementsSection = () => {
   return (
     <YStack gap="$2" $platform-native={{ gap: '$0' }}>
-      <XStack ai="center" gap="$2" jc="space-between" mb="$4">
-        <Paragraph>Getting Started</Paragraph>
+      <XStack ai="center" gap="$1" jc="space-between" mb="$4">
+        <Paragraph $platform-web={{ fontSize: '$6', fontWeight: '600' }}>Getting Started</Paragraph>
         <RightSubheaderButton href="/"> All Achievements</RightSubheaderButton>
       </XStack>
 
@@ -376,7 +376,7 @@ const OverviewSection = () => {
   return (
     <YStack gap="$2" $platform-native={{ gap: '$0' }}>
       <XStack ai="center" gap="$2" jc="space-between" mb="$3">
-        <Paragraph>Overview</Paragraph>
+        <Paragraph $platform-web={{ fontSize: '$6', fontWeight: '600' }}>Overview</Paragraph>
         <RightSubheaderButton href="/">View All Stats</RightSubheaderButton>
       </XStack>
 
@@ -414,7 +414,7 @@ const PostsSection = () => {
   return (
     <View gap="$2" flexDirection="column" maxWidth="100%">
       <XStack ai="center" gap="$2" jc="space-between" mb="$3">
-        <Paragraph>Latest Posts</Paragraph>
+        <Paragraph $platform-web={{ fontSize: '$6', fontWeight: '600' }}>Latest Posts</Paragraph>
         <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
       </XStack>
       <Stack
