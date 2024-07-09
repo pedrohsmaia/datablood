@@ -7,7 +7,7 @@ import { useUser } from 'app/utils/useUser'
 import { z } from 'zod'
 
 const CreateProjectSchema = z.object({
-  title: formFields.text.min(10).describe("Name // Your project's name:"),
+  title: formFields.text.min(10).describe("Name // Your project's name"),
   description: formFields.textarea.describe(
     'Description // I need a mobile app for this one customer...'
   ),
@@ -92,7 +92,15 @@ export const CreateProjectForm = () => {
         )}
       >
         {(fields) => (
-          <YStack gap="$2" py="$4" pb="$0" pt="$0" minWidth={400} maxWidth={400}>
+          <YStack
+            gap="$2"
+            py="$4"
+            pb="$0"
+            pt="$0"
+            minWidth={400}
+            maxWidth={400}
+            $gtSm={{ minWidth: 480 }}
+          >
             {Object.values(fields)}
           </YStack>
         )}
