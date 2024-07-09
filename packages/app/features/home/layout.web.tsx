@@ -18,6 +18,7 @@ import {
 } from '@my/ui'
 import { CreateModal } from '@my/ui/src/components/CreateModal'
 import { Menu, Plus } from '@tamagui/lucide-icons'
+import { useGlobalStore } from 'app/utils/global-store'
 import { useUser } from 'app/utils/useUser'
 import { useRouter as useNextRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -168,11 +169,12 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
 }
 
 const CtaButton = (props: ButtonProps) => {
-  const [toggleEvent, setToggleEvent] = useState(false)
+  // const [toggleEvent, setToggleEvent] = useState(false)
+  const { toggleCreateModal, setToggleCreateModal } = useGlobalStore()
   const { sm } = useMedia()
   return (
     <>
-      <CreateModal toggleEvent={toggleEvent} setToggleEvent={setToggleEvent} />
+      <CreateModal toggleEvent={toggleCreateModal} setToggleEvent={setToggleCreateModal} />
       <Theme inverse>
         <Adapt when="sm">
           <Button
@@ -189,7 +191,7 @@ const CtaButton = (props: ButtonProps) => {
         </Adapt>
         <Adapt when="gtSm">
           <Button
-            onPress={() => setToggleEvent((prev) => !prev)}
+            onPress={() => setToggleCreateModal()}
             size="$3"
             space="$1.5"
             my="$-1"

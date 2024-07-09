@@ -81,6 +81,7 @@
   },
   "packageManager": "yarn@4.1.0",
   "dependencies": {
-    "@react-navigation/drawer": "^6.6.15"
+    "@react-navigation/drawer": "^6.6.15",
+    "zustand": "^4.5.4"
   }
 }

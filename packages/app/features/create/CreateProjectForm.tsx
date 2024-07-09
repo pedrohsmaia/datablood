@@ -2,6 +2,7 @@ import { FullscreenSpinner, SubmitButton, Theme, useToastController, YStack } fr
 import { useMutation } from '@tanstack/react-query'
 import { formFields, SchemaForm } from 'app/utils/SchemaForm'
 import { api } from 'app/utils/api'
+import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { z } from 'zod'
@@ -17,6 +18,7 @@ const CreateProjectSchema = z.object({
   type: formFields.select.describe('Project Type'),
 })
 export const CreateProjectForm = () => {
+  const { setToggleCreateModal } = useGlobalStore()
   const toast = useToastController()
   // const router = useRouter()
   // const apiUtils = api.useUtils()
@@ -54,7 +56,10 @@ export const CreateProjectForm = () => {
   return (
     <>
       <SchemaForm
-        onSubmit={(values) => mutation.mutate(values)}
+        // onSubmit={(values) => mutation.mutate(values)}
+        onSubmit={(values) => {
+          setToggleCreateModal()
+        }}
         schema={CreateProjectSchema}
         defaultValues={{
           title: '',
@@ -87,6 +92,7 @@ export const CreateProjectForm = () => {
         }}
         renderAfter={({ submit }) => (
           <Theme inverse>
+            {/* <SubmitButton onPress={() => submit()}>Create Project</SubmitButton> */}
             <SubmitButton onPress={() => submit()}>Create Project</SubmitButton>
           </Theme>
         )}
