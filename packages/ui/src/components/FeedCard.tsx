@@ -14,6 +14,7 @@ import {
 
 // mostly for showing something on home so it's not empty
 export const FeedCard = ({
+  imageUrl,
   title,
   description,
   tag,
@@ -21,6 +22,7 @@ export const FeedCard = ({
   withImages,
   ...props
 }: {
+  imageUrl: string
   title: string
   description?: string
   tag?: string
@@ -33,7 +35,7 @@ export const FeedCard = ({
         {withImages && (
           <Image
             source={{
-              uri: `https://picsum.photos/seed/${title}/1000/500`,
+              uri: imageUrl,
             }}
             h={150}
           />

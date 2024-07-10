@@ -25,6 +25,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import ScrollToTopTabBarContainer from 'app/utils/NativeScreenContainer'
 import { api } from 'app/utils/api'
 import useEventsQuery from 'app/utils/react-query/useEventQuery'
+import usePostQuery from 'app/utils/react-query/usePostQuery'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import type React from 'react'
 import { useEffect, useState } from 'react'
@@ -411,6 +412,9 @@ const feedCardWidthMd = validToken(
 )
 
 const PostsSection = () => {
+  const { data, isLoading, isError } = usePostQuery()
+  console.log('data', data)
+  if (isLoading) return null
   return (
     <View gap="$2" flexDirection="column" maxWidth="100%">
       <XStack ai="center" gap="$2" jc="space-between" mb="$3">
@@ -425,14 +429,15 @@ const PostsSection = () => {
         fw="wrap"
         flexDirection={isWeb ? 'row' : 'column'}
       >
-        {cardsData.map((card) => (
+        {data.map((card) => (
           <FeedCard
+            imageUrl={card.image_url}
             key={card.title}
             withImages
             mb="$3"
             $gtMd={{ w: feedCardWidthMd, mb: '1%', miw: '32.333%' }}
             title={card.title}
-            description={card.description}
+            description={`${card?.content?.substring(0, 150)}...`}
             tag={card.tag}
             authors={card.authors}
             $platform-web={{ maxWidth: 300 }}

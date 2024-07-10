@@ -1,10 +1,18 @@
-import { FullscreenSpinner, SubmitButton, Theme, useToastController, YStack } from '@my/ui'
+import {
+  useMedia,
+  FullscreenSpinner,
+  SubmitButton,
+  Theme,
+  useToastController,
+  YStack,
+} from '@my/ui'
 import { useMutation } from '@tanstack/react-query'
 import { formFields, SchemaForm } from 'app/utils/SchemaForm'
 import { api } from 'app/utils/api'
 import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
+import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
 const CreateProjectSchema = z.object({
@@ -19,8 +27,9 @@ const CreateProjectSchema = z.object({
 })
 export const CreateProjectForm = () => {
   const { setToggleCreateModal } = useGlobalStore()
+  const { sm } = useMedia()
   const toast = useToastController()
-  // const router = useRouter()
+  const router = useRouter()
   // const apiUtils = api.useUtils()
   const { profile, user } = useUser()
   const supabase = useSupabase()
@@ -43,9 +52,13 @@ export const CreateProjectForm = () => {
     async onSuccess() {
       console.log('success')
       toast.show('Successfully created!')
+      if (sm) {
+        router.back()
+      } else {
+        setToggleCreateModal()
+      }
       // await queryClient.invalidateQueries(['profile', user.id])
       // await apiUtils.greeting.invalidate()
-      // router.back()
     },
   })
 
@@ -56,10 +69,7 @@ export const CreateProjectForm = () => {
   return (
     <>
       <SchemaForm
-        // onSubmit={(values) => mutation.mutate(values)}
-        onSubmit={(values) => {
-          setToggleCreateModal()
-        }}
+        onSubmit={(values) => mutation.mutate(values)}
         schema={CreateProjectSchema}
         defaultValues={{
           title: '',
@@ -92,7 +102,6 @@ export const CreateProjectForm = () => {
         }}
         renderAfter={({ submit }) => (
           <Theme inverse>
-            {/* <SubmitButton onPress={() => submit()}>Create Project</SubmitButton> */}
             <SubmitButton onPress={() => submit()}>Create Project</SubmitButton>
           </Theme>
         )}
