@@ -69,7 +69,7 @@ export function ImagePicker({
       <View id={id} tag="input" width={0} height={0} {...getInputProps()} />
       <View>
         <Button size="$3" onPress={open}>
-          Pick Images
+          Pick image
         </Button>
 
         <View width="100%" alignItems="center" justifyContent="center">
@@ -85,7 +85,7 @@ export function ImagePicker({
             pos="absolute"
             whiteSpace="nowrap"
           >
-            Drag images into this area
+            Drag cover image into this area
           </Label>
         </View>
       </View>
