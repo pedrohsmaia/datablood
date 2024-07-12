@@ -96,22 +96,24 @@ export function ImagePicker({
         borderRightWidth={1}
         borderLeftWidth={1}
         borderColor="$gray4Light"
-        width="100%"
+        minWidth="100%"
         themeInverse
         paddingBottom="$0"
         horizontal
         overflow="scroll"
         flexWrap="nowrap"
         maxHeight={110}
+        ai="center"
+        jc="center"
       >
-        <XStack gap="$4" flexWrap="nowrap" maxHeight={110} px="$4" pt={10}>
-          {images?.map((image, i) => (
-            <View flexDirection="column" key={image} maxHeight={110}>
+        <XStack gap="$4" flexWrap="nowrap" minWidth="100%" maxHeight={110} px="$4" pt={10}>
+          {[images[0]]?.map((image, i) => (
+            <View key={image} maxHeight={110}>
               <Image
                 borderRadius={10}
                 key={image}
-                width={100}
-                height={100}
+                width={400}
+                height={200}
                 source={{ uri: image }}
               />
               <Button
