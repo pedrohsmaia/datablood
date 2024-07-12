@@ -79,7 +79,7 @@ export const TabbarSwippable = ({
     () =>
       ({
         position: 'absolute',
-        height: '10%',
+        height: '70%',
         flexShrink: 0,
         backgroundColor: theme.color1.val,
         width: pointerWidth,
@@ -128,8 +128,14 @@ export const TabbarSwippable = ({
           alignItems="center"
           paddingVertical="$2"
           height="$4"
+          onLayout={(e) => {
+            const width = e.nativeEvent.layout.width
+            // Note: you should remove the following line in your code
+            // Note: use width instead of scaledWidth in your code
+            setPointerWidth(width / 3)
+          }}
         >
-          <Animated.View style={animatedStyle} {...panResponder.panHandlers} />
+          {/* <Animated.View style={animatedStyle} {...panResponder.panHandlers} /> */}
           {tabs.map((tab, index) => (
             <Tabs.Tab
               unstyled
