@@ -11,6 +11,7 @@ import {
   ScrollView,
   Separator,
   Stack,
+  Text,
   Theme,
   TodoCard,
   View,
@@ -181,9 +182,9 @@ export function HomeScreen() {
             <OverviewSection />
             <PostsSection />
           </YStack>
+          cons
         </YStack>
       </ScrollToTopTabBarContainer>
-
       {isWeb && <Separator vertical />}
       {isWeb && <EventCards />}
     </XStack>
@@ -211,24 +212,31 @@ const EventCards = () => {
               { text: 'Hot', theme: 'orange_alt2' },
             ]}
           /> */}
-          {data?.map((event) => (
-            <EventCard
-              key={event.id}
-              title={event.name}
-              description={event.description}
-              action={{
-                text: 'Show Event',
-                props: { href: `/event/${event.id}` },
-              }}
-              tags={[
-                { text: event.status, theme: 'green_alt2' },
-                {
-                  text: `${new Date(event.end_time).toLocaleDateString()} Remaining`,
-                  theme: 'blue_alt2',
-                },
-              ]}
-            />
-          ))}
+
+          {data.length ? (
+            data?.map((event) => (
+              <EventCard
+                key={event.id}
+                title={event.name}
+                description={event.description}
+                action={{
+                  text: 'Show Event',
+                  props: { href: `/event/${event.id}` },
+                }}
+                tags={[
+                  { text: event.status, theme: 'green_alt2' },
+                  {
+                    text: `${new Date(event.end_time).toLocaleDateString()} Remaining`,
+                    theme: 'blue_alt2',
+                  },
+                ]}
+              />
+            ))
+          ) : (
+            <View height={400} miw="100%" ai="center" jc="center" f={1} background="$gray1">
+              <Text>No events yet</Text>
+            </View>
+          )}
         </YStack>
         <YStack p="$3">
           <Theme name="blue_alt1">
@@ -365,7 +373,10 @@ const RightSubheaderButton = ({ href, children }: { href: string; children: Reac
         chromeless
         {...useLink({ href: '/' })}
         iconAfter={ArrowRight}
-        $platform-native={{ paddingRight: '$2', pressStyle: { borderWidth: 0 } }}
+        $platform-native={{
+          paddingRight: '$2',
+          pressStyle: { borderWidth: 0 },
+        }}
       >
         {children}
       </Button>
