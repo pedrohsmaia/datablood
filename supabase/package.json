@@ -14,6 +14,7 @@
     "g": "yarn generate",
     "migration:diff": "npx supabase db diff -f ",
     "migration:up": "npx supabase migration up",
+    "migration:new": "supabase migration new",
     "start": "npx supabase start",
     "stop": "npx supabase stop",
     "stop:no-backup": "npx supabase stop --no-backup",
