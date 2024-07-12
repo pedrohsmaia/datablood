@@ -439,21 +439,37 @@ const PostsSection = () => {
         fw="wrap"
         flexDirection={isWeb ? 'row' : 'column'}
       >
-        {data.map((card) => (
-          <FeedCard
-            imageUrl={card.image_url}
-            key={card.title}
-            withImages
-            mb="$3"
-            $gtMd={{ w: feedCardWidthMd, mb: '1%', miw: '32.333%' }}
-            title={card.title}
-            description={`${card?.content?.substring(0, 150)}...`}
-            tag={card.tag}
-            authors={card.authors}
-            $platform-web={{ maxWidth: 300 }}
-            $platform-native={{ minWidth: '100%', maxWidth: '100%' }}
-          />
-        ))}
+        {data?.length ? (
+          data.map((card) => (
+            <FeedCard
+              imageUrl={card.image_url}
+              key={card.title}
+              withImages
+              mb="$3"
+              $gtMd={{ w: feedCardWidthMd, mb: '1%', miw: '32.333%' }}
+              title={card.title}
+              description={`${card?.content?.substring(0, 150)}...`}
+              tag={card.tag}
+              authors={card.authors}
+              $platform-web={{ maxWidth: 300 }}
+              $platform-native={{ minWidth: '100%', maxWidth: '100%' }}
+            />
+          ))
+        ) : (
+          <View
+            height={200}
+            maw="100%"
+            ai="center"
+            jc="center"
+            f={1}
+            background="$gray1"
+            m="$2"
+            ml="$0"
+            br="$5"
+          >
+            <Text>No posts created yet</Text>
+          </View>
+        )}
       </Stack>
     </View>
   )
