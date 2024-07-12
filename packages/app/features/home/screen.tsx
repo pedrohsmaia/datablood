@@ -213,7 +213,7 @@ const EventCards = () => {
             ]}
           /> */}
 
-          {data.length ? (
+          {data?.length ? (
             data?.map((event) => (
               <EventCard
                 key={event.id}

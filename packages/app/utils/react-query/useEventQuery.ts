@@ -1,17 +1,24 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { useSupabase } from '../supabase/useSupabase'
+import { useUser } from '../useUser'
 
-const getEvents = async (supabase) => {
-  return supabase.from('events').select('*').order('created_at', { ascending: false }).limit(4)
+const getEvents = async (supabase, userId) => {
+  return supabase
+    .from('events')
+    .select('*')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false })
+    .limit(4)
 }
 
 function useEventsQuery() {
   const supabase = useSupabase()
   const queryKey = ['events']
+  const { user } = useUser()
 
   const queryFn = async () => {
-    return getEvents(supabase).then((result) => result.data)
+    return getEvents(supabase, user?.id).then((result) => result.data)
   }
 
   return useQuery({ queryKey, queryFn })
