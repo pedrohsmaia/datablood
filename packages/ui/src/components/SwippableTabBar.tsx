@@ -154,6 +154,7 @@ export const TabbarSwippable = ({
                 theme={index !== activeTabIndex ? 'alt1' : undefined}
                 selectable={false}
                 cursor="pointer"
+                fontWeight={index !== activeTabIndex ? undefined : '600'}
               >
                 {tab}
               </Text>
