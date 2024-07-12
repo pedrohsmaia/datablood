@@ -1,6 +1,14 @@
-import { FullscreenSpinner, SubmitButton, Theme, YStack, useToastController } from '@my/ui'
+import {
+  FullscreenSpinner,
+  SubmitButton,
+  Theme,
+  YStack,
+  useMedia,
+  useToastController,
+} from '@my/ui'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
+import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useRouter } from 'solito/router'
@@ -16,6 +24,8 @@ const CreatePostSchema = z.object({
 })
 
 export const CreatePostForm = () => {
+  const { setToggleCreateModal } = useGlobalStore()
+  const { sm } = useMedia()
   const toast = useToastController()
   const router = useRouter()
   const apiUtils = api.useUtils()
@@ -65,9 +75,13 @@ export const CreatePostForm = () => {
     async onSuccess() {
       console.log('success')
       toast.show('Successfully created!')
+      if (sm) {
+        router.back()
+      } else {
+        setToggleCreateModal()
+      }
       // await queryClient.invalidateQueries(['profile', user.id])
       // await apiUtils.greeting.invalidate()
-      // router.back()
     },
   })
 

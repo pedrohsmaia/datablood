@@ -182,7 +182,6 @@ export function HomeScreen() {
             <OverviewSection />
             <PostsSection />
           </YStack>
-          cons
         </YStack>
       </ScrollToTopTabBarContainer>
       {isWeb && <Separator vertical />}

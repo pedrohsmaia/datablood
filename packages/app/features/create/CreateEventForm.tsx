@@ -1,7 +1,15 @@
-import { FullscreenSpinner, SubmitButton, Theme, YStack, useToastController } from '@my/ui'
+import {
+  FullscreenSpinner,
+  SubmitButton,
+  Theme,
+  YStack,
+  useToastController,
+  useMedia,
+} from '@my/ui'
 import { DatePickerExample } from '@my/ui/src/components/elements/datepicker/DatePicker'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
+import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useRouter } from 'solito/router'
@@ -17,6 +25,8 @@ const CreateEventSchema = z.object({
 })
 
 export const CreateEventForm = () => {
+  const { setToggleCreateModal } = useGlobalStore()
+  const { sm } = useMedia()
   const toast = useToastController()
   const router = useRouter()
   const apiUtils = api.useUtils()
@@ -41,6 +51,12 @@ export const CreateEventForm = () => {
     async onSuccess() {
       console.log('success')
       toast.show('Successfully created!')
+
+      if (sm) {
+        router.back()
+      } else {
+        setToggleCreateModal()
+      }
       // await queryClient.invalidateQueries(['profile', user.id])
       // await apiUtils.greeting.invalidate()
       // router.back()
