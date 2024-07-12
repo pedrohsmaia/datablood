@@ -34,6 +34,7 @@ export const CreateEventForm = () => {
         start_time: data.startTime.dateValue,
         end_time: data.endTime.dateValue,
         status: 'upcoming',
+        profile_id: user?.id,
       })
     },
 

@@ -7,7 +7,7 @@ const getEvents = async (supabase, userId) => {
   return supabase
     .from('events')
     .select('*')
-    .eq('user_id', userId)
+    .eq('profile_id', userId)
     .order('created_at', { ascending: false })
     .limit(4)
 }
