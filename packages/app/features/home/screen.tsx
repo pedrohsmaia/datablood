@@ -173,18 +173,20 @@ const defaultAuthors = [
 
 export function HomeScreen() {
   return (
-    <XStack maw={1480} als="center" f={1} marginLeft="$2">
-      <ScrollToTopTabBarContainer f={3} fb={0}>
-        <YStack gap="$3" pt="$2" pb="$3">
+    <XStack maw={1480} als="center" f={1}>
+      <ScrollView f={3} fb={0}>
+        <ScrollToTopTabBarContainer f={3} fb={0}>
           <Greetings />
-          <YStack gap="$8" mt="$2">
+          <YStack gap="$6">
             <AchievementsSection />
             <OverviewSection />
             <PostsSection />
           </YStack>
-        </YStack>
-      </ScrollToTopTabBarContainer>
-      {isWeb && <Separator vertical />}
+        </ScrollToTopTabBarContainer>
+      </ScrollView>
+
+      <Separator vertical />
+
       {isWeb && <EventCards />}
     </XStack>
   )
@@ -274,14 +276,20 @@ const quarterMinusSpace = validToken(
 
 const AchievementsSection = () => {
   return (
-    <YStack gap="$2" $platform-native={{ gap: '$0' }}>
-      <XStack ai="center" gap="$1" jc="space-between" mb="$4">
-        <Paragraph $platform-web={{ fontSize: '$6', fontWeight: '600' }}>Getting Started</Paragraph>
-        <RightSubheaderButton href="/"> All Achievements</RightSubheaderButton>
+    <YStack gap="$4">
+      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
+        <H4 theme="alt1" fow="400">
+          Getting Started
+        </H4>
+        <Theme name="alt2">
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            All Achievements
+          </Button>
+        </Theme>
       </XStack>
 
       <ScrollAdapt>
-        <XStack fw="wrap" f={1} gap="$3">
+        <XStack px="$4" fw="wrap" f={1} gap="$3">
           <Theme name="green">
             <AchievementCard
               w={300}
@@ -293,11 +301,7 @@ const AchievementsSection = () => {
               }}
               icon={DollarSign}
               title="Make your first 100K"
-              progress={{
-                current: 81_500,
-                full: 100_000,
-                label: 'dollars made',
-              }}
+              progress={{ current: 81_500, full: 100_000, label: 'dollars made' }}
               action={{
                 text: 'Boost your sales',
                 props: useLink({ href: '#' }),
@@ -385,30 +389,36 @@ const RightSubheaderButton = ({ href, children }: { href: string; children: Reac
 
 const OverviewSection = () => {
   return (
-    <YStack gap="$2" $platform-native={{ gap: '$0' }}>
-      <XStack ai="center" gap="$2" jc="space-between" mb="$3">
-        <Paragraph $platform-web={{ fontSize: '$6', fontWeight: '600' }}>Overview</Paragraph>
-        <RightSubheaderButton href="/">View All Stats</RightSubheaderButton>
+    <YStack gap="$4">
+      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
+        <H4 fow="400">Overview</H4>
+        <Theme name="alt2">
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            View All Stats
+          </Button>
+        </Theme>
       </XStack>
 
       <ScrollAdapt itemWidth={180} withSnap>
-        <OverviewCard title="MRR" value="$18,908" badgeText="+0.5%" badgeState="success" />
+        <XStack fw="wrap" ai="flex-start" jc="flex-start" px="$4" gap="$8" mb="$4">
+          <OverviewCard title="MRR" value="$18,908" badgeText="+0.5%" badgeState="success" />
 
-        <OverviewCard title="ARR" value="$204,010" badgeText="+40.5%" badgeState="success" />
+          <OverviewCard title="ARR" value="$204,010" badgeText="+40.5%" badgeState="success" />
 
-        <OverviewCard
-          title="Today's new users"
-          value="4 Users"
-          badgeText="+25%"
-          badgeState="success"
-        />
+          <OverviewCard
+            title="Today's new users"
+            value="4 Users"
+            badgeText="+25%"
+            badgeState="success"
+          />
 
-        <OverviewCard
-          title="Weekly Post Views"
-          value="30,104"
-          badgeText="-2%"
-          badgeState="failure"
-        />
+          <OverviewCard
+            title="Weekly Post Views"
+            value="30,104"
+            badgeText="-2%"
+            badgeState="failure"
+          />
+        </XStack>
       </ScrollAdapt>
     </YStack>
   )
