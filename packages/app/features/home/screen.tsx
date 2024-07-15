@@ -174,10 +174,10 @@ const defaultAuthors = [
 export function HomeScreen() {
   return (
     <XStack maw={1480} als="center" f={1}>
-      <ScrollView f={3} fb={0}>
-        <ScrollToTopTabBarContainer f={3} fb={0}>
+      <ScrollView f={4} fb={0}>
+        <ScrollToTopTabBarContainer>
           <Greetings />
-          <YStack gap="$6">
+          <YStack gap="$7">
             <AchievementsSection />
             <OverviewSection />
             <PostsSection />
