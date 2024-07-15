@@ -513,9 +513,5 @@ function ScrollAdapt({
 
 const Greetings = () => {
   const greetingQuery = api.greeting.greet.useQuery()
-  return (
-    <H2 my="$2" mr="$4">
-      {greetingQuery.data || '-'}
-    </H2>
-  )
+  return <H2 m="$4">{greetingQuery.data || '-'}</H2>
 }
