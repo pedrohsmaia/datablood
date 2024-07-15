@@ -465,6 +465,7 @@ const PostsSection = () => {
             background="$gray1"
             m="$2"
             ml="$0"
+            mt="$"
             br="$5"
           >
             <Text>No posts created yet</Text>
