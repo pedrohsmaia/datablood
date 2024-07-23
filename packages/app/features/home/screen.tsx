@@ -201,19 +201,6 @@ const EventCards = () => {
     <ScrollView f={1} fb={0} $md={{ dsp: 'none' }}>
       <YStack separator={<Separator />}>
         <YStack>
-          {/* <EventCard
-            title="Event #1"
-            description="Lorem ipsum dolor sit, amet."
-            action={{
-              text: 'Show Event',
-              props: useLink({ href: '/' }),
-            }}
-            tags={[
-              { text: 'New', theme: 'green_alt2' },
-              { text: 'Hot', theme: 'orange_alt2' },
-            ]}
-          /> */}
-
           {data?.length ? (
             data?.map((event) => (
               <EventCard
