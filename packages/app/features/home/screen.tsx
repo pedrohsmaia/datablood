@@ -456,10 +456,11 @@ const PostsSection = () => {
           <View
             height={200}
             maw="100%"
+            miw="100%"
             ai="center"
             jc="center"
             f={1}
-            background="$gray1"
+            backgroundColor="$gray1"
             m="$2"
             ml="$0"
             mt="$"
