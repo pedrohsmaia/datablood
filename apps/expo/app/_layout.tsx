@@ -70,6 +70,13 @@ export default function HomeLayout() {
                 presentation: 'modal',
               }}
             />
+            <Stack.Screen
+              name="settings/index"
+              options={{
+                headerShown: true,
+                headerBackTitle: 'back',
+              }}
+            />
           </Stack>
         </Provider>
       </View>
