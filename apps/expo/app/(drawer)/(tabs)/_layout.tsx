@@ -1,25 +1,30 @@
 import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken, useTheme } from '@my/ui'
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus, Settings, Menu } from '@tamagui/lucide-icons'
 // import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
 import { useUser } from 'app/utils/useUser'
-import { Stack, Tabs, router, useNavigation } from 'expo-router'
+import { Stack, Tabs, usePathname, useNavigation } from 'expo-router'
 import { Drawer } from 'expo-router/drawer'
 import { Pressable } from 'react-native'
 import { SolitoImage } from 'solito/image'
-import { useRouter } from 'solito/router'
 
 export default function Layout() {
   const { accentColor } = useTheme()
   const navigation = useNavigation()
+  const pathname = usePathname()
+  if (__DEV__) {
+    console.log('pathname', pathname)
+  }
   return (
     <>
       <Stack.Screen
         options={{
           title: 'Home',
+          headerShown: pathname === '/' || pathname === '/create',
           headerTintColor: accentColor.val,
-          headerLeft: ({}) => (
+          headerLeft: () => (
             <Pressable
               style={{ marginLeft: 12 }}
               onPress={() => {
@@ -29,7 +34,7 @@ export default function Layout() {
               <Menu size={24} />
             </Pressable>
           ),
-          headerRight: ({}) => (
+          headerRight: () => (
             <Pressable
               style={{ marginLeft: 12 }}
               onPress={() => {
