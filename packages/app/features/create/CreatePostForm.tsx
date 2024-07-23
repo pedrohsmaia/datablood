@@ -80,8 +80,6 @@ export const CreatePostForm = () => {
       } else {
         setToggleCreateModal()
       }
-      // await queryClient.invalidateQueries(['profile', user.id])
-      // await apiUtils.greeting.invalidate()
     },
   })
 
