@@ -70,14 +70,6 @@ export default function HomeLayout() {
                 presentation: 'modal',
               }}
             />
-            {/* <Stack.Screen
-              name="(drawer)/index"
-              options={
-                {
-                  // presentation: 'modal',
-                }
-              }
-            /> */}
           </Stack>
         </Provider>
       </View>
