@@ -26,7 +26,7 @@ export default function Layout() {
           headerTintColor: accentColor.val,
           headerLeft: () => (
             <Pressable
-              style={{ marginLeft: 12 }}
+              style={{ marginLeft: 10 }}
               onPress={() => {
                 navigation.openDrawer()
               }}
@@ -36,7 +36,7 @@ export default function Layout() {
           ),
           headerRight: () => (
             <Pressable
-              style={{ marginLeft: 12 }}
+              style={{ marginRight: 10 }}
               onPress={() => {
                 navigation.navigate('create')
               }}
