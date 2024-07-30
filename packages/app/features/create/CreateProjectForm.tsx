@@ -112,8 +112,8 @@ export const CreateProjectForm = () => {
             py="$4"
             pb="$0"
             pt="$0"
-            minWidth={400}
-            maxWidth={400}
+            minWidth="100%"
+            maxWidth="100%"
             $gtSm={{ minWidth: 480 }}
           >
             {Object.values(fields)}
