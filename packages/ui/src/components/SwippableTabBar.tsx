@@ -5,7 +5,7 @@ import type { TabsContentProps } from 'tamagui'
 import { H5, Separator, Tabs, Text, View, debounce, useEvent, useTheme } from 'tamagui'
 
 // const tabs = ['Create Project', 'New Post', 'Add Event']
-const tabs = ['New Post', 'Add Event']
+const tabs = ['Create Project', 'Add Event']
 
 /** ------ EXAMPLE ------ */
 export const TabbarSwippable = ({
@@ -168,9 +168,9 @@ export const TabbarSwippable = ({
         <CreateProjectForm />
       </TabsContent>
 
-      <TabsContent value="New Post">
+      {/* <TabsContent value="New Post">
         <CreatePostForm />
-      </TabsContent>
+      </TabsContent> */}
 
       <TabsContent value="Add Event">
         <CreateEventForm />
