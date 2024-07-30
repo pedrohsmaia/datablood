@@ -263,7 +263,7 @@ const quarterMinusSpace = validToken(
 
 const AchievementsSection = () => {
   return (
-    <YStack gap="$4">
+    <YStack>
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 theme="alt1" fow="400">
           Getting Started
@@ -375,7 +375,7 @@ const RightSubheaderButton = ({ href, children }: { href: string; children: Reac
 
 const OverviewSection = () => {
   return (
-    <YStack gap="$4">
+    <YStack>
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 theme="alt1" fow="400">
           Overview
@@ -424,7 +424,7 @@ const PostsSection = () => {
   console.log('data', data)
   if (isLoading) return null
   return (
-    <View gap="$4">
+    <View>
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
         <H4 theme="alt1" fow="400">
           Latest Posts
@@ -460,20 +460,22 @@ const PostsSection = () => {
             />
           ))
         ) : (
-          <View
-            height={200}
-            maw="100%"
-            miw="100%"
-            ai="center"
-            jc="center"
-            f={1}
-            backgroundColor="$gray1"
-            m="$2"
-            $platform-native={{ m: '$0', mb: '$3' }}
-            ml="$0"
-            br="$5"
-          >
-            <Text>No posts created yet</Text>
+          <View mx="$4" $gtSm={{ miw: '100%', mb: '$4' }}>
+            <View
+              height={200}
+              maw="100%"
+              miw="100%"
+              ai="center"
+              jc="center"
+              f={1}
+              backgroundColor="$gray1"
+              m="$2"
+              $platform-native={{ m: '$0', mb: '$3' }}
+              ml="$0"
+              br="$5"
+            >
+              <Text>No posts created yet</Text>
+            </View>
           </View>
         )}
       </Stack>
