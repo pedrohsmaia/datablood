@@ -9,7 +9,13 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 SplashScreen.preventAutoHideAsync()
 
-LogBox.ignoreLogs(['Cannot update a component', 'You are setting the style', 'No route'])
+LogBox.ignoreLogs([
+  'Cannot update a component',
+  'You are setting the style',
+  'No route',
+  'duplicate ID',
+  'Require cycle',
+])
 
 export default function HomeLayout() {
   const [fontLoaded] = useFonts({

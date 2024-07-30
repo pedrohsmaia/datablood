@@ -1,7 +1,5 @@
 import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken, useTheme } from '@my/ui'
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
-import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus, Settings, Menu } from '@tamagui/lucide-icons'
 // import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
 import { useUser } from 'app/utils/useUser'
@@ -58,7 +56,7 @@ export default function Layout() {
           name="index"
           options={{
             headerShown: false,
-            title: 'Home test',
+            title: 'Home',
             tabBarIcon: ({ size, color, focused }) =>
               focused ? (
                 <Home color={color as ColorTokens} size={size} />
@@ -68,15 +66,15 @@ export default function Layout() {
           }}
         />
         <Tabs.Screen
-          name="profile"
+          name="settings"
           options={{
-            headerShown: false,
+            headerShown: true,
             title: 'Profile',
             tabBarIcon: ({ size, color, focused }) =>
               focused ? (
-                <Home color={color as ColorTokens} size={size} />
+                <Settings color={color as ColorTokens} size={size} />
               ) : (
-                <Home color={color as ColorTokens} size={size} />
+                <Settings color={color as ColorTokens} size={size} />
               ),
           }}
         />
