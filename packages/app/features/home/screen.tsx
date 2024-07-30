@@ -228,12 +228,12 @@ const EventCards = () => {
         </YStack>
         <YStack p="$3">
           <Theme name="blue_alt1">
-            {/* <Banner {...useLink({ href: '/' })} cur="pointer">
+            <Banner {...useLink({ href: '/' })} cur="pointer">
               <H4>Upgrade Now!</H4>
               <Paragraph size="$2" mt="$1">
                 Upgrade to access exclusive features and more!
               </Paragraph>
-            </Banner> */}
+            </Banner>
           </Theme>
         </YStack>
         <YStack>
@@ -378,7 +378,9 @@ const OverviewSection = () => {
   return (
     <YStack gap="$4">
       <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
-        <H4 fow="400">Overview</H4>
+        <H4 theme="alt1" fow="400">
+          Overview
+        </H4>
         <Theme name="alt2">
           <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
             View All Stats
@@ -423,10 +425,16 @@ const PostsSection = () => {
   console.log('data', data)
   if (isLoading) return null
   return (
-    <View gap="$2" flexDirection="column" maxWidth="100%">
-      <XStack ai="center" gap="$2" jc="space-between" mb="$3">
-        <Paragraph $platform-web={{ fontSize: '$6', fontWeight: '600' }}>Latest Posts</Paragraph>
-        <RightSubheaderButton href="/">View All Posts</RightSubheaderButton>
+    <View gap="$4">
+      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
+        <H4 theme="alt1" fow="400">
+          Latest Posts
+        </H4>
+        <Theme name="alt2">
+          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+            View All Posts
+          </Button>
+        </Theme>
       </XStack>
       <Stack
         maxWidth={1070}
@@ -462,8 +470,8 @@ const PostsSection = () => {
             f={1}
             backgroundColor="$gray1"
             m="$2"
+            $platform-native={{ m: '$0' }}
             ml="$0"
-            mt="$"
             br="$5"
           >
             <Text>No posts created yet</Text>
