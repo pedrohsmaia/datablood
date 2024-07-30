@@ -228,7 +228,7 @@ const EventCards = () => {
         </YStack>
         <YStack p="$3">
           <Theme name="blue_alt1">
-            <Banner {...useLink({ href: '/' })} cur="pointer">
+            <Banner cur="pointer">
               <H4>Upgrade Now!</H4>
               <Paragraph size="$2" mt="$1">
                 Upgrade to access exclusive features and more!
@@ -269,7 +269,7 @@ const AchievementsSection = () => {
           Getting Started
         </H4>
         <Theme name="alt2">
-          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+          <Button size="$2" chromeless iconAfter={ArrowRight}>
             All Achievements
           </Button>
         </Theme>
@@ -361,7 +361,6 @@ const RightSubheaderButton = ({ href, children }: { href: string; children: Reac
       <Button
         size="$3"
         chromeless
-        {...useLink({ href: '/' })}
         iconAfter={ArrowRight}
         $platform-native={{
           paddingRight: '$2',
@@ -382,7 +381,7 @@ const OverviewSection = () => {
           Overview
         </H4>
         <Theme name="alt2">
-          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+          <Button size="$2" chromeless iconAfter={ArrowRight}>
             View All Stats
           </Button>
         </Theme>
@@ -431,7 +430,7 @@ const PostsSection = () => {
           Latest Posts
         </H4>
         <Theme name="alt2">
-          <Button size="$2" chromeless {...useLink({ href: '/' })} iconAfter={ArrowRight}>
+          <Button size="$2" chromeless iconAfter={ArrowRight}>
             View All Posts
           </Button>
         </Theme>
