@@ -183,7 +183,6 @@ const TabsContent = (props: TabsContentProps) => {
   return (
     <Tabs.Content
       key="tab3"
-      padding="$2"
       alignItems="center"
       justifyContent="center"
       flex={1}
@@ -191,7 +190,6 @@ const TabsContent = (props: TabsContentProps) => {
       borderRadius="$2"
       btlr={0}
       borderTopRightRadius={0}
-      borderWidth="$2"
       height={600}
       {...props}
     >
