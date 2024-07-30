@@ -470,7 +470,7 @@ const PostsSection = () => {
             f={1}
             backgroundColor="$gray1"
             m="$2"
-            $platform-native={{ m: '$0' }}
+            $platform-native={{ m: '$0', mb: '$3' }}
             ml="$0"
             br="$5"
           >
