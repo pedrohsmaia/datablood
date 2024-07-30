@@ -57,12 +57,9 @@ export default function Layout() {
           options={{
             headerShown: false,
             title: 'Home',
-            tabBarIcon: ({ size, color, focused }) =>
-              focused ? (
-                <Home color={color as ColorTokens} size={size} />
-              ) : (
-                <Home color={color as ColorTokens} size={size} />
-              ),
+            tabBarIcon: ({ size, color, focused }) => (
+              <Home color={focused ? '$white' : '$color10'} size={size} />
+            ),
           }}
         />
         <Tabs.Screen
