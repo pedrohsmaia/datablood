@@ -8,6 +8,7 @@ export default function Screen() {
       <Stack.Screen
         options={{
           title: 'General',
+          headerShown: true,
         }}
       />
       <GeneralSettingsScreen />

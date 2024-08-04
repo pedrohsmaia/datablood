@@ -77,7 +77,7 @@ export default function HomeLayout() {
               name="settings/index"
               options={{
                 headerShown: true,
-                headerBackTitle: 'back',
+                headerBackTitle: 'Back',
               }}
             />
           </Stack>

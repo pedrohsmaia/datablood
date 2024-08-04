@@ -21,155 +21,14 @@ import {
   useMedia,
   validToken,
 } from '@my/ui'
-import { ArrowRight, DollarSign, Pencil, SquareStack, User, Users } from '@tamagui/lucide-icons'
-import { useQueryClient } from '@tanstack/react-query'
+import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
 import ScrollToTopTabBarContainer from 'app/utils/NativeScreenContainer'
 import { api } from 'app/utils/api'
 import useEventsQuery from 'app/utils/react-query/useEventQuery'
 import usePostQuery from 'app/utils/react-query/usePostQuery'
-import { useSupabase } from 'app/utils/supabase/useSupabase'
 import type React from 'react'
-import { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
-
-const cardsData = [
-  {
-    title: 'Why lorem ipsum look bad',
-    description:
-      "Maybe it's just me - I'll just write out some dummy text just ignore the text tyvm...",
-    tag: 'Design',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=68/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=8/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-    ],
-  },
-  {
-    title: 'Why you should use Tamagui',
-    description:
-      'Tamagui is the best way to develop performant cross-platform apps with one codebase...',
-    tag: 'React',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=30?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=31?ca=1',
-        name: 'Jane Doe',
-        id: 3,
-      },
-    ],
-  },
-  {
-    title: 'Merits of functional programming',
-    description: "What is FP anyways? let's talk about it and learn about it's pros and cons...",
-    tag: 'Programming',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-    ],
-  },
-  {
-    title: 'Different React paradigms',
-    description: "We're gonna talk about different react paradigm and jargons...",
-    tag: 'React',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=11?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=2?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=3?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=4?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-    ],
-  },
-  {
-    title: 'Another Post',
-    description: "Hey this is yet another post I'm putting here for demo purposes...",
-    tag: 'React',
-    authors: [
-      {
-        avatar: 'https://i.pravatar.cc/150?img=32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-        name: 'John Doe',
-        id: 1,
-      },
-      {
-        avatar: 'https://i.pravatar.cc/150?img=7?ca=1',
-        name: 'Jane Doe',
-        id: 2,
-      },
-    ],
-  },
-]
-
-const defaultAuthors = [
-  {
-    id: 1,
-    name: 'John Doe',
-    avatar: 'https://i.pravatar.cc/150?img=67/32/32?ca=1',
-  },
-  {
-    id: 2,
-    name: 'Jane Doe',
-    avatar: 'https://i.pravatar.cc/150?img=30/32/32?ca=1',
-  },
-]
 
 export function HomeScreen() {
   return (
@@ -177,7 +36,7 @@ export function HomeScreen() {
       <ScrollView f={4} fb={0}>
         <ScrollToTopTabBarContainer>
           <Greetings />
-          <YStack gap="$7">
+          <YStack gap="$7" pb="$10">
             <AchievementsSection />
             <OverviewSection />
             <PostsSection />
@@ -185,15 +44,18 @@ export function HomeScreen() {
         </ScrollToTopTabBarContainer>
       </ScrollView>
 
-      <Separator vertical />
-
-      {isWeb && <EventCards />}
+      {isWeb && (
+        <>
+          <EventCards />
+          <Separator vertical />
+        </>
+      )}
     </XStack>
   )
 }
 
 const EventCards = () => {
-  const { data, isLoading, isError } = useEventsQuery()
+  const { data, isLoading } = useEventsQuery()
 
   if (isLoading) return null
   // console.log('data', data)
@@ -221,7 +83,7 @@ const EventCards = () => {
               />
             ))
           ) : (
-            <View height={400} miw="100%" ai="center" jc="center" f={1} background="$gray1">
+            <View h={400} miw="100%" ai="center" jc="center" f={1} background="$gray1">
               <Text>No events yet</Text>
             </View>
           )}
@@ -268,11 +130,9 @@ const AchievementsSection = () => {
         <H4 theme="alt1" fow="400">
           Getting Started
         </H4>
-        <Theme name="alt2">
-          <Button size="$2" chromeless iconAfter={ArrowRight}>
-            All Achievements
-          </Button>
-        </Theme>
+        <Button theme="alt2" size="$2" chromeless iconAfter={ArrowRight}>
+          All Achievements
+        </Button>
       </XStack>
 
       <ScrollAdapt>
