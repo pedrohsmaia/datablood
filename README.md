@@ -25,10 +25,11 @@ the `yarn create tamagui --template takeout-starter` command has a requirement o
 
 Otherwise, ignore this section. If you're getting authentication issues with `yarn create tamagui`, clone the template (using `gh` or just `git`), cd into the project and run `yarn install`, and then `yarn setup`.
 
-To rename the project you can search the workspace for the word `myapp` and replace with your name.
-If you prefer, you may also run [react-native-rename](https://github.com/junedomingo/react-native-rename) from `/apps/expo` to rename the react-native references.
+To rename the project recommended way is to change the `yourprojectsname` in `apps/expo/app.json`. This will update the name in the Expo app and when building the native apps.
 
 If you're getting issues with the /android or /ios directories when setting up the starter, you can safely remove them and re-generate them using `yarn ios` and `yarn android`.
+
+You can also run the `yarn start:dev-client` command which will start the dev client for you with a pre-built step that will re generate the native apps (recreate the ios and android folders) on the fly.
 
 ## Environment
 
@@ -200,10 +201,6 @@ We use `expo-router` for the native side, so simply create `_layout.tsx` files i
 
 ![expo project id](https://github.com/tamagui/unistack/assets/2502947/8a4d3663-9eb2-4cb1-926f-0476a00ab078)
 
-## Icon Pack (Additional Purchase)
-
-Icons are populated from [icones](https://icones.js.org)
-
 ## How Authentication is Handled
 
 Authentication is handled by Supabase Auth. Email and password auth is included in the starter but you can get OAuth to work too.
@@ -249,16 +246,14 @@ Follows [how Next.js handles env variables](https://nextjs.org/docs/pages/buildi
 
 ## Installing icons and fonts
 
-If you have access to font and icon packages, simply run:
+To add an icon or font, use:
 
 ```sh
-yarn tamagui add font
-yarn tamagui add icon
+yarn add:font
+yarn add:icon
 ```
 
-and choose the package you want.
-
-The package will be cloned into `packages/package-name`. After that's done, run `yarn install` and `yarn build` and follow the instructions in the package's `README.md`
+The package is included in the `packages` workspace in this repo. You can tweak and adjust the icon and font usage and logic to your linking.
 
 ## Sync With The Starter
 
