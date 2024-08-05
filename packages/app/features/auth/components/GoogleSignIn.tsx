@@ -12,6 +12,7 @@ export function GoogleSignIn() {
       provider: 'google',
       options: {
         // your options
+        redirectTo: process.env.NEXT_PUBLIC_URL,
       },
     })
     if (error) {
