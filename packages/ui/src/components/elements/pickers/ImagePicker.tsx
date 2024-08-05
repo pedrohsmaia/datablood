@@ -3,7 +3,21 @@ import { useId, useState } from 'react'
 import { Button, Image, Label, ScrollView, View, XStack } from 'tamagui'
 
 import { useFilePicker } from './hooks/useFilePicker'
-import type { MediaTypeOptions } from './types'
+
+enum MediaTypeOptions {
+  /**
+   * Images and videos.
+   */
+  All = 'All',
+  /**
+   * Only videos.
+   */
+  Videos = 'Videos',
+  /**
+   * Only images.
+   */
+  Images = 'Images',
+}
 
 /** ------ EXAMPLE ------ */
 export function ImagePicker({
