@@ -1,19 +1,6 @@
 import { X } from '@tamagui/lucide-icons'
 import { CreateScreen } from 'app/features/create/screen'
-import {
-  Adapt,
-  Button,
-  Dialog,
-  Fieldset,
-  Input,
-  Label,
-  Paragraph,
-  Sheet,
-  Theme,
-  TooltipSimple,
-  Unspaced,
-  XStack,
-} from 'tamagui'
+import { Button, Dialog, Unspaced } from 'tamagui'
 
 export function CreateModal({
   toggleEvent,
@@ -50,7 +37,7 @@ export function CreateModal({
           key="content"
           animateOnly={['transform', 'opacity']}
           animation={[
-            'quicker',
+            'quick',
             {
               opacity: {
                 overshootClamping: true,

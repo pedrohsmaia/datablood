@@ -36,7 +36,7 @@ export const ImagePickerField = (props: Pick<InputProps, 'size'>) => {
               <ImagePicker
                 disabled={disabled}
                 placeholderTextColor="$color10"
-                value={field.value}
+                value={field?.value ? field.value.fileURL : ''}
                 onChangeText={(imageSource) => {
                   console.log('imageSource', imageSource)
                   console.log('field.value', field.value)

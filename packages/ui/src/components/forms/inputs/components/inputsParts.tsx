@@ -74,6 +74,7 @@ const InputGroupFrame = styled(XGroup, {
       false: defaultInputGroupStyles,
     },
     scaleIcon: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ':number': {} as any,
     },
     applyFocusStyle: {
@@ -114,6 +115,7 @@ const InputGroupImpl = InputGroupFrame.styleable((props, forwardedRef) => {
   )
 })
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const inputSizeVariant: SizeVariantSpreadFunction<any> = (val = '$true', extras) => {
   const radiusToken = extras.tokens.radius[val] ?? extras.tokens.radius['$true']
   const paddingHorizontal = getSpace(val, {
@@ -156,6 +158,7 @@ const InputImpl = InputFrame.styleable((props, ref) => {
     </View>
   )
 })
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 const InputSection = styled(XGroup.Item, {
   justifyContent: 'center',
@@ -220,10 +223,12 @@ const InputIcon = InputIconFrame.styleable<{
 
   const theme = useTheme()
   const color = getVariable(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     contextColor || theme[contextColor as any]?.get('web') || theme.color10?.get('web')
   )
   const iconSize = getIconSize(size as FontSizeTokens, scaleIcon)
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getThemedIcon = useGetThemedIcon({ size: iconSize, color: color as any })
   return (
     <InputIconFrame ref={ref} {...rest}>
@@ -246,6 +251,7 @@ export const InputContainerFrame = styled(View, {
       '...color': () => ({}),
     },
     gapScale: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ':number': {} as any,
     },
   } as const,
@@ -272,9 +278,11 @@ export const InputInfo = styled(Text, {
     size: {
       '...fontSize': (val, { font }) => {
         if (!font) return
-        const fontSize = font.size[val].val * 0.8
-        const lineHeight = font.lineHeight?.[val].val * 0.8
-        const fontWeight = font.weight?.['$2']
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        const fontSize = (font.size[val] as any).val * 0.8
+        const lineHeight = (font.lineHeight?.[val] as any)?.val * 0.8
+        const fontWeight = font.weight?.['$2'] as any
+        /* eslint-enable @typescript-eslint/no-explicit-any */
         const letterSpacing = font.letterSpacing?.[val]
         const textTransform = font.transform?.[val]
         const fontStyle = font.style?.[val]

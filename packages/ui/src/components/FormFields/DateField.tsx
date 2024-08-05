@@ -1,6 +1,6 @@
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
-import { Fieldset, Input, type InputProps, Label, Theme, XStack } from 'tamagui'
+import { Fieldset, type InputProps, Label, Theme, XStack } from 'tamagui'
 import { z } from 'zod'
 
 import { FieldError } from '../FieldError'

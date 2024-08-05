@@ -20,7 +20,7 @@ import {
 } from 'tamagui'
 
 import { Input } from '../../../forms/inputs/components/inputsParts'
-import { useDateAnimation } from '../DatePicker'
+import { useDateAnimation } from '../common/datePickerUtils'
 
 /** rehookify internally return `onClick` and that's incompatible with native */
 export function swapOnClick<D>(d: D) {

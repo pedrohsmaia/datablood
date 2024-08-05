@@ -48,9 +48,11 @@ export const EventCard = ({ title, description, action, tags = [], ...props }: E
       </XStack>
 
       <XStack gap="$1" ai="center">
-        <Paragraph>
-          {description.length > 150 ? `${description.slice(0, 150)}...` : description}
-        </Paragraph>
+        {description ? (
+          <Paragraph>
+            {description.length > 150 ? `${description.slice(0, 150)}...` : description}
+          </Paragraph>
+        ) : null}
       </XStack>
 
       {/* {action && (

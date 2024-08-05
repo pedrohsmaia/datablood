@@ -3,19 +3,16 @@ import {
   SubmitButton,
   Theme,
   YStack,
-  useToastController,
   useMedia,
+  useToastController,
 } from '@my/ui'
-import { DatePickerExample } from '@my/ui/src/components/elements/datepicker/DatePicker'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
-
-import { api } from '../../utils/api'
 
 const CreateEventSchema = z.object({
   name: formFields.text.min(10).describe('Name // Your post title'),
@@ -29,10 +26,8 @@ export const CreateEventForm = () => {
   const { sm } = useMedia()
   const toast = useToastController()
   const router = useRouter()
-  const apiUtils = api.useUtils()
   const { profile, user } = useUser()
   const supabase = useSupabase()
-  const queryClient = useQueryClient()
   const mutation = useMutation({
     async onError(error) {
       console.log('error', error)

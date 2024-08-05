@@ -6,15 +6,13 @@ import {
   useMedia,
   useToastController,
 } from '@my/ui'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
-
-import { api } from '../../utils/api'
 
 const CreatePostSchema = z.object({
   title: formFields.text.min(10).describe('Name // Your post title'),
@@ -28,10 +26,8 @@ export const CreatePostForm = () => {
   const { sm } = useMedia()
   const toast = useToastController()
   const router = useRouter()
-  const apiUtils = api.useUtils()
   const { profile, user } = useUser()
   const supabase = useSupabase()
-  const queryClient = useQueryClient()
 
   const uploadImageAndGetUrl = async (imageSource: { fileURL: string; path: string }) => {
     console.log('imageSource', imageSource)
@@ -118,15 +114,7 @@ export const CreatePostForm = () => {
         )}
       >
         {(fields) => (
-          <YStack
-            gap="$2"
-            py="$4"
-            pb="$0"
-            pt="$0"
-            minWidth={400}
-            maxWidth={400}
-            $gtSm={{ minWidth: 480 }}
-          >
+          <YStack gap="$2" py="$4" pb="$0" pt="$0" miw={400} maw={400} $gtSm={{ miw: 480 }}>
             {Object.values(fields)}
           </YStack>
         )}
