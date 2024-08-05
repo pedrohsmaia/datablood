@@ -1,4 +1,3 @@
-import { ArrowUpRight } from '@tamagui/lucide-icons'
 import { useState } from 'react'
 import type { useLink } from 'solito/link'
 import { Button, Card, type CardProps, H6, Paragraph, Theme, type ThemeName, XStack } from 'tamagui'

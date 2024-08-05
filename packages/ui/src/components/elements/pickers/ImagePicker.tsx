@@ -3,7 +3,7 @@ import { useId, useState } from 'react'
 import { Button, Image, Label, ScrollView, View, XStack } from 'tamagui'
 
 import { useFilePicker } from './hooks/useFilePicker'
-import { MediaTypeOptions } from './types'
+import type { MediaTypeOptions } from './types'
 
 /** ------ EXAMPLE ------ */
 export function ImagePicker({

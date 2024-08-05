@@ -49,9 +49,8 @@ const DatePickerImpl = (props: DatePickerProps) => {
             </Popover.Sheet.Frame>
             <Popover.Sheet.Overlay
               animation="lazy"
-              // TODO: type error on build
-              // enterStyle={{ opacity: 0 }}
-              // exitStyle={{ opacity: 0 }}
+              enterStyle={{ opacity: 0 }}
+              exitStyle={{ opacity: 0 }}
             />
           </Popover.Sheet>
         </Adapt>

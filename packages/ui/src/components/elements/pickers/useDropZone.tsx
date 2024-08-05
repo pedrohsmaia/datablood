@@ -1,7 +1,7 @@
 // vite cjs compat:
 import * as DropZone from 'react-dropzone'
 
-import type { DropZoneOptionsCustom } from '../types'
+import type { DropZoneOptionsCustom } from './types'
 
 export function useDropZone(options: DropZoneOptionsCustom) {
   const accept = options.mediaTypes

@@ -71,7 +71,11 @@ const EventCards = () => {
                 description={event.description}
                 action={{
                   text: 'Show Event',
-                  props: { href: `/event/${event.id}` },
+                  props: {
+                    href: `/event/${event.id}`,
+                    accessibilityRole: 'link',
+                    onPress: () => undefined,
+                  },
                 }}
                 tags={[
                   { text: event.status, theme: 'green_alt2' },
