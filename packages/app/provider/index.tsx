@@ -1,4 +1,3 @@
-import { DatePickerProvider } from '@rehookify/datepicker'
 import { Session } from '@supabase/supabase-js'
 import React from 'react'
 
