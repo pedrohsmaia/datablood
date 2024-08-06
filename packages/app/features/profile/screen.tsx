@@ -68,7 +68,6 @@ export function ProfileScreen(props) {
           <Paragraph ta="center" ml="$-1.5">
             {name ?? 'No Name'}
           </Paragraph>
-          <MoreHorizontal ml="auto" size={24} color="$gray9" />
         </XStack>
       </YStack>
     </DrawerContentScrollView>

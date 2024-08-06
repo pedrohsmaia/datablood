@@ -1,5 +1,5 @@
 import { X } from '@tamagui/lucide-icons'
-import { useId, useState } from 'react'
+import { useId, useState, forwardRef } from 'react'
 import { Button, Image, Label, ScrollView, View, XStack } from 'tamagui'
 
 import { useFilePicker } from './hooks/useFilePicker'
@@ -20,23 +20,17 @@ enum MediaTypeOptions {
 }
 
 /** ------ EXAMPLE ------ */
-export function ImagePicker({
-  disabled,
-  value,
-  onChangeText,
-  onBlur,
-  ref,
-  placeholder,
-  ...props
-}: {
-  disabled: boolean
-  value: { fileURL: string; path: string } | undefined
-  onChangeText: (imageSource: { fileURL: string; path: string }) => void
-  onBlur: () => void
-  ref: React.RefObject<HTMLInputElement>
-  placeholder?: string
-  [key: string]: any
-}) {
+export const ImagePicker = forwardRef<
+  HTMLInputElement,
+  {
+    disabled: boolean
+    value: { fileURL: string; path: string } | undefined
+    onChangeText: (imageSource: { fileURL: string; path: string }) => void
+    onBlur: () => void
+    placeholder?: string
+    [key: string]: any
+  }
+>(({ disabled, value, onChangeText, onBlur, placeholder, ...props }, ref) => {
   const id = useId()
   const [images, setImages] = useState<string[]>([])
   const { open, getInputProps, getRootProps, dragStatus } = useFilePicker({
@@ -81,7 +75,7 @@ export function ImagePicker({
     >
       {/* need an empty input div just have image drop feature in the web */}
       {/* @ts-ignore */}
-      <View id={id} tag="input" width={0} height={0} {...getInputProps()} />
+      <View id={id} tag="input" width={0} height={0} {...getInputProps()} ref={ref} />
       <View>
         <Button size="$3" onPress={open}>
           Pick image
@@ -148,4 +142,4 @@ export function ImagePicker({
       </ScrollView>
     </View>
   )
-}
+})
