@@ -78,6 +78,7 @@ export type Database = {
           end_time: string | null
           id: string
           name: string
+          profile_id: string | null
           start_time: string | null
           status: string
           updated_at: string
@@ -88,6 +89,7 @@ export type Database = {
           end_time?: string | null
           id?: string
           name: string
+          profile_id?: string | null
           start_time?: string | null
           status: string
           updated_at?: string
@@ -98,11 +100,20 @@ export type Database = {
           end_time?: string | null
           id?: string
           name?: string
+          profile_id?: string | null
           start_time?: string | null
           status?: string
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "events_user_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       installs: {
         Row: {
@@ -428,4 +439,3 @@ export type Enums<
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
     : never
-

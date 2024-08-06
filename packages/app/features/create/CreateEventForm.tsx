@@ -1,3 +1,4 @@
+import { Database } from '@my/supabase/types'
 import {
   FullscreenSpinner,
   SubmitButton,
@@ -14,11 +15,14 @@ import { useUser } from 'app/utils/useUser'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
-const CreateEventSchema = z.object({
-  name: formFields.text.min(10).describe('Name // Your post title'),
-  description: formFields.textarea.describe('Description // Content of your post'),
-  startTime: formFields.date.describe('Start Time // Start time of your event'),
-  endTime: formFields.date.describe('End Time // End time of your event'),
+type InsertEvent = Database['public']['Tables']['events']['Insert']
+
+const CreateEventFormSchema = z.object({
+  name: formFields.text.min(5).describe('Name // Your event name').nullable().optional(),
+  description: formFields.textarea.describe('Description // Content of your event').nullable(),
+  start_time: formFields.date.describe('Start Time // Start time of your event').nullable(),
+  end_time: formFields.date.describe('End Time // End time of your event').nullable(),
+  status: formFields.text.describe('Status // Status of your event'),
 })
 
 export const CreateEventForm = () => {
@@ -32,17 +36,16 @@ export const CreateEventForm = () => {
     async onError(error) {
       console.log('error', error)
     },
-    async mutationFn(data: z.infer<typeof CreateEventSchema>) {
-      await supabase.from('events').insert({
-        name: data.name.trim(),
-        description: data.description,
-        start_time: data.startTime.dateValue,
-        end_time: data.endTime.dateValue,
-        status: 'upcoming',
-        profile_id: user?.id,
-        created_at: new Date(),
-        updated_at: new Date(),
-      })
+    async mutationFn(data: z.infer<typeof CreateEventFormSchema>) {
+      const { name, description, start_time, end_time, status } = data
+      const insertData: InsertEvent = {
+        name: name?.trim() as string,
+        description,
+        start_time: start_time?.dateValue?.toISOString(),
+        end_time: end_time?.dateValue?.toISOString(),
+        status,
+      }
+      await supabase.from('events').insert(insertData)
     },
 
     async onSuccess() {
@@ -54,9 +57,6 @@ export const CreateEventForm = () => {
       } else {
         setToggleCreateModal()
       }
-      // await queryClient.invalidateQueries(['profile', user.id])
-      // await apiUtils.greeting.invalidate()
-      // router.back()
     },
   })
 
@@ -68,12 +68,17 @@ export const CreateEventForm = () => {
     <>
       <SchemaForm
         onSubmit={(values) => mutation.mutate(values)}
-        schema={CreateEventSchema}
+        schema={CreateEventFormSchema}
         defaultValues={{
           name: '',
+          status: 'upcoming',
           description: '',
-          startTime: '',
-          endTime: '',
+          start_time: {
+            dateValue: new Date(),
+          },
+          end_time: {
+            dateValue: new Date(),
+          },
         }}
         renderAfter={({ submit }) => (
           <Theme inverse>

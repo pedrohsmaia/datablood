@@ -84,6 +84,10 @@ const _SchemaForm = createTsForm(mapping, {
   FormComponent,
 })
 
+// SchemaForm is a higher-order component that wraps around the _SchemaForm component.
+// It provides additional functionality for rendering a form with custom fields and a footer.
+// The renderAfter prop allows for custom content to be rendered in the form's footer.
+// The children prop can be used to customize the rendering of form fields.
 export const SchemaForm: typeof _SchemaForm = ({ ...props }) => {
   const renderAfter: ComponentProps<typeof _SchemaForm>['renderAfter'] = props.renderAfter
     ? (vars) => <FormWrapper.Footer>{props.renderAfter?.(vars)}</FormWrapper.Footer>
