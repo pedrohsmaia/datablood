@@ -106,7 +106,7 @@ export const CreateProjectForm = () => {
         )}
       >
         {(fields) => (
-          <YStack gap="$2" py="$4" pb="$0" pt="$0" $gtSm={{ minWidth: 480 }}>
+          <YStack gap="$2" py="$4" pb="$0" pt="$0" minWidth="100%" $gtSm={{ minWidth: 480 }}>
             {Object.values(fields)}
           </YStack>
         )}

@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useRef } from 'react'
-import type { ViewStyle } from 'react-native'
-import { Animated, PanResponder } from 'react-native'
+import React, { useEffect, useRef } from 'react'
+import { Animated } from 'react-native'
 import type { TabsContentProps } from 'tamagui'
-import { H5, Separator, Tabs, Text, View, debounce, useEvent, useTheme } from 'tamagui'
+import { Separator, Tabs, Text, View, debounce, useEvent } from 'tamagui'
 
-// const tabs = ['Create Project', 'New Post', 'Add Event']
-const tabs = ['Create Project', 'Add Event']
+const tabs = ['Create Project', 'New Post', 'Add Event']
+// const tabs = ['Create Project', 'Add Event']
 
 /** ------ EXAMPLE ------ */
 export const TabbarSwippable = ({
@@ -22,14 +21,12 @@ export const TabbarSwippable = ({
   const setActiveTabIndex = debounce(_setActiveTabIndex, 100)
   const activeTabRef = useRef(activeTabIndex)
   activeTabRef.current = activeTabIndex
-  const dragging = useRef(false)
-  const theme = useTheme()
   const [pointerWidth, setPointerWidth] = React.useState(100)
 
   const pointerWidthRef = useRef(pointerWidth)
   pointerWidthRef.current = pointerWidth
 
-  const chagenActiveTab = useEvent((activeTabIndex) => {
+  const changeActiveTab = useEvent((activeTabIndex) => {
     setActiveTabIndex(activeTabIndex)
     boxHPosition.flattenOffset()
     Animated.spring(boxHPosition, {
@@ -39,64 +36,8 @@ export const TabbarSwippable = ({
   })
 
   useEffect(() => {
-    chagenActiveTab(activeTabIndex)
+    changeActiveTab(activeTabIndex)
   }, [pointerWidth])
-
-  const panResponder = useRef(
-    PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
-      onMoveShouldSetPanResponderCapture: () => true,
-      onPanResponderGrant: () => {
-        boxHPosition.extractOffset()
-        boxHPosition.setValue(0)
-        dragging.current = true
-      },
-      onPanResponderMove: Animated.event([null, { dx: boxHPosition }], {
-        useNativeDriver: true,
-      }),
-      onPanResponderRelease: (_, gestureState) => {
-        const nearestTab = Math.max(
-          Math.min(
-            Math.round(gestureState.dx / pointerWidthRef.current),
-            tabs.length - 1 - activeTabRef.current
-          ),
-          -activeTabRef.current
-        )
-
-        const nextTabIndex = activeTabRef.current + nearestTab
-
-        Animated.spring(boxHPosition, {
-          toValue: nearestTab * pointerWidthRef.current,
-          useNativeDriver: true,
-        }).start()
-        dragging.current = false
-
-        setActiveTabIndex(nextTabIndex)
-      },
-    })
-  ).current
-
-  const animatedStyle = useMemo(
-    () =>
-      ({
-        position: 'absolute',
-        height: '70%',
-        flexShrink: 0,
-        backgroundColor: theme.color1.val,
-        width: pointerWidth,
-        borderRadius: 1000_000,
-        trasform: [{ translateX: boxHPosition }],
-        shadowColor: theme.color11.val,
-        shadowOffset: {
-          width: 0,
-          height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 3,
-      } as ViewStyle),
-    [theme.color2.val, theme.color11.val, pointerWidth]
-  )
 
   return (
     <Tabs
@@ -121,6 +62,7 @@ export const TabbarSwippable = ({
         justifyContent="center"
         width="100%"
         paddingHorizontal="$2"
+        minWidth="100%"
       >
         <Tabs.List
           minWidth="100%"
@@ -148,7 +90,7 @@ export const TabbarSwippable = ({
               flexShrink={1}
               pe={activeTabIndex === index ? 'none' : 'auto'}
               onPress={(type) => {
-                chagenActiveTab(index)
+                changeActiveTab(index)
               }}
             >
               <Text
@@ -168,9 +110,9 @@ export const TabbarSwippable = ({
         <CreateProjectForm />
       </TabsContent>
 
-      {/* <TabsContent value="New Post">
+      <TabsContent value="New Post">
         <CreatePostForm />
-      </TabsContent> */}
+      </TabsContent>
 
       <TabsContent value="Add Event">
         <CreateEventForm />
@@ -191,6 +133,7 @@ const TabsContent = (props: TabsContentProps) => {
       btlr={0}
       borderTopRightRadius={0}
       height={600}
+      minWidth="$100%"
       {...props}
     >
       {props.children}

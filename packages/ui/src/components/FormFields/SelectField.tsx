@@ -16,7 +16,6 @@ import {
 import { LinearGradient } from 'tamagui/linear-gradient'
 
 import { FieldError } from '../FieldError'
-import { Shake } from '../Shake'
 
 type SelectItem = {
   value: string
@@ -31,27 +30,32 @@ export const SelectField = ({
   options: SelectItem[]
 } & Pick<SelectProps, 'size' | 'native'>) => {
   const {
-    field,
     error,
     formState: { isSubmitting },
   } = useTsController<string>()
   const { label, isOptional } = useFieldInfo()
   const id = useId()
-  const disabled = isSubmitting
+  // const disabled = isSubmitting
 
   console.log('SelectField props', { native })
   const [val, setVal] = React.useState('')
   const items = options
   return (
     <Theme name={error ? 'red' : null} forceClassName>
+      {!!label && (
+        <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
+          {label} {isOptional && `(Optional)`}
+        </Label>
+      )}
       <Fieldset>
-        {!!label && (
-          <Label theme="alt1" size={props.size || '$3'} htmlFor={id}>
-            {label} {isOptional && `(Optional)`}
-          </Label>
-        )}
-        <Select value={val} onValueChange={setVal} disablePreventBodyScroll {...props}>
-          <Select.Trigger minWidth="100%" $md={{ maxWidth: 220 }} iconAfter={ChevronDown}>
+        <Select
+          value={val}
+          onValueChange={setVal}
+          disablePreventBodyScroll
+          {...props}
+          native={!!native}
+        >
+          <Select.Trigger minWidth="100%" $md={{ maxWidth: 220 }}>
             <Select.Value placeholder="Choose a project type" />
           </Select.Trigger>
 
@@ -59,7 +63,6 @@ export const SelectField = ({
             <Sheet
               zIndex={1000}
               native={!!native}
-              native
               dismissOnSnapToBottom
               modal
               animationConfig={{
