@@ -1,5 +1,5 @@
 import { LinearGradient } from '@tamagui/linear-gradient'
-import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
+import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
 import {
@@ -10,7 +10,6 @@ import {
   type SelectProps,
   Sheet,
   Theme,
-  XStack,
   YStack,
   getFontSize,
   isWeb,
@@ -39,6 +38,8 @@ export const SelectField = ({
   const { label, isOptional } = useFieldInfo()
   const id = useId()
   const disabled = isSubmitting
+
+  console.log('SelectField props', { native })
 
   return (
     <Theme name={error ? 'red' : null} forceClassName>

@@ -3,7 +3,6 @@ import {
   DatePickerProvider as _DatePickerProvider,
   useDatePickerContext,
 } from '@rehookify/datepicker'
-import { getFontSized } from '@tamagui/get-font-sized'
 import { Calendar, ChevronLeft, ChevronRight, X } from '@tamagui/lucide-icons'
 import type { GestureReponderEvent } from '@tamagui/web'
 import type { PopoverProps } from 'tamagui'
@@ -12,17 +11,18 @@ import {
   AnimatePresence,
   Button,
   Popover,
-  Text,
+  SizableText,
   View,
   createStyledContext,
   styled,
   withStaticProperties,
 } from 'tamagui'
 
+import { useDateAnimation } from './datePickerUtils'
 import { Input } from '../../../forms/inputs/components/inputsParts'
-import { useDateAnimation } from '../common/datePickerUtils'
 
 /** rehookify internally return `onClick` and that's incompatible with native */
+
 export function swapOnClick<D>(d: D) {
   //@ts-ignore
   d.onPress = d.onClick
@@ -44,7 +44,7 @@ const DatePickerImpl = (props: DatePickerProps) => {
       <Popover keepChildrenMounted size="$5" allowFlip {...rest}>
         <Adapt when="sm" platform="touch">
           <Popover.Sheet modal dismissOnSnapToBottom snapPointsMode="fit">
-            <Popover.Sheet.Frame style={{ padding: '$8', alignItems: 'center' }}>
+            <Popover.Sheet.Frame padding="$8" alignItems="center">
               <Adapt.Contents />
             </Popover.Sheet.Frame>
             <Popover.Sheet.Overlay
@@ -96,7 +96,7 @@ export const DatePicker = withStaticProperties(DatePickerImpl, {
       borderColor: '$borderColor',
     }),
   }),
-})
+}) as any
 
 type DatePickerInputProps = {
   onReset: () => void
@@ -310,18 +310,3 @@ export function YearSlider() {
     </View>
   )
 }
-
-export const SizableText = styled(Text, {
-  name: 'SizableText',
-  fontFamily: '$body',
-
-  variants: {
-    size: {
-      '...fontSize': getFontSized,
-    },
-  } as const,
-
-  defaultVariants: {
-    size: '$true',
-  },
-})

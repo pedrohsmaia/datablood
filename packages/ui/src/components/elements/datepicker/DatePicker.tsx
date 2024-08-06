@@ -1,30 +1,29 @@
 // tamagui-ignore
 import { useDatePickerContext } from '@rehookify/datepicker'
-import type { DPDay } from '@rehookify/datepicker'
+import type { DPDay, DPDayInteger } from '@rehookify/datepicker'
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
 import { useEffect, useMemo, useState } from 'react'
-import { AnimatePresence, Button, View } from 'tamagui'
+import { AnimatePresence, Button, View, SizableText } from 'tamagui'
 
+import { useDateAnimation } from './common/datePickerUtils'
 import {
   DatePicker,
   DatePickerInput,
-  SizableText,
   YearPicker,
   YearRangeSlider,
   swapOnClick,
   useHeaderType,
   HeaderTypeProvider,
   MonthPicker,
-} from './common/datePartsNew'
-import { useDateAnimation } from './common/datePickerUtils'
+} from './common/dateparts'
 
 function CalendarHeader() {
   const {
-    data: { calendars },
+    data: { calendars } = { calendars: [] },
     propGetters: { subtractOffset },
   } = useDatePickerContext()
   const { type: header, setHeader } = useHeaderType()
-  const { year, month } = calendars[0]
+  const { year, month } = calendars?.[0] || {}
 
   if (header === 'year') {
     return <YearRangeSlider />
@@ -37,6 +36,7 @@ function CalendarHeader() {
       </SizableText>
     )
   }
+
   return (
     <View
       flexDirection="row"
@@ -45,7 +45,11 @@ function CalendarHeader() {
       alignItems="center"
       justifyContent="space-between"
     >
-      <Button circular size="$4" {...swapOnClick(subtractOffset({ months: 1 }))}>
+      <Button
+        circular
+        size="$4"
+        {...(subtractOffset ? swapOnClick(subtractOffset({ months: 1 })) : {})}
+      >
         <Button.Icon scaleIcon={1.5}>
           <ChevronLeft />
         </Button.Icon>
@@ -196,28 +200,29 @@ export function DatePickerExample({
   const [selectedDates, onDatesChange] = useState<Date[]>([])
   const [open, setOpen] = useState(false)
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     setOpen(false)
   }, [selectedDates])
 
+  const datePickerConfig: {
+    selectedDates: Date[]
+    onDatesChange: (dates: Date[]) => void
+    calendar: {
+      startDay: DPDayInteger
+    }
+  } = {
+    selectedDates,
+    onDatesChange: (dates) => {
+      onDatesChange(dates)
+      onChangeText(dates[0]?.toISOString().split('T')[0] || '')
+    },
+    calendar: {
+      startDay: 1,
+    },
+  }
   return (
-    <DatePicker
-      keepChildrenMounted
-      open={open}
-      onOpenChange={setOpen}
-      config={{
-        selectedDates,
-        onDatesChange: (dates) => {
-          onDatesChange(dates)
-          onChangeText(dates[0]?.toISOString().split('T')[0] || '')
-        },
-        calendar: {
-          startDay: 1,
-        },
-      }}
-    >
-      <DatePicker.Trigger asChild>
+    <DatePicker keepChildrenMounted open={open} onOpenChange={setOpen} config={datePickerConfig}>
+      <DatePicker.Trigger>
         <DatePickerInput
           placeholder="Select Date"
           value={selectedDates[0]?.toDateString() || ''}
