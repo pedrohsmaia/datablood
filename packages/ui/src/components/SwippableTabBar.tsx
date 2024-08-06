@@ -38,6 +38,11 @@ export const TabbarSwippable = ({
       value={tabs[activeTabIndex]}
       alignItems="center"
       alignSelf="center"
+      width="100%"
+      $gtSm={{
+        marginTop: '$4',
+        maxWidth: 660,
+      }}
     >
       <View
         flexDirection="row"
@@ -45,6 +50,9 @@ export const TabbarSwippable = ({
         justifyContent="space-between"
         width="100%"
         minWidth="100%"
+        $gtMd={{
+          borderRadius: 100,
+        }}
       >
         <Tabs.List
           minWidth="100%"
@@ -77,6 +85,7 @@ export const TabbarSwippable = ({
           ))}
         </Tabs.List>
       </View>
+      <Separator />
       <TabsContent value="Create Project">
         <CreateProjectForm />
       </TabsContent>
@@ -101,6 +110,7 @@ const TabsContent = (props: TabsContentProps) => {
       flex={1}
       borderColor="$background"
       height={600}
+      width="100%"
       minWidth="$100%"
       {...props}
     >

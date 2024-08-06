@@ -67,7 +67,8 @@ export function ImagePicker({
     <View
       flexDirection="column"
       {...getRootProps()}
-      bs="dashed"
+      borderStyle="dashed"
+      id="image-picker"
       maxWidth={600}
       width="100%"
       height={350}
@@ -117,10 +118,6 @@ export function ImagePicker({
         overflow="scroll"
         flexWrap="nowrap"
         maxHeight={110}
-        contentContainerStyle={{
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
       >
         <XStack gap="$4" flexWrap="nowrap" minWidth="100%" maxHeight={110} px="$4" pt={10}>
           {[images[0]]?.map((image, i) => (

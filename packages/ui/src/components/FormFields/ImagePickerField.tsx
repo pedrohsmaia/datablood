@@ -35,24 +35,26 @@ export const ImagePickerField = (props: Pick<InputProps, 'size'>) => {
 
       <XStack $sm={{ fd: 'column' }} $gtSm={{ fw: 'wrap' }} gap="$4">
         <Theme name={error ? 'red' : null} forceClassName>
-          <Shake shakeKey={error?.errorMessage}>
-            <ImagePicker
-              disabled={disabled}
-              placeholderTextColor="$color10"
-              value={field?.value ? field.value.fileURL : ''}
-              onChangeText={(imageSource) => {
-                console.log('imageSource', imageSource)
-                console.log('field.value', field.value)
-                return field.onChange(imageSource)
-              }}
-              onBlur={field.onBlur}
-              ref={inputRef}
-              placeholder=""
-              id={`${id}-date-value`}
-              {...props}
-            />
-          </Shake>
-          <FieldError message={error?.errorMessage} />
+          <Fieldset $gtSm={{ fb: 0 }} f={1}>
+            <Shake shakeKey={error?.errorMessage}>
+              <ImagePicker
+                disabled={disabled}
+                placeholderTextColor="$color10"
+                value={field?.value ? field.value.fileURL : ''}
+                onChangeText={(imageSource) => {
+                  console.log('imageSource', imageSource)
+                  console.log('field.value', field.value)
+                  return field.onChange(imageSource)
+                }}
+                onBlur={field.onBlur}
+                ref={inputRef}
+                placeholder=""
+                id={`${id}-date-value`}
+                {...props}
+              />
+            </Shake>
+            <FieldError message={error?.errorMessage} />
+          </Fieldset>
         </Theme>
       </XStack>
     </Fieldset>
