@@ -1,11 +1,9 @@
-import { Avatar, type ColorTokens, YStack, useTheme, validToken } from '@my/ui'
-import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
-import { Home, Menu, Plus, Settings } from '@tamagui/lucide-icons'
+import { type ColorTokens, useTheme } from '@my/ui'
+import { DrawerActions } from '@react-navigation/native'
+import { Home, Menu, Plus } from '@tamagui/lucide-icons'
 // import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
-import { useUser } from 'app/utils/useUser'
-import { Stack, Tabs, useNavigation, usePathname } from 'expo-router'
+import { router, Stack, Tabs, useNavigation, usePathname } from 'expo-router'
 import { Pressable } from 'react-native'
-import { SolitoImage } from 'solito/image'
 
 export default function Layout() {
   const { accentColor } = useTheme()
@@ -25,7 +23,7 @@ export default function Layout() {
             <Pressable
               style={{ marginLeft: 10 }}
               onPress={() => {
-                navigation.openDrawer()
+                navigation.dispatch(DrawerActions.openDrawer())
               }}
             >
               <Menu size={24} />
@@ -35,7 +33,7 @@ export default function Layout() {
             <Pressable
               style={{ marginRight: 10 }}
               onPress={() => {
-                navigation.navigate('create')
+                router.navigate('create')
               }}
             >
               <Plus size={24} />
@@ -57,7 +55,7 @@ export default function Layout() {
             headerShown: false,
             title: 'Home',
             tabBarIcon: ({ size, color, focused }) => (
-              <Home color={focused ? '$white' : '$color10'} size={size} />
+              <Home color={focused ? '$white1' : '$color10'} size={size} strokeWidth={2} />
             ),
           }}
         />
@@ -66,28 +64,12 @@ export default function Layout() {
           options={{
             headerShown: true,
             title: 'Profile',
-            tabBarIcon: ({ size, color, focused }) =>
-              focused ? (
-                <Settings color={color as ColorTokens} size={size} />
-              ) : (
-                <Settings color={color as ColorTokens} size={size} />
-              ),
+            tabBarIcon: ({ size, color, focused }) => (
+              <Home color={color as ColorTokens} size={size} />
+            ),
           }}
         />
       </Tabs>
     </>
-  )
-}
-
-type TabBarIconProps = Parameters<Exclude<BottomTabNavigationOptions['tabBarIcon'], undefined>>[0]
-
-const ProfileTabIcon = ({ color, size }: TabBarIconProps) => {
-  const { avatarUrl } = useUser()
-  return (
-    <YStack bw="$1" boc={validToken(color)} br="$10">
-      <Avatar circular p="$1" size={size}>
-        <SolitoImage src={avatarUrl} alt="your avatar" width={size} height={size} />
-      </Avatar>
-    </YStack>
   )
 }

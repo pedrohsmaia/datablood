@@ -1,3 +1,4 @@
+import { useRef, useImperativeHandle } from 'react'
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import { useId } from 'react'
 import { Fieldset, type InputProps, Label, Theme, XStack } from 'tamagui'
@@ -6,6 +7,7 @@ import { z } from 'zod'
 import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
 import { ImagePicker } from '../elements/pickers/ImagePicker'
+import { RefCallBack } from 'react-hook-form'
 
 export const ImagePickerSchema = z.object({
   path: z.string(),
@@ -22,6 +24,10 @@ export const ImagePickerField = (props: Pick<InputProps, 'size'>) => {
   const { label } = useFieldInfo()
   const id = useId()
   const disabled = isSubmitting
+  // Use the useImperativeHandle hook to set the ref callback
+  const inputRef = useRef<HTMLInputElement>(null) // Initialize with null
+
+  useImperativeHandle(field.ref, () => inputRef.current) // Access the current value
 
   return (
     <Fieldset gap="$2">
@@ -43,7 +49,7 @@ export const ImagePickerField = (props: Pick<InputProps, 'size'>) => {
                   return field.onChange(imageSource)
                 }}
                 onBlur={field.onBlur}
-                ref={field.ref}
+                ref={inputRef}
                 placeholder=""
                 id={`${id}-date-value`}
                 {...props}

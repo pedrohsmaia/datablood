@@ -1,5 +1,5 @@
 import { useFieldInfo, useTsController } from '@ts-react/form'
-import { useId } from 'react'
+import { useId, useImperativeHandle, useRef } from 'react'
 import { Fieldset, type InputProps, Label, Theme, XStack } from 'tamagui'
 import { z } from 'zod'
 
@@ -21,6 +21,10 @@ export const DateField = (props: Pick<InputProps, 'size'>) => {
   const id = useId()
   const disabled = isSubmitting
 
+  const inputRef = useRef<HTMLInputElement>(null) // Initialize with null
+
+  useImperativeHandle(field.ref, () => inputRef.current) // Access the current value
+
   return (
     <Fieldset gap="$2">
       <Label theme="alt1" size="$3">
@@ -34,10 +38,12 @@ export const DateField = (props: Pick<InputProps, 'size'>) => {
               <DatePickerExample
                 disabled={disabled}
                 placeholderTextColor="$color10"
-                value={field.value?.dateValue}
-                onChangeText={(dateValue) => field.onChange({ ...field.value, dateValue })}
+                value={field.value?.dateValue.toISOString()}
+                onChangeText={(dateValue) =>
+                  field.onChange({ ...field.value, dateValue: new Date(dateValue) })
+                }
                 onBlur={field.onBlur}
-                ref={field.ref}
+                ref={inputRef}
                 placeholder=""
                 id={`${id}-date-value`}
                 {...props}

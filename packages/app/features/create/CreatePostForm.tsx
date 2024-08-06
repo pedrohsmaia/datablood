@@ -46,7 +46,7 @@ export const CreatePostForm = () => {
 
     const { data: publicUrlData } = supabase.storage
       .from('post-images')
-      .getPublicUrl(uploadData?.path)
+      .getPublicUrl(uploadData?.path as string)
     return publicUrlData.publicUrl
   }
 
@@ -56,7 +56,12 @@ export const CreatePostForm = () => {
     },
     async mutationFn(data: z.infer<typeof CreatePostSchema>) {
       console.log('here data', data)
-      const imageUrl = await uploadImageAndGetUrl(data.image_url)
+      const imageUrl = await uploadImageAndGetUrl(
+        data.image_url as {
+          fileURL: string
+          path: string
+        }
+      )
 
       // Insert post with the image URL
       await supabase.from('posts').insert({

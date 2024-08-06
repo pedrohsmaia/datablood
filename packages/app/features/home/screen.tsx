@@ -311,10 +311,10 @@ const PostsSection = () => {
         flexDirection={isWeb ? 'row' : 'column'}
       >
         {data?.length ? (
-          data.map((card) => (
+          data.map((card, index) => (
             <FeedCard
               imageUrl={card.image_url}
-              key={card.title}
+              key={`${card.title}-${index}`}
               withImages
               mb="$3"
               $gtMd={{ w: feedCardWidthMd, mb: '1%', miw: '32.333%' }}
