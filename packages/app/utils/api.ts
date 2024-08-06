@@ -2,7 +2,7 @@ import type { AppRouter } from '@my/api'
 import { httpBatchLink } from '@trpc/client'
 import { createTRPCNext } from '@trpc/next'
 import SuperJSON from 'superjson'
-
+import { SessionContext } from 'app/provider/auth/AuthProvider.native'
 import { getBaseUrl } from './getBaseUrl'
 
 export const api = createTRPCNext<AppRouter>({
@@ -22,7 +22,18 @@ export const api = createTRPCNext<AppRouter>({
 
           // You can pass any HTTP headers you wish here
           async headers() {
-            return {}
+            const headers: Record<string, string> = {}
+
+            // Get the session from the context
+            const sessionContext = SessionContext._currentValue
+            const token = sessionContext?.session?.access_token
+
+            if (token) {
+              headers['Authorization'] = `Bearer ${token}`
+              headers['x-tamagui-request-platform'] = 'native'
+            }
+
+            return headers
           },
         }),
       ],

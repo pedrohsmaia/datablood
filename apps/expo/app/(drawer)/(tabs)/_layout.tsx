@@ -1,10 +1,9 @@
-import { Avatar, Circle, type ColorTokens, Theme, YStack, validToken, useTheme } from '@my/ui'
+import { Avatar, type ColorTokens, YStack, useTheme, validToken } from '@my/ui'
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
-import { Home, Plus, Settings, Menu } from '@tamagui/lucide-icons'
+import { Home, Menu, Plus, Settings } from '@tamagui/lucide-icons'
 // import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
 import { useUser } from 'app/utils/useUser'
-import { Stack, Tabs, usePathname, useNavigation } from 'expo-router'
-import { Drawer } from 'expo-router/drawer'
+import { Stack, Tabs, useNavigation, usePathname } from 'expo-router'
 import { Pressable } from 'react-native'
 import { SolitoImage } from 'solito/image'
 

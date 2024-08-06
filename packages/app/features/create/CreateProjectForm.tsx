@@ -1,14 +1,13 @@
 import {
-  useMedia,
   FullscreenSpinner,
   SubmitButton,
   Theme,
+  useMedia,
   useToastController,
   YStack,
 } from '@my/ui'
 import { useMutation } from '@tanstack/react-query'
 import { formFields, SchemaForm } from 'app/utils/SchemaForm'
-import { api } from 'app/utils/api'
 import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'

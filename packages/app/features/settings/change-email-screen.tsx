@@ -8,7 +8,6 @@ import {
   YStack,
   isWeb,
   useToastController,
-  validToken,
 } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
@@ -40,7 +39,7 @@ export const ChangeEmailScreen = () => {
       }
     }
   }
-
+  console.log('user', user)
   return (
     <SchemaForm
       onSubmit={handleChangePassword}
@@ -68,12 +67,13 @@ export const ChangeEmailScreen = () => {
               Current Email
             </Label>
             <Input
+              keyboardType="email-address"
               disabled
               o={0.8}
               cur="not-allowed"
               id="current-email"
               autoComplete="email"
-              value={user?.email}
+              value={user?.email || '*****@******.***'}
               inputMode="email"
               autoCapitalize="none"
             />

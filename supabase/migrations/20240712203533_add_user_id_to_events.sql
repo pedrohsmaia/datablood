@@ -1,2 +1,2 @@
 ALTER TABLE events
-ADD COLUMN user_id uuid REFERENCES profiles(id) NOT NULL;
+ADD COLUMN user_id uuid REFERENCES profiles(id);

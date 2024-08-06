@@ -26,11 +26,14 @@ import ScrollToTopTabBarContainer from 'app/utils/NativeScreenContainer'
 import { api } from 'app/utils/api'
 import useEventsQuery from 'app/utils/react-query/useEventQuery'
 import usePostQuery from 'app/utils/react-query/usePostQuery'
+import { useUser } from 'app/utils/useUser'
 import type React from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
 
 export function HomeScreen() {
+  const { user } = useUser()
+  console.log('homescreen user', user)
   return (
     <XStack maw={1480} als="center" f={1}>
       <ScrollView f={4} fb={0}>
@@ -285,7 +288,7 @@ const feedCardWidthMd = validToken(
 
 const PostsSection = () => {
   const { data, isLoading, isError } = usePostQuery()
-  console.log('data', data)
+  console.log('data', data, isLoading, isError)
   if (isLoading) return null
   return (
     <View>
@@ -374,5 +377,5 @@ function ScrollAdapt({
 
 const Greetings = () => {
   const greetingQuery = api.greeting.greet.useQuery()
-  return <H2 m="$4">{greetingQuery.data || '-'}</H2>
+  return <H2 m="$4">{greetingQuery.data || 'Hi there!'}</H2>
 }
