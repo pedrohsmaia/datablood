@@ -83,6 +83,7 @@ export const CreateProjectForm = () => {
         }}
         props={{
           type: {
+            placeholder: 'Choose a project type',
             options: [
               {
                 name: 'Code',

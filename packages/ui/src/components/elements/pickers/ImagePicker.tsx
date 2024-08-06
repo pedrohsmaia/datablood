@@ -117,8 +117,10 @@ export function ImagePicker({
         overflow="scroll"
         flexWrap="nowrap"
         maxHeight={110}
-        ai="center"
-        jc="center"
+        contentContainerStyle={{
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
         <XStack gap="$4" flexWrap="nowrap" minWidth="100%" maxHeight={110} px="$4" pt={10}>
           {[images[0]]?.map((image, i) => (

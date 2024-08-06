@@ -100,6 +100,7 @@ export const CreatePostForm = () => {
         }}
         props={{
           category_id: {
+            placeholder: 'Choose a category',
             options: [
               {
                 name: 'React',
@@ -119,7 +120,7 @@ export const CreatePostForm = () => {
         )}
       >
         {(fields) => (
-          <YStack gap="$2" py="$4" pb="$0" pt="$0" miw={400} maw={400} $gtSm={{ miw: 480 }}>
+          <YStack gap="$2" py="$4" pb="$0" pt="$0" minWidth="100%" $gtSm={{ minWidth: 480 }}>
             {Object.values(fields)}
           </YStack>
         )}

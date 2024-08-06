@@ -1,13 +1,11 @@
-import { useRef, useImperativeHandle } from 'react'
 import { useFieldInfo, useTsController } from '@ts-react/form'
-import { useId } from 'react'
+import { useId, useImperativeHandle, useRef } from 'react'
 import { Fieldset, type InputProps, Label, Theme, XStack } from 'tamagui'
 import { z } from 'zod'
 
 import { FieldError } from '../FieldError'
 import { Shake } from '../Shake'
 import { ImagePicker } from '../elements/pickers/ImagePicker'
-import { RefCallBack } from 'react-hook-form'
 
 export const ImagePickerSchema = z.object({
   path: z.string(),
@@ -37,26 +35,24 @@ export const ImagePickerField = (props: Pick<InputProps, 'size'>) => {
 
       <XStack $sm={{ fd: 'column' }} $gtSm={{ fw: 'wrap' }} gap="$4">
         <Theme name={error ? 'red' : null} forceClassName>
-          <Fieldset $gtSm={{ fb: 0 }} f={1}>
-            <Shake shakeKey={error?.errorMessage}>
-              <ImagePicker
-                disabled={disabled}
-                placeholderTextColor="$color10"
-                value={field?.value ? field.value.fileURL : ''}
-                onChangeText={(imageSource) => {
-                  console.log('imageSource', imageSource)
-                  console.log('field.value', field.value)
-                  return field.onChange(imageSource)
-                }}
-                onBlur={field.onBlur}
-                ref={inputRef}
-                placeholder=""
-                id={`${id}-date-value`}
-                {...props}
-              />
-            </Shake>
-            <FieldError message={error?.errorMessage} />
-          </Fieldset>
+          <Shake shakeKey={error?.errorMessage}>
+            <ImagePicker
+              disabled={disabled}
+              placeholderTextColor="$color10"
+              value={field?.value ? field.value.fileURL : ''}
+              onChangeText={(imageSource) => {
+                console.log('imageSource', imageSource)
+                console.log('field.value', field.value)
+                return field.onChange(imageSource)
+              }}
+              onBlur={field.onBlur}
+              ref={inputRef}
+              placeholder=""
+              id={`${id}-date-value`}
+              {...props}
+            />
+          </Shake>
+          <FieldError message={error?.errorMessage} />
         </Theme>
       </XStack>
     </Fieldset>

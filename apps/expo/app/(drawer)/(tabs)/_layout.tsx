@@ -1,4 +1,4 @@
-import { type ColorTokens, useTheme } from '@my/ui'
+import { useTheme } from '@my/ui'
 import { DrawerActions } from '@react-navigation/native'
 import { Home, Menu, Plus } from '@tamagui/lucide-icons'
 // import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
@@ -43,7 +43,7 @@ export default function Layout() {
       />
       <Tabs
         screenOptions={{
-          tabBarShowLabel: false,
+          tabBarShowLabel: true,
           headerTintColor: accentColor.val,
           tabBarActiveTintColor: accentColor.val,
           tabBarInactiveTintColor: accentColor.val,
@@ -62,11 +62,9 @@ export default function Layout() {
         <Tabs.Screen
           name="settings"
           options={{
-            headerShown: true,
+            headerShown: false,
             title: 'Profile',
-            tabBarIcon: ({ size, color, focused }) => (
-              <Home color={color as ColorTokens} size={size} />
-            ),
+            tabBarLabel: 'Profile',
           }}
         />
       </Tabs>

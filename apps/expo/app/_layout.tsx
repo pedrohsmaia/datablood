@@ -70,7 +70,6 @@ export default function HomeLayout() {
               name="create"
               options={{
                 headerShown: false,
-                presentation: 'modal',
               }}
             />
             <Stack.Screen

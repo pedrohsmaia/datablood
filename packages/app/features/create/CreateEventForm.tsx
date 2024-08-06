@@ -22,7 +22,7 @@ const CreateEventFormSchema = z.object({
   description: formFields.textarea.describe('Description // Content of your event').nullable(),
   start_time: formFields.date.describe('Start Time // Start time of your event').nullable(),
   end_time: formFields.date.describe('End Time // End time of your event').nullable(),
-  status: formFields.text.describe('Status // Status of your event'),
+  status: formFields.select.describe('Status // Status of your event'),
 })
 
 export const CreateEventForm = () => {
@@ -71,13 +71,32 @@ export const CreateEventForm = () => {
         schema={CreateEventFormSchema}
         defaultValues={{
           name: '',
-          status: 'upcoming',
+
           description: '',
           start_time: {
             dateValue: new Date(),
           },
           end_time: {
             dateValue: new Date(),
+          },
+        }}
+        props={{
+          status: {
+            placeholder: 'Set status',
+            options: [
+              {
+                name: 'Upcoming',
+                value: 'upcoming',
+              },
+              {
+                name: 'Live',
+                value: 'live',
+              },
+              {
+                name: 'Past',
+                value: 'past',
+              },
+            ],
           },
         }}
         renderAfter={({ submit }) => (
@@ -87,15 +106,7 @@ export const CreateEventForm = () => {
         )}
       >
         {(fields) => (
-          <YStack
-            gap="$2"
-            py="$4"
-            pb="$0"
-            pt="$0"
-            minWidth={400}
-            maxWidth={400}
-            $gtSm={{ minWidth: 480 }}
-          >
+          <YStack gap="$2" py="$4" pb="$0" pt="$0" minWidth="100%" $gtSm={{ minWidth: 480 }}>
             {Object.values(fields)}
           </YStack>
         )}

@@ -1,18 +1,7 @@
-import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
+import { Check, ChevronDown } from '@tamagui/lucide-icons'
 import { useFieldInfo, useTsController } from '@ts-react/form'
 import React, { useId } from 'react'
-import {
-  Adapt,
-  Fieldset,
-  FontSizeTokens,
-  Label,
-  Select,
-  type SelectProps,
-  Sheet,
-  Theme,
-  YStack,
-  getFontSize,
-} from 'tamagui'
+import { Adapt, Fieldset, Label, Select, type SelectProps, Sheet, Theme, YStack } from 'tamagui'
 import { LinearGradient } from 'tamagui/linear-gradient'
 
 import { FieldError } from '../FieldError'
@@ -24,10 +13,12 @@ type SelectItem = {
 
 export const SelectField = ({
   options,
+  placeholder = 'Choose an option',
   native = true,
   ...props
 }: {
   options: SelectItem[]
+  placeholder?: string
 } & Pick<SelectProps, 'size' | 'native'>) => {
   const {
     error,
@@ -56,7 +47,7 @@ export const SelectField = ({
           native={!!native}
         >
           <Select.Trigger minWidth="100%" $md={{ maxWidth: 220 }}>
-            <Select.Value placeholder="Choose a project type" />
+            <Select.Value placeholder={placeholder} />
           </Select.Trigger>
 
           <Adapt when="sm" platform="touch">
@@ -71,23 +62,25 @@ export const SelectField = ({
                 mass: 1.2,
                 stiffness: 250,
               }}
-              snapPoints={[80]}
+              snapPointsMode="fit"
             >
-              <Sheet.Frame>
+              <Sheet.Frame marginBottom="$12">
                 <Sheet.ScrollView>
                   <Adapt.Contents />
                 </Sheet.ScrollView>
               </Sheet.Frame>
               <Sheet.Overlay
+                opacity={0.5}
                 animation="lazy"
                 enterStyle={{ opacity: 0 }}
                 exitStyle={{ opacity: 0 }}
+                zIndex={0}
               />
             </Sheet>
           </Adapt>
 
           <Select.Content>
-            <Select.ScrollUpButton
+            {/* <Select.ScrollUpButton
               alignItems="center"
               justifyContent="center"
               position="relative"
@@ -104,7 +97,7 @@ export const SelectField = ({
                 colors={['$background', 'transparent']}
                 borderRadius="$4"
               />
-            </Select.ScrollUpButton>
+            </Select.ScrollUpButton> */}
 
             <Select.Viewport
               // to do animations:
@@ -112,10 +105,7 @@ export const SelectField = ({
               // animateOnly={['transform', 'opacity']}
               // enterStyle={{ o: 0, y: -10 }}
               // exitStyle={{ o: 0, y: 10 }}
-              elevate
-              elevation="$19"
               minWidth={200}
-              elevationAndroid="$19"
             >
               <Select.Group>
                 <Select.Label>Project Type</Select.Label>
@@ -135,21 +125,6 @@ export const SelectField = ({
                   [items]
                 )}
               </Select.Group>
-              {/* Native gets an extra icon */}
-              {native && (
-                <YStack
-                  position="absolute"
-                  right={0}
-                  top={0}
-                  bottom={0}
-                  alignItems="center"
-                  justifyContent="center"
-                  width="$4"
-                  pointerEvents="none"
-                >
-                  <ChevronDown size={getFontSize((props.size as FontSizeTokens) ?? '$true')} />
-                </YStack>
-              )}
             </Select.Viewport>
 
             <Select.ScrollDownButton
