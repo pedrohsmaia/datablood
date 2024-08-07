@@ -1,9 +1,8 @@
-import { useTheme } from '@my/ui'
+import { useTheme, Button } from '@my/ui'
 import { DrawerActions } from '@react-navigation/native'
 import { Home, Menu, Plus, User } from '@tamagui/lucide-icons'
 // import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
 import { router, Stack, Tabs, useNavigation, usePathname } from 'expo-router'
-import { Pressable } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function Layout() {
@@ -23,24 +22,31 @@ export default function Layout() {
           headerShown: pathname === '/' || pathname === '/create',
           headerTintColor: accentColor.val,
           headerLeft: () => (
-            <Pressable
-              style={{ marginLeft: 10 }}
+            <Button
+              borderStyle="unset"
+              borderWidth={0}
+              backgroundColor="transparent"
+              marginLeft="$-1"
+              paddingHorizontal="$4"
               onPress={() => {
                 navigation.dispatch(DrawerActions.openDrawer())
               }}
             >
               <Menu size={24} />
-            </Pressable>
+            </Button>
           ),
           headerRight: () => (
-            <Pressable
-              style={{ marginRight: 10 }}
+            <Button
+              borderStyle="unset"
+              borderWidth={0}
+              marginRight="$-1"
+              backgroundColor="transparent"
               onPress={() => {
                 router.navigate('create')
               }}
             >
               <Plus size={24} />
-            </Pressable>
+            </Button>
           ),
         }}
       />
