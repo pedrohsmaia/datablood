@@ -10,6 +10,7 @@ import {
   Paragraph,
   ScrollView,
   Separator,
+  Spinner,
   Stack,
   Text,
   Theme,
@@ -19,6 +20,7 @@ import {
   YStack,
   isWeb,
   useMedia,
+  useToastController,
   validToken,
 } from '@my/ui'
 import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
@@ -28,7 +30,8 @@ import useEventsQuery from 'app/utils/react-query/useEventQuery'
 import usePostQuery from 'app/utils/react-query/usePostQuery'
 import { useUser } from 'app/utils/useUser'
 import type React from 'react'
-import { Platform } from 'react-native'
+import { useEffect } from 'react'
+import { Platform, PlatformColor } from 'react-native'
 import { useLink } from 'solito/link'
 
 export function HomeScreen() {
@@ -376,6 +379,33 @@ function ScrollAdapt({
 }
 
 const Greetings = () => {
-  const greetingQuery = api.greeting.greet.useQuery()
-  return <H2 m="$4">{greetingQuery.data || 'Hi there!'}</H2>
+  const { data, isLoading, isError } = api.greeting.greet.useQuery()
+  const toast = useToastController()
+  const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
+  useEffect(() => {
+    data &&
+      toast.show('tRPC server connected.', {
+        native: isNative,
+        duration: 2000,
+        burntOptions: {
+          from: 'top',
+          preset: 'done',
+        },
+      })
+    isError &&
+      toast.show(`Error connecting to tPRC server.`, {
+        native: isNative,
+        burntOptions: {
+          preset: 'error',
+          shouldDismissByDrag: true,
+          from: 'bottom',
+        },
+      })
+  }, [data, isError, toast])
+  return (
+    <H2 m="$4">
+      {isLoading ? <Spinner /> : null}
+      {data ? data : null}
+    </H2>
+  )
 }

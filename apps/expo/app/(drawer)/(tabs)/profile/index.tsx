@@ -1,19 +1,16 @@
-import { EditProfileScreen } from '@my/app/features/profile/edit-screen'
+import { ProfileScreen } from '@my/app/features/profile/screen.native'
 import { Stack } from 'expo-router'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Screen() {
   return (
     <>
       <Stack.Screen
         options={{
+          title: 'Profile',
           headerShown: false,
-          title: 'Edit Profile',
         }}
       />
-      <SafeAreaView style={{ flex: 1 }} edges={['bottom', 'left', 'right']}>
-        <EditProfileScreen />
-      </SafeAreaView>
+      <ProfileScreen />
     </>
   )
 }
