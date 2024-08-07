@@ -4,11 +4,14 @@ import { Home, Menu, Plus, User } from '@tamagui/lucide-icons'
 // import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
 import { router, Stack, Tabs, useNavigation, usePathname } from 'expo-router'
 import { Pressable } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function Layout() {
   const { accentColor } = useTheme()
   const navigation = useNavigation()
   const pathname = usePathname()
+  const insets = useSafeAreaInsets()
+
   if (__DEV__) {
     console.log('pathname', pathname)
   }
@@ -46,8 +49,8 @@ export default function Layout() {
           tabBarShowLabel: false,
           headerTintColor: accentColor.val,
           tabBarStyle: {
-            paddingTop: 20,
-            paddingBottom: 10,
+            paddingTop: 30,
+            paddingBottom: insets.bottom + 20, // edit this with safe area insets
             height: 60,
             alignContent: 'center',
             justifyContent: 'center',
