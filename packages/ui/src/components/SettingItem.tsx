@@ -25,7 +25,7 @@ export const SettingItem = ({
   ...props
 }: SettingItemProps) => {
   return (
-    <YGroup.Item>
+    <YGroup.Item {...props}>
       <SettingItemFrame isActive={!!isActive} {...props}>
         <YStack theme={accentTheme} bg="$background" p="$1.5" br="$3">
           <Icon o={0.6} size={16} />

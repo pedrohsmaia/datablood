@@ -1,20 +1,12 @@
 import { Avatar, Paragraph, Settings, XStack, YStack, getTokens, useWindowDimensions } from '@my/ui'
 import { DrawerContentScrollView } from '@react-navigation/drawer'
-import {
-  Box,
-  Cog,
-  Milestone,
-  MoreHorizontal,
-  ShoppingCart,
-  User,
-  Users,
-} from '@tamagui/lucide-icons'
+import { Box, Cog, Milestone, ShoppingCart, User, Users } from '@tamagui/lucide-icons'
 import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import { useUser } from 'app/utils/useUser'
 import { SolitoImage } from 'solito/image'
 import { useLink } from 'solito/link'
 
-export function ProfileScreen(props) {
+export function DrawerMenu(props) {
   const { profile, avatarUrl } = useUser()
   const name = profile?.name
   const insets = useSafeAreaInsets()

@@ -1,4 +1,4 @@
-import { ProfileScreen } from '@my/app/features/profile/screen.native'
+import { DrawerMenu } from '@my/app/features/drawer-menu'
 import { Stack } from 'expo-router'
 
 export default function Screen() {
@@ -10,7 +10,7 @@ export default function Screen() {
           headerShown: false,
         }}
       />
-      <ProfileScreen />
+      <DrawerMenu />
     </>
   )
 }

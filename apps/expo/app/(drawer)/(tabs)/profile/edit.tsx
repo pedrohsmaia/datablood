@@ -11,7 +11,7 @@ export default function Screen() {
           title: 'Edit Profile',
         }}
       />
-      <SafeAreaView style={{ flex: 1 }} edges={['bottom', 'left', 'right']}>
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom', 'left', 'right']}>
         <EditProfileScreen />
       </SafeAreaView>
     </>
