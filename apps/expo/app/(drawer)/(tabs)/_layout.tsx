@@ -43,16 +43,23 @@ export default function Layout() {
       />
       <Tabs
         screenOptions={{
-          tabBarShowLabel: true,
+          tabBarShowLabel: false,
           headerTintColor: accentColor.val,
           tabBarStyle: {
-            marginTop: 10,
+            paddingTop: 20,
+            paddingBottom: 10,
+            height: 60,
+            alignContent: 'center',
+            justifyContent: 'center',
+          },
+          tabBarItemStyle: {
+            paddingBottom: 10,
           },
         }}
       >
         <Tabs.Screen
           name="index"
-          key={'index'}
+          key="index"
           options={{
             headerShown: false,
             title: 'Home',
@@ -63,7 +70,7 @@ export default function Layout() {
         />
         <Tabs.Screen
           name="profile"
-          key={'profile'}
+          key="profile"
           options={{
             headerShown: false,
             title: 'Profile',

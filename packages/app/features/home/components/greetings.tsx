@@ -2,8 +2,10 @@ import { useToastController, Spinner, H2 } from '@my/ui'
 import { api } from 'app/utils/api'
 import { useEffect } from 'react'
 import { Platform } from 'react-native'
+import { getBaseUrl } from 'app/utils/getBaseUrl'
 
 export const Greetings = () => {
+  const baseUrl = getBaseUrl()
   const { data, isLoading, isError } = api.greeting.greet.useQuery()
   const toast = useToastController()
   const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
@@ -18,7 +20,7 @@ export const Greetings = () => {
         },
       })
     isError &&
-      toast.show(`Error connecting to tPRC server.`, {
+      toast.show(`Error connecting to tPRC server. ${baseUrl}`, {
         native: isNative,
         burntOptions: {
           preset: 'error',
@@ -26,6 +28,13 @@ export const Greetings = () => {
           from: 'bottom',
         },
       })
+    if (isError) {
+      console.error(
+        `Tried to connect to tRPC server at ${baseUrl} but got an error. Run next.js server with 'yarn web -H ${
+          baseUrl.split('://')[1].split(':')[0]
+        }' to fix..`
+      )
+    }
   }, [data, isError, toast])
   return (
     <H2 m="$4">
