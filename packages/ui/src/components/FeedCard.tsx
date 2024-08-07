@@ -40,7 +40,7 @@ export const FeedCard = ({
             h={150}
           />
         )}
-        <YStack p="$2" gap="$2">
+        <YStack padding="$3" gap="$2">
           {!!tag && (
             <H6 size="$2" theme="alt2" mb="$1">
               {tag}

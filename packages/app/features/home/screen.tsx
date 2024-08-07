@@ -45,16 +45,45 @@ export function HomeScreen() {
   )
 }
 
+const eventDummyData = [
+  {
+    id: 1,
+    name: 'Event 1',
+    description: 'Lorem ipsum dolor sit, amet.',
+    start_time: new Date('2023-05-01T00:00:00.000Z'),
+    end_time: new Date('2023-05-01T00:00:00.000Z'),
+    status: 'Upcoming',
+  },
+  {
+    id: 2,
+    name: 'Event 2',
+    description: 'Lorem ipsum dolor sit, amet.',
+    start_time: new Date('2023-05-01T00:00:00.000Z'),
+    end_time: new Date('2023-05-01T00:00:00.000Z'),
+    status: 'Upcoming',
+  },
+  {
+    id: 3,
+    name: 'Event 3',
+    description: 'Lorem ipsum dolor sit, amet.',
+    start_time: new Date('2023-05-01T00:00:00.000Z'),
+    end_time: new Date('2023-05-01T00:00:00.000Z'),
+    status: 'Upcoming',
+  },
+]
+
 const EventCards = () => {
   const { data, isLoading } = useEventsQuery()
 
   if (isLoading) return null
+  console.log('data', data)
+  const eventData = data?.length ? data : eventDummyData
   return (
     <ScrollView f={1} fb={0} $md={{ dsp: 'none' }}>
-      <YStack separator={<Separator />}>
+      <YStack separator={<Separator />} gap="$3">
         <YStack>
-          {data?.length ? (
-            data?.map((event) => (
+          {eventData.length ? (
+            eventData?.map((event) => (
               <EventCard
                 key={event.id}
                 title={event.name}
@@ -78,11 +107,11 @@ const EventCards = () => {
             ))
           ) : (
             <View h={400} miw="100%" ai="center" jc="center" f={1} background="$gray1">
-              <Text>No events yet</Text>
+              <Text>No events yet?</Text>
             </View>
           )}
         </YStack>
-        <YStack p="$3">
+        <YStack marginRight="$3">
           <Theme name="blue_alt1">
             <Banner cur="pointer">
               <H4>Upgrade Now!</H4>
@@ -94,7 +123,7 @@ const EventCards = () => {
         </YStack>
         <YStack>
           <TodoCard label="Contribute to OSS" checked={false} />
-          <TodoCard label="Learn about Tamagui's latest features" checked />
+          <TodoCard label="Contribute to OSS" checked={true} />
           <TodoCard label="Upgrade to the new Expo version" checked={false} />
           <TodoCard label="Do the dishes" checked={false} />
         </YStack>

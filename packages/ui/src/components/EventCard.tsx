@@ -31,11 +31,11 @@ export const EventCard = ({ title, description, action, tags = [], ...props }: E
       onPress={() => setToggleEvent((prev) => !prev)}
     >
       <EventModal toggleEvent={toggleEvent} eventData={{ title, tags, description }} />
-      <XStack gap="$3">
+      <XStack gap="$3" flexDirection="column">
         <H6 size="$5" tt="capitalize">
           {title}
         </H6>
-        <XStack gap="$1">
+        <XStack gap="$1" marginHorizontal="$-2">
           {tags.map((tag) => (
             <Theme key={tag.text} name={tag.theme}>
               <Button size="$1" px="$2" br="$10" disabled>

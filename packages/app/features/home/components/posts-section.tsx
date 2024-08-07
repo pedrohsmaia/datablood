@@ -33,8 +33,14 @@ export const PostsSection = () => {
   if (isLoading) return <FullscreenSpinner />
   return (
     <View>
-      <XStack px="$4.5" ai="center" gap="$2" jc="space-between" mb="$4">
-        <H4 theme="alt1" fow="400">
+      <XStack
+        paddingHorizontal="$4.5"
+        alignItems="center"
+        gap="$2"
+        justifyContent="space-between"
+        marginBottom="$4"
+      >
+        <H4 theme="alt1" fontWeight="400">
           Latest Posts
         </H4>
         <Theme name="alt2">
@@ -45,11 +51,14 @@ export const PostsSection = () => {
       </XStack>
       <Stack
         maxWidth={1070}
-        gap="1%"
-        $platform-native={{ mb: '$0', ml: '$1', mr: '$2.5' }}
-        jc="flex-start"
-        fw="wrap"
+        gap="$3"
+        $platform-native={{ marginBottom: '$0', marginLeft: '$1', marginRight: '$2.5' }}
+        justifyContent="flex-start"
+        flexWrap="wrap"
         flexDirection={isWeb ? 'row' : 'column'}
+        $gtMd={{
+          gap: '$4',
+        }}
       >
         {data?.length ? (
           data.map((card, index) => (
@@ -57,8 +66,8 @@ export const PostsSection = () => {
               imageUrl={card.image_url}
               key={`${card.title}-${index}`}
               withImages
-              mb="$3"
-              $gtMd={{ w: feedCardWidthMd, mb: '1%', miw: '32.333%' }}
+              marginBottom="$3"
+              $gtMd={{ width: feedCardWidthMd, marginBottom: '1%', minWidth: '32.333%' }}
               title={card.title}
               description={`${card?.content?.substring(0, 150)}...`}
               tag={card.tag}
@@ -68,19 +77,19 @@ export const PostsSection = () => {
             />
           ))
         ) : (
-          <View mx="$4" $gtSm={{ miw: '100%', mb: '$4' }}>
+          <View marginHorizontal="$4" $gtSm={{ minWidth: '100%', marginBottom: '$4' }}>
             <View
               height={200}
-              maw="100%"
-              miw="100%"
-              ai="center"
-              jc="center"
-              f={1}
+              maxWidth="100%"
+              minWidth="100%"
+              alignItems="center"
+              justifyContent="center"
+              flex={1}
               backgroundColor="$gray1"
-              m="$2"
-              $platform-native={{ m: '$0', mb: '$3' }}
-              ml="$0"
-              br="$5"
+              margin="$2"
+              $platform-native={{ margin: '$0', marginBottom: '$3' }}
+              marginLeft="$0"
+              borderRadius="$5"
             >
               <Text>No posts created yet</Text>
             </View>
