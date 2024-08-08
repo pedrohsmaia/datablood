@@ -28825,7 +28825,6 @@ __metadata:
     promise-throttle-all: "npm:^1.1.1"
     turbo: "npm:^1.10.14"
     typescript: "npm:^5.3.3"
-    zustand: "npm:^4.5.4"
   languageName: unknown
   linkType: soft
 

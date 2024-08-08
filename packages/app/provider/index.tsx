@@ -7,6 +7,7 @@ import { SafeAreaProvider } from './safe-area'
 import { TamaguiProvider } from './tamagui'
 import { UniversalThemeProvider } from './theme'
 import { ToastProvider } from './toast'
+import { GlobalStoreProvider } from 'app/utils/global-store'
 
 export { loadThemePromise } from './theme/UniversalThemeProvider'
 
@@ -42,4 +43,5 @@ const Providers = compose([
   TamaguiProvider,
   ToastProvider,
   QueryClientProvider,
+  GlobalStoreProvider,
 ])
