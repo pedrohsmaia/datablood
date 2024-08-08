@@ -22,7 +22,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "dev.tamagui.takeoutdemo"
+      "bundleIdentifier": "dev.tamagui.takeoutdemo",
+      "buildNumber": "3"
     },
     "android": {
       "softwareKeyboardLayoutMode": "pan",

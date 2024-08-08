@@ -1,8 +1,8 @@
 import { useToastController, Spinner, H2 } from '@my/ui'
 import { api } from 'app/utils/api'
+import { getBaseUrl } from 'app/utils/getBaseUrl'
 import { useEffect } from 'react'
 import { Platform } from 'react-native'
-import { getBaseUrl } from 'app/utils/getBaseUrl'
 
 export const Greetings = () => {
   const baseUrl = getBaseUrl()
