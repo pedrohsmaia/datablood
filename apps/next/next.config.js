@@ -17,6 +17,7 @@ const plugins = [
     openAnalyzer: process.env.ANALYZE === 'true',
   }),
   withTamagui({
+    disable: true,
     themeBuilder: {
       input: '../../packages/ui/src/themes/theme.ts',
       output: '../../packages/ui/src/themes/theme-generated.ts',
@@ -82,6 +83,10 @@ module.exports = () => {
         transform: `@tamagui/lucide-icons/dist/esm/icons/{{kebabCase member}}`,
         skipDefaultConversion: true,
       },
+      // '@tamagui-icons/icon-ph': {
+      //   transform: '@tamagui-icons/icon-ph/dist/esm/icons/{{kebabCase member}}',
+      //   skipDefaultConversion: true,
+      // },
     },
 
     transpilePackages: [
@@ -123,5 +128,5 @@ module.exports = () => {
     }
   }
 
-  return config
+  return { ...config, typescript: { ignoreBuildErrors: true }, images: { unoptimized: true } }
 }

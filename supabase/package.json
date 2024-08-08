@@ -13,15 +13,24 @@
     "generate": "npx supabase gen types typescript --local --schema public > ./types.ts",
     "g": "yarn generate",
     "migration:diff": "npx supabase db diff -f ",
+    "migration:up": "npx supabase migration up",
+    "migration:new": "supabase migration new",
     "start": "npx supabase start",
     "stop": "npx supabase stop",
+    "stop:no-backup": "npx supabase stop --no-backup",
     "reset": "npx supabase db reset && npx supabase start",
     "status": "npx supabase status",
     "_deploy": "yarn link-project && npx supabase db push",
-    "deploy": "yarn _with-env yarn _deploy"
+    "deploy": "yarn _with-env yarn _deploy",
+    "seed:init": "npx @snaplet/seed init",
+    "seed:post": "npx tsx seed.ts > seed.sql"
   },
   "devDependencies": {
+    "@snaplet/copycat": "^5.0.0",
+    "@snaplet/seed": "0.97.20",
+    "@types/pg": "^8.11.6",
     "dotenv-cli": "^6.0.0",
+    "pg": "^8.12.0",
     "supabase": "^1.99.0"
   }
 }

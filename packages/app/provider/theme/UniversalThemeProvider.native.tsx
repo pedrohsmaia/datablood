@@ -18,13 +18,13 @@ loadThemePromise.then((val) => {
 })
 
 export const UniversalThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [current, setCurrent] = useState<ThemeName>(persistedTheme ?? 'system')
+  const [current, setCurrent] = useState<ThemeName | null>(null) // Start with null
   const systemTheme = useColorScheme() || 'system'
 
   useLayoutEffect(() => {
     async function main() {
       await loadThemePromise
-      setCurrent(persistedTheme as ThemeName)
+      setCurrent(persistedTheme ?? 'system') // Set theme after loading
     }
     main()
   }, [])
@@ -41,10 +41,14 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
       onChangeTheme: (next: string) => {
         setCurrent(next as ThemeName)
       },
-      current,
+      current: current ?? 'system', // Default to 'system' if current is null
       systemTheme,
     } satisfies ThemeContextValue
   }, [current, systemTheme])
+
+  if (current === null) {
+    return null // Render nothing until theme is loaded
+  }
 
   return (
     <ThemeContext.Provider value={themeContext}>

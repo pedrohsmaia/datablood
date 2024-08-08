@@ -2,19 +2,23 @@ import {
   Adapt,
   Avatar,
   Button,
-  ButtonProps,
+  type ButtonProps,
   Popover,
   Separator,
   SizableText,
-  StackProps,
+  type StackProps,
   Theme,
   XStack,
   YStack,
   getTokens,
   useThemeName,
   validToken,
+  useMedia,
+  isWeb,
 } from '@my/ui'
+import { CreateModal } from '@my/ui/src/components/CreateModal'
 import { Menu, Plus } from '@tamagui/lucide-icons'
+import { useGlobalStore } from 'app/utils/global-store'
 import { useUser } from 'app/utils/useUser'
 import { useRouter as useNextRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -164,21 +168,44 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-const CtaButton = (props: ButtonProps) => (
-  <Theme inverse>
-    <Button
-      {...useLink({ href: '/create' })}
-      size="$3"
-      space="$1.5"
-      my="$-1"
-      icon={Plus}
-      br="$10"
-      {...props}
-    >
-      Create
-    </Button>
-  </Theme>
-)
+const CtaButton = (props: ButtonProps) => {
+  // const [toggleEvent, setToggleEvent] = useState(false)
+  const { toggleCreateModal, setToggleCreateModal } = useGlobalStore()
+  const { sm } = useMedia()
+  return (
+    <>
+      <CreateModal toggleEvent={toggleCreateModal} setToggleEvent={setToggleCreateModal} />
+      <Theme inverse>
+        <Adapt when="sm">
+          <Button
+            {...useLink({ href: '/create' })}
+            size="$3"
+            space="$1.5"
+            my="$-1"
+            icon={Plus}
+            br="$10"
+            {...props}
+          >
+            Create
+          </Button>
+        </Adapt>
+        <Adapt when="gtSm">
+          <Button
+            onPress={() => setToggleCreateModal()}
+            size="$3"
+            space="$1.5"
+            my="$-1"
+            icon={Plus}
+            br="$10"
+            {...props}
+          >
+            Create
+          </Button>
+        </Adapt>
+      </Theme>
+    </>
+  )
+}
 
 const ProfileButton = () => (
   <Link href="/profile">

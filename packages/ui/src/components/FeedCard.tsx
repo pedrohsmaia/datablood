@@ -2,7 +2,7 @@ import { LinearGradient } from '@tamagui/linear-gradient'
 import {
   Avatar,
   Card,
-  CardProps,
+  type CardProps,
   H4,
   H6,
   Image,
@@ -14,6 +14,7 @@ import {
 
 // mostly for showing something on home so it's not empty
 export const FeedCard = ({
+  imageUrl,
   title,
   description,
   tag,
@@ -21,6 +22,7 @@ export const FeedCard = ({
   withImages,
   ...props
 }: {
+  imageUrl: string
   title: string
   description?: string
   tag?: string
@@ -28,20 +30,17 @@ export const FeedCard = ({
   withImages?: boolean
 } & CardProps) => {
   return (
-    <Card br="$4" bordered overflow="hidden" {...props}>
-      <Card.Header>
+    <Card br="$3" bordered overflow="hidden" {...props}>
+      <Card.Header p="$0">
         {withImages && (
           <Image
             source={{
-              uri: `https://picsum.photos/seed/${title}/1000/500`,
+              uri: imageUrl,
             }}
             h={150}
-            $sm={{
-              h: 100,
-            }}
           />
         )}
-        <YStack px="$4" pt="$4" gap="$2">
+        <YStack padding="$3" gap="$2">
           {!!tag && (
             <H6 size="$2" theme="alt2" mb="$1">
               {tag}

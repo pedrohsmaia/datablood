@@ -6,7 +6,7 @@ import {
   BooleanSwitchField,
   FieldError,
   Form,
-  FormProps,
+  type FormProps,
   FormWrapper,
   NumberField,
   SelectField,
@@ -14,8 +14,13 @@ import {
   TextField,
   Theme,
 } from '@my/ui'
+import { DateField, DateSchema } from '@my/ui/src/components/FormFields/DateField'
+import {
+  ImagePickerField,
+  ImagePickerSchema,
+} from '@my/ui/src/components/FormFields/ImagePickerField'
 import { createTsForm, createUniqueFieldSchema } from '@ts-react/form'
-import { ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -46,6 +51,8 @@ export const formFields = {
    * example of how to handle more complex fields
    */
   address: createUniqueFieldSchema(AddressSchema, 'address'),
+  date: createUniqueFieldSchema(DateSchema, 'date'),
+  image: createUniqueFieldSchema(ImagePickerSchema, 'image'),
 }
 
 // function createFormSchema<T extends ZodRawShape>(getData: (fields: typeof formFields) => T) {
@@ -61,11 +68,13 @@ const mapping = [
   [formFields.boolean_checkbox, BooleanCheckboxField] as const,
   [formFields.select, SelectField] as const,
   [formFields.address, AddressField] as const,
+  [formFields.date, DateField] as const,
+  [formFields.image, ImagePickerField] as const,
 ] as const
 
 const FormComponent = (props: FormProps) => {
   return (
-    <Form asChild {...props}>
+    <Form asChild {...props} minWidth="100%">
       <FormWrapper tag="form">{props.children}</FormWrapper>
     </Form>
   )
@@ -75,6 +84,10 @@ const _SchemaForm = createTsForm(mapping, {
   FormComponent,
 })
 
+// SchemaForm is a higher-order component that wraps around the _SchemaForm component.
+// It provides additional functionality for rendering a form with custom fields and a footer.
+// The renderAfter prop allows for custom content to be rendered in the form's footer.
+// The children prop can be used to customize the rendering of form fields.
 export const SchemaForm: typeof _SchemaForm = ({ ...props }) => {
   const renderAfter: ComponentProps<typeof _SchemaForm>['renderAfter'] = props.renderAfter
     ? (vars) => <FormWrapper.Footer>{props.renderAfter?.(vars)}</FormWrapper.Footer>
@@ -83,7 +96,7 @@ export const SchemaForm: typeof _SchemaForm = ({ ...props }) => {
   return (
     <_SchemaForm {...props} renderAfter={renderAfter}>
       {(fields, context) => (
-        <FormWrapper.Body>
+        <FormWrapper.Body minWidth="100%" $platform-native={{ miw: '100%' }}>
           {props.children ? props.children(fields, context) : Object.values(fields)}
         </FormWrapper.Body>
       )}

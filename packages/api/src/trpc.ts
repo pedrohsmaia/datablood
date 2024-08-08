@@ -1,8 +1,8 @@
-import { Database } from '@my/supabase/types'
+import type { Database } from '@my/supabase/types'
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { createClient } from '@supabase/supabase-js'
 import { TRPCError, initTRPC } from '@trpc/server'
-import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
+import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import * as jose from 'jose'
 import { cookies } from 'next/headers'
 import superJson from 'superjson'
@@ -11,7 +11,9 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
   // if there's auth cookie it'll be authenticated by this helper
   const cookiesStore = cookies()
 
-  let supabase = createRouteHandlerClient<Database>({ cookies: () => cookiesStore })
+  let supabase = createRouteHandlerClient<Database>({
+    cookies: () => cookiesStore,
+  })
   let userId = (await supabase.auth.getUser()).data.user?.id
 
   if (!process.env.SUPABASE_JWT_SECRET) {
@@ -46,11 +48,12 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
       process.env.NEXT_PUBLIC_SUPABASE_URL,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       {
-        auth: {
-          autoRefreshToken: false,
-          detectSessionInUrl: false,
-          persistSession: false,
-        },
+        //TODO: remove this options from takout starter
+        // auth: {
+        // autoRefreshToken: false,
+        // detectSessionInUrl: false,
+        // persistSession: false,
+        // },
         global: {
           headers: {
             // pass the authorization header through to Supabase

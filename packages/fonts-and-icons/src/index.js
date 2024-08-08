@@ -1,20 +1,15 @@
-import { execSync } from 'node:child_process'
-import { existsSync, rmSync } from 'node:fs'
-import { readFile } from 'node:fs/promises'
-import { homedir } from 'node:os'
-import path from 'node:path'
-
-import fonts from './fonts.js'
-import icons from './icons.js'
 import chalk from 'chalk'
 import { pascalCase } from 'change-case'
 import pkg from 'fs-extra'
 import { marked } from 'marked'
 import TerminalRenderer from 'marked-terminal'
-import open from 'opener'
+import { homedir } from 'node:os'
+import path from 'node:path'
 import prompts from 'prompts'
-import iconify from './iconify.js'
+import fonts from './fonts.js'
 import googleFonts from './googleFonts.js'
+import iconify from './iconify.js'
+import icons from './icons.js'
 
 const { copy, ensureDir, readFileSync } = pkg
 marked.setOptions({

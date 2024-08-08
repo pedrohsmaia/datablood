@@ -45,6 +45,7 @@ export const SignUpScreen = () => {
       email,
       password,
       options: {
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_URL}`,
         // To take user's name other info
         data: {
           // first_name: firstName, // coming from state

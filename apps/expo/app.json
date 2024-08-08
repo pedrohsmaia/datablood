@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "myapp",
-    "slug": "myapp",
+    "name": "takeout demo",
+    "slug": "takeout-demo",
     "jsEngine": "hermes",
     "scheme": "myapp",
     "version": "1.0.0",
@@ -10,7 +10,7 @@
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "contentFit": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -22,7 +22,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.acme.myapp"
+      "bundleIdentifier": "dev.tamagui.takeoutdemo",
+      "buildNumber": "6"
     },
     "android": {
       "softwareKeyboardLayoutMode": "pan",
@@ -30,10 +31,11 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.acme.myapp",
+      "package": "dev.tamagui.takeoutdemo",
       "permissions": [
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -63,7 +65,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": ""
+        "projectId": "b5f02af2-6475-4d9e-81b3-664f89564580"
       }
     },
     "runtimeVersion": {

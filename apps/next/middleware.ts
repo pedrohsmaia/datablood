@@ -35,7 +35,7 @@ export async function middleware(req: NextRequest) {
   }
   // restrict the user if trying to access protected routes
   if (!user) {
-    console.log('there no is user ', req.nextUrl.pathname)
+    console.log(`User not logged in. Attempted to access: ${req.nextUrl.pathname}`)
     const redirectUrl = req.nextUrl.clone()
     redirectUrl.pathname = '/sign-in'
     // redirectUrl.searchParams.set(`redirected_from`, req.nextUrl.pathname)

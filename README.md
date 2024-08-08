@@ -1,4 +1,4 @@
-⚠️️ **Please note**: Takeout is closed source for now. We've had a number of people create public repos on accident. Please be careful to keep the source private as per the license.
+⚠️ **Please note**: Takeout is closed source for now. We've had a number of people create public repos on accident. Please be careful to keep the source private as per the license.
 
 # Tamagui's Takeout Starter
 
@@ -50,11 +50,73 @@ Note that you don't need to do this if you've already cloned this using `create 
 
 To configure the project, `cd` into the root of the project and run `yarn setup`.
 
+## Supabase Authentication and Database
+
+Takeout is designed for and works best with Supabase.
+
+We use Supabase Auth, Storage, Database, and Client Libraries.
+
+If you don't have one already, create an account with [Supabase](https://supabase.com).
+If you're using Supabase, you can skip to the next section.
+
+### Supabase Setup
+
+Create a new Supabase project by following the [Supabase Project](https://supabase.com/docs/guides/project) guide.
+
+Once you have a project, click "Connect" and select App Frameworks.
+
+From this modal you can copy the .env vars for next.js
+
+```sh
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+
+Then click on mobile frameowork and copy the .env vars for expo
+
+```sh
+EXPO_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+
+#### Supabase Auth
+
+We use Supabase Auth for user authentication.
+
+You can create a new Supabase Auth setup by following the [Supabase Auth](https://supabase.com/docs/guides/auth) guide.
+
+If you'd like to add OAuth like Google Sign In, you can follow the [Supabase Auth OAuth](https://supabase.com/docs/guides/auth/social-login/auth-google) guide.
+
+#### Supabase Storage
+
+We use Supabase Storage for storing user avatars.
+
+You can create a new Supabase Storage by following the [Supabase Storage](https://supabase.com/docs/guides/storage) guide.
+
+#### Supabase Database
+
+We use Supabase Database for storing user data.
+
+You can create a new Supabase database by following the [Supabase Database](https://supabase.com/docs/guides/database) guide.
+
+### Development with Supabase
+
+It is possible to develop locally with Supabase. This is useful for development and testing.
+
+<details>
+  <summary>Self-hosting Supabase</summary>
+
 [Docker](https://www.docker.com) based workflow is recommended if your takeout project is using Supabase as a dependency.
 
 Please reference [Supabase's documentation](https://supabase.com/docs/guides/self-hosting/docker) for docker configuration instructions.
 
-## Development
+## </details>
+
+---
+
+> Note: If you don't want to setup locally - some users have a second Supabase project that they use for development.
+
+## Development of your Takeout App
 
 ### Development scripts
 
@@ -64,12 +126,56 @@ Please reference [Supabase's documentation](https://supabase.com/docs/guides/sel
 
 NOTE: When using tRPC, even if you just want to develop on native, you need to have the web server running to be able to make tRPC requests.
 
+The iOS simulator will not make requests to localhost, you will need to run the next.js server based on your local IP address.
+
+```bash
+yarn web -H $(yarn get-local-ip-mac)
+```
+
 ### EAS dev builds
 
 > [!IMPORTANT]  
-> You need to update your `owner` inside `apps/expo/app.json` to your own username
+> You need to update your `owner` inside `apps/expo/app.json` to your own username, along with your env variables for each EAS build environment.
 
-In the apps/expo folder you can use EAS and a few helpful scripts:
+```json
+{
+  "expo": {
+    "owner": "your-username"
+  }
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+      "env": {
+        "APP_ENV": "development",
+        "EXPO_PUBLIC_URL": "[YOUR_LOCAL_NEXTJS_URL]",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://[YOUR-PROJECT-ID].supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "[YOUR-ANON-KEY]"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "development",
+        "EXPO_PUBLIC_URL": "[YOUR-PUBLIC_APP_URL]",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://[YOUR-PROJECT-ID].supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "[YOUR-ANON-KEY]"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "env": {
+        "APP_ENV": "development",
+        "EXPO_PUBLIC_URL": "[YOUR-PUBLIC_APP_URL]",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://[YOUR-PROJECT-ID].supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "[YOUR-ANON-KEY]"
+      }
+    }
+  }
+}
+```
+
+In the `apps/expo` folder you can use EAS and a few helpful scripts:
 
 - `yarn eas:build:dev:simulator:android` for android
 - `yarn eas:build:dev:simulator:ios` for ios
@@ -207,6 +313,8 @@ Authentication is handled by Supabase Auth. Email and password auth is included 
 
 Check emails that are sent to you locally like the auth confirmation using InBucket at http://localhost:54324 once your Supabase is running `yarn supa start` from the root of the project.
 
+Redirect URL for email signup needs to be configured in Supabase Auth dashboard on production located in sidebar `authentication / URL Configuration` `Redirect URLs` option.
+
 Getting OAuth to work on web is as easy as it gets but on native, you will need to manually get the OAuth credentials, and then feed them to the Supabase session. See [this article](https://dev.to/fedorish/google-sign-in-using-supabase-and-react-native-expo-14jf) for more info on how to handle native OAuth with Supabase.
 
 For a detailed guide about Supabase on Takeout and all available script commands see [Supabase README](/supabase/README.md)
@@ -233,14 +341,11 @@ You can use Supabase's [Row-Level Security (RLS)](https://supabase.com/docs/guid
 
 ## Environment Convention
 
-Follows [how Next.js handles env variables](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables) - In general only a `.env.local` file is needed.
+For simplicities sake we recommend one `.env` file on your local machine for your entire project, in the root directory.
 
-- `.env.local` is where secrets can be safely stored since this file isn't committed to git
-- Do NOT put your sensitive environment variables inside `.env` as it will get committed to git
+Each app in `apps` can use `with-env` to load the `.env` file.
 
-[Next Environment Defaults](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#default-environment-variables)
-
-> Good to know: .env, .env.development, and .env.production files should be included in your repository as they define defaults. .env\*.local should be added to .gitignore, as those files are intended to be ignored. .env.local is where secrets can be stored.
+You can `cp .env.example .env` to get started.
 
 ## Installing icons and fonts
 
@@ -332,3 +437,25 @@ This error is likely caused my not having Supabase setup correctly and running i
 - Where is the initial page that gets rendered on the Expo app?
 
 We recommend you familiarize yourself with how Expo Router handles routing on [their docs](https://docs.expo.dev/router/introduction/). In a fresh Takeout project, the initial page would be on `apps/expo/app/(tabs)/index.tsx`.
+
+## Troubleshooting
+
+### Xcode cannot find 'node'
+
+If building with xcode, or running `yarn ios/android` and you receive a wall of red errors - you may need to remove `.xcode.env.local` from the root of the project.
+
+Alternative fix from [lerisse](https://github.com/lerisse):
+
+> A more permanent solution I’ve found for node error would be to replace the temp path created in Xcode.env.local to your local node install path. Usually for Mac that would be defaulted to /usr/local/bin/node
+
+Running `pod install` inside a yarn alias can create this broken file.
+
+https://github.com/facebook/react-native/issues/43285
+
+### App requests hanging when querying Next.js API
+
+iOS simulator will not make requests to localhost, you will need to run the next.js server based on your local IP address.
+
+```bash
+yarn web -H $(yarn get-local-ip-mac)
+```
