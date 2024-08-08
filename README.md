@@ -1,4 +1,4 @@
-⚠️️ **Please note**: Takeout is closed source for now. We've had a number of people create public repos on accident. Please be careful to keep the source private as per the license.
+⚠️ **Please note**: Takeout is closed source for now. We've had a number of people create public repos on accident. Please be careful to keep the source private as per the license.
 
 # Tamagui's Takeout Starter
 
@@ -334,3 +334,21 @@ This error is likely caused my not having Supabase setup correctly and running i
 - Where is the initial page that gets rendered on the Expo app?
 
 We recommend you familiarize yourself with how Expo Router handles routing on [their docs](https://docs.expo.dev/router/introduction/). In a fresh Takeout project, the initial page would be on `apps/expo/app/(tabs)/index.tsx`.
+
+## Troubleshooting
+
+### Xcode cannot find 'node'
+
+If building with xcode, or running `yarn ios/android` and you receive a wall of red errors - you may need to remove `.xcode.env.local` from the root of the project.
+
+Running `pod install` inside a yarn alias can create this broken file.
+
+https://github.com/facebook/react-native/issues/43285
+
+### App requests hanging when querying Next.js API
+
+iOS simulator will not make requests to localhost, you will need to run the next.js server based on your local IP address.
+
+```bash
+yarn web -H $(yarn get-local-ip-mac)
+```
