@@ -341,6 +341,10 @@ We recommend you familiarize yourself with how Expo Router handles routing on [t
 
 If building with xcode, or running `yarn ios/android` and you receive a wall of red errors - you may need to remove `.xcode.env.local` from the root of the project.
 
+Alternative fix from [lerisse](https://github.com/lerisse):
+
+> A more permanent solution I’ve found for node error would be to replace the temp path created in Xcode.env.local to your local node install path. Usually for Mac that would be defaulted to /usr/local/bin/node
+
 Running `pod install` inside a yarn alias can create this broken file.
 
 https://github.com/facebook/react-native/issues/43285
