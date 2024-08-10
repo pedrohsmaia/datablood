@@ -76,7 +76,7 @@ const EventCards = () => {
   const { data, isLoading } = useEventsQuery()
 
   if (isLoading) return null
-  console.log('data', data)
+
   const eventData = data?.length ? data : eventDummyData
   return (
     <ScrollView f={1} fb={0} $md={{ dsp: 'none' }}>
