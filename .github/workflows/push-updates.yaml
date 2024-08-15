@@ -13,7 +13,7 @@ jobs:
     steps:
       - id: push-updates
         name: Push Updates
-        uses: tamagui/takeout-bot@main
+        uses: tamagui/takeout-bot@v2
         with:
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           supabase_service_role_key: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
