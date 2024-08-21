@@ -1,8 +1,7 @@
 import { promises as fs, createWriteStream } from 'node:fs'
 import path, { dirname, join } from 'node:path'
 import fetch from 'node-fetch'
-import { pascalCase, paramCase } from 'change-case'
-import { ensureFile } from 'fs-extra'
+import { pascalCase, kebabCase } from 'change-case'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = join(dirname(fileURLToPath(import.meta.url)))
@@ -110,7 +109,7 @@ const main = async ({ prefixToInstall } = {}) => {
     }
   }
 
-  fontData[paramCase(family)] = {
+  fontData[kebabCase(family)] = {
     weights: [...weights],
     styles: [...styles],
     axes: hasVariableFont ? axes : undefined,
@@ -193,20 +192,20 @@ const defaultSizes = {
 } as const
 `
 
-  const packageName = `@tamagui-google-fonts/${paramCase(family)}`
+  const packageName = `@tamagui-google-fonts/${kebabCase(family)}`
   await fs.mkdir(
-    path.join(__dirname, '..', '..', '..', `../packages/font-${paramCase(family)}/src`),
+    path.join(__dirname, '..', '..', '..', `../packages/font-${kebabCase(family)}/src`),
     {
       recursive: true,
     }
   )
   await fs.writeFile(
-    path.join(__dirname, '..', '..', '..', `../packages/font-${paramCase(family)}/package.json`),
+    path.join(__dirname, '..', '..', '..', `../packages/font-${kebabCase(family)}/package.json`),
     JSON.stringify(getPackageJson(packageName, `0.0.1`), null, 2)
   )
 
   await fs.writeFile(
-    path.join(__dirname, '..', '..', '..', `../packages/font-${paramCase(family)}/.gitignore`),
+    path.join(__dirname, '..', '..', '..', `../packages/font-${kebabCase(family)}/.gitignore`),
     `dist/
 .DS_Store
 THUMBS_DB
@@ -215,7 +214,7 @@ types/`
   )
 
   await fs.writeFile(
-    path.join(__dirname, '..', '..', '..', `../packages/font-${paramCase(family)}/README.md`),
+    path.join(__dirname, '..', '..', '..', `../packages/font-${kebabCase(family)}/README.md`),
     `# Prerequisite
 First install the dependencies running \`yarn install\`, then make sure to build the package using \`yarn build\` and add the package as a dependency to the package/app you want to consume it from (could be the \`app\` or \`ui\` package) like so:
 \`\`\`
@@ -335,15 +334,15 @@ NOTE: these instructions are auto-generated and might not be accurate with some 
 `
   )
   await fs.writeFile(
-    path.join(__dirname, '..', '..', '..', `../packages/font-${paramCase(family)}/tsconfig.json`),
+    path.join(__dirname, '..', '..', '..', `../packages/font-${kebabCase(family)}/tsconfig.json`),
     JSON.stringify(getTsConfig(), null, 2)
   )
   await fs.writeFile(
-    path.join(__dirname, '..', '..', '..', `../packages/font-${paramCase(family)}/src/index.ts`),
+    path.join(__dirname, '..', '..', '..', `../packages/font-${kebabCase(family)}/src/index.ts`),
     template
   )
   await fs.mkdir(
-    path.join(__dirname, '..', '..', '..', `../packages/font-${paramCase(family)}/fonts/static`),
+    path.join(__dirname, '..', '..', '..', `../packages/font-${kebabCase(family)}/fonts/static`),
     {
       recursive: true,
     }
@@ -358,7 +357,7 @@ NOTE: these instructions are auto-generated and might not be accurate with some 
           '..',
           '..',
           '..',
-          `../packages/font-${paramCase(family)}/fonts/${font.filename}`
+          `../packages/font-${kebabCase(family)}/fonts/${font.filename}`
         )
       )
     )
