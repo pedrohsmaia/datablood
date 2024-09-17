@@ -129,7 +129,7 @@ NOTE: When using tRPC, even if you just want to develop on native, you need to h
 The iOS simulator will not make requests to localhost, you will need to run the next.js server based on your local IP address.
 
 ```bash
-yarn web -H $(yarn get-local-ip-mac)
+yarn web -H $(yarn get-local-ip-mac | head -n 1)
 ```
 
 ### EAS dev builds
