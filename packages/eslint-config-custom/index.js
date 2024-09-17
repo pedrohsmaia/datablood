@@ -1,8 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: [
-    'universe/native',
-  ],
+  extends: ['universe/native'],
   overrides: [
     {
       files: ['*.config.js'],
