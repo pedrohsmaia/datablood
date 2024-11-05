@@ -33,7 +33,19 @@ In the expo folder, You can also run the `yarn start:dev-client` command which w
 
 ## Environment
 
+### Setting up iOS
+
 Note that Cocoapods 1.15 has a [breaking bug](https://github.com/CocoaPods/CocoaPods/issues/12226). We recommend using version 1.14.3.
+
+You'll need to ensure you have the right NODE_BINARY environment variable set. What we've found to work is to ensure your `apps/expo/ios/.xcode.env` has the contents of `which node`, for example:
+
+```bash
+NODE_BINARY=/Users/n8/Library/Caches/fnm_multishells/69747_1653603955297/bin/node
+```
+
+We've found Node >= 18 to work.
+
+You may need to run `yarn ios` once to have it generate the env file, and then re-run it once you set the NODE_BINARY properly.
 
 ## Included packages
 
