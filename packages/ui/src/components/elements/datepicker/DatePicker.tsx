@@ -2,7 +2,7 @@
 import { useDatePickerContext } from '@rehookify/datepicker'
 import type { DPDay, DPDayInteger } from '@rehookify/datepicker'
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, forwardRef } from 'react'
 import { AnimatePresence, Button, View, SizableText } from 'tamagui'
 
 import { useDateAnimation } from './common/datePickerUtils'
@@ -176,66 +176,69 @@ function DatePickerBody() {
 }
 
 /** ------ EXAMPLE ------ */
-export function DatePickerExample({
-  disabled,
-  placeholderTextColor,
-  value,
-  onChangeText,
-  onBlur,
-  ref,
-  placeholder,
-  id,
-  ...props
-}: {
-  disabled: boolean
-  placeholderTextColor?: string
-  value: string | undefined
-  onChangeText: (dateValue: string) => void
-  onBlur: () => void
-  ref: React.RefObject<HTMLInputElement>
-  placeholder?: string
-  id: string
-  [key: string]: any
-}) {
-  const [selectedDates, onDatesChange] = useState<Date[]>([])
-  const [open, setOpen] = useState(false)
+export const DatePickerExample = forwardRef(
+  (
+    {
+      disabled,
+      placeholderTextColor,
+      value,
+      onChangeText,
+      onBlur,
+      placeholder,
+      id,
+      ...props
+    }: {
+      disabled: boolean
+      placeholderTextColor?: string
+      value: string | undefined
+      onChangeText: (dateValue: string) => void
+      onBlur: () => void
+      placeholder?: string
+      id: string
+      [key: string]: any
+    },
+    ref: React.Ref<HTMLInputElement>
+  ) => {
+    const [selectedDates, onDatesChange] = useState<Date[]>([])
+    const [open, setOpen] = useState(false)
 
-  useEffect(() => {
-    setOpen(false)
-  }, [selectedDates])
+    useEffect(() => {
+      setOpen(false)
+    }, [selectedDates])
 
-  const datePickerConfig: {
-    selectedDates: Date[]
-    onDatesChange: (dates: Date[]) => void
-    calendar: {
-      startDay: DPDayInteger
+    const datePickerConfig: {
+      selectedDates: Date[]
+      onDatesChange: (dates: Date[]) => void
+      calendar: {
+        startDay: DPDayInteger
+      }
+    } = {
+      selectedDates,
+      onDatesChange: (dates) => {
+        onDatesChange(dates)
+        onChangeText(dates[0]?.toISOString().split('T')[0] || '')
+      },
+      calendar: {
+        startDay: 1,
+      },
     }
-  } = {
-    selectedDates,
-    onDatesChange: (dates) => {
-      onDatesChange(dates)
-      onChangeText(dates[0]?.toISOString().split('T')[0] || '')
-    },
-    calendar: {
-      startDay: 1,
-    },
+    return (
+      <DatePicker keepChildrenMounted open={open} onOpenChange={setOpen} config={datePickerConfig}>
+        <DatePicker.Trigger>
+          <DatePickerInput
+            placeholder="Select Date"
+            value={selectedDates[0]?.toDateString() || ''}
+            onReset={() => onDatesChange([])}
+            onButtonPress={() => setOpen(true)}
+          />
+        </DatePicker.Trigger>
+        <DatePicker.Content>
+          <DatePicker.Content.Arrow />
+          <DatePickerBody />
+        </DatePicker.Content>
+      </DatePicker>
+    )
   }
-  return (
-    <DatePicker keepChildrenMounted open={open} onOpenChange={setOpen} config={datePickerConfig}>
-      <DatePicker.Trigger>
-        <DatePickerInput
-          placeholder="Select Date"
-          value={selectedDates[0]?.toDateString() || ''}
-          onReset={() => onDatesChange([])}
-          onButtonPress={() => setOpen(true)}
-        />
-      </DatePicker.Trigger>
-      <DatePicker.Content>
-        <DatePicker.Content.Arrow />
-        <DatePickerBody />
-      </DatePicker.Content>
-    </DatePicker>
-  )
-}
+)
 
 DatePickerExample.fileName = 'DatePicker'
