@@ -55,12 +55,14 @@ enable_confirmations = true
 # Use an external OAuth provider. The full list of providers are: `apple`, `azure`, `bitbucket`,
 # `discord`, `facebook`, `github`, `gitlab`, `google`, `keycloak`, `linkedin`, `notion`, `twitch`,
 # `twitter`, `slack`, `spotify`, `workos`, `zoom`.
+
+# NOTE: You should use your Google Cloud Configuration
 [auth.external.google]
-enabled = false
-client_id = ""
-secret = ""
+enabled = true
+client_id = "571497840649-h617f8tskicu7309dcp2d23vhevcgf91.apps.googleusercontent.com"
+secret = "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"
 # Overrides the default auth redirectUrl.
-redirect_uri = ""
+redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
 # Overrides the default auth provider URL. Used to support self-hosted gitlab, single-tenant Azure,
 # or any other third-party OIDC providers.
 url = ""

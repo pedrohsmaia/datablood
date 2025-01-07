@@ -2,38 +2,35 @@ import { Button } from '@my/ui'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import * as WebBrowser from 'expo-web-browser'
 import { useRouter } from 'solito/router'
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin'
 
 import { IconGoogle } from './IconGoogle'
+
+console.log(process.env)
+
+GoogleSignin.configure({
+  webClientId: process.env.EXPO_PUBLIC_GOOGLE_SIGN_IN_WEB_CLIENT_ID,
+  iosClientId: process.env.EXPO_PUBLIC_GOOGLE_URL_SCHEME,
+})
 
 export function GoogleSignIn() {
   const supabase = useSupabase()
   const router = useRouter()
 
   async function signInWithGoogle() {
-    let authSuccessful = false
-    /**
-     * Google One Tap
-     * This is the method for Google One Tap. It is not available on iOS
-     * and requires sponsoring the project. See more here: https://github.com/react-native-google-signin/google-signin/issues/1176#issuecomment-1674385846.
-  if (Platform.OS === "android") {
-    const { rawNonce, hashedNonce } = await initiateGoogleSignIn();
-    const userInfo = await GoogleOneTapSignIn.signIn({
-      webClientId:
-        "YOUR_WEB_CLIENT_ID",
-      nonce: hashedNonce,
-    });
-    const token = userInfo?.idToken;
-    if (!token) throw new Error("No id token");
-    const { error } = await supabase.auth.signInWithIdToken({
-      provider: "google",
-      token: token,
-      nonce: rawNonce,
-    });
-    if (!error) router.replace("/");
-    if (error) return Alert.alert("Error", error.message);
-  } else {
-    Platform.OS === "ios";
-  */
+    try {
+      await GoogleSignin.hasPlayServices()
+      const result = await GoogleSignin.signIn()
+
+      const user = result?.data?.user
+
+      console.log(result)
+    } catch (error) {
+      console.error(error)
+    }
+
+    return
+
     try {
       // whatever route you want to deeplink to; make sure to configure in Supabase dashboard
       const redirectUri = 'myapp://'
