@@ -55,7 +55,7 @@ export default function Layout() {
           tabBarShowLabel: false,
           headerTintColor: accentColor.val,
           tabBarStyle: {
-            paddingTop: 30,
+            paddingTop: 10,
             paddingBottom: insets.bottom + 20, // edit this with safe area insets
             height: 60,
             alignContent: 'center',

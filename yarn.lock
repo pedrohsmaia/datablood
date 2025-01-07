@@ -11890,11 +11890,11 @@ __metadata:
     react-hook-form: "npm:^7.46.1"
     react-native: "npm:0.76.5"
     react-native-safe-area-context: "npm:5.0.0"
-    solito: "npm:^4.0.1"
+    solito: "npm:4.3.0"
     superjson: "npm:^1.13.1"
     typescript: "npm:^5.3.3"
     zod: "npm:^3.22.2"
-    zustand: "npm:^4.5.4"
+    zustand: "npm:5.0.2"
   languageName: unknown
   linkType: soft
 
@@ -16932,8 +16932,8 @@ __metadata:
     expo-updates: "npm:~0.26.10"
     expo-web-browser: "npm:~13.0.3"
     metro-minify-terser: "npm:^0.74.1"
-    react: "npm:^19.0.0"
-    react-dom: "npm:^19.0.0"
+    react: "npm:18.3.1"
+    react-dom: "npm:18.3.1"
     react-native: "npm:0.76.5"
     react-native-clean-project: "npm:^4.0.3"
     react-native-dotenv: "npm:^3.4.9"
@@ -22597,11 +22597,9 @@ __metadata:
     dotenv-cli: "npm:^8.0.0"
     next: "npm:^14.0.4"
     raf: "npm:^3.4.1"
-    react: "npm:^19.0.0"
-    react-dom: "npm:^19.0.0"
+    react: "npm:18.3.1"
+    react-dom: "npm:18.3.1"
     react-native: "npm:0.76.5"
-    react-native-reanimated: "npm:~3.16.6"
-    react-native-web: "npm:~0.19.10"
     vercel: "npm:latest"
     zod: "npm:^3.22.2"
   languageName: unknown
@@ -25128,14 +25126,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19.0.0":
-  version: 19.0.0
-  resolution: "react-dom@npm:19.0.0"
+"react-dom@npm:18.3.1":
+  version: 18.3.1
+  resolution: "react-dom@npm:18.3.1"
   dependencies:
-    scheduler: "npm:^0.25.0"
+    loose-envify: "npm:^1.1.0"
+    scheduler: "npm:^0.23.2"
   peerDependencies:
-    react: ^19.0.0
-  checksum: 10/aa64a2f1991042f516260e8b0eca0ae777b6c8f1aa2b5ae096e80bbb6ac9b005aef2bca697969841d34f7e1819556263476bdfea36c35092e8d9aefde3de2d9a
+    react: ^18.3.1
+  checksum: 10/3f4b73a3aa083091173b29812b10394dd06f4ac06aff410b74702cfb3aa29d7b0ced208aab92d5272919b612e5cda21aeb1d54191848cf6e46e9e354f3541f81
   languageName: node
   linkType: hard
 
@@ -25554,10 +25553,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^19.0.0":
-  version: 19.0.0
-  resolution: "react@npm:19.0.0"
-  checksum: 10/2490969c503f644703c88990d20e4011fa6119ddeca451e9de48f6d7ab058d670d2852a5fcd3aa3cd90a923ab2815d532637bd4a814add402ae5c0d4f129ee71
+"react@npm:18.3.1":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
+  dependencies:
+    loose-envify: "npm:^1.1.0"
+  checksum: 10/261137d3f3993eaa2368a83110466fc0e558bc2c7f7ae7ca52d94f03aac945f45146bd85e5f481044db1758a1dbb57879e2fcdd33924e2dde1bdc550ce73f7bf
   languageName: node
   linkType: hard
 
@@ -26480,10 +26481,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.25.0":
-  version: 0.25.0
-  resolution: "scheduler@npm:0.25.0"
-  checksum: 10/e661e38503ab29a153429a99203fefa764f28b35c079719eb5efdd2c1c1086522f6653d8ffce388209682c23891a6d1d32fa6badf53c35fb5b9cd0c55ace42de
+"scheduler@npm:^0.23.2":
+  version: 0.23.2
+  resolution: "scheduler@npm:0.23.2"
+  dependencies:
+    loose-envify: "npm:^1.1.0"
+  checksum: 10/e8d68b89d18d5b028223edf090092846868a765a591944760942b77ea1f69b17235f7e956696efbb62c8130ab90af7e0949bfb8eba7896335507317236966bc9
   languageName: node
   linkType: hard
 
@@ -27070,12 +27073,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solito@npm:^4.0.1":
-  version: 4.2.2
-  resolution: "solito@npm:4.2.2"
+"solito@npm:4.3.0":
+  version: 4.3.0
+  resolution: "solito@npm:4.3.0"
   dependencies:
     typescript: "npm:^5.0.4"
-  checksum: 10/39e410a8c75e6d3e66967e5aaff73efe299681936f46f8fb295050e1b2feed94b7656a42a6017eb18decd9493488c314f5d0bc987419d7c16243a6343e63fe4a
+  checksum: 10/b58eb9b0ec6a027042ebf68bd218534c620b2f420f81460416a064402cfd7b2ce2fbc6a6dae2c74443e69b064104e5288a426b8155a2ccdabc0c29b4ff637786
   languageName: node
   linkType: hard
 
@@ -27350,8 +27353,8 @@ __metadata:
     app: "npm:*"
     chromatic: "npm:^6.20.0"
     metro-react-native-babel-preset: "npm:^0.77.0"
-    react: "npm:^19.0.0"
-    react-dom: "npm:^19.0.0"
+    react: "npm:18.3.1"
+    react-dom: "npm:18.3.1"
     react-native: "npm:0.76.5"
     react-native-web: "npm:~0.19.10"
     storybook: "npm:^7.0.26"
@@ -27380,8 +27383,8 @@ __metadata:
     cross-env: "npm:^7.0.3"
     expo: "npm:~52.0.23"
     expo-constants: "npm:~17.0.3"
-    react: "npm:^19.0.0"
-    react-dom: "npm:^19.0.0"
+    react: "npm:18.3.1"
+    react-dom: "npm:18.3.1"
     react-native: "npm:0.76.5"
     react-native-safe-area-context: "npm:5.0.0"
     react-native-web: "npm:~0.19.10"
@@ -30642,7 +30645,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:^4.3.8, zustand@npm:^4.5.4":
+"zustand@npm:5.0.2":
+  version: 5.0.2
+  resolution: "zustand@npm:5.0.2"
+  peerDependencies:
+    "@types/react": ">=18.0.0"
+    immer: ">=9.0.6"
+    react: ">=18.0.0"
+    use-sync-external-store: ">=1.2.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    immer:
+      optional: true
+    react:
+      optional: true
+    use-sync-external-store:
+      optional: true
+  checksum: 10/9fb60796b9770dcc3f78dd794e7f424ff735e5676784cbc9726761037613942b62470b24a9ca9e98534ee4369a3b5429be570ff34281cb3c9d6d4e8df559ec3f
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^4.3.8":
   version: 4.5.4
   resolution: "zustand@npm:4.5.4"
   dependencies:
