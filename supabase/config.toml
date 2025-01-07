@@ -59,13 +59,17 @@ enable_confirmations = true
 # NOTE: You should use your Google Cloud Configuration
 [auth.external.google]
 enabled = true
-client_id = "571497840649-h617f8tskicu7309dcp2d23vhevcgf91.apps.googleusercontent.com"
-secret = "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"
+client_id = "env(GOOGLE_IOS_CLIENT_ID)"
+secret = "env(GOOGLE_SECRET)"
 # Overrides the default auth redirectUrl.
 redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
+
 # Overrides the default auth provider URL. Used to support self-hosted gitlab, single-tenant Azure,
 # or any other third-party OIDC providers.
 url = ""
+
+skip_nonce_check = true
+
 
 [analytics]
 enabled = false

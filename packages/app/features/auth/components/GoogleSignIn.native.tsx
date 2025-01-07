@@ -6,7 +6,7 @@ import { useRouter } from 'solito/router'
 import { IconGoogle } from './IconGoogle'
 
 GoogleSignin.configure({
-  iosClientId: process.env.GOOGLE_IOS_SCHEME,
+  iosClientId: process.env.GOOGLE_IOS_CLIENT_ID,
 })
 
 export function GoogleSignIn() {
@@ -16,8 +16,8 @@ export function GoogleSignIn() {
   async function signInWithGoogle() {
     try {
       await GoogleSignin.hasPlayServices()
-      const userInfo = await GoogleSignin.signIn()
-      const token = userInfo?.data?.idToken
+      const response = await GoogleSignin.signIn()
+      const token = response?.data?.idToken
 
       if (token) {
         const { data, error } = await supabase.auth.signInWithIdToken({
@@ -25,15 +25,18 @@ export function GoogleSignIn() {
           token,
         })
 
-        router.replace('/')
+        console.log('data', data)
 
-        console.log(error, data)
+        if (error) {
+          console.log('error', error)
+          throw new Error('error', error)
+        }
+
+        router.replace('/')
       } else {
         throw new Error('no ID token present!')
       }
     } catch (error) {
-      console.log(error)
-
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
