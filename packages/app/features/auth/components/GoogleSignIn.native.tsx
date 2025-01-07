@@ -1,16 +1,12 @@
 import { Button } from '@my/ui'
-import { useSupabase } from 'app/utils/supabase/useSupabase'
-import * as WebBrowser from 'expo-web-browser'
-import { useRouter } from 'solito/router'
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin'
+import { useSupabase } from 'app/utils/supabase/useSupabase'
+import { useRouter } from 'solito/router'
 
 import { IconGoogle } from './IconGoogle'
 
-console.log(process.env)
-
 GoogleSignin.configure({
-  webClientId: process.env.EXPO_PUBLIC_GOOGLE_SIGN_IN_WEB_CLIENT_ID,
-  iosClientId: process.env.EXPO_PUBLIC_GOOGLE_URL_SCHEME,
+  iosClientId: process.env.GOOGLE_IOS_SCHEME,
 })
 
 export function GoogleSignIn() {
@@ -20,55 +16,33 @@ export function GoogleSignIn() {
   async function signInWithGoogle() {
     try {
       await GoogleSignin.hasPlayServices()
-      const result = await GoogleSignin.signIn()
+      const userInfo = await GoogleSignin.signIn()
+      const token = userInfo?.data?.idToken
 
-      const user = result?.data?.user
+      if (token) {
+        const { data, error } = await supabase.auth.signInWithIdToken({
+          provider: 'google',
+          token,
+        })
 
-      console.log(result)
-    } catch (error) {
-      console.error(error)
-    }
+        router.replace('/')
 
-    return
-
-    try {
-      // whatever route you want to deeplink to; make sure to configure in Supabase dashboard
-      const redirectUri = 'myapp://'
-      const provider = 'google'
-      const response = await WebBrowser.openAuthSessionAsync(
-        `${process.env.EXPO_PUBLIC_SUPABASE_URL}/auth/v1/authorize?${new URLSearchParams({
-          provider,
-          redirect_to: redirectUri,
-        })}`,
-        redirectUri
-      )
-
-      if (response.type === 'success') {
-        const url = response.url
-        const params = url.split('#')[1]
-        if (!params) return
-        const paramsArray = params.split('&')
-        const accessToken = paramsArray[0]?.split('=')[1]
-        const refreshToken = paramsArray[2]?.split('=')[1]
-
-        if (accessToken && refreshToken) {
-          // handle error
-          const { error } = await supabase.auth.setSession({
-            access_token: accessToken,
-            refresh_token: refreshToken,
-          })
-          if (!error) authSuccessful = true
-          if (error) {
-            // handle error
-          }
-        }
+        console.log(error, data)
+      } else {
+        throw new Error('no ID token present!')
       }
     } catch (error) {
-      // handle error
-      console.error(error)
-    } finally {
-      WebBrowser.maybeCompleteAuthSession()
-      if (authSuccessful) router.replace('/')
+      console.log(error)
+
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
     }
   }
 
