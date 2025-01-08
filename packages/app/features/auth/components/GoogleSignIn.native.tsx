@@ -5,30 +5,29 @@ import { useRouter } from 'solito/router'
 
 import { IconGoogle } from './IconGoogle'
 
-GoogleSignin.configure({
-  iosClientId: process.env.GOOGLE_IOS_CLIENT_ID,
-})
-
 export function GoogleSignIn() {
   const supabase = useSupabase()
   const router = useRouter()
 
   async function signInWithGoogle() {
     try {
+      GoogleSignin.configure({
+        iosClientId: process.env.GOOGLE_IOS_CLIENT_ID,
+        webClientId: process.env.GOOGLE_WEB_CLIENT_ID,
+      })
+
       await GoogleSignin.hasPlayServices()
+
       const response = await GoogleSignin.signIn()
       const token = response?.data?.idToken
 
       if (token) {
-        const { data, error } = await supabase.auth.signInWithIdToken({
+        const { error } = await supabase.auth.signInWithIdToken({
           provider: 'google',
           token,
         })
 
-        console.log('data', data)
-
         if (error) {
-          console.log('error', error)
           throw new Error('error', error)
         }
 

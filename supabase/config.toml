@@ -56,10 +56,10 @@ enable_confirmations = true
 # `discord`, `facebook`, `github`, `gitlab`, `google`, `keycloak`, `linkedin`, `notion`, `twitch`,
 # `twitter`, `slack`, `spotify`, `workos`, `zoom`.
 
-# NOTE: You should use your Google Cloud Configuration
 [auth.external.google]
 enabled = true
-client_id = "env(GOOGLE_IOS_CLIENT_ID)"
+
+client_id = "env(GOOGLE_WEB_CLIENT_ID)"
 secret = "env(GOOGLE_SECRET)"
 # Overrides the default auth redirectUrl.
 redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
