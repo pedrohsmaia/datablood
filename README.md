@@ -345,7 +345,7 @@ You can use Sign in with Apple on native for iOS. Configuration on the Supabase 
 
 ### Google Sign In
 
-Sign in with Google is supported on iOS via in app web browser, and on Android native with via Google One Tap. To use Google One Tap on Android, you'll need to do a few more steps (see comments in the code). See [this article](https://supabase.com/docs/guides/auth/social-login/auth-google#configuration-native-app) for more info, as well as [this issue](https://github.com/react-native-google-signin/google-signin/issues/1176#issuecomment-1674385846).
+Sign in with Google is supported on iOS and Android native with via [react-native-google-signin](https://github.com/react-native-google-signin/google-signin). See [this article](https://supabase.com/docs/guides/auth/social-login/auth-google#configuration-native-app) for more info.
 
 #### Troubleshooting
 
