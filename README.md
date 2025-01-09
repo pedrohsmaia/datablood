@@ -345,7 +345,12 @@ You can use Sign in with Apple on native for iOS. Configuration on the Supabase 
 
 ### Google Sign In
 
-Sign in with Google is supported on iOS and Android native with via [react-native-google-signin](https://github.com/react-native-google-signin/google-signin). See [this article](https://supabase.com/docs/guides/auth/social-login/auth-google#configuration-native-app) for more info.
+Sign in with Google is supported on iOS and Android native with via [react-native-google-signin](https://react-native-google-signin.github.io/docs/setting-up/expo)
+See [supabase article](https://supabase.com/docs/guides/auth/social-login/auth-google#configuration-native-app) for more info.
+
+**Note**
+In `env.example` I am putting the gcloud keys so you can test as quickly as possible.
+In fact, use your Google Cloud.
 
 #### Troubleshooting
 
