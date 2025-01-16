@@ -47,6 +47,14 @@ export function CreateModal({
           enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
           exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
           gap="$4"
+          w="100%"
+          h="100%"
+          $gtSm={{
+            height: 'auto',
+            maxWidth: 660,
+          }}
+          pt="$8"
+          px="$0"
         >
           <CreateScreen />
           <Unspaced>

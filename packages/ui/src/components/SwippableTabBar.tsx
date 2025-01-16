@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import type { TabsContentProps } from 'tamagui'
-import { Separator, Tabs, Text, View, useEvent } from 'tamagui'
+import { Separator, Tabs, Text, useEvent } from 'tamagui'
 
 const tabs = ['Create Project', 'New Post', 'Add Event']
 // const tabs = ['Create Project', 'Add Event']
@@ -40,30 +40,22 @@ export const TabbarSwippable = ({
       alignSelf="center"
       width="100%"
       $gtSm={{
-        marginTop: '$4',
         maxWidth: 660,
       }}
     >
-      <View
+      <Tabs.List
+        w="100%"
+        userSelect="none"
         flexDirection="row"
-        backgroundColor="$color2"
+        alignItems="center"
         justifyContent="space-between"
-        width="100%"
-        minWidth="100%"
-        $gtMd={{
-          borderRadius: 100,
-        }}
+        borderRadius={0}
+        borderBottomWidth={1}
+        borderColor="$borderColor"
       >
-        <Tabs.List
-          minWidth="100%"
-          userSelect="none"
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="space-between"
-          paddingVertical="$2"
-          height="$4"
-        >
-          {tabs.map((tab, index) => (
+        {tabs.map((tab, index) => {
+          const active = index === activeTabIndex
+          return (
             <Tabs.Tab
               unstyled
               key={index}
@@ -73,18 +65,23 @@ export const TabbarSwippable = ({
                 changeActiveTab(index)
               }}
               pressStyle={{ opacity: 0.5 }}
+              justifyContent="center"
+              alignItems="center"
+              p="$4"
+              borderBottomWidth={1}
+              borderColor={active ? '$accentColor' : '$borderColor'}
             >
               <Text
-                theme={index !== activeTabIndex ? 'alt1' : undefined}
+                theme={active ? undefined : 'alt1'}
                 cursor="pointer"
-                fontWeight={index !== activeTabIndex ? undefined : '600'}
+                fontWeight={active ? '600' : undefined}
               >
                 {tab}
               </Text>
             </Tabs.Tab>
-          ))}
-        </Tabs.List>
-      </View>
+          )
+        })}
+      </Tabs.List>
       <Separator />
       <TabsContent value="Create Project">
         <CreateProjectForm />

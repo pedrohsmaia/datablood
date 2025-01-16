@@ -1,5 +1,6 @@
 import {
   Fieldset,
+  FormWrapper,
   H2,
   Input,
   Label,
@@ -39,48 +40,50 @@ export const ChangeEmailScreen = () => {
       }
     }
   }
-  console.log('user', user)
+
   return (
-    <SchemaForm
-      onSubmit={handleChangePassword}
-      schema={ChangeEmailSchema}
-      renderBefore={() =>
-        isWeb && (
-          <YStack px="$4" py="$4" pb="$2">
-            <H2>Change Email</H2>
-          </YStack>
-        )
-      }
-      defaultValues={{
-        email: '',
-      }}
-      renderAfter={({ submit }) => (
-        <Theme inverse>
-          <SubmitButton onPress={() => submit()}>Update Email</SubmitButton>
-        </Theme>
-      )}
-    >
-      {(fields) => (
-        <>
-          <Fieldset>
-            <Label theme="alt1" size="$3" htmlFor="current-email">
-              Current Email
-            </Label>
-            <Input
-              keyboardType="email-address"
-              disabled
-              o={0.8}
-              cur="not-allowed"
-              id="current-email"
-              autoComplete="email"
-              value={user?.email || '*****@******.***'}
-              inputMode="email"
-              autoCapitalize="none"
-            />
-          </Fieldset>
-          {Object.values(fields)}
-        </>
-      )}
-    </SchemaForm>
+    <FormWrapper>
+      <SchemaForm
+        onSubmit={handleChangePassword}
+        schema={ChangeEmailSchema}
+        renderBefore={() =>
+          isWeb && (
+            <YStack px="$4" py="$4" pb="$2">
+              <H2>Change Email</H2>
+            </YStack>
+          )
+        }
+        defaultValues={{
+          email: '',
+        }}
+        renderAfter={({ submit }) => (
+          <Theme inverse>
+            <SubmitButton onPress={() => submit()}>Update Email</SubmitButton>
+          </Theme>
+        )}
+      >
+        {(fields) => (
+          <>
+            <Fieldset>
+              <Label theme="alt1" size="$3" htmlFor="current-email">
+                Current Email
+              </Label>
+              <Input
+                keyboardType="email-address"
+                disabled
+                o={0.8}
+                cur="not-allowed"
+                id="current-email"
+                autoComplete="email"
+                value={user?.email || '*****@******.***'}
+                inputMode="email"
+                autoCapitalize="none"
+              />
+            </Fieldset>
+            {Object.values(fields)}
+          </>
+        )}
+      </SchemaForm>
+    </FormWrapper>
   )
 }

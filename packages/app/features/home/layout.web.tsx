@@ -11,11 +11,9 @@ import {
   XStack,
   YStack,
   getTokens,
-  useThemeName,
   validToken,
-  useMedia,
-  isWeb,
 } from '@my/ui'
+import { usePathname } from 'app/utils/usePathname'
 import { CreateModal } from '@my/ui/src/components/CreateModal'
 import { Menu, Plus } from '@tamagui/lucide-icons'
 import { useGlobalStore } from 'app/utils/global-store'
@@ -169,9 +167,9 @@ export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
 }
 
 const CtaButton = (props: ButtonProps) => {
-  // const [toggleEvent, setToggleEvent] = useState(false)
   const { toggleCreateModal, setToggleCreateModal } = useGlobalStore()
-  const { sm } = useMedia()
+  const pathName = usePathname()
+
   return (
     <>
       <CreateModal toggleEvent={toggleCreateModal} setToggleEvent={setToggleCreateModal} />
@@ -191,7 +189,9 @@ const CtaButton = (props: ButtonProps) => {
         </Adapt>
         <Adapt when="gtSm">
           <Button
-            onPress={() => setToggleCreateModal()}
+            onPress={() => {
+              if (pathName !== '/create') setToggleCreateModal()
+            }}
             size="$3"
             space="$1.5"
             my="$-1"

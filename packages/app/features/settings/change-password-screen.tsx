@@ -1,4 +1,4 @@
-import { H2, SubmitButton, Theme, YStack, isWeb, useToastController } from '@my/ui'
+import { H2, SubmitButton, Theme, YStack, isWeb, useToastController, FormWrapper } from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useRouter } from 'solito/router'
@@ -37,33 +37,35 @@ export const ChangePasswordScreen = () => {
   }
 
   return (
-    <SchemaForm
-      onSubmit={handleChangePassword}
-      schema={ChangePasswordSchema}
-      defaultValues={{
-        password: '',
-        passwordConfirm: '',
-      }}
-      props={{
-        password: {
-          secureTextEntry: true,
-        },
-        passwordConfirm: {
-          secureTextEntry: true,
-        },
-      }}
-      renderBefore={() =>
-        isWeb && (
-          <YStack px="$4" py="$4" pb="$2">
-            <H2>Change Password</H2>
-          </YStack>
-        )
-      }
-      renderAfter={({ submit }) => (
-        <Theme inverse>
-          <SubmitButton onPress={() => submit()}>Update Password</SubmitButton>
-        </Theme>
-      )}
-    />
+    <FormWrapper>
+      <SchemaForm
+        onSubmit={handleChangePassword}
+        schema={ChangePasswordSchema}
+        defaultValues={{
+          password: '',
+          passwordConfirm: '',
+        }}
+        props={{
+          password: {
+            secureTextEntry: true,
+          },
+          passwordConfirm: {
+            secureTextEntry: true,
+          },
+        }}
+        renderBefore={() =>
+          isWeb && (
+            <YStack px="$4" py="$4" pb="$2">
+              <H2>Change Password</H2>
+            </YStack>
+          )
+        }
+        renderAfter={({ submit }) => (
+          <Theme inverse>
+            <SubmitButton onPress={() => submit()}>Update Password</SubmitButton>
+          </Theme>
+        )}
+      />
+    </FormWrapper>
   )
 }

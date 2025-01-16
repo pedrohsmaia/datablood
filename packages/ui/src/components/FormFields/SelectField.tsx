@@ -28,7 +28,6 @@ export const SelectField = ({
   const id = useId()
   // const disabled = isSubmitting
 
-  console.log('SelectField props', { native })
   const [val, setVal] = React.useState('')
   const items = options
   return (

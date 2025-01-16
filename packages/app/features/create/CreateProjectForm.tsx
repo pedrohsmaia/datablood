@@ -13,6 +13,7 @@ import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
 import { useRouter } from 'solito/router'
 import { z } from 'zod'
+import { usePathname } from 'app/utils/usePathname'
 
 const CreateProjectSchema = z.object({
   title: formFields.text.min(10).describe("Name // Your project's name"),
@@ -24,15 +25,18 @@ const CreateProjectSchema = z.object({
   billingAddress: formFields.address.describe('Billing Address'),
   type: formFields.select.describe('Project Type'),
 })
+
 export const CreateProjectForm = () => {
   const { setToggleCreateModal } = useGlobalStore()
   const { sm } = useMedia()
   const toast = useToastController()
   const router = useRouter()
+  const pathName = usePathname()
   // const apiUtils = api.useUtils()
   const { profile, user } = useUser()
   const supabase = useSupabase()
   // const queryClient = useQueryClient()
+
   const mutation = useMutation({
     async onError(error) {
       console.log('error', error)
@@ -49,9 +53,9 @@ export const CreateProjectForm = () => {
     },
 
     async onSuccess() {
-      console.log('success')
       toast.show('Successfully created!')
-      if (sm) {
+
+      if (pathName === '/create') {
         router.back()
       } else {
         setToggleCreateModal()
@@ -102,7 +106,7 @@ export const CreateProjectForm = () => {
         }}
         renderAfter={({ submit }) => (
           <Theme inverse>
-            <SubmitButton onPress={() => submit()}>Create Project</SubmitButton>
+            <SubmitButton onPress={submit}>Create Project</SubmitButton>
           </Theme>
         )}
       >

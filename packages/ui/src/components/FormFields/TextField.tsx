@@ -37,6 +37,7 @@ export const TextField = (props: Pick<InputProps, 'size' | 'autoFocus' | 'secure
             ref={field.ref}
             placeholder={placeholder}
             id={id}
+            w="100%"
             {...props}
           />
         </Shake>

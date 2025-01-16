@@ -1,15 +1,17 @@
+import { SafeAreaView } from 'react-native'
 import { TabbarSwippable } from '@my/ui/src/components/SwippableTabBar'
 
 import { CreateEventForm } from './CreateEventForm'
 import { CreatePostForm } from './CreatePostForm'
 import { CreateProjectForm } from './CreateProjectForm'
 
-export const CreateScreen = () => {
-  return (
+export const CreateScreen = () => (
+  <>
     <TabbarSwippable
       CreateProjectForm={CreateProjectForm}
       CreatePostForm={CreatePostForm}
       CreateEventForm={CreateEventForm}
     />
-  )
-}
+    <SafeAreaView />
+  </>
+)
