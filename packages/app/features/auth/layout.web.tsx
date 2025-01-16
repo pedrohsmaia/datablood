@@ -13,7 +13,7 @@ export const AuthLayout = ({ children }: AuthLayoutProps) => {
         <YStack px="$4">{children}</YStack>
       </YStack>
 
-      <YStack $sm={{ dsp: 'none' }} f={3} fb={0}>
+      <YStack $md={{ dsp: 'none' }} f={3} fb={0}>
         <OnboardingScreen />
       </YStack>
     </XStack>

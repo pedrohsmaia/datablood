@@ -1,5 +1,6 @@
 import {
   Avatar,
+  FormWrapper,
   FullscreenSpinner,
   SubmitButton,
   Theme,
@@ -64,40 +65,42 @@ const EditProfileForm = ({
   })
 
   return (
-    <SchemaForm
-      schema={ProfileSchema}
-      props={{
-        name: {
-          autoFocus: !!params?.edit_name,
-        },
-        about: {
-          autoFocus: !!params?.edit_about,
-        },
-      }}
-      defaultValues={{
-        name: initial.name ?? '',
-        about: initial.about ?? '',
-      }}
-      onSubmit={(values) => mutation.mutate(values)}
-      renderAfter={({ submit }) => (
-        <Theme inverse>
-          <SubmitButton onPress={() => submit()}>Update Profile</SubmitButton>
-        </Theme>
-      )}
-    >
-      {(fields) => (
-        <>
-          <YStack mb="$4" ai="center">
-            <View>
-              <UploadAvatar>
-                <UserAvatar />
-              </UploadAvatar>
-            </View>
-          </YStack>
-          {Object.values(fields)}
-        </>
-      )}
-    </SchemaForm>
+    <FormWrapper>
+      <SchemaForm
+        schema={ProfileSchema}
+        props={{
+          name: {
+            autoFocus: !!params?.edit_name,
+          },
+          about: {
+            autoFocus: !!params?.edit_about,
+          },
+        }}
+        defaultValues={{
+          name: initial.name ?? '',
+          about: initial.about ?? '',
+        }}
+        onSubmit={(values) => mutation.mutate(values)}
+        renderAfter={({ submit }) => (
+          <Theme inverse>
+            <SubmitButton onPress={() => submit()}>Update Profile</SubmitButton>
+          </Theme>
+        )}
+      >
+        {(fields) => (
+          <>
+            <YStack mb="$4" ai="center">
+              <View>
+                <UploadAvatar>
+                  <UserAvatar />
+                </UploadAvatar>
+              </View>
+            </YStack>
+            {Object.values(fields)}
+          </>
+        )}
+      </SchemaForm>
+    </FormWrapper>
   )
 }
 

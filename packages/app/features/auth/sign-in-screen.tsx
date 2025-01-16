@@ -1,4 +1,14 @@
-import { H2, LoadingOverlay, Paragraph, SubmitButton, Text, Theme, YStack, isWeb } from '@my/ui'
+import {
+  FormWrapper,
+  H2,
+  LoadingOverlay,
+  Paragraph,
+  SubmitButton,
+  Text,
+  Theme,
+  YStack,
+  isWeb,
+} from '@my/ui'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
@@ -54,53 +64,55 @@ export const SignInScreen = () => {
   }
 
   return (
-    <FormProvider {...form}>
-      <SchemaForm
-        form={form}
-        schema={SignInSchema}
-        defaultValues={{
-          email: params?.email || '',
-          password: '',
-        }}
-        onSubmit={signInWithEmail}
-        props={{
-          password: {
-            afterElement: <ForgotPasswordLink />,
-            secureTextEntry: true,
-          },
-        }}
-        renderAfter={({ submit }) => {
-          return (
+    <FormWrapper>
+      <FormProvider {...form}>
+        <SchemaForm
+          form={form}
+          schema={SignInSchema}
+          defaultValues={{
+            email: params?.email || '',
+            password: '',
+          }}
+          onSubmit={signInWithEmail}
+          props={{
+            password: {
+              afterElement: <ForgotPasswordLink />,
+              secureTextEntry: true,
+            },
+          }}
+          renderAfter={({ submit }) => {
+            return (
+              <>
+                <Theme inverse>
+                  <SubmitButton onPress={() => submit()} br="$10">
+                    Sign In
+                  </SubmitButton>
+                </Theme>
+                <SignUpLink />
+                {isWeb && <SocialLogin />}
+              </>
+            )
+          }}
+        >
+          {(fields) => (
             <>
-              <Theme inverse>
-                <SubmitButton onPress={() => submit()} br="$10">
-                  Sign In
-                </SubmitButton>
-              </Theme>
-              <SignUpLink />
-              {isWeb && <SocialLogin />}
-            </>
-          )
-        }}
-      >
-        {(fields) => (
-          <>
-            <YStack gap="$3" mb="$4">
-              <H2 $sm={{ size: '$8' }}>Welcome Back</H2>
-              <Paragraph theme="alt1">Sign in to your account</Paragraph>
-            </YStack>
-            {Object.values(fields)}
-            {!isWeb && (
-              <YStack mt="$4">
-                <SocialLogin />
+              <YStack gap="$3" mb="$4">
+                <H2 $sm={{ size: '$8' }}>Welcome Back</H2>
+                <Paragraph theme="alt1">Sign in to your account</Paragraph>
               </YStack>
-            )}
-          </>
-        )}
-      </SchemaForm>
-      {/* this is displayed when the session is being updated - usually when the user is redirected back from an auth provider */}
-      {isLoadingSession && <LoadingOverlay />}
-    </FormProvider>
+              {Object.values(fields)}
+              {!isWeb && (
+                <YStack mt="$4">
+                  <SocialLogin />
+                </YStack>
+              )}
+            </>
+          )}
+        </SchemaForm>
+        {/* this is displayed when the session is being updated - usually when the user is redirected back from an auth provider */}
+        {isLoadingSession && <LoadingOverlay />}
+      </FormProvider>
+    </FormWrapper>
   )
 }
 
