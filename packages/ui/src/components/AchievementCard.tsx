@@ -45,15 +45,8 @@ export const AchievementCard = ({
             </SizableText>
           </XStack>
 
-          <Progress
-            mt="$2"
-            theme="alt2"
-            value={(progress.current / progress.full) * 100}
-            bg="$color2"
-            boc="$color5"
-            bw={1}
-          >
-            <Progress.Indicator bc="$color7" animation="bouncy" />
+          <Progress mt="$2" theme="alt2" value={20} bg="$color2" boc="$color5" bw={1}>
+            <Progress.Indicator bc="$color7" animation="bouncy" w="100%" />
           </Progress>
 
           {!!action && (

@@ -77,17 +77,15 @@ export const PostsSection = () => {
             />
           ))
         ) : (
-          <View marginHorizontal="$4" $gtSm={{ minWidth: '100%', marginBottom: '$4' }}>
+          <View w="100%" px="$4" $gtSm={{ marginBottom: '$4' }}>
             <View
               height={200}
-              maxWidth="100%"
-              minWidth="100%"
+              w="100%"
               alignItems="center"
               justifyContent="center"
               flex={1}
               backgroundColor="$gray1"
-              margin="$2"
-              $platform-native={{ margin: '$0', marginBottom: '$3' }}
+              // margin="$2"
               marginLeft="$0"
               borderRadius="$5"
             >

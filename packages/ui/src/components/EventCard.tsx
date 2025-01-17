@@ -22,7 +22,6 @@ export const EventCard = ({ title, description, action, tags = [], ...props }: E
       cursor="pointer"
       gap="$3"
       p="$4"
-      margin="$2"
       borderRadius="$3"
       chromeless={!hover}
       onHoverIn={() => setHover(true)}
