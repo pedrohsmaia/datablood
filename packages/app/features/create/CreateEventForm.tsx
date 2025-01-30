@@ -1,4 +1,4 @@
-import { Database } from '@my/supabase/types'
+import type { Database } from '@my/supabase/types'
 import {
   FullscreenSpinner,
   SubmitButton,

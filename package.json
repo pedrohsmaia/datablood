@@ -11,7 +11,8 @@
     "ios": "cd apps/expo && yarn ios",
     "android": "cd apps/expo && yarn android",
     "native": "cd apps/expo && yarn start",
-    "watch": "yarn check:type:watch & yarn workspaces foreach -pi --all run watch",
+    "watch": "npm-run-all --parallel check:type:watch watch:packages",
+    "watch:packages": "ultra -r --no-pretty --concurrency 400 watch",
     "web": "yarn build && cd apps/next && yarn dev",
     "web:extract": "DISABLE_EXTRACTION=false yarn workspace next-app dev",
     "web:prod": "yarn workspace next-app build",
@@ -65,7 +66,7 @@
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-prettier": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
-    "@tamagui/cli": "^1.121.11",
+    "@tamagui/cli": "^1.123.5",
     "@turbo/gen": "^1.10.12",
     "@types/fs-extra": "^11",
     "axios": "^1.7.2",
@@ -75,9 +76,11 @@
     "eslint": "^8.46.0",
     "fs-extra": "^11.2.0",
     "node-gyp": "^9.3.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "promise-throttle-all": "^1.1.1",
     "turbo": "^1.10.14",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "ultra-runner": "^3.10.5"
   }
 }

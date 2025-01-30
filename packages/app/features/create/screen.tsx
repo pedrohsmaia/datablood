@@ -1,5 +1,5 @@
-import { SafeAreaView } from 'react-native'
 import { TabbarSwippable } from '@my/ui/src/components/SwippableTabBar'
+import { SafeAreaView } from 'react-native'
 
 import { CreateEventForm } from './CreateEventForm'
 import { CreatePostForm } from './CreatePostForm'
