@@ -349,8 +349,15 @@ Sign in with Google is supported on iOS and Android native with via [react-nativ
 See [supabase article](https://supabase.com/docs/guides/auth/social-login/auth-google#configuration-native-app) for more info.
 
 **Note**
-In `env.example` I am putting the gcloud keys so you can test as quickly as possible.
+In [`env.example`](.env.example) I am putting the gcloud keys so you can test as quickly as possible.
 In fact, use your Google Cloud.
+
+```
+GOOGLE_IOS_SCHEME=YOUR_IOS_SCHEME
+GOOGLE_IOS_CLIENT_ID=YOUR_IOS_CLIENT_ID
+GOOGLE_WEB_CLIENT_ID=YOUR_WEB_CLIENT_ID #Note: This is the web client ID for Android
+GOOGLE_SECRET=YOUR_SECRET
+```
 
 #### Troubleshooting
 
