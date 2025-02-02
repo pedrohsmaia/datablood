@@ -131,7 +131,7 @@ const ForgotPasswordLink = () => {
   const email = useWatch<z.infer<typeof SignInSchema>>({ name: 'email' })
 
   return (
-    <Link href={`/reset-password?${new URLSearchParams(email ? { email } : undefined)}`}>
+    <Link href={`/reset-password${email ? `?${new URLSearchParams({ email })}` : ''}`}>
       <Paragraph mt="$1" theme="alt2" textDecorationLine="underline">
         Forgot your password?
       </Paragraph>
