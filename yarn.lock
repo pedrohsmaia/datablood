@@ -9400,32 +9400,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:^1.10.12":
-  version: 1.13.4
-  resolution: "@turbo/gen@npm:1.13.4"
+"@turbo/gen@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@turbo/gen@npm:2.4.0"
   dependencies:
-    "@turbo/workspaces": "npm:1.13.4"
-    chalk: "npm:2.4.2"
+    "@turbo/workspaces": "npm:2.4.0"
     commander: "npm:^10.0.0"
     fs-extra: "npm:^10.1.0"
     inquirer: "npm:^8.2.4"
     minimatch: "npm:^9.0.0"
     node-plop: "npm:^0.26.3"
+    picocolors: "npm:1.0.1"
     proxy-agent: "npm:^6.2.2"
-    ts-node: "npm:^10.9.1"
+    ts-node: "npm:^10.9.2"
     update-check: "npm:^1.5.4"
     validate-npm-package-name: "npm:^5.0.0"
   bin:
     gen: dist/cli.js
-  checksum: 10/5d1247a24e0fc42abaad4acd93f4138bcaeb7505375fd7287844f50ff141afff69b26245b450df7186a3d991c8e92787cb88c9fb912649e55e556e423a734a3c
+  checksum: 10/6a44bdf20d3f0bd8815f7375c295fe72b6db264e74d0c21627edc6ce41b1462fd7353eb3688b1155c4fa495528462bd659ae539d4738b43040f5c529ba74a9d9
   languageName: node
   linkType: hard
 
-"@turbo/workspaces@npm:1.13.4":
-  version: 1.13.4
-  resolution: "@turbo/workspaces@npm:1.13.4"
+"@turbo/workspaces@npm:2.4.0":
+  version: 2.4.0
+  resolution: "@turbo/workspaces@npm:2.4.0"
   dependencies:
-    chalk: "npm:2.4.2"
     commander: "npm:^10.0.0"
     execa: "npm:5.1.1"
     fast-glob: "npm:^3.2.12"
@@ -9434,12 +9433,12 @@ __metadata:
     inquirer: "npm:^8.0.0"
     js-yaml: "npm:^4.1.0"
     ora: "npm:4.1.1"
-    rimraf: "npm:^3.0.2"
-    semver: "npm:^7.3.5"
+    picocolors: "npm:1.0.1"
+    semver: "npm:7.6.2"
     update-check: "npm:^1.5.4"
   bin:
     workspaces: dist/cli.js
-  checksum: 10/18c7147404c20c4dff4802910dc1e2f32181cc208f3b4623dbc23c9a3e314e64f7ec81493610dbfcefb03e3ba9322286d6127f143ec7a01944d54332fec5d350
+  checksum: 10/0fcdc6699bf868345e68a61fa1dc35b5d14546e0c6a6f9c663dbfd7e8b10d0fe4b789aaaf8375232efeb8836102566acf0138b85286018e4e88d294b769361d9
   languageName: node
   linkType: hard
 
@@ -12731,7 +12730,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:2.4.2, chalk@npm:^2.0.1, chalk@npm:^2.4.1, chalk@npm:^2.4.2":
+"chalk@npm:^2.0.1, chalk@npm:^2.4.1, chalk@npm:^2.4.2":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
   dependencies:
@@ -23220,6 +23219,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picocolors@npm:1.0.1":
+  version: 1.0.1
+  resolution: "picocolors@npm:1.0.1"
+  checksum: 10/fa68166d1f56009fc02a34cdfd112b0dd3cf1ef57667ac57281f714065558c01828cdf4f18600ad6851cbe0093952ed0660b1e0156bddf2184b6aaf5817553a5
+  languageName: node
+  linkType: hard
+
 "picocolors@npm:^1.0.0, picocolors@npm:^1.0.1, picocolors@npm:^1.1.0, picocolors@npm:^1.1.1":
   version: 1.1.1
   resolution: "picocolors@npm:1.1.1"
@@ -25634,6 +25640,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"semver@npm:7.6.2":
+  version: 7.6.2
+  resolution: "semver@npm:7.6.2"
+  bin:
+    semver: bin/semver.js
+  checksum: 10/296b17d027f57a87ef645e9c725bff4865a38dfc9caf29b26aa084b85820972fbe7372caea1ba6857162fa990702c6d9c1d82297cecb72d56c78ab29070d2ca2
+  languageName: node
+  linkType: hard
+
 "semver@npm:^7.1.3, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.1, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3":
   version: 7.7.0
   resolution: "semver@npm:7.7.0"
@@ -27765,7 +27780,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.9.1":
+"ts-node@npm:^10.9.2":
   version: 10.9.2
   resolution: "ts-node@npm:10.9.2"
   dependencies:
@@ -28442,7 +28457,7 @@ __metadata:
     "@svgr/plugin-prettier": "npm:^8.1.0"
     "@svgr/plugin-svgo": "npm:^8.1.0"
     "@tamagui/cli": "npm:^1.123.5"
-    "@turbo/gen": "npm:^1.10.12"
+    "@turbo/gen": "npm:^2.4.0"
     "@types/fs-extra": "npm:^11"
     axios: "npm:^1.7.2"
     check-dependency-version-consistency: "npm:^3.0.3"
