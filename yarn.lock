@@ -6296,21 +6296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/csf@npm:^0.1.1":
+"@storybook/csf@npm:^0.1.1, @storybook/csf@npm:^0.1.2":
   version: 0.1.13
   resolution: "@storybook/csf@npm:0.1.13"
   dependencies:
     type-fest: "npm:^2.19.0"
   checksum: 10/8a590703c44180798869fd12c1f314cb96de18349415a33bcfe30ef6af11fdc1cdb755ea620dedfd5eb7666cf05af5647b77fe28b63000aa52b53b0dc3c77bb5
-  languageName: node
-  linkType: hard
-
-"@storybook/csf@npm:^0.1.2":
-  version: 0.1.9
-  resolution: "@storybook/csf@npm:0.1.9"
-  dependencies:
-    type-fest: "npm:^2.19.0"
-  checksum: 10/9a5119361a1156d30482988abe95098b8e6ef3de34bd7ed514a4a6738f77edde6eec66c3c04568a9bf9473aac549120a1dba064aeb44cb0cb9fed1ba63cc9038
   languageName: node
   linkType: hard
 
