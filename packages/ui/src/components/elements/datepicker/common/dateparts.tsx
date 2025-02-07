@@ -112,7 +112,7 @@ export const DatePickerInput = Input.Area.styleable<DatePickerInputProps>((props
       <Input size={size}>
         <Input.Box>
           <Input.Section>
-            <Input.Area value={value} ref={ref} {...rest} />
+            <Input.Area cursor="pointer" value={value} editable={false} ref={ref} {...rest} />
           </Input.Section>
           <Input.Section>
             <Input.Button

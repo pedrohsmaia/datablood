@@ -1,11 +1,8 @@
 import { FullscreenSpinner, SubmitButton, Theme, useToastController, YStack } from '@my/ui'
 import { useMutation } from '@tanstack/react-query'
 import { formFields, SchemaForm } from 'app/utils/SchemaForm'
-import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
-import { usePathname } from 'app/utils/usePathname'
 import { useUser } from 'app/utils/useUser'
-import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
 const CreateProjectSchema = z.object({
@@ -19,17 +16,14 @@ const CreateProjectSchema = z.object({
   type: formFields.select.describe('Project Type'),
 })
 
-export const CreateProjectForm = () => {
-  const { setToggleCreateModal } = useGlobalStore()
-  const toast = useToastController()
-  const router = useRouter()
-  const pathName = usePathname()
-
+export const CreateProjectForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const { profile, user } = useUser()
   const supabase = useSupabase()
+  const toast = useToastController()
 
   const mutation = useMutation({
     async onError(error) {
+      toast.show('Error creating project')
       console.log('error', error)
     },
     async mutationFn(data: z.infer<typeof CreateProjectSchema>) {
@@ -44,15 +38,7 @@ export const CreateProjectForm = () => {
     },
 
     async onSuccess() {
-      toast.show('Successfully created!')
-
-      if (pathName === '/create') {
-        router.back()
-      } else {
-        setToggleCreateModal()
-      }
-      // await queryClient.invalidateQueries(['profile', user.id])
-      // await apiUtils.greeting.invalidate()
+      onSuccess()
     },
   })
 

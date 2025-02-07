@@ -3,6 +3,7 @@ import {
   Button,
   Dialog,
   EventCard,
+  FullscreenSpinner,
   H4,
   Paragraph,
   ScrollView,
@@ -17,6 +18,7 @@ import {
 import { Calendar, X } from '@tamagui/lucide-icons'
 import ScrollToTopTabBarContainer from 'app/utils/NativeScreenContainer'
 import useEventsQuery from 'app/utils/react-query/useEventQuery'
+import { useUser } from 'app/utils/useUser'
 import { useState } from 'react'
 
 import { AchievementsSection } from './components/achievements-section'
@@ -25,6 +27,17 @@ import { OverviewSection } from './components/overview-section'
 import { PostsSection } from './components/posts-section'
 
 export function HomeScreen() {
+  const { user, isLoading } = useUser()
+
+  if (isLoading)
+    return (
+      <View flex={1} height={'80vh' as any} ai="center" jc="center">
+        <FullscreenSpinner />
+      </View>
+    )
+
+  if (!user) return null
+
   return (
     <XStack maw={1480} als="center" f={1}>
       <ScrollView f={4} fb={0}>
@@ -106,45 +119,16 @@ const EventDrawer = () => {
   )
 }
 
-const eventDummyData = [
-  {
-    id: 1,
-    name: 'Event 1',
-    description: 'Lorem ipsum dolor sit, amet.',
-    start_time: new Date('2023-05-01T00:00:00.000Z'),
-    end_time: new Date('2023-05-01T00:00:00.000Z'),
-    status: 'Upcoming',
-  },
-  {
-    id: 2,
-    name: 'Event 2',
-    description: 'Lorem ipsum dolor sit, amet.',
-    start_time: new Date('2023-05-01T00:00:00.000Z'),
-    end_time: new Date('2023-05-01T00:00:00.000Z'),
-    status: 'Upcoming',
-  },
-  {
-    id: 3,
-    name: 'Event 3',
-    description: 'Lorem ipsum dolor sit, amet.',
-    start_time: new Date('2023-05-01T00:00:00.000Z'),
-    end_time: new Date('2023-05-01T00:00:00.000Z'),
-    status: 'Upcoming',
-  },
-]
-
 const EventCards = () => {
-  const { data, isLoading } = useEventsQuery()
+  const { data = [], isLoading } = useEventsQuery()
 
   if (isLoading) return null
-
-  const eventData = data?.length ? data : eventDummyData
 
   return (
     <ScrollView maxWidth={350}>
       <YStack p="$3" gap="$3">
-        {eventData.length ? (
-          eventData?.map((event) => (
+        {data?.length ? (
+          data?.map((event) => (
             <EventCard
               br="$4"
               bw={1.5}

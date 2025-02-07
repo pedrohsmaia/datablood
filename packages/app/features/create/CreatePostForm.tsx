@@ -1,17 +1,8 @@
-import {
-  FullscreenSpinner,
-  SubmitButton,
-  Theme,
-  YStack,
-  useMedia,
-  useToastController,
-} from '@my/ui'
+import { FullscreenSpinner, SubmitButton, Theme, YStack, useToastController } from '@my/ui'
 import { useMutation } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
-import { useGlobalStore } from 'app/utils/global-store'
 import { useSupabase } from 'app/utils/supabase/useSupabase'
 import { useUser } from 'app/utils/useUser'
-import { useRouter } from 'solito/router'
 import { z } from 'zod'
 
 const CreatePostSchema = z.object({
@@ -21,12 +12,9 @@ const CreatePostSchema = z.object({
   image_url: formFields.image.describe('Image URL // Image URL of your post'),
 })
 
-export const CreatePostForm = () => {
-  const { setToggleCreateModal } = useGlobalStore()
-  const { sm } = useMedia()
-  const toast = useToastController()
-  const router = useRouter()
+export const CreatePostForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const { profile, user } = useUser()
+  const toast = useToastController()
   const supabase = useSupabase()
 
   const uploadImageAndGetUrl = async (imageSource: { fileURL: string; path: string }) => {
@@ -52,10 +40,10 @@ export const CreatePostForm = () => {
 
   const mutation = useMutation({
     async onError(error) {
-      console.log('error', error)
+      toast.show('Error creating post')
     },
+
     async mutationFn(data: z.infer<typeof CreatePostSchema>) {
-      console.log('here data', data)
       const imageUrl = await uploadImageAndGetUrl(
         data.image_url as {
           fileURL: string
@@ -74,13 +62,7 @@ export const CreatePostForm = () => {
     },
 
     async onSuccess() {
-      console.log('success')
-      toast.show('Successfully created!')
-      if (sm) {
-        router.back()
-      } else {
-        setToggleCreateModal()
-      }
+      onSuccess()
     },
   })
 
