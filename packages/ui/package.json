@@ -28,6 +28,7 @@
     "@tamagui/animations-moti": "^1.124.1",
     "@tamagui/animations-react-native": "^1.124.1",
     "@tamagui/cli": "^1.124.1",
+    "@tamagui/config": "^1.124.1",
     "@tamagui/create-theme": "^1.124.1",
     "@tamagui/font-inter": "^1.124.1",
     "@tamagui/helpers-icon": "^1.124.1",

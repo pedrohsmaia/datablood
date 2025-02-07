@@ -32,6 +32,7 @@ export const CreateEventForm = () => {
   const router = useRouter()
   const { profile, user } = useUser()
   const supabase = useSupabase()
+
   const mutation = useMutation({
     async onError(error) {
       console.log('error', error)
@@ -49,7 +50,6 @@ export const CreateEventForm = () => {
     },
 
     async onSuccess() {
-      console.log('success')
       toast.show('Successfully created!')
 
       if (sm) {

@@ -1,4 +1,6 @@
+import { DatePickerProvider } from '@rehookify/datepicker'
 import { Session } from '@supabase/supabase-js'
+import { GlobalStoreProvider } from 'app/utils/global-store'
 import React from 'react'
 
 import { AuthProvider } from './auth'
@@ -7,7 +9,6 @@ import { SafeAreaProvider } from './safe-area'
 import { TamaguiProvider } from './tamagui'
 import { UniversalThemeProvider } from './theme'
 import { ToastProvider } from './toast'
-import { GlobalStoreProvider } from 'app/utils/global-store'
 
 export { loadThemePromise } from './theme/UniversalThemeProvider'
 
@@ -19,9 +20,12 @@ export function Provider({
   children: React.ReactNode
 }) {
   return (
-    <AuthProvider initialSession={initialSession}>
-      <Providers>{children}</Providers>
-    </AuthProvider>
+    // Note: DatePickerProvider Conflicted with Popover so this is just a temporary solution
+    <DatePickerProvider config={{ selectedDates: [], onDatesChange: () => {} }}>
+      <AuthProvider initialSession={initialSession}>
+        <Providers>{children}</Providers>
+      </AuthProvider>
+    </DatePickerProvider>
   )
 }
 

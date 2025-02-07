@@ -3711,6 +3711,7 @@ __metadata:
     "@tamagui/animations-react-native": "npm:^1.124.1"
     "@tamagui/build": "npm:^1.124.1"
     "@tamagui/cli": "npm:^1.124.1"
+    "@tamagui/config": "npm:^1.124.1"
     "@tamagui/create-theme": "npm:^1.124.1"
     "@tamagui/font-inter": "npm:^1.124.1"
     "@tamagui/helpers-icon": "npm:^1.124.1"
@@ -5230,11 +5231,11 @@ __metadata:
   linkType: hard
 
 "@rehookify/datepicker@npm:^6.6.6":
-  version: 6.6.6
-  resolution: "@rehookify/datepicker@npm:6.6.6"
+  version: 6.6.8
+  resolution: "@rehookify/datepicker@npm:6.6.8"
   peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: 10/136481c64804d86d2c55218fa2f16eec9b5263b30238e82cf1a5457e74e76b73146dc177892165f5ca77a0a75fb2e7de3ebc2ced018682f4890c65c56297e241
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10/6d52111be2f2d7446eed2815a3ece2ab6a78a9db416cc70460bf050b28cf0dd75d83aa4ddbd986b993a835294a885035ee6b0e6fba4813f5a2f967dc65f25a54
   languageName: node
   linkType: hard
 
@@ -15959,7 +15960,6 @@ __metadata:
     "@react-native-community/netinfo": "npm:11.4.1"
     "@react-native-google-signin/google-signin": "npm:^13.1.0"
     "@tamagui/babel-plugin": "npm:^1.124.1"
-    "@tamagui/config": "npm:^1.124.1"
     app: "npm:*"
     babel-plugin-module-resolver: "npm:^4.1.0"
     babel-plugin-transform-inline-environment-variables: "npm:^0.4.4"

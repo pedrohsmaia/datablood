@@ -1,4 +1,3 @@
-import { TabLayout } from '@my/ui'
 import { useEffect, useRef, useState } from 'react'
 import type { TabsContentProps } from 'tamagui'
 import { Separator, Tabs, Text, useEvent } from 'tamagui'
@@ -92,7 +91,7 @@ export const CreateScreen = () => {
       </Tabs.List>
       <Separator />
 
-      <TabsContent value={currentTab} forceMount flex={1} justifyContent="center">
+      <TabsContent value={currentTab} forceMount>
         {renderTab()}
       </TabsContent>
     </Tabs>
@@ -102,7 +101,6 @@ export const CreateScreen = () => {
 const TabsContent = (props: TabsContentProps) => {
   return (
     <Tabs.Content
-      key={props.value}
       flex={1}
       borderColor="$background"
       height={600}

@@ -40,23 +40,26 @@ const DatePickerImpl = (props: DatePickerProps) => {
   const { children, config, ...rest } = props
 
   return (
-    <DatePickerProvider config={config}>
-      <Popover keepChildrenMounted size="$5" allowFlip {...rest}>
-        <Adapt when="sm" platform="touch">
-          <Popover.Sheet modal dismissOnSnapToBottom snapPointsMode="fit">
-            <Popover.Sheet.Frame padding="$8" alignItems="center">
+    <Popover keepChildrenMounted size="$5" allowFlip {...rest}>
+      {/* for mobile view */}
+      <Adapt when="sm" platform="touch">
+        <Popover.Sheet modal dismissOnSnapToBottom snapPointsMode="fit">
+          <Popover.Sheet.Frame padding="$2" alignItems="center">
+            <DatePickerProvider config={config}>
               <Adapt.Contents />
-            </Popover.Sheet.Frame>
-            <Popover.Sheet.Overlay
-              animation="lazy"
-              enterStyle={{ opacity: 0 }}
-              exitStyle={{ opacity: 0 }}
-            />
-          </Popover.Sheet>
-        </Adapt>
-        {children}
-      </Popover>
-    </DatePickerProvider>
+            </DatePickerProvider>
+          </Popover.Sheet.Frame>
+          <Popover.Sheet.Overlay
+            animation="lazy"
+            enterStyle={{ opacity: 0 }}
+            exitStyle={{ opacity: 0 }}
+          />
+        </Popover.Sheet>
+      </Adapt>
+
+      {/* for desktop view */}
+      <DatePickerProvider config={config}>{children}</DatePickerProvider>
+    </Popover>
   )
 }
 
@@ -274,8 +277,9 @@ export function YearSlider() {
     data: { calendars },
     propGetters: { subtractOffset },
   } = useDatePickerContext()
-  const { type: header, setHeader } = useHeaderType()
+  const { setHeader } = useHeaderType()
   const { year } = calendars[0]
+
   return (
     <View
       flexDirection="row"
