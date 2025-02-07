@@ -1,6 +1,6 @@
 import { Check, ChevronDown } from '@tamagui/lucide-icons'
 import { useFieldInfo, useTsController } from '@ts-react/form'
-import React, { useId } from 'react'
+import React, { useId, useState } from 'react'
 import { Adapt, Fieldset, Label, Select, type SelectProps, Sheet, Theme, YStack } from 'tamagui'
 import { LinearGradient } from 'tamagui/linear-gradient'
 
@@ -21,15 +21,18 @@ export const SelectField = ({
   placeholder?: string
 } & Pick<SelectProps, 'size' | 'native'>) => {
   const {
+    field,
     error,
     formState: { isSubmitting },
   } = useTsController<string>()
+
   const { label, isOptional } = useFieldInfo()
   const id = useId()
+
   // const disabled = isSubmitting
 
-  const [val, setVal] = React.useState('')
   const items = options
+
   return (
     <Theme name={error ? 'red' : null} forceClassName>
       {!!label && (
@@ -39,8 +42,8 @@ export const SelectField = ({
       )}
       <Fieldset>
         <Select
-          value={val}
-          onValueChange={setVal}
+          value={field?.value}
+          onValueChange={field.onChange}
           disablePreventBodyScroll
           {...props}
           native={!!native}
