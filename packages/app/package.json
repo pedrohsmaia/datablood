@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint --fix .",
     "check:type": "tsc --outDir /tmp",
     "check:type:watch": "yarn check:type -w"
   },

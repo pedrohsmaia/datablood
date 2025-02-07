@@ -40,6 +40,7 @@ export const CreatePostForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
   const mutation = useMutation({
     async onError(error) {
+      console.error(error)
       toast.show('Error creating post')
     },
 

@@ -27598,6 +27598,7 @@ __metadata:
     "@svgr/plugin-prettier": "npm:^8.1.0"
     "@svgr/plugin-svgo": "npm:^8.1.0"
     "@tamagui/cli": "npm:^1.124.1"
+    "@tamagui/config": "npm:^1.124.1"
     "@turbo/gen": "npm:1.10.14"
     "@types/fs-extra": "npm:^11"
     axios: "npm:^1.7.2"
