@@ -13,10 +13,10 @@ import {
   getTokens,
   validToken,
 } from '@my/ui'
-import { usePathname } from 'app/utils/usePathname'
 import { CreateModal } from '@my/ui/src/components/CreateModal'
 import { Menu, Plus } from '@tamagui/lucide-icons'
 import { useGlobalStore } from 'app/utils/global-store'
+import { usePathname } from 'app/utils/usePathname'
 import { useUser } from 'app/utils/useUser'
 import { useRouter as useNextRouter } from 'next/router'
 import { useEffect, useState } from 'react'

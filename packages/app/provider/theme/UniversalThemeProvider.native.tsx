@@ -1,8 +1,12 @@
+import { useIsomorphicLayoutEffect } from '@my/ui'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
-import { ThemeProviderProps, useThemeSetting as next_useThemeSetting } from '@tamagui/next-theme'
+import type {
+  ThemeProviderProps,
+  useThemeSetting as next_useThemeSetting,
+} from '@tamagui/next-theme'
 import { StatusBar } from 'expo-status-bar'
-import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { Appearance, useColorScheme } from 'react-native'
 
 type ThemeContextValue = (ThemeProviderProps & { current?: string | null }) | null
@@ -21,7 +25,7 @@ export const UniversalThemeProvider = ({ children }: { children: React.ReactNode
   const [current, setCurrent] = useState<ThemeName | null>(null) // Start with null
   const systemTheme = useColorScheme() || 'system'
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     async function main() {
       await loadThemePromise
       setCurrent(persistedTheme ?? 'system') // Set theme after loading

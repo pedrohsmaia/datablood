@@ -3,7 +3,7 @@ import { useDatePickerContext } from '@rehookify/datepicker'
 import type { DPDay, DPDayInteger } from '@rehookify/datepicker'
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
 import { useEffect, useMemo, useState, forwardRef } from 'react'
-import { AnimatePresence, Button, View, SizableText } from 'tamagui'
+import { AnimatePresence, Button, View, SizableText, XStack, YStack } from 'tamagui'
 
 import { useDateAnimation } from './common/datePickerUtils'
 import {
@@ -38,23 +38,18 @@ function CalendarHeader() {
   }
 
   return (
-    <View
-      flexDirection="row"
-      width="100%"
-      height={50}
-      alignItems="center"
-      justifyContent="space-between"
-    >
+    <XStack width="100%" alignItems="center" justifyContent="space-between">
       <Button
         circular
-        size="$4"
+        size="$3"
         {...(subtractOffset ? swapOnClick(subtractOffset({ months: 1 })) : {})}
       >
         <Button.Icon scaleIcon={1.5}>
           <ChevronLeft />
         </Button.Icon>
       </Button>
-      <View flexDirection="column" height={50} alignItems="center">
+
+      <YStack gap="$1" width="100%" flex={1} alignItems="center">
         <SizableText
           onPress={() => setHeader('year')}
           userSelect="auto"
@@ -75,21 +70,21 @@ function CalendarHeader() {
           tabIndex={0}
           size="$6"
           color="$gray12"
-          fontWeight="600"
-          lineHeight="$1"
+          fontWeight="700"
           hoverStyle={{
             color: '$gray10',
           }}
         >
           {month}
         </SizableText>
-      </View>
-      <Button circular size="$4" {...swapOnClick(subtractOffset({ months: -1 }))}>
+      </YStack>
+
+      <Button circular size="$3" {...swapOnClick(subtractOffset({ months: -1 }))}>
         <Button.Icon scaleIcon={1.5}>
           <ChevronRight />
         </Button.Icon>
       </Button>
-    </View>
+    </XStack>
   )
 }
 
@@ -165,12 +160,12 @@ function DatePickerBody() {
 
   return (
     <HeaderTypeProvider type={header} setHeader={setHeader}>
-      <View flexDirection="column" alignItems="center" gap="$2.5" maxWidth={325}>
+      <YStack ai="center" gap="$6" width="100%">
         <CalendarHeader />
         {header === 'month' && <MonthPicker onChange={() => setHeader('day')} />}
         {header === 'year' && <YearPicker onChange={() => setHeader('day')} />}
         {header === 'day' && <DayPicker />}
-      </View>
+      </YStack>
     </HeaderTypeProvider>
   )
 }
@@ -222,6 +217,7 @@ export const DatePickerExample = forwardRef(
         startDay: 1,
       },
     }
+
     return (
       <DatePicker keepChildrenMounted open={open} onOpenChange={setOpen} config={datePickerConfig}>
         <DatePicker.Trigger>

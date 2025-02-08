@@ -1,3 +1,4 @@
+import { defaultConfig } from '@tamagui/config/v4'
 import { shorthands } from '@tamagui/shorthands'
 import { createTokens, createTamagui, setupDev } from 'tamagui'
 
@@ -26,6 +27,7 @@ const themes =
     : ({} as typeof themesIn)
 
 export const config = createTamagui({
+  ...defaultConfig,
   themes,
   defaultFont: 'body',
   animations,
