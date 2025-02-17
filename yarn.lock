@@ -6961,12 +6961,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/postgrest-js@npm:1.17.9":
-  version: 1.17.9
-  resolution: "@supabase/postgrest-js@npm:1.17.9"
+"@supabase/postgrest-js@npm:1.18.1":
+  version: 1.18.1
+  resolution: "@supabase/postgrest-js@npm:1.18.1"
   dependencies:
     "@supabase/node-fetch": "npm:^2.6.14"
-  checksum: 10/b9c5ed3885d1c60dc49cf5c1043e6cc3077db514987504a4685fdb46d1a95aa6e683fb8e1ef493eb30c048da4e0132cabcd881141e1602a502c6b6b40e97239d
+  checksum: 10/c45ad2eac026d29b7d4ce00e5e68be02295eb6b7b8769541cd97c9030ac36ebbca21eb0729326365c002d97c66f77c1977d1cc86a71a5e7b29af74559a56bcdf
   languageName: node
   linkType: hard
 
@@ -6991,17 +6991,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:^2.47.11":
-  version: 2.47.11
-  resolution: "@supabase/supabase-js@npm:2.47.11"
+"@supabase/supabase-js@npm:^2.47.11, @supabase/supabase-js@npm:^2.48.1":
+  version: 2.48.1
+  resolution: "@supabase/supabase-js@npm:2.48.1"
   dependencies:
     "@supabase/auth-js": "npm:2.67.3"
     "@supabase/functions-js": "npm:2.4.4"
     "@supabase/node-fetch": "npm:2.6.15"
-    "@supabase/postgrest-js": "npm:1.17.9"
+    "@supabase/postgrest-js": "npm:1.18.1"
     "@supabase/realtime-js": "npm:2.11.2"
     "@supabase/storage-js": "npm:2.7.1"
-  checksum: 10/fcc1237eee3a89196359df44d1372a7912cb6037705d9c4b85bc82dcde15f3fec9712fe4cfc6d6d72eaa45c8b379a6e6c9ab5d35a7eee6ce7e4a4aed081795cf
+  checksum: 10/15fb731c31f9d1973cb26f9408b72b335900932ea8326ef46f8cb3548a3a136d4efa585d1e9cee6d1e14acce075f67c9e364d6243505e2c652f5d660b261165e
   languageName: node
   linkType: hard
 
@@ -21135,7 +21135,7 @@ __metadata:
     "@next/eslint-plugin-next": "npm:15.1.6"
     "@supabase/auth-helpers-nextjs": "npm:^0.10.0"
     "@supabase/auth-helpers-react": "npm:^0.5.0"
-    "@supabase/supabase-js": "npm:^2.47.11"
+    "@supabase/supabase-js": "npm:^2.48.1"
     "@tamagui/next-plugin": "npm:^1.124.1"
     "@tamagui/next-theme": "npm:^1.124.1"
     "@tamagui/react-native-svg": "npm:^1.124.1"

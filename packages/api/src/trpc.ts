@@ -7,6 +7,8 @@ import * as jose from 'jose'
 import { cookies } from 'next/headers'
 import superJson from 'superjson'
 
+const jwtSecret = process.env.SUPABASE_AUTH_JWT_SECRET
+
 export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
   // if there's auth cookie it'll be authenticated by this helper
   const cookiesStore = cookies()
@@ -16,8 +18,8 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
   })
   let userId = (await supabase.auth.getUser()).data.user?.id
 
-  if (!process.env.SUPABASE_JWT_SECRET) {
-    throw new Error('the `SUPABASE_JWT_SECRET` env variable is not set.')
+  if (!jwtSecret) {
+    throw new Error('the `SUPABASE_AUTH_JWT_SECRET` env variable is not set.')
   }
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
     throw new Error('the `NEXT_PUBLIC_SUPABASE_URL` env variable is not set.')
@@ -25,15 +27,14 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
   if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     throw new Error('the `NEXT_PUBLIC_SUPABASE_ANON_KEY` env variable is not set.')
   }
+
   // Native clients pass an access token in the authorization header
   if (opts.req.headers.has('authorization')) {
     const accessToken = opts.req.headers.get('authorization')!.split('Bearer ').pop()
+
     if (accessToken) {
       try {
-        const { payload } = await jose.jwtVerify(
-          accessToken,
-          new TextEncoder().encode(process.env.SUPABASE_JWT_SECRET)
-        )
+        const { payload } = await jose.jwtVerify(accessToken, new TextEncoder().encode(jwtSecret))
         userId = payload.sub
       } catch (error) {
         // Leaves userId undefined, which will eventually fail the enforceUserIsAuthed check

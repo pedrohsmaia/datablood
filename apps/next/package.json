@@ -19,7 +19,7 @@
     "@my/ui": "*",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/auth-helpers-react": "^0.5.0",
-    "@supabase/supabase-js": "^2.47.11",
+    "@supabase/supabase-js": "^2.48.1",
     "@tamagui/next-theme": "^1.124.1",
     "@tamagui/react-native-svg": "^1.124.1",
     "@tanstack/react-query": "4.18.0",
