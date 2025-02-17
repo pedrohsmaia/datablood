@@ -3858,7 +3858,7 @@ __metadata:
     "@my/supabase": "npm:*"
     "@supabase/auth-helpers-nextjs": "npm:^0.10.0"
     "@supabase/auth-helpers-react": "npm:^0.5.0"
-    "@supabase/supabase-js": "npm:^2.47.11"
+    "@supabase/supabase-js": "npm:^2.48.1"
     "@tanstack/react-query": "npm:4.18.0"
     "@trpc/next": "npm:^10.45.2"
     "@trpc/server": "npm:^10.45.2"
@@ -6991,7 +6991,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:^2.47.11, @supabase/supabase-js@npm:^2.48.1":
+"@supabase/supabase-js@npm:^2.48.1":
   version: 2.48.1
   resolution: "@supabase/supabase-js@npm:2.48.1"
   dependencies:
@@ -10971,7 +10971,7 @@ __metadata:
     "@rehookify/datepicker": "npm:^6.6.6"
     "@supabase/auth-helpers-nextjs": "npm:^0.10.0"
     "@supabase/auth-helpers-react": "npm:^0.5.0"
-    "@supabase/supabase-js": "npm:^2.47.11"
+    "@supabase/supabase-js": "npm:^2.48.1"
     "@tamagui/animations-react-native": "npm:^1.124.1"
     "@tamagui/colors": "npm:^1.124.1"
     "@tamagui/font-inter": "npm:^1.124.1"
