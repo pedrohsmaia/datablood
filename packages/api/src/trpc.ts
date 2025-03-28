@@ -4,17 +4,17 @@ import { createClient } from '@supabase/supabase-js'
 import { TRPCError, initTRPC } from '@trpc/server'
 import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import * as jose from 'jose'
-import { cookies } from 'next/headers'
+import { cookies, type UnsafeUnwrappedCookies } from 'next/headers'
 import superJson from 'superjson'
 
 const jwtSecret = process.env.SUPABASE_AUTH_JWT_SECRET
 
 export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
   // if there's auth cookie it'll be authenticated by this helper
-  const cookiesStore = cookies()
+  const cookiesStore = (await cookies()) as unknown as UnsafeUnwrappedCookies
 
   let supabase = createRouteHandlerClient<Database>({
-    cookies: () => cookiesStore,
+    cookies: () => cookiesStore as never,
   })
   let userId = (await supabase.auth.getUser()).data.user?.id
 
