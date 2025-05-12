@@ -25,13 +25,45 @@ the `yarn create tamagui --template takeout-starter` command has a requirement o
 
 Otherwise, ignore this section. If you're getting authentication issues with `yarn create tamagui`, clone the template (using `gh` or just `git`), cd into the project and run `yarn install`, and then `yarn setup`.
 
-To rename the project recommended way is to change the `yourprojectsname` in `apps/expo/app.json`. This will update the name in the Expo app and when building the native apps.
+To rename the project recommended way is to change the `yourprojectsname` in `apps/expo/app.config.js`. This will update the name in the Expo app and when building the native apps.
 
 If you're getting issues with the /android or /ios directories when setting up the starter, you can safely remove them and re-generate them using `yarn ios` and `yarn android`.
 
 In the expo folder, You can also run the `yarn start:dev-client` command which will start the dev client for you with a pre-built step that will re generate the native apps (recreate the ios and android folders) on the fly.
 
 ## Environment
+
+### `.env`
+
+Setup your environment variables in the `.env` file. See [.env.example](.env.example) for the full list of environment variables.
+
+```bash
+# -- NEXT --
+NEXT_PUBLIC_URL=http://localhost:3000
+# Use NEXT_PUBLIC_URL=https://localhost:3000 if you're running next with --experimental-https
+NEXT_PUBLIC_SUPABASE_URL=http://localhost:54321
+NEXT_PUBLIC_SUPABASE_ANON_KEY=OBFUSCATED_KEY
+NEXT_PUBLIC_PROJECT_ID=OBFUSCATED_PROJECT_ID
+
+# -- EXPO --
+# @see https://docs.expo.dev/guides/environment-variables/
+EXPO_PUBLIC_URL=http://localhost:3000
+# Use NEXT_PUBLIC_URL=https://localhost:3000 if you're running next with --experimental-https
+EXPO_PUBLIC_SUPABASE_URL=http://localhost:54321
+EXPO_PUBLIC_SUPABASE_ANON_KEY=OBFUSCATED_KEY
+
+# IMPORTANT: JWT Secret must be at least 32 characters long
+SUPABASE_AUTH_JWT_SECRET=super-secret-jwt-token-with-at-least-32-characters-long
+
+# -- GOOGLE SIGN IN --
+# Documentation: https://react-native-google-signin.github.io/docs/setting-up/expo
+GOOGLE_IOS_SCHEME=this-is-the-ios-scheme
+GOOGLE_IOS_CLIENT_ID=this-is-the-ios-client-id
+# Note: This is the web client ID for
+GOOGLE_WEB_CLIENT_ID=this-is-the-web-client-id
+# Android
+GOOGLE_SECRET=this-is-the-secret
+```
 
 ### Setting up iOS
 
@@ -76,20 +108,6 @@ If you're using Supabase, you can skip to the next section.
 Create a new Supabase project by following the [Supabase Project](https://supabase.com/docs/guides/project) guide.
 
 Once you have a project, click "Connect" and select App Frameworks.
-
-From this modal you can copy the .env vars for next.js
-
-```sh
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
-
-Then click on mobile frameowork and copy the .env vars for expo
-
-```sh
-EXPO_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-EXPO_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
 
 #### Supabase Auth
 
@@ -147,7 +165,7 @@ yarn web -H $(yarn get-local-ip-mac | head -n 1)
 ### EAS dev builds
 
 > [!IMPORTANT]  
-> You need to update your `owner` inside `apps/expo/app.json` to your own username, along with your env variables for each EAS build environment.
+> You need to update your `owner` inside `apps/expo/app.config.js` to your own username, along with your env variables for each EAS build environment.
 
 ```json
 {
@@ -313,9 +331,9 @@ We use `expo-router` for the native side, so simply create `_layout.tsx` files i
 
 - create an expo account and create an expo project.
 
-- add your project id to `apps/expo/app.json` where it says `your-project-id`
+- add your project id to `apps/expo/app.config.js` where it says `your-project-id`
 
-- ensure that the `projectId`, `slug`, and `owner` values in `apps/expo/app.json` all have the same value as the name of your project, ie the name in `apps/expo/package.json`
+- ensure that the `projectId`, `slug`, and `owner` values in `apps/expo/app.config.js` all have the same value as the name of your project, ie the name in `apps/expo/package.json`
 
 ![expo project id](https://github.com/tamagui/unistack/assets/2502947/8a4d3663-9eb2-4cb1-926f-0476a00ab078)
 
@@ -451,11 +469,11 @@ EAS has already been configured for you, but you still need to do the following:
 
 - `npm install --global eas-cli`
 - `cd apps/expo`
-- `eas build` - This will also add your EAS project ID to app.json
+- `eas build` - This will also add your EAS project ID to app.config.js
 
 ### Initial EAS Setup
 
-1. edit `apps/expo/app.json` and update:
+1. edit `apps/expo/app.config.js` and update:
    1. `owner`
    1. `projectId`
 
