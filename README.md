@@ -35,7 +35,7 @@ In the expo folder, You can also run the `yarn start:dev-client` command which w
 
 ### `.env`
 
-Setup your environment variables in the `.env` file. See [.env.example](.env.example) for the full list of environment variables.
+Setup your environment variables in the `.env` file. See [`env.example`](.env.example) for the full list of environment variables.
 
 ```bash
 # -- NEXT --
