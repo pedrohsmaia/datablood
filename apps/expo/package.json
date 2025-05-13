@@ -27,7 +27,7 @@
     "eas:submit:staging:ios": "cross-env NODE_ENV=staging APP_ENV=staging yarn with-env eas submit --profile staging --platform ios",
     "eas:update:staging:ios": "cross-env NODE_ENV=staging APP_ENV=staging yarn with-env eas update --channel staging --platform ios",
     "ios": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn with-env expo run:ios",
-    "with-env": "dotenv -f .env --",
+    "with-env": "dotenv -e ../../.env -c --",
     "lint": "eslint ./app",
     "lint:fix": "eslint ./app --fix",
     "check:type": "tsc --outDir /tmp",
