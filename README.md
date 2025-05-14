@@ -411,12 +411,6 @@ The package is included in the `packages` workspace in this repo. You can tweak 
 
 We actively maintain the starter and add new features and updates to it.
 
-### Rolling Your Syncing Workflow
-
-While Tamagui's bot is the easiest way you can receive updates, you may also use the `actions-template-sync` GitHub action if you prefer. It will run on a custom interval and check for changes from the template so you don't miss out on the new updates.
-
-To set up this action, read the [Private template repository](https://github.com/marketplace/actions/actions-template-sync#private-template-repository) section.
-
 ## UI Kit
 
 Note we're following the [design systems guide](https://tamagui.dev/docs/guides/design-systems) and creating our own package for components.
