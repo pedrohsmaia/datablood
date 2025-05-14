@@ -411,12 +411,6 @@ The package is included in the `packages` workspace in this repo. You can tweak 
 
 We actively maintain the starter and add new features and updates to it.
 
-### Takeout's Update Bot
-
-We have created a bot to push updates to your repo if you have an active subscription for the starter. To install the bot, head over to [Subscriptions Page](https://tamagui.dev/account/subscriptions), find the starter subscription item and press the "Install GitHub App" button. Then simply give access to your repository and done. You can customize the bot's options from the `takeout.config.json` file.
-
-Note that you will stop receiving updates if you remove the `takeout.config.json` file.
-
 ### Rolling Your Syncing Workflow
 
 While Tamagui's bot is the easiest way you can receive updates, you may also use the `actions-template-sync` GitHub action if you prefer. It will run on a custom interval and check for changes from the template so you don't miss out on the new updates.
