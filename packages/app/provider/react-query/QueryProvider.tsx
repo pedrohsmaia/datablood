@@ -1,4 +1,7 @@
-// noop - this is handled in app/utils/api
+import { QueryClient, QueryClientProvider as ClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
 export const QueryClientProvider = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>
+  return <ClientProvider client={queryClient}>{children}</ClientProvider>
 }
