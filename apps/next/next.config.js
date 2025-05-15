@@ -71,6 +71,7 @@ module.exports = () => {
       'react-native-gesture-handler',
       '@ts-react/form',
       'react-hook-form',
+      'react-native-reanimated',
     ],
     /*
        A few notes before enabling app directory:
