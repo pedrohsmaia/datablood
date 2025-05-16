@@ -104,8 +104,8 @@ const replaceRoute = (href: string) => {
       router.replace(href)
     }, 1)
   } else {
-    setImmediate(() => {
+    setTimeout(() => {
       router.replace(href)
-    })
+    }, 1)
   }
 }
