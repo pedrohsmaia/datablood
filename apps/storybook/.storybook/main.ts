@@ -1,10 +1,17 @@
-import { StorybookConfig } from '@storybook/nextjs'
+import type { StorybookConfig } from '@storybook/nextjs'
 
 const config: StorybookConfig = {
-  stories: ['../../../packages/ui/**/*.stories.@(ts|tsx|mdx)'],
-  features: {
-    storyStoreV7: false,
+  webpackFinal: async (config) => {
+    // Exclude .map files from being processed
+    config.module?.rules?.push({
+      test: /\.map$/,
+      type: 'asset/resource',
+      exclude: [/node_modules\/.*\.map$/, /.*\.native\.map$/],
+    })
+
+    return config
   },
+  stories: ['../../../packages/ui/**/*.stories.@(ts|tsx|mdx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -29,14 +36,7 @@ const config: StorybookConfig = {
       },
     },
   ],
-  framework: {
-    name: '@storybook/nextjs',
-    options: {
-      builder: {
-        useSWC: true,
-      },
-    },
-  },
+  framework: '@storybook/nextjs',
   core: {
     builder: {
       name: '@storybook/builder-webpack5',
