@@ -6893,7 +6893,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-native@npm:^8.6.4":
+"@storybook/react-native@npm:8.6.4":
   version: 8.6.4
   resolution: "@storybook/react-native@npm:8.6.4"
   dependencies:
@@ -25431,7 +25431,7 @@ __metadata:
     "@storybook/addon-controls": "npm:^8.6.14"
     "@storybook/addon-ondevice-actions": "npm:8.6.4"
     "@storybook/addon-ondevice-controls": "npm:8.6.4"
-    "@storybook/react-native": "npm:^8.6.4"
+    "@storybook/react-native": "npm:8.6.4"
     "@storybook/testing-library": "npm:^0.2.2"
     app: "npm:*"
     babel-loader: "npm:^8.3.0"
