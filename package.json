@@ -9,6 +9,7 @@
   "scripts": {
     "_with-env": "dotenv -e .env -c -- ",
     "ios": "cd apps/expo && yarn ios",
+    "ios:run": "cd apps/expo && yarn ios:run",
     "android": "cd apps/expo && yarn android",
     "native": "cd apps/expo && yarn start",
     "expo:prebuild": "cd apps/expo && yarn expo:prebuild",
