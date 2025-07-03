@@ -102,7 +102,9 @@ GOOGLE_SECRET=this-is-the-secret
 
 Note that Cocoapods 1.15 has a [breaking bug](https://github.com/CocoaPods/CocoaPods/issues/12226). We recommend using version 1.14.3.
 
-You'll need to ensure you have the right NODE_BINARY environment variable set. What we've found to work is to ensure your `apps/expo/ios/.xcode.env` has the contents of `which node`, for example:
+You'll need to ensure you have the right NODE_BINARY environment variable set. 
+
+We like `fnm` to manage node, and then ensure your `apps/expo/ios/.xcode.env` has the contents of `which node`. With `fnm` it looks like:
 
 ```bash
 NODE_BINARY=/Users/n8/Library/Caches/fnm_multishells/69747_1653603955297/bin/node
