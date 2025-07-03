@@ -33,6 +33,39 @@ In the expo folder, You can also run the `yarn start:dev-client` command which w
 
 ## Environment
 
+### Supported Platforms and Versions
+
+We don't provide priority support for Windows, and lesser to Linux, but we do aim to solve issues with them if you report them.
+
+The following are the tested and supported versions of packages:
+
+- Node.js: 18.17.0
+- Yarn: 4.1.0
+- npm: 9.6.7
+- TypeScript: 5.3.3
+
+- React Native: 0.76.5
+- Next.js: 14.2.23
+- Expo SDK: 52.0.23
+
+- Xcode: 16.2
+- iOS SDK: 18.2
+- Android Studio: 2024.3
+- Android SDK: API Level 35
+- CocoaPods: 1.14.3 (avoid 1.15 due to known issues)
+
+- Supabase: Latest version
+- PostgreSQL: 14.15
+- Docker: 28.2.2
+
+- macOS: 15.5 (Sequoia)
+- iOS: 18.2
+- Android: API Level 35
+
+- Git: 2.46.2
+- Java: 23.0.2 (for Android development)
+- Ruby: 3.2.2 (for iOS development with CocoaPods)
+
 ### `.env`
 
 Setup your environment variables in the `.env` file. See [`env.example`](.env.example) for the full list of environment variables.
@@ -74,8 +107,6 @@ You'll need to ensure you have the right NODE_BINARY environment variable set. W
 ```bash
 NODE_BINARY=/Users/n8/Library/Caches/fnm_multishells/69747_1653603955297/bin/node
 ```
-
-We've found Node >= 18 to work.
 
 You may need to run `yarn ios` once to have it generate the env file, and then re-run it once you set the NODE_BINARY properly.
 
