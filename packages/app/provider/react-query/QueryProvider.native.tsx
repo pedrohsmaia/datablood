@@ -28,14 +28,13 @@ export const QueryClientProvider = ({ children }: { children: React.ReactNode })
 
     return () => subscription.remove()
   }, [])
-
   const [queryClient] = useState(
-    new QueryClient({
-      // native query config
-    })
+    () =>
+      new QueryClient({
+        // native query config
+      })
   )
-
-  const [trpcClient] = useState(createTrpcClient())
+  const [trpcClient] = useState(() => createTrpcClient())
 
   return (
     <api.Provider client={trpcClient} queryClient={queryClient}>
