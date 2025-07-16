@@ -14,14 +14,16 @@ const getEvents = async (supabase, userId) => {
 
 function useEventsQuery() {
   const supabase = useSupabase()
-  const queryKey = ['events']
   const { user } = useUser()
 
   const queryFn = async () => {
     return getEvents(supabase, user?.id).then((result) => result.data)
   }
 
-  return useQuery({ queryKey, queryFn })
+  return useQuery({
+    queryKey: ['events'],
+    queryFn,
+  })
 }
 
 export default useEventsQuery

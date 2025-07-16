@@ -6,7 +6,7 @@ import { Platform } from 'react-native'
 
 export const Greetings = () => {
   const baseUrl = getBaseUrl()
-  const { data, isLoading, isError } = api.greeting.greet.useQuery()
+  const { data, isLoading, isError } = api.greeting.greet.useQuery(undefined)
   const toast = useToastController()
   const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
   useEffect(() => {

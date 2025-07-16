@@ -7,7 +7,8 @@ function useProfile() {
   const { session } = useSessionContext()
   const user = session?.user
   const supabase = useSupabase()
-  const { data, isLoading, refetch } = useQuery(['profile', user?.id], {
+  const { data, isPending, refetch } = useQuery({
+    queryKey: ['profile', user?.id],
     queryFn: async () => {
       if (!user?.id) return null
       const { data, error } = await supabase.from('profiles').select('*').eq('id', user.id).single()
@@ -23,13 +24,13 @@ function useProfile() {
     },
   })
 
-  return { data, isLoading, refetch }
+  return { data, isPending, refetch }
 }
 
 export const useUser = () => {
   const { session, isLoading: isLoadingSession } = useSessionContext()
   const user = session?.user
-  const { data: profile, refetch, isLoading: isLoadingProfile } = useProfile()
+  const { data: profile, refetch, isPending: isPendingProfile } = useProfile()
 
   const avatarUrl = (function () {
     if (profile?.avatar_url) return profile.avatar_url
@@ -49,7 +50,10 @@ export const useUser = () => {
     avatarUrl,
     updateProfile: () => refetch(),
     isLoadingSession,
-    isLoadingProfile,
-    isLoading: isLoadingSession || isLoadingProfile,
+    isPendingProfile,
+    isPending: isLoadingSession || isPendingProfile,
+    // Keep legacy properties for compatibility during migration
+    isLoadingProfile: isPendingProfile,
+    isLoading: isLoadingSession || isPendingProfile,
   }
 }

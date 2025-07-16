@@ -27,9 +27,9 @@ import { OverviewSection } from './components/overview-section'
 import { PostsSection } from './components/posts-section'
 
 export function HomeScreen() {
-  const { user, isLoading } = useUser()
+  const { user, isPending } = useUser()
 
-  if (isLoading)
+  if (isPending)
     return (
       <View flex={1} height={'80vh' as any} ai="center" jc="center">
         <FullscreenSpinner />
@@ -120,9 +120,9 @@ const EventDrawer = () => {
 }
 
 const EventCards = () => {
-  const { data = [], isLoading } = useEventsQuery()
+  const { data = [], isPending } = useEventsQuery()
 
-  if (isLoading) return null
+  if (isPending) return null
 
   return (
     <ScrollView maxWidth={350}>

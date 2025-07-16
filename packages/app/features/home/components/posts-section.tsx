@@ -25,15 +25,15 @@ const feedCardWidthMd = validToken(
 )
 
 export const PostsSection = () => {
-  const { data, isLoading, isError } = usePostQuery()
+  const { data, isPending, isError } = usePostQuery()
 
   const toast = useToastController()
 
   useEffect(() => {
     isError && toast.show('Error loading posts.')
-  }, [data, isLoading, isError])
+  }, [data, isPending, isError])
 
-  if (isLoading) return <FullscreenSpinner />
+  if (isPending) return <FullscreenSpinner />
 
   return (
     <View>

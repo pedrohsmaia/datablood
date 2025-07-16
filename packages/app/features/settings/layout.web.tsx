@@ -15,8 +15,8 @@ export type SettingsLayoutProps = {
 }
 
 export const SettingsLayout = ({ children, isSettingsHome = false }: SettingsLayoutProps) => {
-  const { isLoading, user } = useUser()
-  if (isLoading || !user) {
+  const { isPending, user } = useUser()
+  if (isPending || !user) {
     return <FullscreenSpinner />
   }
 

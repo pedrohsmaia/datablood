@@ -6,14 +6,19 @@ import SuperJSON from 'superjson'
 import { getBaseUrl } from './getBaseUrl'
 
 export const api = createTRPCNext<AppRouter>({
+  /**
+   * @link https://trpc.io/docs/ssr
+   **/
+  ssr: false,
+  transformer: SuperJSON,
   config() {
     return {
       queryClientConfig: {
         // web query config
       },
-      transformer: SuperJSON,
       links: [
         httpBatchLink({
+          transformer: SuperJSON,
           /**
            * If you want to use SSR, you need to use the server's full URL
            * @link https://trpc.io/docs/ssr
@@ -28,8 +33,6 @@ export const api = createTRPCNext<AppRouter>({
       ],
     }
   },
-  /**
-   * @link https://trpc.io/docs/ssr
-   **/
-  ssr: false,
 })
+
+export { type RouterInputs, type RouterOutputs } from '@my/api'

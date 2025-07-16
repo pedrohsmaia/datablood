@@ -42,7 +42,7 @@ export const CreateEventForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
     async onSuccess() {
       onSuccess()
-      await queryClient.invalidateQueries(['events'])
+      await queryClient.invalidateQueries({ queryKey: ['events'] })
     },
   })
 

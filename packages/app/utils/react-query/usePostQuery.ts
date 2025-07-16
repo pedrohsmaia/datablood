@@ -8,13 +8,15 @@ const getPosts = async (supabase) => {
 
 function usePostQuery() {
   const supabase = useSupabase()
-  const queryKey = ['posts']
 
   const queryFn = async () => {
     return getPosts(supabase).then((result) => result.data)
   }
 
-  return useQuery({ queryKey, queryFn })
+  return useQuery({
+    queryKey: ['posts'],
+    queryFn,
+  })
 }
 
 export default usePostQuery

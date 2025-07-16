@@ -9,10 +9,10 @@ import { supabase } from './supabase/client.native'
 export const api = createTRPCReact<AppRouter>()
 export const createTrpcClient = () =>
   api.createClient({
-    transformer: SuperJSON,
     links: [
       httpBatchLink({
         url: `${getBaseUrl()}/api/trpc`,
+        transformer: SuperJSON,
         async headers() {
           const headers = new Map<string, string>()
           headers.set('x-trpc-source', 'expo-react')
