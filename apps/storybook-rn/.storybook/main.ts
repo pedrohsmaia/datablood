@@ -1,10 +1,21 @@
-module.exports = {
-  stories: ['../../../packages/ui/**/*.stories.@(ts|tsx|mdx)'],
-  features: {
-    storyStoreV7: false,
+import { StorybookConfig } from '@storybook/react-native';
+
+const main: StorybookConfig = {
+  stories: [
+    '../components/**/*.stories.?(ts|tsx|js|jsx)',
+    {
+      directory: '../../../packages/ui',
+      titlePrefix: 'react-native-ui',
+      files: '**/*.stories.?(ts|tsx|js|jsx)',
+    },
+  ],
+  addons: [
+    { name: '@storybook/addon-ondevice-controls' },
+    '@storybook/addon-ondevice-actions',
+  ],
+  reactNative: {
+    playFn: false,
   },
-  addons: ['@storybook/addon-ondevice-controls'],
-  docs: {
-    autodocs: true,
-  },
-}
+};
+
+export default main;

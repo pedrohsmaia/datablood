@@ -1,7 +1,25 @@
-import { getStorybookUI } from '@storybook/react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-import './.storybook/storybook.requires'
+function App() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Text>didn't get storybook enabled flag</Text>
+    </View>
+  );
+}
 
-const App = getStorybookUI({})
+let AppEntryPoint = App;
 
-export default App
+if (process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === 'true') {
+  AppEntryPoint = require('./.storybook').default;
+}
+
+export default AppEntryPoint;
