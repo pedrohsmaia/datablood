@@ -30,7 +30,7 @@ function useProfile() {
 export const useUser = () => {
   const { session, isLoading: isLoadingSession } = useSessionContext()
   const user = session?.user
-  const { data: profile, refetch, isPending: isPendingProfile } = useProfile()
+  const { data: profile, refetch, isPending: isLoadingProfile } = useProfile()
 
   const avatarUrl = (function () {
     if (profile?.avatar_url) return profile.avatar_url
@@ -50,10 +50,7 @@ export const useUser = () => {
     avatarUrl,
     updateProfile: () => refetch(),
     isLoadingSession,
-    isPendingProfile,
-    isPending: isLoadingSession || isPendingProfile,
-    // Keep legacy properties for compatibility during migration
-    isLoadingProfile: isPendingProfile,
-    isLoading: isLoadingSession || isPendingProfile,
+    isLoadingProfile,
+    isLoading: isLoadingSession || isLoadingProfile,
   }
 }

@@ -6,7 +6,7 @@ import { Platform } from 'react-native'
 
 export const Greetings = () => {
   const baseUrl = getBaseUrl()
-  const { data, isLoading, isError } = api.greeting.greet.useQuery(undefined)
+  const { data, isPending, isError } = api.greeting.greet.useQuery(undefined)
   const toast = useToastController()
   const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
   useEffect(() => {
@@ -38,7 +38,7 @@ export const Greetings = () => {
   }, [data, isError, toast])
   return (
     <H2 m="$4">
-      {isLoading ? <Spinner /> : null}
+      {isPending ? <Spinner /> : null}
       {data ? data : null}
     </H2>
   )
