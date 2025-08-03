@@ -166,6 +166,27 @@ You can create a new Supabase database by following the [Supabase Database](http
 
 It is possible to develop locally with Supabase. This is useful for development and testing.
 
+#### Initial Supabase Setup Steps
+
+After cloning the project and setting up your environment variables:
+
+1. Navigate to the supabase folder:
+   ```bash
+   cd supabase
+   ```
+
+2. Link your Supabase project:
+   ```bash
+   yarn link-project
+   ```
+
+3. Deploy the initial database tables:
+   ```bash
+   yarn deploy
+   ```
+
+These steps will create the necessary tables in your online Supabase project.
+
 <details>
   <summary>Self-hosting Supabase</summary>
 
