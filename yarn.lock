@@ -3863,12 +3863,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:15.3.2":
-  version: 15.3.2
-  resolution: "@next/bundle-analyzer@npm:15.3.2"
+"@next/bundle-analyzer@npm:15.4.1":
+  version: 15.4.1
+  resolution: "@next/bundle-analyzer@npm:15.4.1"
   dependencies:
     webpack-bundle-analyzer: "npm:4.10.1"
-  checksum: 10/67796684f1cf727e72768cdc1c112269b7b89f916c85fe8f6c9585caaa91a24b4a2a71b68247afa259b24838ef0fb539d2522c7d49e52afeadcecd1f184fa430
+  checksum: 10/0c6b4b498b1b21cf67d5ad59d1ccd562d844c1f274768ab79b7bb4c9d367e288f082c2a2f47bdd46ba96980675043d7dcd34a67d018513cb489392e15626925c
   languageName: node
   linkType: hard
 
@@ -3879,12 +3879,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:15.3.2":
-  version: 15.3.2
-  resolution: "@next/eslint-plugin-next@npm:15.3.2"
+"@next/eslint-plugin-next@npm:15.4.1":
+  version: 15.4.1
+  resolution: "@next/eslint-plugin-next@npm:15.4.1"
   dependencies:
     fast-glob: "npm:3.3.1"
-  checksum: 10/7412b096aae914fb360caa41153bb80840efbf7bf525686f3ce0a7f977d6718e0a76a71e1c3cb497dd34405732dd322371fd8a5e95944858b42690814fb4a645
+  checksum: 10/927f34bd20b7a90bacc9c21f5679e0e68c5368c56c4f948c7be5f3fdaf7331a49a0b9a5af22b8dbbbddb3597dca6fbac831634ee15379b3542d4afd1a4d264e4
   languageName: node
   linkType: hard
 
@@ -20305,8 +20305,8 @@ __metadata:
   resolution: "next-app@workspace:apps/next"
   dependencies:
     "@my/ui": "npm:*"
-    "@next/bundle-analyzer": "npm:15.3.2"
-    "@next/eslint-plugin-next": "npm:15.3.2"
+    "@next/bundle-analyzer": "npm:15.4.1"
+    "@next/eslint-plugin-next": "npm:15.4.1"
     "@supabase/auth-helpers-nextjs": "npm:^0.10.0"
     "@supabase/auth-helpers-react": "npm:^0.5.0"
     "@supabase/supabase-js": "npm:^2.48.1"
