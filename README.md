@@ -389,7 +389,7 @@ We use `expo-router` for the native side, so simply create `_layout.tsx` files i
 
 - ensure that the `projectId`, `slug`, and `owner` values in `apps/expo/app.config.js` all have the same value as the name of your project, ie the name in `apps/expo/package.json`
 
-![expo project id](https://github.com/tamagui/unistack/assets/2502947/8a4d3663-9eb2-4cb1-926f-0476a00ab078)
+![expo project id](https://github.com/pedrohsmaia/datablood/assets/2502947/8a4d3663-9eb2-4cb1-926f-0476a00ab078)
 
 ## How Authentication is Handled
 

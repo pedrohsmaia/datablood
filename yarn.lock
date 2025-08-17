@@ -26542,9 +26542,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unistack@workspace:.":
+"datablood@workspace:.":
   version: 0.0.0-use.local
-  resolution: "unistack@workspace:."
+  resolution: "datablood@workspace:."
   dependencies:
     "@babel/runtime": "npm:^7.18.9"
     "@manypkg/cli": "npm:^0.19.1"

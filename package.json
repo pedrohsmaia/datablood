@@ -1,5 +1,5 @@
 {
-  "name": "unistack",
+  "name": "datablood",
   "private": true,
   "workspaces": [
     "apps/*",
