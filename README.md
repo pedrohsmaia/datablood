@@ -1,5 +1,8 @@
 ⚠️ **Please note**: Takeout is closed source for now. We've had a number of people create public repos on accident. Please be careful to keep the source private as per the license.
 
+
+O app usa um projeto separado no supabase para gerenciar o auth local, use os acessos do datablood-dev no supabase, coloque no .env local
+
 # Tamagui's Takeout Starter
 
 A good but long tutorial showing building a real app using Tamagui Takeout can be seen on the [notjust.dev YouTube stream](https://www.youtube.com/watch?v=XbKkKXH-dfc).

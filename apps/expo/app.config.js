@@ -1,7 +1,7 @@
 export default {
   expo: {
-    name: 'takeout demo',
-    slug: 'takeout-demo',
+    name: 'datablood',
+    slug: 'datablood',
     jsEngine: 'hermes',
     scheme: 'myapp',
     version: '1.0.0',
@@ -20,7 +20,7 @@ export default {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'dev.tamagui.takeoutdemo',
+      bundleIdentifier: 'dev.tamagui.datablood',
       buildNumber: '6',
     },
     android: {
@@ -29,7 +29,7 @@ export default {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',
       },
-      package: 'dev.tamagui.takeoutdemo',
+      package: 'dev.tamagui.datablood',
       permissions: ['android.permission.RECORD_AUDIO'],
       versionCode: 3,
     },
@@ -74,6 +74,6 @@ export default {
     runtimeVersion: {
       policy: 'appVersion',
     },
-    owner: 'tamagui-team',
+    owner: 'pedrohsmaia',
   },
 }
