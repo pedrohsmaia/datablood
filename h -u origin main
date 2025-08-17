@@ -1,0 +1,10 @@
+[33ma29d7ed0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m 🔧 chore: rename project from unistack to datablood and update references
+[33m72a26c8f[m Merge pull request #369 from tamagui/sync-package-version
+[33m3b8e5def[m fix: fint lint sherif
+[33m9c9f9ec5[m 🔧 chore: upgrade next and react-native-web version
+[33mde9753ac[m add supabase setup steps
+[33m4bbd7d11[m 🔧 chore: update import path for metro-config
+[33mbfb51a9b[m 🔧 chore: remove comments
+[33mfe05708d[m dedupe
+[33m727336bf[m 🔧 refactor: update loading state
+[33m85e4fcad[m 🔧 chore: upgrade @tamagui to 1.132.7
